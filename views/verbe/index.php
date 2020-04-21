@@ -8,16 +8,16 @@ use johnitvn\ajaxcrud\CrudAsset;
 use johnitvn\ajaxcrud\BulkButtonWidget;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\NomSearch */
+/* @var $searchModel app\models\VerbeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Noms: lemmes');
+$this->title = Yii::t('app', 'Verbes: lemmes');
 $this->params['breadcrumbs'][] = $this->title;
 
 CrudAsset::register($this);
 
 ?>
-<div class="nom-index">
+<div class="verbe-index">
     <div id="ajaxCrudDatatable">
         <?= GridView::widget([
             'id' => 'crud-datatable',
@@ -48,7 +48,7 @@ CrudAsset::register($this);
             'hover' => true,
             'panel' => [
                 'type' => 'primary',
-                'heading' => '<i class="glyphicon glyphicon-list"></i> ' . Yii::t('app', 'Noms: lemmes'),
+                'heading' => '<i class="glyphicon glyphicon-list"></i> ' . Yii::t('app', 'Verbes: lemmes'),
                 'before' => '<em>' . Yii::t('app', '* Resize table columns just like a spreadsheet by dragging the column edges') . '.</em>',
                 'after' => BulkButtonWidget::widget([
                     'buttons' => Html::a(

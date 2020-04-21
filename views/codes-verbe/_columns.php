@@ -573,6 +573,7 @@ return [
     ],
     [
         'class' => 'kartik\grid\ActionColumn',
+        'width' => '80px',
         'dropdown' => false,
         'vAlign' => 'middle',
         'urlCreator' => function ($action, $model, $key, $index) {
