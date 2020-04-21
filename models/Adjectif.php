@@ -4,7 +4,7 @@ namespace app\models;
 
 use yii\db\ActiveRecord;
 
-class ALemmes extends ActiveRecord
+class Adjectif extends ActiveRecord
 {
     public static function tableName()
     {

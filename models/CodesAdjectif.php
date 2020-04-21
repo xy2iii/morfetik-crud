@@ -4,11 +4,11 @@ namespace app\models;
 
 use yii\db\ActiveRecord;
 
-class Adverbe extends ActiveRecord
+class CodesAdjectif extends ActiveRecord
 {
     public static function tableName()
     {
-        return 'adv';
+        return 'acodes';
     }
     /**
      * @inheritdoc
@@ -16,7 +16,8 @@ class Adverbe extends ActiveRecord
     public function rules()
     {
         return [
-            [['ID', 'Lemme'], 'required'],
+            [['Code', 'Rad'], 'required'],
+            [['MS', 'MP', 'FS', 'FP'], 'default', 'value' => ''],
         ];
     }
 }

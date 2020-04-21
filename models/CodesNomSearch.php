@@ -2,27 +2,28 @@
 
 namespace app\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\ALemmes;
+use app\models\CodesNom;
 
 /**
- * ALemmesSearch represents the model behind the search form of `app\models\ALemmes`.
+ * CodesNomSearch represents the model behind the search form about `app\models\CodesNom`.
  */
-class ALemmesSearch extends ALemmes
+class CodesNomSearch extends CodesNom
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['ID', 'Lemme', 'CatGram', 'Flex', 'Lig', 'Standard', 'Notes'], 'safe'],
+            [['Code', 'Rad', 'S', 'P'], 'safe'],
         ];
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function scenarios()
     {
@@ -39,9 +40,7 @@ class ALemmesSearch extends ALemmes
      */
     public function search($params)
     {
-        $query = ALemmes::find();
-
-        // add conditions that should always apply here
+        $query = CodesNom::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -55,14 +54,10 @@ class ALemmesSearch extends ALemmes
             return $dataProvider;
         }
 
-        // grid filtering conditions
-        $query->andFilterWhere(['like', 'ID', $this->ID])
-            ->andFilterWhere(['like', 'Lemme', $this->Lemme])
-            ->andFilterWhere(['like', 'CatGram', $this->CatGram])
-            ->andFilterWhere(['like', 'Flex', $this->Flex])
-            ->andFilterWhere(['like', 'Lig', $this->Lig])
-            ->andFilterWhere(['like', 'Standard', $this->Standard])
-            ->andFilterWhere(['like', 'Notes', $this->Notes]);
+        $query->andFilterWhere(['like', 'Code', $this->Code])
+            ->andFilterWhere(['like', 'Rad', $this->Rad])
+            ->andFilterWhere(['like', 'S', $this->S])
+            ->andFilterWhere(['like', 'P', $this->P]);
 
         return $dataProvider;
     }

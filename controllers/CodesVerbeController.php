@@ -3,8 +3,8 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Adverbe;
-use app\models\AdverbeSearch;
+use app\models\CodesVerbe;
+use app\models\CodesVerbeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -14,9 +14,9 @@ use yii\helpers\ArrayHelper;
 use kartik\grid\EditableColumnAction;
 
 /**
- * AdverbeController implements the CRUD actions for Adverbe model.
+ * CodesVerbeController implements the CRUD actions for CodesVerbe model.
  */
-class AdverbeController extends Controller
+class CodesVerbeController extends Controller
 {
     /**
      * @inheritdoc
@@ -42,18 +42,18 @@ class AdverbeController extends Controller
         return ArrayHelper::merge(parent::actions(), [
             'editable' => [
                 'class' => EditableColumnAction::className(),
-                'modelClass' => Adverbe::className(),
+                'modelClass' => CodesVerbe::className(),
             ]
         ]);
     }
 
     /**
-     * Lists all Adverbe models.
+     * Lists all CodesVerbe models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new AdverbeSearch();
+        $searchModel = new CodesVerbeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -64,7 +64,7 @@ class AdverbeController extends Controller
 
 
     /**
-     * Displays a single Adverbe model.
+     * Displays a single CodesVerbe model.
      * @param string $id
      * @return mixed
      */
@@ -74,7 +74,7 @@ class AdverbeController extends Controller
         if ($request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return [
-                'title' => "Adverbe #" . $id,
+                'title' => "CodesVerbe #" . $id,
                 'content' => $this->renderAjax('view', [
                     'model' => $this->findModel($id),
                 ]),
@@ -89,7 +89,7 @@ class AdverbeController extends Controller
     }
 
     /**
-     * Creates a new Adverbe model.
+     * Creates a new CodesVerbe model.
      * For ajax request will return json object
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -97,7 +97,7 @@ class AdverbeController extends Controller
     public function actionCreate()
     {
         $request = Yii::$app->request;
-        $model = new Adverbe();
+        $model = new CodesVerbe();
 
         if ($request->isAjax) {
             /*
@@ -106,7 +106,7 @@ class AdverbeController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if ($request->isGet) {
                 return [
-                    'title' => "Create new Adverbe",
+                    'title' => "Create new CodesVerbe",
                     'content' => $this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -117,15 +117,15 @@ class AdverbeController extends Controller
             } else if ($model->load($request->post()) && $model->save()) {
                 return [
                     'forceReload' => '#crud-datatable-pjax',
-                    'title' => "Create new Adverbe",
-                    'content' => '<span class="text-success">Create Adverbe success</span>',
+                    'title' => "Create new CodesVerbe",
+                    'content' => '<span class="text-success">Create CodesVerbe success</span>',
                     'footer' => Html::button('Close', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
                         Html::a('Create More', ['create'], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
 
                 ];
             } else {
                 return [
-                    'title' => "Create new Adverbe",
+                    'title' => "Create new CodesVerbe",
                     'content' => $this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -139,7 +139,7 @@ class AdverbeController extends Controller
             *   Process for non-ajax request
             */
             if ($model->load($request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->ID]);
+                return $this->redirect(['view', 'id' => $model->Code]);
             } else {
                 return $this->render('create', [
                     'model' => $model,
@@ -149,7 +149,7 @@ class AdverbeController extends Controller
     }
 
     /**
-     * Updates an existing Adverbe model.
+     * Updates an existing CodesVerbe model.
      * For ajax request will return json object
      * and for non-ajax request if update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
@@ -167,7 +167,7 @@ class AdverbeController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if ($request->isGet) {
                 return [
-                    'title' => "Update Adverbe #" . $id,
+                    'title' => "Update CodesVerbe #" . $id,
                     'content' => $this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -177,7 +177,7 @@ class AdverbeController extends Controller
             } else if ($model->load($request->post()) && $model->save()) {
                 return [
                     'forceReload' => '#crud-datatable-pjax',
-                    'title' => "Adverbe #" . $id,
+                    'title' => "CodesVerbe #" . $id,
                     'content' => $this->renderAjax('view', [
                         'model' => $model,
                     ]),
@@ -186,7 +186,7 @@ class AdverbeController extends Controller
                 ];
             } else {
                 return [
-                    'title' => "Update Adverbe #" . $id,
+                    'title' => "Update CodesVerbe #" . $id,
                     'content' => $this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -199,7 +199,7 @@ class AdverbeController extends Controller
             *   Process for non-ajax request
             */
             if ($model->load($request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->ID]);
+                return $this->redirect(['view', 'id' => $model->Code]);
             } else {
                 return $this->render('update', [
                     'model' => $model,
@@ -209,7 +209,7 @@ class AdverbeController extends Controller
     }
 
     /**
-     * Delete an existing Adverbe model.
+     * Delete an existing CodesVerbe model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
@@ -235,7 +235,7 @@ class AdverbeController extends Controller
     }
 
     /**
-     * Delete multiple existing Adverbe model.
+     * Delete multiple existing CodesVerbe model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
@@ -265,15 +265,15 @@ class AdverbeController extends Controller
     }
 
     /**
-     * Finds the Adverbe model based on its primary key value.
+     * Finds the CodesVerbe model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return Adverbe the loaded model
+     * @return CodesVerbe the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Adverbe::findOne($id)) !== null) {
+        if (($model = CodesVerbe::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

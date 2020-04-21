@@ -3,8 +3,8 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Adverbe;
-use app\models\AdverbeSearch;
+use app\models\Adjectif;
+use app\models\AdjectifSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -13,10 +13,11 @@ use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use kartik\grid\EditableColumnAction;
 
+
 /**
- * AdverbeController implements the CRUD actions for Adverbe model.
+ * AdjectifController implements the CRUD actions for Adjectif model.
  */
-class AdverbeController extends Controller
+class AdjectifController extends Controller
 {
     /**
      * @inheritdoc
@@ -42,18 +43,18 @@ class AdverbeController extends Controller
         return ArrayHelper::merge(parent::actions(), [
             'editable' => [
                 'class' => EditableColumnAction::className(),
-                'modelClass' => Adverbe::className(),
+                'modelClass' => Adjectif::className(),
             ]
         ]);
     }
 
     /**
-     * Lists all Adverbe models.
+     * Lists all Adjectif models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new AdverbeSearch();
+        $searchModel = new AdjectifSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -64,7 +65,7 @@ class AdverbeController extends Controller
 
 
     /**
-     * Displays a single Adverbe model.
+     * Displays a single Adjectif model.
      * @param string $id
      * @return mixed
      */
@@ -74,7 +75,7 @@ class AdverbeController extends Controller
         if ($request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return [
-                'title' => "Adverbe #" . $id,
+                'title' => "Adjectif #" . $id,
                 'content' => $this->renderAjax('view', [
                     'model' => $this->findModel($id),
                 ]),
@@ -89,7 +90,7 @@ class AdverbeController extends Controller
     }
 
     /**
-     * Creates a new Adverbe model.
+     * Creates a new Adjectif model.
      * For ajax request will return json object
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -97,7 +98,7 @@ class AdverbeController extends Controller
     public function actionCreate()
     {
         $request = Yii::$app->request;
-        $model = new Adverbe();
+        $model = new Adjectif();
 
         if ($request->isAjax) {
             /*
@@ -106,7 +107,7 @@ class AdverbeController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if ($request->isGet) {
                 return [
-                    'title' => "Create new Adverbe",
+                    'title' => "Create new Adjectif",
                     'content' => $this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -117,15 +118,15 @@ class AdverbeController extends Controller
             } else if ($model->load($request->post()) && $model->save()) {
                 return [
                     'forceReload' => '#crud-datatable-pjax',
-                    'title' => "Create new Adverbe",
-                    'content' => '<span class="text-success">Create Adverbe success</span>',
+                    'title' => "Create new Adjectif",
+                    'content' => '<span class="text-success">Create Adjectif success</span>',
                     'footer' => Html::button('Close', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
                         Html::a('Create More', ['create'], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
 
                 ];
             } else {
                 return [
-                    'title' => "Create new Adverbe",
+                    'title' => "Create new Adjectif",
                     'content' => $this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -149,7 +150,7 @@ class AdverbeController extends Controller
     }
 
     /**
-     * Updates an existing Adverbe model.
+     * Updates an existing Adjectif model.
      * For ajax request will return json object
      * and for non-ajax request if update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
@@ -167,7 +168,7 @@ class AdverbeController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if ($request->isGet) {
                 return [
-                    'title' => "Update Adverbe #" . $id,
+                    'title' => "Update Adjectif #" . $id,
                     'content' => $this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -177,7 +178,7 @@ class AdverbeController extends Controller
             } else if ($model->load($request->post()) && $model->save()) {
                 return [
                     'forceReload' => '#crud-datatable-pjax',
-                    'title' => "Adverbe #" . $id,
+                    'title' => "Adjectif #" . $id,
                     'content' => $this->renderAjax('view', [
                         'model' => $model,
                     ]),
@@ -186,7 +187,7 @@ class AdverbeController extends Controller
                 ];
             } else {
                 return [
-                    'title' => "Update Adverbe #" . $id,
+                    'title' => "Update Adjectif #" . $id,
                     'content' => $this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -209,7 +210,7 @@ class AdverbeController extends Controller
     }
 
     /**
-     * Delete an existing Adverbe model.
+     * Delete an existing Adjectif model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
@@ -235,7 +236,7 @@ class AdverbeController extends Controller
     }
 
     /**
-     * Delete multiple existing Adverbe model.
+     * Delete multiple existing Adjectif model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
@@ -265,15 +266,15 @@ class AdverbeController extends Controller
     }
 
     /**
-     * Finds the Adverbe model based on its primary key value.
+     * Finds the Adjectif model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return Adverbe the loaded model
+     * @return Adjectif the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Adverbe::findOne($id)) !== null) {
+        if (($model = Adjectif::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
