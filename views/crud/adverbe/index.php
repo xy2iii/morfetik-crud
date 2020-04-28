@@ -5,19 +5,19 @@ use yii\helpers\Html;
 use yii\bootstrap\Modal;
 use kartik\grid\GridView;
 use johnitvn\ajaxcrud\CrudAsset;
-use johnitvn\ajaxcrud\BulkButtonWidget;
+use app\components\crud\BulkButtonWidget;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\AdverbeSearch */
+/* @var $searchModel app\models\AdjectifSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Adverbes');
+$this->title = 'Adjectifs';
 $this->params['breadcrumbs'][] = $this->title;
 
 CrudAsset::register($this);
 
 ?>
-<div class="adverbe-index">
+<div class="adjectif-index">
     <div id="ajaxCrudDatatable">
         <?= GridView::widget([
             'id' => 'crud-datatable',
@@ -31,7 +31,7 @@ CrudAsset::register($this);
                     Html::a(
                         '<i class="glyphicon glyphicon-plus"></i>',
                         ['create'],
-                        ['role' => 'modal-remote', 'title' => Yii::t('app', 'Create new adverbe'), 'class' => 'btn btn-default']
+                        ['role' => 'modal-remote', 'title' => Yii::t('app', 'New'), 'class' => 'btn btn-default']
                     ) .
                         Html::a(
                             '<i class="glyphicon glyphicon-repeat"></i>',
@@ -48,7 +48,7 @@ CrudAsset::register($this);
             'hover' => true,
             'panel' => [
                 'type' => 'primary',
-                'heading' => '<i class="glyphicon glyphicon-list"></i> ' . Yii::t('app', 'Adverbes'),
+                'heading' => '<i class="glyphicon glyphicon-list"></i> ' . Yii::t('app', 'Adverbes: lemmes'),
                 'before' => '<em>' . Yii::t('app', '* Resize table columns just like a spreadsheet by dragging the column edges') . '.</em>',
                 'after' => BulkButtonWidget::widget([
                     'buttons' => Html::a(

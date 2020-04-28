@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\bootstrap\Modal;
 use kartik\grid\GridView;
 use johnitvn\ajaxcrud\CrudAsset;
-use johnitvn\ajaxcrud\BulkButtonWidget;
+use app\components\crud\BulkButtonWidget;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\AdjectifSearch */
@@ -31,12 +31,12 @@ CrudAsset::register($this);
                     Html::a(
                         '<i class="glyphicon glyphicon-plus"></i>',
                         ['create'],
-                        ['role' => 'modal-remote', 'title' => 'Nouvel adjectif', 'class' => 'btn btn-default']
+                        ['role' => 'modal-remote', 'title' => Yii::t('app', 'New'), 'class' => 'btn btn-default']
                     ) .
                         Html::a(
                             '<i class="glyphicon glyphicon-repeat"></i>',
                             [''],
-                            ['data-pjax' => 1, 'class' => 'btn btn-default', 'title' => 'Actualiser']
+                            ['data-pjax' => 1, 'class' => 'btn btn-default', 'title' => Yii::t('app', 'Reset Grid')]
                         ) .
                         '{toggleData}' .
                         '{export}'
@@ -48,19 +48,19 @@ CrudAsset::register($this);
             'hover' => true,
             'panel' => [
                 'type' => 'primary',
-                'heading' => '<i class="glyphicon glyphicon-list"></i> Adjectifs: lemmes',
-                'before' => '<em>* Vous pouvez redimensionner la table en prenant les bordures des colonnes.</em>',
+                'heading' => '<i class="glyphicon glyphicon-list"></i> ' . Yii::t('app', 'Adjectifs: lemmes'),
+                'before' => '<em>' . Yii::t('app', '* Resize table columns just like a spreadsheet by dragging the column edges') . '.</em>',
                 'after' => BulkButtonWidget::widget([
                     'buttons' => Html::a(
-                        '<i class="glyphicon glyphicon-trash"></i>&nbsp; Supprimer tous',
+                        '<i class="glyphicon glyphicon-trash"></i>&nbsp; ' . Yii::t('app', 'Delete all'),
                         ["bulk-delete"],
                         [
                             "class" => "btn btn-danger btn-xs",
                             'role' => 'modal-remote-bulk',
                             'data-confirm' => false, 'data-method' => false, // for overide yii data api
                             'data-request-method' => 'post',
-                            'data-confirm-title' => 'Êtes-vous sûr?',
-                            'data-confirm-message' => 'Êtes-vous sûr de vouloir supprimer cet adjectif?'
+                            'data-confirm-title' => Yii::t('app', 'Are you sure?'),
+                            'data-confirm-message' => Yii::t('app', 'Are you sure want to delete this item')
                         ]
                     ),
                 ]) .

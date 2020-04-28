@@ -29,7 +29,7 @@ use yii\widgets\ActiveForm;
 
     <?php if (!Yii::$app->request->isAjax) { ?>
         <div class="form-group">
-            <?= Html::submitButton($model->isNewRecord ? 'Créer' : 'Mettre a jour', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+            <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
         </div>
     <?php } ?>
 

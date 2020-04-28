@@ -5,18 +5,19 @@ use yii\helpers\Html;
 use yii\bootstrap\Modal;
 use kartik\grid\GridView;
 use johnitvn\ajaxcrud\CrudAsset;
-use johnitvn\ajaxcrud\BulkButtonWidget;
+use app\components\crud\BulkButtonWidget;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\CodesAdjectifSearch */
+/* @var $searchModel app\models\AdjectifSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Adjectifs: codes');
+$this->title = 'Adjectifs';
 $this->params['breadcrumbs'][] = $this->title;
 
 CrudAsset::register($this);
+
 ?>
-<div class="codes-adjectif-index">
+<div class="adjectif-index">
     <div id="ajaxCrudDatatable">
         <?= GridView::widget([
             'id' => 'crud-datatable',
@@ -30,7 +31,7 @@ CrudAsset::register($this);
                     Html::a(
                         '<i class="glyphicon glyphicon-plus"></i>',
                         ['create'],
-                        ['role' => 'modal-remote', 'title' => Yii::t('app', 'Create new code'), 'class' => 'btn btn-default']
+                        ['role' => 'modal-remote', 'title' => Yii::t('app', 'New'), 'class' => 'btn btn-default']
                     ) .
                         Html::a(
                             '<i class="glyphicon glyphicon-repeat"></i>',

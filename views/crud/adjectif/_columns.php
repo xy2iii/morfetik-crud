@@ -1,22 +1,20 @@
 <?php
 
 use kartik\editable\Editable;
-use yii\helpers\Url;
+use app\views\crud\GridHelper;
 
 return [
+    GridHelper::getCheckboxColumn(),
+    GridHelper::getSerialColumn(),
     [
-        'class' => 'kartik\grid\CheckboxColumn',
-        'width' => '20px',
-    ],
-    [
-        'class' => 'kartik\grid\SerialColumn',
-        'width' => '30px',
-    ],
-    [
-        'class' => '\kartik\grid\DataColumn',
+        'class' => '\kartik\grid\EditableColumn',
         'attribute' => 'ID',
         'vAlign' => 'middle',
-        'hAlign' => 'center',
+        'editableOptions' => [
+            'header' => Yii::t('app', 'ID'),
+            'inputType' => Editable::INPUT_TEXT,
+            'formOptions' => ['action' => ['editable']],
+        ],
     ],
     [
         'class' => '\kartik\grid\EditableColumn',
@@ -26,7 +24,7 @@ return [
             'header' => 'Lemme',
             'size' => 'md',
             'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['/adjectif/editable']],
+            'formOptions' => ['action' => ['editable']],
         ],
     ],
     [
@@ -37,7 +35,7 @@ return [
             'header' => 'Catégorie grammaticale',
             'size' => 'md',
             'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['/adjectif/editable']],
+            'formOptions' => ['action' => ['editable']],
         ],
     ],
     [
@@ -48,7 +46,7 @@ return [
         'editableOptions' => [
             'header' => 'Flexion',
             'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['/adjectif/editable']],
+            'formOptions' => ['action' => ['editable']],
         ],
     ],
     [
@@ -59,7 +57,7 @@ return [
         'editableOptions' => [
             'header' => 'Ligature',
             'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['/adjectif/editable']],
+            'formOptions' => ['action' => ['editable']],
         ],
     ],
     [
@@ -70,7 +68,7 @@ return [
         'editableOptions' => [
             'header' => 'Standard',
             'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['/adjectif/editable']],
+            'formOptions' => ['action' => ['editable']],
         ],
     ],
     [
@@ -81,27 +79,8 @@ return [
         'editableOptions' => [
             'header' => 'Notes',
             'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['/adjectif/editable']],
+            'formOptions' => ['action' => ['editable']],
         ],
     ],
-    [
-        'class' => 'kartik\grid\ActionColumn',
-        'width' => '80px',
-        'vAlign' => 'middle',
-        'dropdown' => false,
-        'urlCreator' => function ($action, $model, $key, $index) {
-            return Url::to([$action, 'id' => $key]);
-        },
-        'viewOptions' => ['role' => 'modal-remote', 'title' => 'Voir', 'data-toggle' => 'tooltip'],
-        'updateOptions' => ['role' => 'modal-remote', 'title' => 'Mettre a jour', 'data-toggle' => 'tooltip'],
-        'deleteOptions' => [
-            'role' => 'modal-remote', 'title' => 'Supprimer',
-            'data-confirm' => false, 'data-method' => false, // for overide yii data api
-            'data-request-method' => 'post',
-            'data-toggle' => 'tooltip',
-            'data-confirm-title' => 'Êtes-vous sûr?',
-            'data-confirm-message' => 'Êtes-vous sûr de vouloir supprimer cet objet?'
-        ],
-    ],
-
+    GridHelper::getActionColumn(),
 ];

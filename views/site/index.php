@@ -15,6 +15,7 @@ $this->title = 'My Yii Application';
                 <li class="list-group-item"><a href="<?= Url::toRoute('crud/adjectif'); ?>">Adjectifs</a></li>
                 <li class="list-group-item"><a href="<?= Url::toRoute('crud/nom'); ?>">Noms</a></li>
                 <li class="list-group-item"><a href="<?= Url::toRoute('crud/verbe'); ?>">Verbes</a></li>
+                <li class="list-group-item"><a href="<?= Url::toRoute('crud/adverbe'); ?>">Adverbes</a></li>
                 <li class="list-group-item"><a href="<?= Url::toRoute('crud/grammaire'); ?>">Grammaire</a></li>
             </ul>
         </div>
