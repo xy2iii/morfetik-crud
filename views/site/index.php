@@ -12,18 +12,18 @@ $this->title = 'My Yii Application';
         <div class="col-md-6">
             <h2>Lemmes</h2>
             <ul class="list-group">
-                <li class="list-group-item"><a href="<?= Url::toRoute('/adjectif'); ?>">Adjectifs</a></li>
-                <li class="list-group-item"><a href="<?= Url::toRoute('/nom'); ?>">Noms</a></li>
-                <li class="list-group-item"><a href="<?= Url::toRoute('/verbe'); ?>">Verbes</a></li>
-                <li class="list-group-item"><a href="<?= Url::toRoute('/grammaire'); ?>">Grammaire</a></li>
+                <li class="list-group-item"><a href="<?= Url::toRoute('crud/adjectif'); ?>">Adjectifs</a></li>
+                <li class="list-group-item"><a href="<?= Url::toRoute('crud/nom'); ?>">Noms</a></li>
+                <li class="list-group-item"><a href="<?= Url::toRoute('crud/verbe'); ?>">Verbes</a></li>
+                <li class="list-group-item"><a href="<?= Url::toRoute('crud/grammaire'); ?>">Grammaire</a></li>
             </ul>
         </div>
         <div class="col-md-6">
             <h2>Codes</h2>
             <ul class="list-group">
-                <li class="list-group-item"><a href="<?= Url::toRoute('/codes-adjectif'); ?>">Adjectifs</a></li>
-                <li class="list-group-item"><a href="<?= Url::toRoute('/codes-nom'); ?>">Noms</a></li>
-                <li class="list-group-item"><a href="<?= Url::toRoute('/codes-verbe'); ?>">Verbes</a></li>
+                <li class="list-group-item"><a href="<?= Url::toRoute('crud/codes-adjectif'); ?>">Adjectifs</a></li>
+                <li class="list-group-item"><a href="<?= Url::toRoute('crud/codes-nom'); ?>">Noms</a></li>
+                <li class="list-group-item"><a href="<?= Url::toRoute('crud/codes-verbe'); ?>">Verbes</a></li>
             </ul>
         </div>
     </div>

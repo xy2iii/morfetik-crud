@@ -1,22 +1,22 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\crud;
 
 use Yii;
-use app\models\CodesVerbe;
-use app\models\CodesVerbeSearch;
+use app\models\Verbe;
+use app\models\VerbeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use \yii\web\Response;
+use yii\web\Response;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use kartik\grid\EditableColumnAction;
 
 /**
- * CodesVerbeController implements the CRUD actions for CodesVerbe model.
+ * VerbeController implements the CRUD actions for Verbe model.
  */
-class CodesVerbeController extends Controller
+class VerbeController extends Controller
 {
     /**
      * @inheritdoc
@@ -33,7 +33,6 @@ class CodesVerbeController extends Controller
             ],
         ];
     }
-
     /**
      * @inheritdoc
      */
@@ -42,18 +41,18 @@ class CodesVerbeController extends Controller
         return ArrayHelper::merge(parent::actions(), [
             'editable' => [
                 'class' => EditableColumnAction::className(),
-                'modelClass' => CodesVerbe::className(),
+                'modelClass' => Verbe::className(),
             ]
         ]);
     }
 
     /**
-     * Lists all CodesVerbe models.
+     * Lists all Verbe models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CodesVerbeSearch();
+        $searchModel = new VerbeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -64,7 +63,7 @@ class CodesVerbeController extends Controller
 
 
     /**
-     * Displays a single CodesVerbe model.
+     * Displays a single Verbe model.
      * @param string $id
      * @return mixed
      */
@@ -74,7 +73,7 @@ class CodesVerbeController extends Controller
         if ($request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return [
-                'title' => "CodesVerbe #" . $id,
+                'title' => "Verbe #" . $id,
                 'content' => $this->renderAjax('view', [
                     'model' => $this->findModel($id),
                 ]),
@@ -89,7 +88,7 @@ class CodesVerbeController extends Controller
     }
 
     /**
-     * Creates a new CodesVerbe model.
+     * Creates a new Verbe model.
      * For ajax request will return json object
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -97,7 +96,7 @@ class CodesVerbeController extends Controller
     public function actionCreate()
     {
         $request = Yii::$app->request;
-        $model = new CodesVerbe();
+        $model = new Verbe();
 
         if ($request->isAjax) {
             /*
@@ -106,7 +105,7 @@ class CodesVerbeController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if ($request->isGet) {
                 return [
-                    'title' => "Create new CodesVerbe",
+                    'title' => "Create new Verbe",
                     'content' => $this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -117,15 +116,15 @@ class CodesVerbeController extends Controller
             } else if ($model->load($request->post()) && $model->save()) {
                 return [
                     'forceReload' => '#crud-datatable-pjax',
-                    'title' => "Create new CodesVerbe",
-                    'content' => '<span class="text-success">Create CodesVerbe success</span>',
+                    'title' => "Create new Verbe",
+                    'content' => '<span class="text-success">Create Verbe success</span>',
                     'footer' => Html::button('Close', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
                         Html::a('Create More', ['create'], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
 
                 ];
             } else {
                 return [
-                    'title' => "Create new CodesVerbe",
+                    'title' => "Create new Verbe",
                     'content' => $this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -139,7 +138,7 @@ class CodesVerbeController extends Controller
             *   Process for non-ajax request
             */
             if ($model->load($request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->Code]);
+                return $this->redirect(['view', 'id' => $model->ID]);
             } else {
                 return $this->render('create', [
                     'model' => $model,
@@ -149,7 +148,7 @@ class CodesVerbeController extends Controller
     }
 
     /**
-     * Updates an existing CodesVerbe model.
+     * Updates an existing Verbe model.
      * For ajax request will return json object
      * and for non-ajax request if update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
@@ -167,7 +166,7 @@ class CodesVerbeController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if ($request->isGet) {
                 return [
-                    'title' => "Update CodesVerbe #" . $id,
+                    'title' => "Update Verbe #" . $id,
                     'content' => $this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -177,7 +176,7 @@ class CodesVerbeController extends Controller
             } else if ($model->load($request->post()) && $model->save()) {
                 return [
                     'forceReload' => '#crud-datatable-pjax',
-                    'title' => "CodesVerbe #" . $id,
+                    'title' => "Verbe #" . $id,
                     'content' => $this->renderAjax('view', [
                         'model' => $model,
                     ]),
@@ -186,7 +185,7 @@ class CodesVerbeController extends Controller
                 ];
             } else {
                 return [
-                    'title' => "Update CodesVerbe #" . $id,
+                    'title' => "Update Verbe #" . $id,
                     'content' => $this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -199,7 +198,7 @@ class CodesVerbeController extends Controller
             *   Process for non-ajax request
             */
             if ($model->load($request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->Code]);
+                return $this->redirect(['view', 'id' => $model->ID]);
             } else {
                 return $this->render('update', [
                     'model' => $model,
@@ -209,7 +208,7 @@ class CodesVerbeController extends Controller
     }
 
     /**
-     * Delete an existing CodesVerbe model.
+     * Delete an existing Verbe model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
@@ -235,7 +234,7 @@ class CodesVerbeController extends Controller
     }
 
     /**
-     * Delete multiple existing CodesVerbe model.
+     * Delete multiple existing Verbe model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
@@ -265,15 +264,15 @@ class CodesVerbeController extends Controller
     }
 
     /**
-     * Finds the CodesVerbe model based on its primary key value.
+     * Finds the Verbe model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return CodesVerbe the loaded model
+     * @return Verbe the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = CodesVerbe::findOne($id)) !== null) {
+        if (($model = Verbe::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -1,22 +1,22 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\crud;
 
 use Yii;
-use app\models\CodesAdjectif;
-use app\models\CodesAdjectifSearch;
+use app\models\CodesVerbe;
+use app\models\CodesVerbeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use \yii\web\Response;
+use yii\web\Response;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use kartik\grid\EditableColumnAction;
 
 /**
- * CodesAdjectifController implements the CRUD actions for CodesAdjectif model.
+ * CodesVerbeController implements the CRUD actions for CodesVerbe model.
  */
-class CodesAdjectifController extends Controller
+class CodesVerbeController extends Controller
 {
     /**
      * @inheritdoc
@@ -42,18 +42,18 @@ class CodesAdjectifController extends Controller
         return ArrayHelper::merge(parent::actions(), [
             'editable' => [
                 'class' => EditableColumnAction::className(),
-                'modelClass' => CodesAdjectif::className(),
+                'modelClass' => CodesVerbe::className(),
             ]
         ]);
     }
 
     /**
-     * Lists all CodesAdjectif models.
+     * Lists all CodesVerbe models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CodesAdjectifSearch();
+        $searchModel = new CodesVerbeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -64,7 +64,7 @@ class CodesAdjectifController extends Controller
 
 
     /**
-     * Displays a single CodesAdjectif model.
+     * Displays a single CodesVerbe model.
      * @param string $id
      * @return mixed
      */
@@ -74,7 +74,7 @@ class CodesAdjectifController extends Controller
         if ($request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return [
-                'title' => "CodesAdjectif #" . $id,
+                'title' => "CodesVerbe #" . $id,
                 'content' => $this->renderAjax('view', [
                     'model' => $this->findModel($id),
                 ]),
@@ -89,7 +89,7 @@ class CodesAdjectifController extends Controller
     }
 
     /**
-     * Creates a new CodesAdjectif model.
+     * Creates a new CodesVerbe model.
      * For ajax request will return json object
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -97,7 +97,7 @@ class CodesAdjectifController extends Controller
     public function actionCreate()
     {
         $request = Yii::$app->request;
-        $model = new CodesAdjectif();
+        $model = new CodesVerbe();
 
         if ($request->isAjax) {
             /*
@@ -106,7 +106,7 @@ class CodesAdjectifController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if ($request->isGet) {
                 return [
-                    'title' => "Create new CodesAdjectif",
+                    'title' => "Create new CodesVerbe",
                     'content' => $this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -117,15 +117,15 @@ class CodesAdjectifController extends Controller
             } else if ($model->load($request->post()) && $model->save()) {
                 return [
                     'forceReload' => '#crud-datatable-pjax',
-                    'title' => "Create new CodesAdjectif",
-                    'content' => '<span class="text-success">Create CodesAdjectif success</span>',
+                    'title' => "Create new CodesVerbe",
+                    'content' => '<span class="text-success">Create CodesVerbe success</span>',
                     'footer' => Html::button('Close', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
                         Html::a('Create More', ['create'], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
 
                 ];
             } else {
                 return [
-                    'title' => "Create new CodesAdjectif",
+                    'title' => "Create new CodesVerbe",
                     'content' => $this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -149,7 +149,7 @@ class CodesAdjectifController extends Controller
     }
 
     /**
-     * Updates an existing CodesAdjectif model.
+     * Updates an existing CodesVerbe model.
      * For ajax request will return json object
      * and for non-ajax request if update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
@@ -167,7 +167,7 @@ class CodesAdjectifController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if ($request->isGet) {
                 return [
-                    'title' => "Update CodesAdjectif #" . $id,
+                    'title' => "Update CodesVerbe #" . $id,
                     'content' => $this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -177,7 +177,7 @@ class CodesAdjectifController extends Controller
             } else if ($model->load($request->post()) && $model->save()) {
                 return [
                     'forceReload' => '#crud-datatable-pjax',
-                    'title' => "CodesAdjectif #" . $id,
+                    'title' => "CodesVerbe #" . $id,
                     'content' => $this->renderAjax('view', [
                         'model' => $model,
                     ]),
@@ -186,7 +186,7 @@ class CodesAdjectifController extends Controller
                 ];
             } else {
                 return [
-                    'title' => "Update CodesAdjectif #" . $id,
+                    'title' => "Update CodesVerbe #" . $id,
                     'content' => $this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -209,7 +209,7 @@ class CodesAdjectifController extends Controller
     }
 
     /**
-     * Delete an existing CodesAdjectif model.
+     * Delete an existing CodesVerbe model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
@@ -235,7 +235,7 @@ class CodesAdjectifController extends Controller
     }
 
     /**
-     * Delete multiple existing CodesAdjectif model.
+     * Delete multiple existing CodesVerbe model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
@@ -265,15 +265,15 @@ class CodesAdjectifController extends Controller
     }
 
     /**
-     * Finds the CodesAdjectif model based on its primary key value.
+     * Finds the CodesVerbe model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return CodesAdjectif the loaded model
+     * @return CodesVerbe the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = CodesAdjectif::findOne($id)) !== null) {
+        if (($model = CodesVerbe::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

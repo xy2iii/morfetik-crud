@@ -1,16 +1,16 @@
 <?php
 
-namespace app\models;
+namespace app\models\crud;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Adverbe;
+use app\models\crud\Verbe;
 
 /**
- * AdverbeSearch represents the model behind the search form about `app\models\Adverbe`.
+ * VerbeSearch represents the model behind the search form about `app\models\Verbe`.
  */
-class AdverbeSearch extends Adverbe
+class VerbeSearch extends Verbe
 {
     /**
      * @inheritdoc
@@ -18,7 +18,7 @@ class AdverbeSearch extends Adverbe
     public function rules()
     {
         return [
-            [['ID', 'Lemme'], 'safe'],
+            [['ID', 'Lemme', 'CatGram', 'Flex', 'Lig', 'Standard', 'Notes'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class AdverbeSearch extends Adverbe
      */
     public function search($params)
     {
-        $query = Adverbe::find();
+        $query = Verbe::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -55,7 +55,12 @@ class AdverbeSearch extends Adverbe
         }
 
         $query->andFilterWhere(['like', 'ID', $this->ID])
-            ->andFilterWhere(['like', 'Lemme', $this->Lemme]);
+            ->andFilterWhere(['like', 'Lemme', $this->Lemme])
+            ->andFilterWhere(['like', 'CatGram', $this->CatGram])
+            ->andFilterWhere(['like', 'Flex', $this->Flex])
+            ->andFilterWhere(['like', 'Lig', $this->Lig])
+            ->andFilterWhere(['like', 'Standard', $this->Standard])
+            ->andFilterWhere(['like', 'Notes', $this->Notes]);
 
         return $dataProvider;
     }

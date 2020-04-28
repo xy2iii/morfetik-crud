@@ -1,16 +1,16 @@
 <?php
 
-namespace app\models;
+namespace app\models\crud;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Verbe;
+use app\models\crud\Nom;
 
 /**
- * VerbeSearch represents the model behind the search form about `app\models\Verbe`.
+ * NomSearch represents the model behind the search form about `app\models\Nom`.
  */
-class VerbeSearch extends Verbe
+class NomSearch extends Nom
 {
     /**
      * @inheritdoc
@@ -18,7 +18,7 @@ class VerbeSearch extends Verbe
     public function rules()
     {
         return [
-            [['ID', 'Lemme', 'CatGram', 'Flex', 'Lig', 'Standard', 'Notes'], 'safe'],
+            [['ID', 'Lemme', 'CatGram', 'Flex', 'Dom', 'Grs', 'Maj', 'Lig', 'Standard', 'Notes'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class VerbeSearch extends Verbe
      */
     public function search($params)
     {
-        $query = Verbe::find();
+        $query = Nom::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -58,6 +58,9 @@ class VerbeSearch extends Verbe
             ->andFilterWhere(['like', 'Lemme', $this->Lemme])
             ->andFilterWhere(['like', 'CatGram', $this->CatGram])
             ->andFilterWhere(['like', 'Flex', $this->Flex])
+            ->andFilterWhere(['like', 'Dom', $this->Dom])
+            ->andFilterWhere(['like', 'Grs', $this->Grs])
+            ->andFilterWhere(['like', 'Maj', $this->Maj])
             ->andFilterWhere(['like', 'Lig', $this->Lig])
             ->andFilterWhere(['like', 'Standard', $this->Standard])
             ->andFilterWhere(['like', 'Notes', $this->Notes]);

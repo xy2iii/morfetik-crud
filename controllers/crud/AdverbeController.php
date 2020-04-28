@@ -1,10 +1,10 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\crud;
 
 use Yii;
-use app\models\Nom;
-use app\models\NomSearch;
+use app\models\Adverbe;
+use app\models\AdverbeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -14,9 +14,9 @@ use yii\helpers\ArrayHelper;
 use kartik\grid\EditableColumnAction;
 
 /**
- * NomController implements the CRUD actions for Nom model.
+ * AdverbeController implements the CRUD actions for Adverbe model.
  */
-class NomController extends Controller
+class AdverbeController extends Controller
 {
     /**
      * @inheritdoc
@@ -33,6 +33,7 @@ class NomController extends Controller
             ],
         ];
     }
+
     /**
      * @inheritdoc
      */
@@ -41,18 +42,18 @@ class NomController extends Controller
         return ArrayHelper::merge(parent::actions(), [
             'editable' => [
                 'class' => EditableColumnAction::className(),
-                'modelClass' => Nom::className(),
+                'modelClass' => Adverbe::className(),
             ]
         ]);
     }
 
     /**
-     * Lists all Nom models.
+     * Lists all Adverbe models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new NomSearch();
+        $searchModel = new AdverbeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -63,7 +64,7 @@ class NomController extends Controller
 
 
     /**
-     * Displays a single Nom model.
+     * Displays a single Adverbe model.
      * @param string $id
      * @return mixed
      */
@@ -73,7 +74,7 @@ class NomController extends Controller
         if ($request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return [
-                'title' => "Nom #" . $id,
+                'title' => "Adverbe #" . $id,
                 'content' => $this->renderAjax('view', [
                     'model' => $this->findModel($id),
                 ]),
@@ -88,7 +89,7 @@ class NomController extends Controller
     }
 
     /**
-     * Creates a new Nom model.
+     * Creates a new Adverbe model.
      * For ajax request will return json object
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -96,7 +97,7 @@ class NomController extends Controller
     public function actionCreate()
     {
         $request = Yii::$app->request;
-        $model = new Nom();
+        $model = new Adverbe();
 
         if ($request->isAjax) {
             /*
@@ -105,7 +106,7 @@ class NomController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if ($request->isGet) {
                 return [
-                    'title' => "Create new Nom",
+                    'title' => "Create new Adverbe",
                     'content' => $this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -116,15 +117,15 @@ class NomController extends Controller
             } else if ($model->load($request->post()) && $model->save()) {
                 return [
                     'forceReload' => '#crud-datatable-pjax',
-                    'title' => "Create new Nom",
-                    'content' => '<span class="text-success">Create Nom success</span>',
+                    'title' => "Create new Adverbe",
+                    'content' => '<span class="text-success">Create Adverbe success</span>',
                     'footer' => Html::button('Close', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
                         Html::a('Create More', ['create'], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
 
                 ];
             } else {
                 return [
-                    'title' => "Create new Nom",
+                    'title' => "Create new Adverbe",
                     'content' => $this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -148,7 +149,7 @@ class NomController extends Controller
     }
 
     /**
-     * Updates an existing Nom model.
+     * Updates an existing Adverbe model.
      * For ajax request will return json object
      * and for non-ajax request if update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
@@ -166,7 +167,7 @@ class NomController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if ($request->isGet) {
                 return [
-                    'title' => "Update Nom #" . $id,
+                    'title' => "Update Adverbe #" . $id,
                     'content' => $this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -176,7 +177,7 @@ class NomController extends Controller
             } else if ($model->load($request->post()) && $model->save()) {
                 return [
                     'forceReload' => '#crud-datatable-pjax',
-                    'title' => "Nom #" . $id,
+                    'title' => "Adverbe #" . $id,
                     'content' => $this->renderAjax('view', [
                         'model' => $model,
                     ]),
@@ -185,7 +186,7 @@ class NomController extends Controller
                 ];
             } else {
                 return [
-                    'title' => "Update Nom #" . $id,
+                    'title' => "Update Adverbe #" . $id,
                     'content' => $this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -208,7 +209,7 @@ class NomController extends Controller
     }
 
     /**
-     * Delete an existing Nom model.
+     * Delete an existing Adverbe model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
@@ -234,7 +235,7 @@ class NomController extends Controller
     }
 
     /**
-     * Delete multiple existing Nom model.
+     * Delete multiple existing Adverbe model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
@@ -264,15 +265,15 @@ class NomController extends Controller
     }
 
     /**
-     * Finds the Nom model based on its primary key value.
+     * Finds the Adverbe model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return Nom the loaded model
+     * @return Adverbe the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Nom::findOne($id)) !== null) {
+        if (($model = Adverbe::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

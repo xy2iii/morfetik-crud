@@ -1,22 +1,22 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\crud;
 
 use Yii;
-use app\models\Verbe;
-use app\models\VerbeSearch;
+use app\models\Nom;
+use app\models\NomSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use \yii\web\Response;
+use yii\web\Response;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use kartik\grid\EditableColumnAction;
 
 /**
- * VerbeController implements the CRUD actions for Verbe model.
+ * NomController implements the CRUD actions for Nom model.
  */
-class VerbeController extends Controller
+class NomController extends Controller
 {
     /**
      * @inheritdoc
@@ -41,18 +41,18 @@ class VerbeController extends Controller
         return ArrayHelper::merge(parent::actions(), [
             'editable' => [
                 'class' => EditableColumnAction::className(),
-                'modelClass' => Verbe::className(),
+                'modelClass' => Nom::className(),
             ]
         ]);
     }
 
     /**
-     * Lists all Verbe models.
+     * Lists all Nom models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new VerbeSearch();
+        $searchModel = new NomSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -63,7 +63,7 @@ class VerbeController extends Controller
 
 
     /**
-     * Displays a single Verbe model.
+     * Displays a single Nom model.
      * @param string $id
      * @return mixed
      */
@@ -73,7 +73,7 @@ class VerbeController extends Controller
         if ($request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return [
-                'title' => "Verbe #" . $id,
+                'title' => "Nom #" . $id,
                 'content' => $this->renderAjax('view', [
                     'model' => $this->findModel($id),
                 ]),
@@ -88,7 +88,7 @@ class VerbeController extends Controller
     }
 
     /**
-     * Creates a new Verbe model.
+     * Creates a new Nom model.
      * For ajax request will return json object
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -96,7 +96,7 @@ class VerbeController extends Controller
     public function actionCreate()
     {
         $request = Yii::$app->request;
-        $model = new Verbe();
+        $model = new Nom();
 
         if ($request->isAjax) {
             /*
@@ -105,7 +105,7 @@ class VerbeController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if ($request->isGet) {
                 return [
-                    'title' => "Create new Verbe",
+                    'title' => "Create new Nom",
                     'content' => $this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -116,15 +116,15 @@ class VerbeController extends Controller
             } else if ($model->load($request->post()) && $model->save()) {
                 return [
                     'forceReload' => '#crud-datatable-pjax',
-                    'title' => "Create new Verbe",
-                    'content' => '<span class="text-success">Create Verbe success</span>',
+                    'title' => "Create new Nom",
+                    'content' => '<span class="text-success">Create Nom success</span>',
                     'footer' => Html::button('Close', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
                         Html::a('Create More', ['create'], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
 
                 ];
             } else {
                 return [
-                    'title' => "Create new Verbe",
+                    'title' => "Create new Nom",
                     'content' => $this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -148,7 +148,7 @@ class VerbeController extends Controller
     }
 
     /**
-     * Updates an existing Verbe model.
+     * Updates an existing Nom model.
      * For ajax request will return json object
      * and for non-ajax request if update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
@@ -166,7 +166,7 @@ class VerbeController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if ($request->isGet) {
                 return [
-                    'title' => "Update Verbe #" . $id,
+                    'title' => "Update Nom #" . $id,
                     'content' => $this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -176,7 +176,7 @@ class VerbeController extends Controller
             } else if ($model->load($request->post()) && $model->save()) {
                 return [
                     'forceReload' => '#crud-datatable-pjax',
-                    'title' => "Verbe #" . $id,
+                    'title' => "Nom #" . $id,
                     'content' => $this->renderAjax('view', [
                         'model' => $model,
                     ]),
@@ -185,7 +185,7 @@ class VerbeController extends Controller
                 ];
             } else {
                 return [
-                    'title' => "Update Verbe #" . $id,
+                    'title' => "Update Nom #" . $id,
                     'content' => $this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -208,7 +208,7 @@ class VerbeController extends Controller
     }
 
     /**
-     * Delete an existing Verbe model.
+     * Delete an existing Nom model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
@@ -234,7 +234,7 @@ class VerbeController extends Controller
     }
 
     /**
-     * Delete multiple existing Verbe model.
+     * Delete multiple existing Nom model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
@@ -264,15 +264,15 @@ class VerbeController extends Controller
     }
 
     /**
-     * Finds the Verbe model based on its primary key value.
+     * Finds the Nom model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return Verbe the loaded model
+     * @return Nom the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Verbe::findOne($id)) !== null) {
+        if (($model = Nom::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

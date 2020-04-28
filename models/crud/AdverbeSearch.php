@@ -1,16 +1,16 @@
 <?php
 
-namespace app\models;
+namespace app\models\crud;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Grammaire;
+use app\models\crud\Adverbe;
 
 /**
- * GrammaireSearch represents the model behind the search form about `app\models\Grammaire`.
+ * AdverbeSearch represents the model behind the search form about `app\models\Adverbe`.
  */
-class GrammaireSearch extends Grammaire
+class AdverbeSearch extends Adverbe
 {
     /**
      * @inheritdoc
@@ -18,7 +18,7 @@ class GrammaireSearch extends Grammaire
     public function rules()
     {
         return [
-            [['ID', 'Lemme', 'Forme', 'CatGram', 'Gender', 'Number', 'Person', 'Notes'], 'safe'],
+            [['ID', 'Lemme'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class GrammaireSearch extends Grammaire
      */
     public function search($params)
     {
-        $query = Grammaire::find();
+        $query = Adverbe::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -55,13 +55,7 @@ class GrammaireSearch extends Grammaire
         }
 
         $query->andFilterWhere(['like', 'ID', $this->ID])
-            ->andFilterWhere(['like', 'Lemme', $this->Lemme])
-            ->andFilterWhere(['like', 'Forme', $this->Forme])
-            ->andFilterWhere(['like', 'CatGram', $this->CatGram])
-            ->andFilterWhere(['like', 'Gender', $this->Gender])
-            ->andFilterWhere(['like', 'Number', $this->Number])
-            ->andFilterWhere(['like', 'Person', $this->Person])
-            ->andFilterWhere(['like', 'Notes', $this->Notes]);
+            ->andFilterWhere(['like', 'Lemme', $this->Lemme]);
 
         return $dataProvider;
     }

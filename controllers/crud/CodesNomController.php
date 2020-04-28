@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\crud;
 
 use Yii;
 use app\models\CodesNom;
@@ -8,7 +8,7 @@ use app\models\CodesNomSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use \yii\web\Response;
+use yii\web\Response;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use kartik\grid\EditableColumnAction;

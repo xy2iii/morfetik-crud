@@ -1,22 +1,23 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\crud;
 
 use Yii;
-use app\models\Grammaire;
-use app\models\GrammaireSearch;
+use app\models\crud\Adjectif;
+use app\models\crud\AdjectifSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use \yii\web\Response;
+use yii\web\Response;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use kartik\grid\EditableColumnAction;
 
+
 /**
- * GrammaireController implements the CRUD actions for Grammaire model.
+ * AdjectifController implements the CRUD actions for Adjectif model.
  */
-class GrammaireController extends Controller
+class AdjectifController extends Controller
 {
     /**
      * @inheritdoc
@@ -33,6 +34,7 @@ class GrammaireController extends Controller
             ],
         ];
     }
+
     /**
      * @inheritdoc
      */
@@ -41,18 +43,18 @@ class GrammaireController extends Controller
         return ArrayHelper::merge(parent::actions(), [
             'editable' => [
                 'class' => EditableColumnAction::className(),
-                'modelClass' => Grammaire::className(),
+                'modelClass' => Adjectif::className(),
             ]
         ]);
     }
 
     /**
-     * Lists all Grammaire models.
+     * Lists all Adjectif models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new GrammaireSearch();
+        $searchModel = new AdjectifSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -63,7 +65,7 @@ class GrammaireController extends Controller
 
 
     /**
-     * Displays a single Grammaire model.
+     * Displays a single Adjectif model.
      * @param string $id
      * @return mixed
      */
@@ -73,7 +75,7 @@ class GrammaireController extends Controller
         if ($request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return [
-                'title' => "Grammaire #" . $id,
+                'title' => "Adjectif #" . $id,
                 'content' => $this->renderAjax('view', [
                     'model' => $this->findModel($id),
                 ]),
@@ -88,7 +90,7 @@ class GrammaireController extends Controller
     }
 
     /**
-     * Creates a new Grammaire model.
+     * Creates a new Adjectif model.
      * For ajax request will return json object
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -96,7 +98,7 @@ class GrammaireController extends Controller
     public function actionCreate()
     {
         $request = Yii::$app->request;
-        $model = new Grammaire();
+        $model = new Adjectif();
 
         if ($request->isAjax) {
             /*
@@ -105,7 +107,7 @@ class GrammaireController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if ($request->isGet) {
                 return [
-                    'title' => "Create new Grammaire",
+                    'title' => "Create new Adjectif",
                     'content' => $this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -116,15 +118,15 @@ class GrammaireController extends Controller
             } else if ($model->load($request->post()) && $model->save()) {
                 return [
                     'forceReload' => '#crud-datatable-pjax',
-                    'title' => "Create new Grammaire",
-                    'content' => '<span class="text-success">Create Grammaire success</span>',
+                    'title' => "Create new Adjectif",
+                    'content' => '<span class="text-success">Create Adjectif success</span>',
                     'footer' => Html::button('Close', ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
                         Html::a('Create More', ['create'], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
 
                 ];
             } else {
                 return [
-                    'title' => "Create new Grammaire",
+                    'title' => "Create new Adjectif",
                     'content' => $this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -148,7 +150,7 @@ class GrammaireController extends Controller
     }
 
     /**
-     * Updates an existing Grammaire model.
+     * Updates an existing Adjectif model.
      * For ajax request will return json object
      * and for non-ajax request if update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
@@ -166,7 +168,7 @@ class GrammaireController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if ($request->isGet) {
                 return [
-                    'title' => "Update Grammaire #" . $id,
+                    'title' => "Update Adjectif #" . $id,
                     'content' => $this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -176,7 +178,7 @@ class GrammaireController extends Controller
             } else if ($model->load($request->post()) && $model->save()) {
                 return [
                     'forceReload' => '#crud-datatable-pjax',
-                    'title' => "Grammaire #" . $id,
+                    'title' => "Adjectif #" . $id,
                     'content' => $this->renderAjax('view', [
                         'model' => $model,
                     ]),
@@ -185,7 +187,7 @@ class GrammaireController extends Controller
                 ];
             } else {
                 return [
-                    'title' => "Update Grammaire #" . $id,
+                    'title' => "Update Adjectif #" . $id,
                     'content' => $this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -208,7 +210,7 @@ class GrammaireController extends Controller
     }
 
     /**
-     * Delete an existing Grammaire model.
+     * Delete an existing Adjectif model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
@@ -234,7 +236,7 @@ class GrammaireController extends Controller
     }
 
     /**
-     * Delete multiple existing Grammaire model.
+     * Delete multiple existing Adjectif model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
@@ -264,15 +266,15 @@ class GrammaireController extends Controller
     }
 
     /**
-     * Finds the Grammaire model based on its primary key value.
+     * Finds the Adjectif model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return Grammaire the loaded model
+     * @return Adjectif the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Grammaire::findOne($id)) !== null) {
+        if (($model = Adjectif::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

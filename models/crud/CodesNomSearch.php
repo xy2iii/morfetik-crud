@@ -1,16 +1,16 @@
 <?php
 
-namespace app\models;
+namespace app\models\crud;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\CodesAdjectif;
+use app\models\crud\CodesNom;
 
 /**
- * CodesAdjectifSearch represents the model behind the search form about `app\models\CodesAdjectif`.
+ * CodesNomSearch represents the model behind the search form about `app\models\CodesNom`.
  */
-class CodesAdjectifSearch extends CodesAdjectif
+class CodesNomSearch extends CodesNom
 {
     /**
      * @inheritdoc
@@ -18,7 +18,7 @@ class CodesAdjectifSearch extends CodesAdjectif
     public function rules()
     {
         return [
-            [['Code', 'Rad', 'MS', 'MP', 'FS', 'FP'], 'safe'],
+            [['Code', 'Rad', 'S', 'P'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class CodesAdjectifSearch extends CodesAdjectif
      */
     public function search($params)
     {
-        $query = CodesAdjectif::find();
+        $query = CodesNom::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -56,10 +56,8 @@ class CodesAdjectifSearch extends CodesAdjectif
 
         $query->andFilterWhere(['like', 'Code', $this->Code])
             ->andFilterWhere(['like', 'Rad', $this->Rad])
-            ->andFilterWhere(['like', 'MS', $this->MS])
-            ->andFilterWhere(['like', 'MP', $this->MP])
-            ->andFilterWhere(['like', 'FS', $this->FS])
-            ->andFilterWhere(['like', 'FP', $this->FP]);
+            ->andFilterWhere(['like', 'S', $this->S])
+            ->andFilterWhere(['like', 'P', $this->P]);
 
         return $dataProvider;
     }

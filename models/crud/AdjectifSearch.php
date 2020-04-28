@@ -1,16 +1,16 @@
 <?php
 
-namespace app\models;
+namespace app\models\crud;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Nom;
+use app\models\crud\Adjectif;
 
 /**
- * NomSearch represents the model behind the search form about `app\models\Nom`.
+ * AdjectifSearch represents the model behind the search form about `app\models\Adjectif`.
  */
-class NomSearch extends Nom
+class AdjectifSearch extends Adjectif
 {
     /**
      * @inheritdoc
@@ -18,7 +18,7 @@ class NomSearch extends Nom
     public function rules()
     {
         return [
-            [['ID', 'Lemme', 'CatGram', 'Flex', 'Dom', 'Grs', 'Maj', 'Lig', 'Standard', 'Notes'], 'safe'],
+            [['ID', 'Lemme', 'CatGram', 'Flex', 'Lig', 'Standard', 'Notes'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class NomSearch extends Nom
      */
     public function search($params)
     {
-        $query = Nom::find();
+        $query = Adjectif::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -58,9 +58,6 @@ class NomSearch extends Nom
             ->andFilterWhere(['like', 'Lemme', $this->Lemme])
             ->andFilterWhere(['like', 'CatGram', $this->CatGram])
             ->andFilterWhere(['like', 'Flex', $this->Flex])
-            ->andFilterWhere(['like', 'Dom', $this->Dom])
-            ->andFilterWhere(['like', 'Grs', $this->Grs])
-            ->andFilterWhere(['like', 'Maj', $this->Maj])
             ->andFilterWhere(['like', 'Lig', $this->Lig])
             ->andFilterWhere(['like', 'Standard', $this->Standard])
             ->andFilterWhere(['like', 'Notes', $this->Notes]);
