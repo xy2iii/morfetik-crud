@@ -1,6 +1,6 @@
 <?php
 
-namespace app\components\crud;
+namespace app\widgets\crud;
 
 use Yii;
 use yii\base\Widget;
