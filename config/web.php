@@ -13,6 +13,13 @@ $config = [
     ],
     'language' => 'fr-FR',
     'components' => [
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            'assignmentTable' => 'yii_auth_assignment',
+            'itemChildTable' => 'yii_auth_item_child',
+            'itemTable' => 'yii_auth_item',
+            'ruleTable' => 'yii_auth_rule',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'jwcw7Q7ugAM4_Kf0e1EHhlMLv-imuEl-',
@@ -84,7 +91,7 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['127.0.0.1', '::1'],
     ];
 
     $config['bootstrap'][] = 'gii';

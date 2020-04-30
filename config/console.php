@@ -14,6 +14,13 @@ $config = [
         '@tests' => '@app/tests',
     ],
     'components' => [
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            'assignmentTable' => 'yii_auth_assignment',
+            'itemChildTable' => 'yii_auth_item_child',
+            'itemTable' => 'yii_auth_item',
+            'ruleTable' => 'yii_auth_rule',
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controllers\crud;
+namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
@@ -12,29 +12,23 @@ use yii\helpers\ArrayHelper;
 use yii\filters\AccessControl;
 use kartik\grid\EditableColumnAction;
 
-/**
- * AbstractController implements the CRUD actions for a model.
- */
-abstract class AbstractController extends Controller
-{
-    /**
-     * Returns the associated model.
-     * @return object A model object.
-     */
-    abstract protected function getModel();
-    /**
-     * Returns the associated search model.
-     * @return object A search object.
-     */
-    abstract protected function getSearch();
-    /**
-     * Returns the prettified name, for use in views to display to the user.
-     * This name should describe a single item, for example:
-     *     "Créer un nouvel **Adjectif**"*
-     * @return string The pretty name.
-     */
-    abstract protected function getName();
+use app\models\User;
+use app\models\UserSearch;
 
+class AdminController extends Controller
+{
+    protected function getModel()
+    {
+        return new User();
+    }
+    protected function getSearch()
+    {
+        return new UserSearch();
+    }
+    protected function getName()
+    {
+        return 'Utilisateur';
+    }
     /**
      * @inheritdoc
      */
@@ -47,8 +41,10 @@ abstract class AbstractController extends Controller
             ]
         ]);
     }
+
     /**
      * @inheritdoc
+     * Make sure to override, to allow only admin access.
      */
     public function behaviors()
     {
@@ -58,7 +54,8 @@ abstract class AbstractController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['editor'],
+                        // Administrator access only.
+                        'roles' => ['admin'],
                     ]
                 ]
             ],
@@ -71,7 +68,6 @@ abstract class AbstractController extends Controller
             ],
         ];
     }
-
     /**
      * Lists all models.
      * @return mixed
