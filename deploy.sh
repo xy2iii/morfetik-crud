@@ -1,3 +1,4 @@
+#!/bin/bash
 # Run on the server.
 read -p 'WARNING: This script will remove your /var/www/html/ webroot. It needs to be run with sudo! Are you OK with this? [y/N]' -n 1 -r
 
