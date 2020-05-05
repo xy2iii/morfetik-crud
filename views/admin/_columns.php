@@ -27,7 +27,7 @@ return [
         'label' => Yii::t('app', 'Email'),
         'vAlign' => 'middle',
         'editableOptions' => [
-            'header' => Yii::t('app', 'ID'),
+            'header' => Yii::t('app', 'Email'),
             'inputType' => Editable::INPUT_TEXT,
             'formOptions' => ['action' => ['editable']],
         ],
@@ -38,7 +38,7 @@ return [
         'label' => Yii::t('app', 'Password'),
         'vAlign' => 'middle',
         'editableOptions' => [
-            'header' => Yii::t('app', 'ID'),
+            'header' => Yii::t('app', 'Password'),
             'inputType' => Editable::INPUT_TEXT,
             'formOptions' => ['action' => ['editable']],
         ],
@@ -49,7 +49,7 @@ return [
         'label' => Yii::t('app', 'Role'),
         'vAlign' => 'middle',
         'editableOptions' => [
-            'header' => Yii::t('app', 'ID'),
+            'header' => Yii::t('app', 'Role'),
             'inputType' => Editable::INPUT_DROPDOWN_LIST,
             'data' => array_keys(Yii::$app->authManager->getRoles()),
             'formOptions' => ['action' => ['editable']],

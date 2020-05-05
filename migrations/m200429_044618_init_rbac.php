@@ -41,6 +41,7 @@ class m200429_044618_init_rbac extends Migration
         // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
         // usually implemented in your User model.
         $auth->assign($admin, 100);
+        $auth->assign($editor, 101);
     }
 
     /**

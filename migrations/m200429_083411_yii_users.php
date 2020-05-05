@@ -29,6 +29,13 @@ class m200429_083411_yii_users extends Migration
             'password' => Yii::$app->getSecurity()->generatePasswordHash('admin'),
             'authKey' => Yii::$app->security->generateRandomString(),
         ]);
+        // Create an editor user.
+        $this->insert('yii_users', [
+            'username' => 'editor',
+            'email' => 'editor@tal.lipn.univ-paris13.fr',
+            'password' => Yii::$app->getSecurity()->generatePasswordHash('editor'),
+            'authKey' => Yii::$app->security->generateRandomString(),
+        ]);
     }
 
     /**

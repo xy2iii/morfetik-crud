@@ -4,7 +4,8 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
-    'id' => 'basic',
+    'id' => 'morfetik',
+    'name' => 'Morfetik',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -19,6 +20,14 @@ $config = [
             'itemChildTable' => 'yii_auth_item_child',
             'itemTable' => 'yii_auth_item',
             'ruleTable' => 'yii_auth_rule',
+        ],
+        'assetManager' => [
+            'bundles' => [
+                'yii\bootstrap\BootstrapAsset' => [
+                    'sourcePath' => null,
+                    'css' => ['css/bootstrap.min.css']
+                ],
+            ],
         ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation

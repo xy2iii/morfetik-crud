@@ -18,6 +18,18 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['edit-dashboard'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['edit-dashboard'],
+                        // Editor access only.
+                        'roles' => ['editor'],
+                    ]
+                ]
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -113,5 +125,20 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    /**
+     * Displays edit page, but only to editors.
+     *
+     * @return string
+     */
+    public function actionEditDashboard()
+    {
+        return $this->render('edit-dashboard');
+    }
+
+    public function actionPublications()
+    {
+        return $this->render('publications');
     }
 }

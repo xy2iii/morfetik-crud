@@ -6,6 +6,7 @@
 return [
     '{item} #' => '{item} #',
     '* Resize table columns just like a spreadsheet by dragging the column edges' => '* Vous pouvez redimensionner la table en prenant les bordures des colonnes',
+    'About' => 'A propos',
     'Adjectifs: codes' => 'Adjectifs: codes',
     'An {item} has been created' => 'Un {item} à été créé avec succès',
     'Are you sure?' => 'Êtes-vous sûr?',
@@ -46,4 +47,11 @@ return [
     'Update {item} #' => 'Mettre a jour {item} #',
     'View' => 'Voir',
     'With selected' => 'Avec la sélection',
+
+    // Login
+    'Login' => 'Connexion',
+    'Logout' => 'Déconnexion',
+    'Username' => "Nom d'utilisateur",
+    'Password' => 'Mot de passe',
+    'Remember me next time' => 'Se souvenir de moi',
 ];
