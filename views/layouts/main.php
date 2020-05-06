@@ -5,9 +5,9 @@
 
 use app\widgets\Alert;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
+use yii\bootstrap4\Nav;
+use yii\bootstrap4\NavBar;
+use yii\bootstrap4\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
@@ -37,26 +37,25 @@ AppAsset::register($this);
             'brandLabel' => Yii::$app->name,
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
-                'class' => 'navbar-inverse navbar-fixed-top',
+                'class' => 'navbar-expand-lg navbar-dark bg-dark',
             ],
         ]);
         echo Nav::widget([
-            'options' => ['class' => 'navbar-nav navbar-right'],
+            'options' => ['class' => 'navbar-nav ml-auto'],
             'items' => [
                 ['label' => Yii::t('app', 'Publications'), 'url' => ['/site/publications']],
                 ['label' => Yii::t('app', 'About'), 'url' => ['/site/about']],
                 ['label' => Yii::t('app', 'Contact'), 'url' => ['/site/contact']],
                 Yii::$app->user->can('editor') ? ['label' => Yii::t('app', 'Edition'), 'url' => ['/site/edit-dashboard']] : '',
                 Yii::$app->user->can('admin') ? ['label' => Yii::t('app', 'Admin'), 'url' => ['/admin']] : '',
-                Yii::$app->user->isGuest ? (['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']]) : ('<li>'
+                Yii::$app->user->isGuest ? (['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']]) : ('<li class="nav-item">'
                     . Html::beginForm(['/site/logout'], 'post')
                     . Html::submitButton(
-                        Yii::t('app', 'Logout') . ' (' . Yii::$app->user->identity->username . ') ' . (Yii::$app->user->can('admin') ? '<span class="label label-danger">Admin</span>' : (Yii::$app->user->can('editor') ? '<span class="label label-info">' . Yii::t('app', 'Editeur') . '</span>' : '')),
+                        Yii::t('app', 'Logout') . ' (' . Yii::$app->user->identity->username . ') ' . (Yii::$app->user->can('admin') ? '<span class="badge badge-danger">Admin</span>' : (Yii::$app->user->can('editor') ? '<span class="badge badge-info">' . Yii::t('app', 'Editeur') . '</span>' : '')),
 
                         ['class' => 'btn btn-link logout']
                     )
-                    . Html::endForm()
-                    . '</li>')
+                    . Html::endForm())
             ],
         ]);
         NavBar::end();
@@ -65,6 +64,7 @@ AppAsset::register($this);
         <div class="container">
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                'options' => []
             ]) ?>
             <?= Alert::widget() ?>
             <?= $content ?>
@@ -72,9 +72,15 @@ AppAsset::register($this);
     </div>
 
     <footer class="footer">
-        <div class="container">
-            <p class="pull-left"><a href="https://lipn.univ-paris13.fr/">LIPN</a> - <?= date('Y') ?></p>
-            <p class="pull-right"><a href="https://lipn.univ-paris13.fr/accueil/equipe/rcln/">Équipe RCLN</a></p>
+        <div class="container-fluid">
+            <div class="row">
+                <p class="col-md-6">
+                    <a href="https://lipn.univ-paris13.fr/">LIPN</a> - <?= date('Y') ?>
+                </p>
+                <p class="col-md-6 text-right">
+                    <a href="https://lipn.univ-paris13.fr/accueil/equipe/rcln/">Équipe RCLN</a>
+                </p>
+            </div>
         </div>
     </footer>
 

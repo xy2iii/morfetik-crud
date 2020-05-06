@@ -2,22 +2,27 @@
 
 use yii\helpers\Url;
 use yii\helpers\Html;
-use yii\bootstrap\Modal;
+use yii\bootstrap4\Modal;
 use kartik\grid\GridView;
-use johnitvn\ajaxcrud\CrudAsset;
-use johnitvn\ajaxcrud\BulkButtonWidget;
+use app\assets\CrudAsset;
+use app\widgets\crud\BulkButtonWidget;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\UserSearch */
+/* @var $searchModel app\models\AdjectifSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Users');
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Adjectifs';
+$this->params['breadcrumbs'][0] =
+    [
+        'label' => 'Edition',
+        'url' => ['site/edit-dashboard'],
+    ];
+$this->params['breadcrumbs'][1] = $this->title;
 
 CrudAsset::register($this);
 
 ?>
-<div class="user-index">
+<div class="adjectif-index">
     <div id="ajaxCrudDatatable">
         <?= GridView::widget([
             'id' => 'crud-datatable',
@@ -29,14 +34,14 @@ CrudAsset::register($this);
                 [
                     'content' =>
                     Html::a(
-                        '<i class="glyphicon glyphicon-plus"></i>',
+                        '<i class="fas fa-plus"></i>',
                         ['create'],
-                        ['role' => 'modal-remote', 'title' => Yii::t('app', 'New'), 'class' => 'btn btn-default']
+                        ['role' => 'modal-remote', 'title' => Yii::t('app', 'New'), 'class' => 'btn btn-outline-secondary']
                     ) .
                         Html::a(
-                            '<i class="glyphicon glyphicon-repeat"></i>',
+                            '<i class="fas fa-redo"></i>',
                             [''],
-                            ['data-pjax' => 1, 'class' => 'btn btn-default', 'title' => Yii::t('app', 'Reset Grid')]
+                            ['data-pjax' => 1, 'class' => 'btn btn-outline-secondary', 'title' => Yii::t('app', 'Reset Grid')]
                         ) .
                         '{toggleData}' .
                         '{export}'
@@ -48,11 +53,11 @@ CrudAsset::register($this);
             'hover' => true,
             'panel' => [
                 'type' => 'danger',
-                'heading' => '<i class="glyphicon glyphicon-briefcase"></i> ' . Yii::t('app', '<b>Administration</b>: gestion des utilisateurs'),
+                'heading' => '<i class="fas fa-briefcase"></i> ' . Yii::t('app', '<b>Administration</b>: gestion des utilisateurs'),
                 'before' => '<em>' . Yii::t('app', 'Passwords are shown hashed') . '. ' . Yii::t('app', 'Enter the password directly and it will be encrypted.') . '</em>',
                 'after' => BulkButtonWidget::widget([
                     'buttons' => Html::a(
-                        '<i class="glyphicon glyphicon-trash"></i>&nbsp; ' . Yii::t('app', 'Delete all'),
+                        '<i class="fas fa-trash"></i>&nbsp; ' . Yii::t('app', 'Delete all'),
                         ["bulk-delete"],
                         [
                             "class" => "btn btn-danger btn-xs",

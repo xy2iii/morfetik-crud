@@ -104,7 +104,7 @@ abstract class AbstractController extends Controller
                     'model' => $this->findModel($id),
                     'id' => $id,
                 ]),
-                'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
+                'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-outline-secondary mr-auto', 'data-dismiss' => "modal"]) .
                     Html::a(Yii::t('app', 'Edit'), ['update', 'id' => $id], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
             ];
         } else {
@@ -133,7 +133,7 @@ abstract class AbstractController extends Controller
                     'content' => $this->renderAjax('create', [
                         'model' => $model,
                     ]),
-                    'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
+                    'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-outline-secondary mr-auto', 'data-dismiss' => "modal"]) .
                         Html::button(Yii::t('app', 'Save'), ['class' => 'btn btn-primary', 'type' => "submit"])
                 ];
             } else if ($model->load($request->post()) && $model->save()) {
@@ -141,7 +141,7 @@ abstract class AbstractController extends Controller
                     'forceReload' => '#crud-datatable-pjax',
                     'title' => Yii::t('app', 'Create new {item}', ['item' => $this->getName()]),
                     'content' => '<span class="text-success">' . Yii::t('app', 'An {item} has been created', ['item' => $this->getName()]) . '</span>',
-                    'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
+                    'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-outline-secondary mr-auto', 'data-dismiss' => "modal"]) .
                         Html::a(Yii::t('app', 'Create more'), ['create'], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
 
                 ];
@@ -151,7 +151,7 @@ abstract class AbstractController extends Controller
                     'content' => $this->renderAjax('create', [
                         'model' => $model,
                     ]),
-                    'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
+                    'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-outline-secondary mr-auto', 'data-dismiss' => "modal"]) .
                         Html::button(Yii::t('app', 'Save'), ['class' => 'btn btn-primary', 'type' => "submit"])
 
                 ];
@@ -193,7 +193,7 @@ abstract class AbstractController extends Controller
                     'content' => $this->renderAjax('update', [
                         'model' => $model,
                     ]),
-                    'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
+                    'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-outline-secondary mr-auto', 'data-dismiss' => "modal"]) .
                         Html::button(Yii::t('app', 'Save'), ['class' => 'btn btn-primary', 'type' => "submit"])
                 ];
             } else if ($model->load($request->post()) && $model->save()) {
@@ -203,7 +203,7 @@ abstract class AbstractController extends Controller
                     'content' => $this->renderAjax('view', [
                         'model' => $model,
                     ]),
-                    'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
+                    'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-outline-secondary mr-auto', 'data-dismiss' => "modal"]) .
                         Html::a(Yii::t('app', 'Edit'), ['update', 'id' => $id], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
                 ];
             } else {
@@ -212,7 +212,7 @@ abstract class AbstractController extends Controller
                     'content' => $this->renderAjax('update', [
                         'model' => $model,
                     ]),
-                    'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-default pull-left', 'data-dismiss' => "modal"]) .
+                    'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-outline-secondary mr-auto', 'data-dismiss' => "modal"]) .
                         Html::button(Yii::t('app', 'Save'), ['class' => 'btn btn-primary', 'type' => "submit"])
                 ];
             }

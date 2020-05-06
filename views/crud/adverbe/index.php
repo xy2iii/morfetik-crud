@@ -2,9 +2,9 @@
 
 use yii\helpers\Url;
 use yii\helpers\Html;
-use yii\bootstrap\Modal;
+use yii\bootstrap4\Modal;
 use kartik\grid\GridView;
-use johnitvn\ajaxcrud\CrudAsset;
+use app\assets\CrudAsset;
 use app\widgets\crud\BulkButtonWidget;
 
 /* @var $this yii\web\View */
@@ -12,7 +12,12 @@ use app\widgets\crud\BulkButtonWidget;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Adjectifs';
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][0] =
+    [
+        'label' => 'Edition',
+        'url' => ['site/edit-dashboard'],
+    ];
+$this->params['breadcrumbs'][1] = $this->title;
 
 CrudAsset::register($this);
 
@@ -29,14 +34,14 @@ CrudAsset::register($this);
                 [
                     'content' =>
                     Html::a(
-                        '<i class="glyphicon glyphicon-plus"></i>',
+                        '<i class="fas fa-plus"></i>',
                         ['create'],
-                        ['role' => 'modal-remote', 'title' => Yii::t('app', 'New'), 'class' => 'btn btn-default']
+                        ['role' => 'modal-remote', 'title' => Yii::t('app', 'New'), 'class' => 'btn btn-outline-secondary']
                     ) .
                         Html::a(
-                            '<i class="glyphicon glyphicon-repeat"></i>',
+                            '<i class="fas fa-redo"></i>',
                             [''],
-                            ['data-pjax' => 1, 'class' => 'btn btn-default', 'title' => Yii::t('app', 'Reset Grid')]
+                            ['data-pjax' => 1, 'class' => 'btn btn-outline-secondary', 'title' => Yii::t('app', 'Reset Grid')]
                         ) .
                         '{toggleData}' .
                         '{export}'
@@ -48,11 +53,11 @@ CrudAsset::register($this);
             'hover' => true,
             'panel' => [
                 'type' => 'primary',
-                'heading' => '<i class="glyphicon glyphicon-list"></i> ' . Yii::t('app', 'Adverbes: lemmes'),
+                'heading' => '<i class="fas fa-list"></i> ' . Yii::t('app', 'Adverbes: lemmes'),
                 'before' => '<em>' . Yii::t('app', '* Resize table columns just like a spreadsheet by dragging the column edges') . '.</em>',
                 'after' => BulkButtonWidget::widget([
                     'buttons' => Html::a(
-                        '<i class="glyphicon glyphicon-trash"></i>&nbsp; ' . Yii::t('app', 'Delete all'),
+                        '<i class="fas fa-trash"></i>&nbsp; ' . Yii::t('app', 'Delete all'),
                         ["bulk-delete"],
                         [
                             "class" => "btn btn-danger btn-xs",

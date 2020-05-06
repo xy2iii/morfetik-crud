@@ -41,7 +41,7 @@ class GridHelper
     {
         return [
             'class' => 'kartik\grid\ActionColumn',
-            'width' => '80px',
+            'width' => '90px',
             'vAlign' => 'middle',
             'dropdown' => false,
             'urlCreator' => function ($action, $model, $key, $index) {
