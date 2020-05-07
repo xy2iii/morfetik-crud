@@ -9,7 +9,7 @@ $this->title = 'Morfetik';
     <div class="jumbotron">
         <div class="row">
             <div class="col-md-4">
-                <h1 class="text-center display-4">Morfetik</h1>
+                <h1 class="text-center">Morfetik</h1>
             </div>
             <div class="col-md-8">
                 <h2 class>Une resource lexicale pour le traitement automatique du language</h2>

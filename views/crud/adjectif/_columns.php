@@ -1,11 +1,14 @@
 <?php
 
 use kartik\editable\Editable;
+use kartik\grid\GridView;
 use app\views\crud\GridHelper;
+use Yii\helpers\Url;
 
 return [
     GridHelper::getCheckboxColumn(),
     GridHelper::getSerialColumn(),
+    GridHelper::getExpandRowColumn(),
     [
         'class' => '\kartik\grid\EditableColumn',
         'attribute' => 'ID',

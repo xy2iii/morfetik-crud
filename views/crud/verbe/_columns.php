@@ -6,6 +6,7 @@ use app\views\crud\GridHelper;
 return [
     GridHelper::getCheckboxColumn(),
     GridHelper::getSerialColumn(),
+    GridHelper::getExpandRowColumn(),
     [
         'class' => '\kartik\grid\EditableColumn',
         'attribute' => 'ID',

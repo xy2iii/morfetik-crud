@@ -23,6 +23,16 @@ abstract class AbstractController extends Controller
      */
     abstract protected function getModel();
     /**
+     * Returns the related code model.
+     * For instance, if the model is Adjectif,
+     *  then the related model is CodesAdjectif.
+     * @return object A model object.
+     */
+    protected function getRelatedModel()
+    {
+        return false;
+    }
+    /**
      * Returns the associated search model.
      * @return object A search object.
      */
@@ -65,6 +75,7 @@ abstract class AbstractController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
+                    'expand-row' => ['post'],
                     'delete' => ['post'],
                     'bulk-delete' => ['post'],
                 ],
@@ -284,6 +295,24 @@ abstract class AbstractController extends Controller
             */
             return $this->redirect(['index']);
         }
+    }
+
+    /**
+     * Returns a related model and displays the expand-row view.
+     * Used for Ajax requests.
+     */
+    public function actionExpandRow()
+    {
+        $request = Yii::$app->request;
+        // Check the request for the presence of $expandRowKey.
+        $id = $request->post('expandRowKey');
+
+        // Get the related model.
+        $model = $this->findModel($id);
+        $relatedModel = $this->getRelatedModel()::find()
+            ->where(['Code' => $model->Flex])
+            ->one();
+        return $this->renderPartial('_expand-row', ['model' => $relatedModel]);
     }
 
     /**

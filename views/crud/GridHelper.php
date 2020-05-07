@@ -4,6 +4,7 @@ namespace app\views\crud;
 
 use Yii;
 use yii\helpers\Url;
+use kartik\grid\GridView;
 
 /**
  * Custom helper for abstracting away repetitive tasks when writing GridView templates.
@@ -31,6 +32,24 @@ class GridHelper
         return [
             'class' => 'kartik\grid\SerialColumn',
             'width' => '30px',
+        ];
+    }
+    /**
+     * Returns a collapsable column with related information.
+     * @return array An expand row column.
+     */
+    static function getExpandRowColumn()
+    {
+        return [
+            'class' => 'kartik\grid\ExpandRowColumn',
+            'width' => '50px',
+            'value' => function ($model, $key, $index, $column) {
+                return GridView::ROW_COLLAPSED;
+            },
+            // Will pass expandRowKey and expandRowInd to the controller.
+            // See https://demos.krajee.com/grid#expand-row-column
+            'detailUrl' => Url::to(['expand-row']),
+            'headerOptions' => ['class' => 'kartik-sheet-style'],
         ];
     }
     /**
