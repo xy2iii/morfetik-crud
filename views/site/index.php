@@ -20,7 +20,7 @@ $this->title = 'Morfetik';
                     Morfetik peut être utilisé pour le traitement automatique du language.
                 </p>
                 <p class="d-flex align-items-end justify-content-end">
-                    <a class="btn btn-primary btn-lg" role="button" href="<?= Url::to(['site/publications']) ?>">
+                    <a class="btn btn-primary btn-lg" role="button" href="<?= Url::to(['search/entry']) ?>">
                         <i class="fas fa-search"></i> Rechercher
                     </a>
                     <a class="ml-3 btn btn-outline-primary btn-sm" role="button" href="<?= Url::to(['site/publications']) ?>">
