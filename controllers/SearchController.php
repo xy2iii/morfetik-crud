@@ -8,6 +8,10 @@ use app\models\search\Forme;
 use app\models\search\FormeSearch;
 use app\models\search\SearchBarForm;
 
+/**
+ * The controller for the main search function.
+ * Manages the search bar and displaying results.
+ */
 class SearchController extends Controller
 {
     public function actionIndex()
@@ -25,26 +29,38 @@ class SearchController extends Controller
 
             if (Yii::$app->request->isAjax) {
                 return $this->renderAjax(
-                    'entry-confirm',
+                    'entry',
                     [
-                        'formData' => $form,
+                        'formModel' => $form,
                         'dataProvider' => $dataProvider,
                         'searchModel' => $searchModel
                     ]
                 );
             } else {
                 return $this->render(
-                    'entry-confirm',
+                    'entry',
                     [
-                        'formData' => $form,
+                        'formModel' => $form,
                         'dataProvider' => $dataProvider,
                         'searchModel' => $searchModel
                     ]
                 );
             }
         } else {
-            // either the page is initially displayed or there is some validation error
-            return $this->render('entry', ['model' => $form]);
+            /* This is the initial request. 
+             * For Ajax rendering reasons, all subsequent renders must use the same view.
+             * Thus, render the entry view, even though there is no search data initially. */
+
+            // To do so, create a dataProvider which is guantreed to have no results.
+            $dataProvider = $searchModel->search($form);
+            return $this->render(
+                'entry',
+                [
+                    'formModel' => $form,
+                    'dataProvider' => $dataProvider,
+                    'searchModel' => $searchModel
+                ]
+            );
         }
     }
 }

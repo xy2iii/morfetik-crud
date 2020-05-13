@@ -4,6 +4,7 @@ use yii\helpers\Url;
 use yii\bootstrap4\ActiveForm;
 use yii\web\View;
 use yii\widgets\Pjax;
+use kartik\grid\GridView;
 
 /*
  * PJax - AJAX + pushState(): https://github.com/yiisoft/jquery-pjax
@@ -38,7 +39,7 @@ $form = ActiveForm::begin(
         ],
     ]
 );
-echo $form->field($model, 'forme', [
+echo $form->field($formModel, 'forme', [
     'inputTemplate' => '<div class="input-group">
     <div class="input-group mb-3">
         <div class="input-group-prepend">
@@ -55,4 +56,42 @@ echo $form->field($model, 'forme', [
 ActiveForm::end();
 Pjax::end();
 ?>
-<div id="container-pjax"></div>
+<div id="container-pjax">
+    <?php
+    $columns = [
+        [
+            'attribute' => 'lemme',
+            'vAlign' => 'middle',
+        ],
+        [
+            'attribute' => 'forme',
+            'vAlign' => 'middle',
+        ],
+        [
+            'attribute' => 'primaryCategoryLabel',
+            'vAlign' => 'middle',
+        ],
+        // Secondary
+        [
+            'attribute' => 'catgram',
+            'vAlign' => 'middle',
+        ],
+    ];
+    echo GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => $columns,
+        'pjax' => true,
+        'pjaxSettings' => [
+            'options' => [
+                'id' => 'container-pjax',
+            ],
+        ],
+        'bordered' => true,
+        'striped' => true,
+        'condensed' => true,
+        'responsive' => true,
+        'hover' => true,
+    ]);
+    ?>
+</div>

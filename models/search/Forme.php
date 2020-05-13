@@ -64,6 +64,7 @@ class Forme extends \yii\db\ActiveRecord
         'loc D' => 'det-loc',
         // Pronoms
         'P' => 'pronom',
+        'P:Dém' => 'pronom',
         'P:Ddém' => 'pronom',
         'P:Ind' => 'pronom',
         'P:Int' => 'pronom',
@@ -195,7 +196,7 @@ class Forme extends \yii\db\ActiveRecord
             'lemmeid' => 'Lemmeid',
             'lemme' => 'Lemme',
             'primaryCategoryLabel' => 'Catégorie',
-            'catgram' => 'Catgram',
+            'catgram' => 'Cat. secondaire',
             'cat' => 'Cat',
             'genre' => 'Genre',
             'num' => 'Num',
