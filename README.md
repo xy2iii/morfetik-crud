@@ -1,10 +1,12 @@
-<p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
-    </a>
-    <h1 align="center">Yii 2 Basic Project Template</h1>
-    <br>
-</p>
+# Morfetik
+
+Code source pour Morfetik, la resource morphosyntaxique.
+
+Vous trouverez de la documentation dans `/doc`, y compris des instructions de déploiments et des indications sur l'architecture du projet.
+Dans `/extra` se trouve des dossiers externes au projet, par exemple les procédures stockées pour la base de données, ou un backup de la base.
+
+Vous trouverez en dessous la doc du "Basic Project Template" de Yii 2.
+
 
 Yii 2 Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
 rapidly creating small projects.
