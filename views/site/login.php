@@ -37,8 +37,4 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <?php ActiveForm::end(); ?>
-
-    <div class="col-lg-offset-1" style="color:#999;">
-        Connectez vous avec <strong>admin/admin</strong> ou <strong>editor/editor</strong>.<br>
-    </div>
 </div>

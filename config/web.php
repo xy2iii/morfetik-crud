@@ -82,7 +82,8 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true, // Don't show index.php?a=z....
             'showScriptName' => false,
-            'baseUrl' => '@web', // If in a subfolder, rewrite
+            'hostInfo' => YII_ENV_DEV ? '' : 'https://tal.lipn.univ-paris13.fr',
+            'baseUrl' => YII_ENV_DEV ? '' : '@web', // If in a subfolder, rewrite
             'rules' => [],
         ],
     ],
