@@ -5,6 +5,7 @@
 /* @var $model app\models\LoginForm */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap4\ActiveForm;
 
 $this->title = Yii::t('app', 'Login');
@@ -14,6 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?php $form = ActiveForm::begin([
+        'action' => Url::toRoute('site/login'),
         'id' => 'login-form',
         'layout' => 'horizontal',
         'fieldConfig' => [
