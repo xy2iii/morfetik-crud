@@ -79,7 +79,7 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true, // Don't show index.php?a=z....
             'showScriptName' => false,
-            'baseUrl' => 'morfetik/', // If in a subfolder, rewrite
+            'baseUrl' => 'https://tal.lipn.univ-paris13.fr/morfetik/', // If in a subfolder, rewrite
             'rules' => [],
         ],
     ],
