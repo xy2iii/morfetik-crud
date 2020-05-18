@@ -52,6 +52,16 @@ class Aliases extends Component
     private $baseURL = 'https://tal.lipn.univ-paris13.fr/morfetik/'; // change
 ```
 It is set for the LIPN by default.
+5. Edit `web/index.php` and comment out the 4th and 5th line:
+```php
+<?php
+
+// comment out the following two lines when deployed to production
+//defined('YII_DEBUG') or define('YII_DEBUG', true);
+//defined('YII_ENV') or define('YII_ENV', 'dev');
+
+...
+```
     
 4. Put the entire repo in your webroot, which may look like `var/www/html`.
 5. Render `assets/`, and `web/assets` writable, run in `var/www/html`:
