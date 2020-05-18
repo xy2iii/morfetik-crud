@@ -11,5 +11,8 @@ fi
 rm -rf /var/www/html/*
 cp -R * /var/www/html
 cd /var/www/html
-chgrp www-data web/assets
-chmod g+w web/assets
+chown -vR www-data web/assets
+chown -vR www-data runtime
+chmod 744 web/assets
+chmod 744 runtime
+chmod 755 yii
