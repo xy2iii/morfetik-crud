@@ -7,7 +7,10 @@ $config = [
     'id' => 'morfetik',
     'name' => 'Morfetik',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'log',
+        'app\config\Aliases', // The baseURL is defined here.
+    ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -25,11 +28,11 @@ $config = [
             'bundles' => [
                 'yii\bootstrap\BootstrapAsset' => [
                     'sourcePath' => null,
-                    'css' => ['css/bootstrap.min.css']
+                    'css' => ['css/bootstrap.min.css'],
                 ],
                 'yii\bootstrap4\BootstrapAsset' => [
                     'sourcePath' => null,
-                    'css' => ['css/bootstrap.min.css']
+                    'css' => ['css/bootstrap.min.css'],
                 ],
             ],
         ],
@@ -79,7 +82,7 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true, // Don't show index.php?a=z....
             'showScriptName' => false,
-            'baseUrl' => 'https://tal.lipn.univ-paris13.fr/morfetik/', // If in a subfolder, rewrite
+            'baseUrl' => '@web', // If in a subfolder, rewrite
             'rules' => [],
         ],
     ],

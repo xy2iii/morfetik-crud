@@ -45,6 +45,13 @@ It also assumes a MySQL database. This can change easily: the database could be 
     ./yii migrate --migrationPath=@yii/rbac/migrations/
     ./yii migrate
 If the migrations fail, that's okay: the tables might already exist.
+4. If you're deploying in a subdomain, change the base URL in `config/Aliases.php`:
+```php
+class Aliases extends Component
+{
+    private $baseURL = 'https://tal.lipn.univ-paris13.fr/morfetik/'; // change
+```
+It is set for the LIPN by default.
     
 4. Put the entire repo in your webroot, which may look like `var/www/html`.
 5. Render `assets/`, and `web/assets` writable, run in `var/www/html`:
