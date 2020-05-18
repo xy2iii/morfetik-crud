@@ -171,15 +171,6 @@ class Forme extends \yii\db\ActiveRecord
     }
 
     /**
-     * Used for comparaison of two formes by array_intersect.
-     * See SearchController.
-     */
-    public function __toString()
-    {
-        return $this->formeid;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public static function tableName()

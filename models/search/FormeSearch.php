@@ -54,8 +54,6 @@ class FormeSearch extends Forme
             ->andFilterWhere(['like', 'lemme', $this->lemme])
             ->andFilterWhere(['like', 'primaryCategory', $this->primaryCategory]);
 
-
-
         // Only find the first matching lemme if lemme is set, not all of them.
         if (isset($this->lemme)) {
             $query
