@@ -5,6 +5,7 @@
 
 use app\widgets\Alert;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use yii\bootstrap4\Breadcrumbs;
@@ -21,8 +22,8 @@ AppAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
-    <link rel="icon" href="/favicon-32x32.png" sizes="any" type="image/png">
-    <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
+    <link rel="icon" href="<?= Url::to("@web/favicon-32x32.png") ?>" sizes="any" type="image/png">
+    <link rel="icon" href="<?= Url::to("@web/favicon.svg") ?>" sizes="any" type="image/svg+xml">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
