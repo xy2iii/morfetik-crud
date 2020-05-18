@@ -79,7 +79,7 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true, // Don't show index.php?a=z....
             'showScriptName' => false,
-            'baseUrl' => dirname(__DIR__), // If in a subfolder, rewrite URLs
+            'baseUrl' => 'morfetik/', // If in a subfolder, rewrite
             'rules' => [],
         ],
     ],
@@ -111,6 +111,8 @@ if (YII_ENV_DEV) {
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
     ];
+    // When on a dev env, no prefix is required
+    $config['components']['urlManager']['baseUrl'] = '';
 }
 
 return $config;
