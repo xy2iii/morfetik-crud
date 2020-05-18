@@ -6,7 +6,9 @@ use Yii;
 use yii\web\Controller;
 use app\models\search\Forme;
 use app\models\search\FormeSearch;
+use app\models\search\FormeSearchByForme;
 use app\models\search\SearchBarForm;
+use yii\data\ArrayDataProvider;
 
 /**
  * The controller for the main search function.
@@ -21,11 +23,16 @@ class SearchController extends Controller
     public function actionEntry()
     {
         $form = new SearchBarForm();
+        // The initial search is a search by Forme.
         $searchModel = new FormeSearch();
 
+        // The form has been submitted. Save it to session.
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
-            // Since the form is valid, search
-            $dataProvider = $searchModel->search($form);
+            $params = array_merge(
+                Yii::$app->request->queryParams,
+                ['FormeSearch' => ['lemme' => $form->forme]],
+            );
+            $dataProvider = $searchModel->search($params);
 
             if (Yii::$app->request->isAjax) {
                 return $this->renderAjax(
@@ -33,7 +40,7 @@ class SearchController extends Controller
                     [
                         'formModel' => $form,
                         'dataProvider' => $dataProvider,
-                        'searchModel' => $searchModel
+                        'searchModel' => $searchModel,
                     ]
                 );
             } else {
@@ -42,23 +49,19 @@ class SearchController extends Controller
                     [
                         'formModel' => $form,
                         'dataProvider' => $dataProvider,
-                        'searchModel' => $searchModel
+                        'searchModel' => $searchModel,
                     ]
                 );
             }
         } else {
-            /* This is the initial request. 
-             * For Ajax rendering reasons, all subsequent renders must use the same view.
-             * Thus, render the entry view, even though there is no search data initially. */
-
-            // To do so, create a dataProvider which is guantreed to have no results.
-            $dataProvider = $searchModel->search($form);
+            // No form was submitted. This may be a gridView request.
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
             return $this->render(
                 'entry',
                 [
                     'formModel' => $form,
                     'dataProvider' => $dataProvider,
-                    'searchModel' => $searchModel
+                    'searchModel' => $searchModel,
                 ]
             );
         }

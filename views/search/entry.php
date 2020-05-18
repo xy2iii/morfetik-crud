@@ -68,7 +68,7 @@ Pjax::end();
             'vAlign' => 'middle',
         ],
         [
-            'attribute' => 'primaryCategoryLabel',
+            'attribute' => 'primaryCategory',
             'vAlign' => 'middle',
         ],
         // Secondary
@@ -77,21 +77,23 @@ Pjax::end();
             'vAlign' => 'middle',
         ],
     ];
-    echo GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => $columns,
-        'pjax' => true,
-        'pjaxSettings' => [
-            'options' => [
-                'id' => 'container-pjax',
+    if (isset($dataProvider)) {
+        echo GridView::widget([
+            'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel, // Give to the grid a model that can search anywhere.
+            'columns' => $columns,
+            'pjax' => true,
+            'pjaxSettings' => [
+                'options' => [
+                    'id' => 'container-pjax',
+                ],
             ],
-        ],
-        'bordered' => true,
-        'striped' => true,
-        'condensed' => true,
-        'responsive' => true,
-        'hover' => true,
-    ]);
+            'bordered' => true,
+            'striped' => true,
+            'condensed' => true,
+            'responsive' => true,
+            'hover' => true,
+        ]);
+    }
     ?>
 </div>

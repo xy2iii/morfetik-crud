@@ -77,10 +77,10 @@ $config = [
             ],
         ],
         'urlManager' => [
-            'enablePrettyUrl' => true,
+            'enablePrettyUrl' => true, // Don't show index.php?a=z....
             'showScriptName' => false,
-            'rules' => [
-            ],
+            'baseUrl' => dirname(__DIR__), // If in a subfolder, rewrite URLs
+            'rules' => [],
         ],
     ],
     'modules' => [

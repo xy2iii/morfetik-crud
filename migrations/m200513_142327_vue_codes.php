@@ -3,10 +3,7 @@
 use yii\db\Migration;
 use yii\db\Query;
 
-/**
- * Class m200505_132519_create_vue_verbe
- */
-class m200505_132519_create_vue_verbe extends Migration
+class m200513_142327_vue_codes extends Migration
 {
     /**
      * {@inheritdoc}
@@ -79,7 +76,9 @@ from vscodes");
      */
     public function safeDown()
     {
-        $this->dropTable('_vuevscodes');
+        $connection = Yii::$app->getDb();
+        $connection->createCommand()
+            ->dropView('_vuevscodes')->execute();
     }
 
     /*

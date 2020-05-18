@@ -10,7 +10,6 @@ use yii\data\ActiveDataProvider;
  * Its secondary category is the catgram field. 
  * Use the $primaryCategoryLabel attribute to get a human-readable name.
  * @property string $primaryCategory
- * @property string $primaryCategoryLabel
  * @property string $formeid 
  * @property string $forme
  * @property string $lemmeid
@@ -30,7 +29,11 @@ use yii\data\ActiveDataProvider;
  */
 class Forme extends \yii\db\ActiveRecord
 {
-    private static $catgramToCategory = [
+    // The primary category of each form.
+    private $primaryCategory;
+
+    public static $catgramToCategory = [
+        '' => '',
         // Adjectifs
         'adj' => 'adj',
         'adjm' => 'adj',
@@ -116,7 +119,8 @@ class Forme extends \yii\db\ActiveRecord
      * - label: the label for the given field.
      * - isLocution: whether the current category is a locution or not.
      */
-    private static $categoryToLabel = [
+    public static $categoryToLabel = [
+        '' => '',
         'adj' => 'Adjectif',
         'adv' => 'Adverbe',
         'det' => 'Déterminant',
@@ -147,15 +151,13 @@ class Forme extends \yii\db\ActiveRecord
      */
     public function getPrimaryCategory()
     {
-        return static::$catgramToCategory[$this->catgram];
+        return isset($primaryCategory)
+            ? $primaryCategory
+            : static::$catgramToCategory[$this->catgram];
     }
-    /**
-     * Returns the label for the primary category.
-     * @return string A label for the current category.
-     */
-    public function getPrimaryCategoryLabel()
+    public function setPrimaryCategory($cat)
     {
-        return static::$categoryToLabel[$this->primaryCategory];
+        $primaryCategory = $cat;
     }
     /**
      * Returns whether the current Forme is a "conjonction"
@@ -169,6 +171,15 @@ class Forme extends \yii\db\ActiveRecord
     }
 
     /**
+     * Used for comparaison of two formes by array_intersect.
+     * See SearchController.
+     */
+    public function __toString()
+    {
+        return $this->formeid;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public static function tableName()
@@ -178,11 +189,6 @@ class Forme extends \yii\db\ActiveRecord
     public static function primaryKey()
     {
         return ["formeid"];
-    }
-    /** The form that looks for an Forme is the SearchBarForm. */
-    public function formName()
-    {
-        return 'SearchBarForm';
     }
 
     /**
@@ -195,7 +201,6 @@ class Forme extends \yii\db\ActiveRecord
             'forme' => 'Forme',
             'lemmeid' => 'Lemmeid',
             'lemme' => 'Lemme',
-            'primaryCategoryLabel' => 'Catégorie',
             'catgram' => 'Cat. secondaire',
             'cat' => 'Cat',
             'genre' => 'Genre',
