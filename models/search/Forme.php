@@ -33,7 +33,7 @@ class Forme extends ActiveRecord
     // The primary category of each form.
     private $primaryCategory;
 
-    public static $catgramToCategory = [
+    private static $catgramToCategory = [
         '' => '',
         // Adjectifs
         'adj' => 'adj',
@@ -120,7 +120,7 @@ class Forme extends ActiveRecord
      * - label: the label for the given field.
      * - isLocution: whether the current category is a locution or not.
      */
-    public static $categoryToLabel = [
+    private static $categoryToLabel = [
         '' => '',
         'adj' => 'Adjectif',
         'adv' => 'Adverbe',
@@ -144,6 +144,11 @@ class Forme extends ActiveRecord
         'nom-loc' => 'Nom',
         'verbe-loc' => 'Verbe',
     ];
+    public static function categoryToLabel($cat)
+    {
+        return static::$categoryToLabel[$cat];
+    }
+
     /**
      * Returns a mapping between categories as stored in the catgram field of the DB
      * and table categories like 'adj', 'verbe', 'nom'.
@@ -161,14 +166,14 @@ class Forme extends ActiveRecord
         $primaryCategory = $cat;
     }
     /**
-     * Returns whether the current Forme is a "conjonction"
+     * Returns whether the current Forme is a "locution"
      * or not. This is determined by the category name.
      * If it ends with "loc", then the category is a locution.
-     * @return bool Whether the current Forme is a conjonction or not.
+     * @return bool Whether the current Forme is a locution or not.
      */
-    public function isConjonction()
+    public function isLocution()
     {
-        return static::$categoryToLabel[$this->primaryCategory];
+        return substr($this->primaryCategory, -3) === 'loc';
     }
 
     /**
@@ -193,11 +198,12 @@ class Forme extends ActiveRecord
             'forme' => 'Forme',
             'lemmeid' => 'Lemmeid',
             'lemme' => 'Lemme',
-            'catgram' => 'Cat. secondaire',
-            'cat' => 'Cat',
+            'primaryCategory' => 'Catégorie',
+            'catgram' => 'Catégorie secondaire',
+            'cat' => 'Catégorie',
             'genre' => 'Genre',
-            'num' => 'Num',
-            'person' => 'Person',
+            'num' => 'Nombre',
+            'person' => 'Personne',
             'temps' => 'Temps',
             'rare' => 'Rare',
             'lig' => 'Lig',

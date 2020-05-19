@@ -19,7 +19,7 @@ class FormeSearch extends Forme
     public function rules()
     {
         return [
-            [['forme', 'lemme', 'primaryCategory'], 'safe'],
+            [['forme', 'lemme', 'catgram', 'temps', 'genre', 'num', 'person'], 'safe'],
         ];
     }
 
@@ -60,21 +60,30 @@ class FormeSearch extends Forme
                 ->with('formes');
         }*/
 
-        $query->andFilterWhere(['like', 'forme', $this->forme . '%', false])
-            ->andFilterWhere(['like', 'primaryCategory', $this->primaryCategory]);
+        $query
+            ->andFilterWhere(['like', 'catgram', $this->catgram])
+            ->andFilterWhere(['like', 'temps', $this->temps])
+            ->andFilterWhere(['like', 'num', $this->num])
+            ->andFilterWhere(['like', 'genre', $this->genre])
+            ->andFilterWhere(['like', 'person', $this->person]);
 
-        /* If an accented search is set, use a MySQL collation that does accent-sensitive 
+        /* TODO: If an accented search is set, use a MySQL collation that does accent-sensitive 
          * search.
          * Our queries have a utf8mb4 character set, so our desired collation that's
          * accent-sensitive is utf8mb4_bin.
          * See https://stackoverflow.com/questions/500826/how-to-conduct-an-accent-sensitive-search-in-mysql.
+         * Unfortunately this is not supported by Yii,
+         * so do a regexp search instead which is accent-insensitive.
          */
         if ($isAccentSearch) {
+            // Match everything after.  
             $query
-                ->andFilterWhere(['like', 'lemme', $this->lemme . '%', false]);
+                ->andFilterWhere(['regexp', 'lemme', '^' . $this->lemme . '(.*)$'])
+                ->andFilterWhere(['regexp', 'forme', '^' . $this->forme . '(.*)$']);
         } else {
             $query
-                ->andFilterWhere(['like', 'lemme', $this->lemme . '%', false]);
+                ->andFilterWhere(['like', 'lemme', $this->lemme . '%', false])
+                ->andFilterWhere(['like', 'forme', $this->forme . '%', false]);
         }
 
         // Only find the first matching lemme if lemme is set, not all of them.

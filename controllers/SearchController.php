@@ -29,20 +29,31 @@ class SearchController extends Controller
              * so that they persist even in future searches,
              * for instance with the Ajax grid search. 
              */
-            $session->set('lemme', $form->lemme);
+            $session->set('forme', $form->forme);
             $session->set('accent', $form->accent);
+        }
+
+        // Did GridView search for a forme? If so, set it in the session.
+        // We do this after the form, so that the grid view search takes priority.
+        $origParams = Yii::$app->request->queryParams;
+        if (isset($origParams['FormeSearch']['forme'])) {
+            $session->set('forme', $origParams['FormeSearch']['forme']);
         }
 
         /* Check if the session parameters are set.
          * If they aren't, use default parameters.
-         * Note that these are HTML parameters: the default values will be strings.
          */
         $params = array_merge(
-            Yii::$app->request->queryParams,
+            $origParams,
             [
-                'FormeSearch' => [
-                    'lemme' => $session->has('lemme') ? $session->get('lemme') : '',
-                ],
+                'FormeSearch' => array_merge(
+                    array_key_exists('FormeSearch', $origParams)
+                        ? $origParams['FormeSearch']
+                        : [],
+                    [
+                        'forme' => $session->has('forme') ? $session->get('forme') : '',
+                    ]
+                ),
                 'searchParams' => [
                     'accent' => $session->has('accent') ? $session->get('accent') : '0'
                 ]

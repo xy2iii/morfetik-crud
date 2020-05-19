@@ -5,6 +5,7 @@ use yii\bootstrap4\ActiveForm;
 use yii\web\View;
 use yii\widgets\Pjax;
 use kartik\grid\GridView;
+use app\models\search\Forme;
 
 /*
  * PJax - AJAX + pushState(): https://github.com/yiisoft/jquery-pjax
@@ -32,7 +33,7 @@ $this->registerJs(
 // Set the default values from the session.
 $session = Yii::$app->session;
 // session->get() will return null if nothing is set.
-$formModel->lemme = $session->get('lemme');
+$formModel->forme = $session->get('forme');
 $formModel->accent = $session->get('accent');
 
 $this->title = Yii::t('app', 'Search');
@@ -48,7 +49,7 @@ $form = ActiveForm::begin(
         ],
     ]
 );
-echo $form->field($formModel, 'lemme', [
+echo $form->field($formModel, 'forme', [
     'inputTemplate' => '<div class="input-group">
     <div class="input-group input-group-lg">
         <div class="input-group-prepend">
@@ -70,11 +71,26 @@ Pjax::end();
     <?php
     $columns = [
         [
+            'attribute' => 'forme',
+            'vAlign' => 'middle',
+        ],
+        [
             'attribute' => 'lemme',
             'vAlign' => 'middle',
         ],
         [
             'attribute' => 'primaryCategory',
+            'vAlign' => 'middle',
+            'format' => 'html',
+            'value' => function ($data) {
+                $after = $data->isLocution()
+                    ? '&nbsp;<span class="badge badge-secondary">Locution</span>'
+                    : '';
+                return Forme::categoryToLabel($data->primaryCategory) . $after;
+            }
+        ],
+        [
+            'attribute' => 'catgram',
             'vAlign' => 'middle',
         ],
         [
@@ -84,14 +100,17 @@ Pjax::end();
         [
             'attribute' => 'num',
             'vAlign' => 'middle',
+            'width' => '4rem',
         ],
         [
             'attribute' => 'genre',
             'vAlign' => 'middle',
+            'width' => '4rem',
         ],
         [
             'attribute' => 'person',
             'vAlign' => 'middle',
+            'width' => '4rem',
         ],
     ];
     if (isset($dataProvider)) {
