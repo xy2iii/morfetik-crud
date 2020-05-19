@@ -71,7 +71,7 @@ class FormeSearch extends Forme
          */
         if ($isAccentSearch) {
             $query
-                ->andFilterWhere(['like', 'lemme', $this->lemme . '% COLLATE utf8mb4_bin', false]);
+                ->andFilterWhere(['like', 'lemme', $this->lemme . '%', false]);
         } else {
             $query
                 ->andFilterWhere(['like', 'lemme', $this->lemme . '%', false]);

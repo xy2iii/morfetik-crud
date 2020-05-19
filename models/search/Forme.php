@@ -4,6 +4,7 @@ namespace app\models\search;
 
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\db\ActiveRecord;
 
 /**
  * Each Forme is described here by both primary and secondary category.
@@ -27,7 +28,7 @@ use yii\data\ActiveDataProvider;
  * @property string $infos
  * @property string $prono
  */
-class Forme extends \yii\db\ActiveRecord
+class Forme extends ActiveRecord
 {
     // The primary category of each form.
     private $primaryCategory;

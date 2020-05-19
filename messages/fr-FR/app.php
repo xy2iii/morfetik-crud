@@ -40,6 +40,7 @@ return [
     'Radical model' => 'Modèle pour radical',
     'Reset Grid' => 'Réinitialiser la grille',
     'Save' => 'Sauvegarder',
+    'Search' => 'Rechercher',
     'Singular' => 'Singulier',
     'User' => 'Utilisateur',
     'Users' => 'Utilisateurs',

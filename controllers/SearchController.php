@@ -18,10 +18,6 @@ class SearchController extends Controller
 {
     public function actionIndex()
     {
-        return $this->render('index', ['model' => new Forme(), 'searchProvider' => new FormeSearch()]);
-    }
-    public function actionEntry()
-    {
         $form = new SearchBarForm();
         $searchModel = new FormeSearch();
 
@@ -33,7 +29,7 @@ class SearchController extends Controller
              * so that they persist even in future searches,
              * for instance with the Ajax grid search. 
              */
-            $session->set('forme', $form->forme);
+            $session->set('lemme', $form->lemme);
             $session->set('accent', $form->accent);
         }
 
@@ -45,10 +41,10 @@ class SearchController extends Controller
             Yii::$app->request->queryParams,
             [
                 'FormeSearch' => [
-                    'forme' => $session->has('forme') ? $session->get('forme') : '',
+                    'lemme' => $session->has('lemme') ? $session->get('lemme') : '',
                 ],
                 'searchParams' => [
-                    'accent' => $session->has('forme') ? $session->get('forme') : '0'
+                    'accent' => $session->has('accent') ? $session->get('accent') : '0'
                 ]
             ],
         );
@@ -58,7 +54,7 @@ class SearchController extends Controller
 
         if (Yii::$app->request->isAjax) {
             return $this->renderAjax(
-                'entry',
+                'index',
                 [
                     'formModel' => $form,
                     'dataProvider' => $dataProvider,
@@ -67,7 +63,7 @@ class SearchController extends Controller
             );
         } else {
             return $this->render(
-                'entry',
+                'index',
                 [
                     'formModel' => $form,
                     'dataProvider' => $dataProvider,

@@ -44,6 +44,7 @@ AppAsset::register($this);
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav ml-auto'],
             'items' => [
+                ['label' => Yii::t('app', 'Search'), 'url' => ['/search']],
                 ['label' => Yii::t('app', 'Publications'), 'url' => ['/site/publications']],
                 ['label' => Yii::t('app', 'About'), 'url' => ['/site/about']],
                 ['label' => Yii::t('app', 'Contact'), 'url' => ['/site/contact']],
