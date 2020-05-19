@@ -4,6 +4,7 @@ namespace app\models\search;
 
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\db\Expression;
 use app\models\search\Forme;
 
 /**
@@ -22,6 +23,11 @@ class FormeSearch extends Forme
         ];
     }
 
+    /**
+     * Search with given parameters.
+     * In 'searchParams' of the $params array, is stored various extra information
+     * about how the search is to be performed.
+     */
     public function search($params)
     {
         $query = Forme::find();
@@ -30,14 +36,19 @@ class FormeSearch extends Forme
             'query' => $query,
         ]);
 
-        print_r($params);
+        //print_r($params);
         $this->load($params);
+        /* Whether the search is accented or not. This is set via searchParams
+         * in the controller. 
+         */
+        $isAccentSearch = boolval($params['searchParams']['accent']);
 
         if (!$this->validate()) {
             return $dataProvider;
         }
 
         // Only find the first matching lemme if lemme is set, not all of them.
+        /*
         if (isset($this->lemme)) {
             $query
                 ->select('formes.*')
@@ -47,18 +58,31 @@ class FormeSearch extends Forme
                     ['and', 'formes.lemme = f2.lemme', 'formes.forme > f2.forme',]
                 )
                 ->with('formes');
-        }
+        }*/
 
-        echo 'forme:' .     $this->forme;
-        $query->andFilterWhere(['like', 'forme', $this->forme])
-            ->andFilterWhere(['like', 'lemme', $this->lemme])
+        $query->andFilterWhere(['like', 'forme', $this->forme . '%', false])
             ->andFilterWhere(['like', 'primaryCategory', $this->primaryCategory]);
 
+        /* If an accented search is set, use a MySQL collation that does accent-sensitive 
+         * search.
+         * Our queries have a utf8mb4 character set, so our desired collation that's
+         * accent-sensitive is utf8mb4_bin.
+         * See https://stackoverflow.com/questions/500826/how-to-conduct-an-accent-sensitive-search-in-mysql.
+         */
+        if ($isAccentSearch) {
+            $query
+                ->andFilterWhere(['like', 'lemme', $this->lemme . '% COLLATE utf8mb4_bin', false]);
+        } else {
+            $query
+                ->andFilterWhere(['like', 'lemme', $this->lemme . '%', false]);
+        }
+
         // Only find the first matching lemme if lemme is set, not all of them.
+        /*
         if (isset($this->lemme)) {
             $query
                 ->where(['f2.formeid' => null]);
-        }
+        }*/
 
         return $dataProvider;
     }

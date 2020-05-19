@@ -27,7 +27,13 @@ $this->registerJs(
     ",
     View::POS_READY,
     'pjax-handler'
-)
+);
+
+// Set the default values from the session.
+$session = Yii::$app->session;
+// session->get() will return null if nothing is set.
+$formModel->forme = $session->get('forme');
+$formModel->accent = $session->get('accent');
 ?>
 
 <?php Pjax::begin();
@@ -53,6 +59,7 @@ echo $form->field($formModel, 'forme', [
 </div>',
     'enableLabel' => false
 ]);
+echo $form->field($formModel, 'accent')->checkbox()->label('Sensitive aux accents');
 ActiveForm::end();
 Pjax::end();
 ?>

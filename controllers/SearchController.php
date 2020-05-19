@@ -23,39 +23,49 @@ class SearchController extends Controller
     public function actionEntry()
     {
         $form = new SearchBarForm();
-        // The initial search is a search by Forme.
         $searchModel = new FormeSearch();
 
-        // The form has been submitted. Save it to session.
-        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
-            $params = array_merge(
-                Yii::$app->request->queryParams,
-                ['FormeSearch' => ['lemme' => $form->forme]],
-            );
-            $dataProvider = $searchModel->search($params);
+        $session = Yii::$app->session;
+        $session->open();
 
-            if (Yii::$app->request->isAjax) {
-                return $this->renderAjax(
-                    'entry',
-                    [
-                        'formModel' => $form,
-                        'dataProvider' => $dataProvider,
-                        'searchModel' => $searchModel,
-                    ]
-                );
-            } else {
-                return $this->render(
-                    'entry',
-                    [
-                        'formModel' => $form,
-                        'dataProvider' => $dataProvider,
-                        'searchModel' => $searchModel,
-                    ]
-                );
-            }
+        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+            /* The form has been submitted. Save parameters to session,
+             * so that they persist even in future searches,
+             * for instance with the Ajax grid search. 
+             */
+            $session->set('forme', $form->forme);
+            $session->set('accent', $form->accent);
+        }
+
+        /* Check if the session parameters are set.
+         * If they aren't, use default parameters.
+         * Note that these are HTML parameters: the default values will be strings.
+         */
+        $params = array_merge(
+            Yii::$app->request->queryParams,
+            [
+                'FormeSearch' => [
+                    'forme' => $session->has('forme') ? $session->get('forme') : '',
+                ],
+                'searchParams' => [
+                    'accent' => $session->has('forme') ? $session->get('forme') : '0'
+                ]
+            ],
+        );
+
+        // Transfer params to FormeSearch.
+        $dataProvider = $searchModel->search($params);
+
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax(
+                'entry',
+                [
+                    'formModel' => $form,
+                    'dataProvider' => $dataProvider,
+                    'searchModel' => $searchModel,
+                ]
+            );
         } else {
-            // No form was submitted. This may be a gridView request.
-            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
             return $this->render(
                 'entry',
                 [
