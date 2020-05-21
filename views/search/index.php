@@ -39,6 +39,8 @@ $formModel->strict = $session->get('strict');
 
 $this->title = Yii::t('app', 'Search');
 $this->params['breadcrumbs'][0] = $this->title;
+
+echo Yii::$app->request->url;
 ?>
 
 <div class='mb-4'>
