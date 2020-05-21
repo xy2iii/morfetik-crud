@@ -27,7 +27,7 @@ $config = [
         'assetManager' => [
             'baseUrl' => YII_ENV_DEV
                 ? '@web/assets'
-                : '@web/morfetik/assets', // If in a subfolder, rewrite
+                : '@web/assets', // If in a subfolder, rewrite
             'bundles' => [
                 'yii\bootstrap\BootstrapAsset' => [
                     'sourcePath' => null,
@@ -86,7 +86,7 @@ $config = [
             'enablePrettyUrl' => true, // Don't show index.php?a=z....
             'showScriptName' => false,
             'hostInfo' => YII_ENV_DEV ? '' : 'https://tal.lipn.univ-paris13.fr',
-            'baseUrl' => YII_ENV_DEV ? '' : 'morfetik/', // If in a subfolder, rewrite
+            'baseUrl' => YII_ENV_DEV ? '' : '/morfetik', // If in a subfolder, rewrite
             'rules' => [],
         ],
     ],
