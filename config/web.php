@@ -25,7 +25,7 @@ $config = [
             'ruleTable' => 'yii_auth_rule',
         ],
         'assetManager' => [
-            'baseUrl' => YII_ENV_DEV ? '' : '@web', // If in a subfolder, rewrite
+            'baseUrl' => '@web/assets', // If in a subfolder, rewrite
             'bundles' => [
                 'yii\bootstrap\BootstrapAsset' => [
                     'sourcePath' => null,
@@ -84,7 +84,7 @@ $config = [
             'enablePrettyUrl' => true, // Don't show index.php?a=z....
             'showScriptName' => false,
             'hostInfo' => YII_ENV_DEV ? '' : 'https://tal.lipn.univ-paris13.fr',
-            'baseUrl' => YII_ENV_DEV ? '' : '@web', // If in a subfolder, rewrite
+            'baseUrl' => '@web', // If in a subfolder, rewrite: @web is set in Aliases.php
             'rules' => [],
         ],
     ],

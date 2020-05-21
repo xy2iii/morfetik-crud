@@ -13,6 +13,8 @@ class Aliases extends Component
     private $baseURL = '/morfetik';
     public function init()
     {
-        Yii::setAlias('@web', YII_ENV_DEV ? '' : $this->baseURL);
+        if (!YII_ENV_DEV) {
+            Yii::setAlias('@web', $this->baseURL);
+        }
     }
 }
