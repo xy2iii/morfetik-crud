@@ -24,17 +24,29 @@ class SearchController extends Controller
         $session = Yii::$app->session;
         $session->open();
 
+        // Logic to handle remembering options.
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             /* The form has been submitted. Save parameters to session,
              * so that they persist even in future searches,
              * for instance with the Ajax grid search. 
              */
-            $session->set('forme', $form->forme);
+            $session->set('forme',  $form->forme);
             $session->set('accent', $form->accent);
+            $session->set('strict', $form->strict);
+        } else {
+            /* No form has been submitted.
+             * This may be the first visit, where no values have been set,
+             * so set the form's default values. To get the default values,
+             * we get $form->attribute.
+             */
+            if (!$session->has($form->forme)) $session->set('forme',  $form->forme);
+            if (!$session->has($form->accent)) $session->set('accent',  $form->accent);
+            if (!$session->has($form->strict)) $session->set('strict',  $form->strict);
         }
+        Yii::trace($session->get('accent'));
+        Yii::trace($session->get('strict'));
 
         // Did GridView search for a forme? If so, set it in the session.
-        // We do this after the form, so that the grid view search takes priority.
         $origParams = Yii::$app->request->queryParams;
         if (isset($origParams['FormeSearch']['forme'])) {
             $session->set('forme', $origParams['FormeSearch']['forme']);
@@ -51,11 +63,12 @@ class SearchController extends Controller
                         ? $origParams['FormeSearch']
                         : [],
                     [
-                        'forme' => $session->has('forme') ? $session->get('forme') : '',
+                        'forme' => $session->get('forme'),
                     ]
                 ),
                 'searchParams' => [
-                    'accent' => $session->has('accent') ? $session->get('accent') : '0'
+                    'accent' => $session->get('accent'),
+                    'strict' => $session->get('strict'),
                 ]
             ],
         );
