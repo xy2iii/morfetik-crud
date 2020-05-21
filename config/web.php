@@ -9,7 +9,7 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => [
         'log',
-        //'app\config\Aliases', // The baseURL is defined here.
+        'app\config\Aliases', // The baseURL is defined here.
     ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
