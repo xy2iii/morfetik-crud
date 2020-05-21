@@ -6,7 +6,7 @@ use Yii;
 use yii\base\Component;
 
 /**
- * Sets the webroot. Modify this file to change config.
+ * Sets the webroot. Modify this file to change config. UNUSED
  */
 class Aliases extends Component
 {

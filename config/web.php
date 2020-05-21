@@ -9,7 +9,7 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => [
         'log',
-        'app\config\Aliases', // The baseURL is defined here.
+        //'app\config\Aliases', // The baseURL is defined here.
     ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -82,8 +82,8 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true, // Don't show index.php?a=z....
             'showScriptName' => false,
-            'hostInfo' => YII_ENV_DEV ? '' : 'https://tal.lipn.univ-paris13.fr',
-            'baseUrl' => YII_ENV_DEV ? '' : '@web', // If in a subfolder, rewrite
+            //'hostInfo' => YII_ENV_DEV ? '' : 'https://tal.lipn.univ-paris13.fr',
+            //'baseUrl' => YII_ENV_DEV ? '' : '@web', // If in a subfolder, rewrite
             'rules' => [],
         ],
     ],
