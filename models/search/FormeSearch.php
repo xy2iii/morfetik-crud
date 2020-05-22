@@ -48,7 +48,8 @@ class FormeSearch extends Forme
         }
 
 
-        $query->select('lemmeid, lemme, catgram, cat, genre, num, person, temps, rare, lig, graphsav, notes, infos, prono');
+        $query
+            ->select('lemmeid, lemme, catgram, cat, genre, num, person, temps, rare, lig, graphsav, notes, infos, prono');
 
         /* If an accented search is set, use a MySQL collation that does accent-sensitive search.
          * See https://stackoverflow.com/questions/500826/how-to-conduct-an-accent-sensitive-search-in-mysql.
@@ -72,7 +73,6 @@ class FormeSearch extends Forme
             }
         }
 
-        // Like queries.
         $query
             ->andFilterWhere(['like', 'catgram', $this->catgram])
             ->andFilterWhere(['like', 'temps', $this->temps])
@@ -80,7 +80,6 @@ class FormeSearch extends Forme
             ->andFilterWhere(['like', 'genre', $this->genre])
             ->andFilterWhere(['like', 'person', $this->person]);
 
-        // Only get the different rows, to avoid DB duplicates.
         $query->distinct();
 
         return $dataProvider;

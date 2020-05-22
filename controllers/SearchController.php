@@ -4,11 +4,10 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 use app\models\search\Forme;
 use app\models\search\FormeSearch;
-use app\models\search\FormeSearchByForme;
 use app\models\search\SearchBarForm;
-use yii\data\ArrayDataProvider;
 
 /**
  * The controller for the main search function.
@@ -95,5 +94,20 @@ class SearchController extends Controller
                 ]
             );
         }
+    }
+    /**
+     * Returns a related model and displays the expand-row view.
+     * Used for Ajax requests.
+     */
+    public function actionExpandRow()
+    {
+        $request = Yii::$app->request;
+        // expandRowKey is the model ID, supplied by Krajee GridView.
+        $id = $request->post('expandRowKey');
+
+        $lemme = Forme::findOne($id)->lemme;
+        $formes = Forme::find()->where(['lemme' => $lemme])->all();
+
+        return $this->renderPartial('_expand-row', ['models' => $formes]);
     }
 }

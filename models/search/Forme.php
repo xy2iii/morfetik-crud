@@ -183,9 +183,13 @@ class Forme extends ActiveRecord
     {
         return 'formes';
     }
+    /**
+     * Since we're looking for different lemmes within the formes,
+     * the primary key here is the lemmeid.
+     */
     public static function primaryKey()
     {
-        return ["formeid"];
+        return ["lemmeid"];
     }
 
     /**

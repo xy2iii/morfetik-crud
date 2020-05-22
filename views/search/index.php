@@ -90,6 +90,18 @@ echo Yii::$app->request->url;
     <?php
     $columns = [
         [
+            'class' => 'kartik\grid\ExpandRowColumn',
+            'width' => '50px',
+            'value' => function ($model, $key, $index, $column) {
+                return GridView::ROW_COLLAPSED;
+            },
+            // Will pass expandRowKey and expandRowInd to the controller.
+            // See https://demos.krajee.com/grid#expand-row-column
+            'detailUrl' => Url::to(['expand-row']),
+            'detailRowCssClass' => '',
+            'headerOptions' => ['class' => 'kartik-sheet-style'],
+        ],
+        [
             'attribute' => 'lemme',
             'vAlign' => 'middle',
         ],
@@ -146,7 +158,6 @@ echo Yii::$app->request->url;
             'striped' => true,
             'condensed' => true,
             'responsive' => true,
-            'hover' => true,
         ]);
     }
     ?>
