@@ -30,6 +30,7 @@ CrudAsset::register($this);
             'filterModel' => $searchModel,
             'filterUrl' => '@web/crud/adjectif',
             'pjax' => true,
+            'pjaxOptions' => ['options' => ['enablePushState' => false]],
             'columns' => require(__DIR__ . '/_columns.php'),
             'toolbar' => [
                 [

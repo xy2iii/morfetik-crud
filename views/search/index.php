@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][0] = $this->title;
 ?>
 
 <div class='mb-4'>
-    <?php Pjax::begin();
+    <?php Pjax::begin(['enablePushState' => false]);
     $form = ActiveForm::begin(
         [
             'action' => Url::toRoute('/search'),
@@ -168,6 +168,7 @@ $this->params['breadcrumbs'][0] = $this->title;
             'pjaxSettings' => [
                 'options' => [
                     'id' => 'container-pjax',
+                    'enablePushState' => false,
                 ],
             ],
             'bordered' => true,
