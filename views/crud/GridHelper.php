@@ -50,6 +50,7 @@ class GridHelper
             // See https://demos.krajee.com/grid#expand-row-column
             'detailUrl' => Url::to(['expand-row']),
             'headerOptions' => ['class' => 'kartik-sheet-style'],
+            'detailAnimationDuration' => 'fast',
         ];
     }
     /**

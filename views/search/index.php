@@ -37,10 +37,10 @@ $formModel->forme = $session->get('forme');
 $formModel->accent = $session->get('accent');
 $formModel->strict = $session->get('strict');
 
-$this->title = Yii::t('app', 'Search');
-$this->params['breadcrumbs'][0] = $this->title;
+$this->title = Yii::t('app', 'Search') .
+    ($session->has('forme') ? ': ' . $session->get('forme') : '');
 
-echo Yii::$app->request->url;
+$this->params['breadcrumbs'][0] = $this->title;
 ?>
 
 <div class='mb-4'>
@@ -75,12 +75,12 @@ echo Yii::$app->request->url;
     echo $form->field($formModel, 'accent', [
         'enableClientValidation' => false, // Don't show colored borders when input is correct.
     ])->checkbox()->label(
-        'Sensible aux accents<small class="ml-2">Prend en compte tous les accents dans la recherche.</small>'
+        'Sensible aux accents<small class="ml-2">(prise en compte des accents dans la recherche pour une sélectivité plus grande des formes) </small>'
     );
     echo $form->field($formModel, 'strict', [
         'enableClientValidation' => false, // Don't show colored borders when input is correct.
     ])->checkbox()->label(
-        'Recherche stricte<small class="ml-2">Le mot exact sera recherché: sinon, recherche tous les mots commencant par la recherche.</small>'
+        'Recherche stricte<small class="ml-2">(recherche exacte du mot tapé ; sinon, recherche de tous les mots commençant par le mot tapé)</small>'
     );
     ActiveForm::end();
     Pjax::end();
@@ -100,6 +100,7 @@ echo Yii::$app->request->url;
             'detailUrl' => Url::to(['expand-row']),
             'detailRowCssClass' => '',
             'headerOptions' => ['class' => 'kartik-sheet-style'],
+            'detailAnimationDuration' => 'fast',
         ],
         [
             'attribute' => 'lemme',
@@ -114,7 +115,7 @@ echo Yii::$app->request->url;
                     ? '&nbsp;<span class="badge badge-secondary">Locution</span>'
                     : '';
                 return Forme::categoryToLabel($data->primaryCategory) . $after;
-            }
+            },
         ],
         [
             'attribute' => 'catgram',

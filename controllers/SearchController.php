@@ -44,15 +44,8 @@ class SearchController extends Controller
             if (!$session->has($form->accent)) $session->set('accent',  $form->accent);
             if (!$session->has($form->strict)) $session->set('strict',  $form->strict);
         }
-        Yii::trace($session->get('accent'));
-        Yii::trace($session->get('strict'));
 
-        // Did GridView search for a forme? If so, set it in the session.
         $origParams = Yii::$app->request->queryParams;
-        if (isset($origParams['FormeSearch']['forme'])) {
-            $session->set('forme', $origParams['FormeSearch']['forme']);
-        }
-
         /* Check if the session parameters are set.
          * If they aren't, use default parameters.
          */
@@ -108,44 +101,120 @@ class SearchController extends Controller
         $id = $request->post('expandRowKey');
 
         $lemme = Forme::findOne($id);
-        // Make sure the search is strict, no matter what the search mode is.
-        $baseQuery = Forme::find()
-            ->andFilterWhere(['=', 'lemme', $lemme->lemme])
-            ->andFilterWhere(['=', 'catgram', $lemme->catgram]);
 
-        // Render the correct view based on the lemme's cat field.
-        // Each different Cat is a different way to render, and they are based
-        // on different catgram values.
-        // See the SQL generators for the "forme" table in extra/.
+        /* Render the correct view based on the lemme's cat field.
+         * Each different Cat is a different way to render, and they are based
+         * on different catgram values.
+         * See the SQL generators for the "forme" table in extra/.
+         */
         $cat = $lemme->cat;
         switch ($cat) {
             case "Adj":
-                return $this->renderPartial('detail-Adj', ['models' => $baseQuery]);
+                return $this->adj($lemme);
                 break;
             case "Dp":
-                return $this->renderPartial('detail-Dp', ['models' => $baseQuery]);
+                return $this->dp($lemme);
                 break;
             case "Inv":
-                return $this->renderPartial('detail-Inv', ['models' => $baseQuery]);
+                return $this->inv($lemme);
                 break;
             case "Nom":
-                return $this->renderPartial('detail-Nom', ['models' => $baseQuery]);
+                return $this->nom($lemme);
                 break;
             case "Vrb":
-                return $this->renderForVrb($lemme);
+                return $this->vrb($lemme);
                 break;
         }
     }
 
-    private function renderForVrb($lemme)
+    private function adj($lemme)
     {
-        // For performance, recreate the queries directly
-        // These are the same as the $baseQuery
-        // We could clone, but it's -really- slow
-        $lemme = Forme::find()
+        $result = Forme::find()
             ->andFilterWhere(['=', 'lemme', $lemme->lemme])
-            ->andFilterWhere(['=', 'catgram', $lemme->catgram])
-            ->one();
+            ->andFilterWhere(['=', 'catgram', $lemme->catgram]);
+
+        // Add each adj form. Manage duplicates with sets. 
+        $adj = [];
+        foreach (['MS', 'FS', 'MP', 'FP'] as $genre) {
+            $adj[$genre] = new Set();
+        }
+        foreach ($result->each() as $forme) {
+            $genre = $forme->genre . $forme->num;
+            $adj[$genre]->add($forme->forme);
+        }
+
+        return $this->renderPartial('detail-Adj', [
+            'lemme' => $lemme,
+            'adj' => $adj,
+        ]);
+    }
+
+    private function dp($lemme)
+    {
+        $result = Forme::find()
+            ->andFilterWhere(['=', 'lemme', $lemme->lemme])
+            ->andFilterWhere(['=', 'catgram', $lemme->catgram]);
+
+        // Add each dp form. Manage duplicates with sets. 
+        $dp = [];
+        foreach (['MS', 'FS', 'MP', 'FP'] as $genre) {
+            $dp[$genre] = new Set();
+        }
+        foreach ($result->each() as $forme) {
+            $genre = $forme->genre . $forme->num;
+            $dp[$genre]->add($forme->forme);
+        }
+
+        return $this->renderPartial('detail-Dp', [
+            'lemme' => $lemme,
+            'dp' => $dp,
+        ]);
+    }
+
+    private function inv($lemme)
+    {
+        $result = Forme::find()
+            ->andFilterWhere(['=', 'lemme', $lemme->lemme])
+            ->andFilterWhere(['=', 'catgram', $lemme->catgram]);
+
+        // Add each inv form.
+        $inv = new Set();
+        foreach ($result->each() as $forme) {
+            $inv->add($forme->forme);
+        }
+
+        return $this->renderPartial('detail-Inv', [
+            'lemme' => $lemme,
+            'inv' => $inv,
+        ]);
+    }
+
+    private function nom($lemme)
+    {
+        $result = Forme::find()
+            ->andFilterWhere(['=', 'lemme', $lemme->lemme])
+            ->andFilterWhere(['=', 'catgram', $lemme->catgram]);
+
+        // Add each dp form. Manage duplicates with sets. 
+        $nom = [];
+        foreach (['MS', 'FS', 'MP', 'FP'] as $genre) {
+            $nom[$genre] = new Set();
+        }
+        foreach ($result->each() as $forme) {
+            $genre = $forme->genre . $forme->num;
+            $nom[$genre]->add($forme->forme);
+        }
+
+        return $this->renderPartial('detail-Nom', [
+            'lemme' => $lemme,
+            'nom' => $nom,
+        ]);
+    }
+
+    private function vrb($lemme)
+    {
+        // For performance, recreate the queries directly. These are the same as the $baseQuery.
+        // We could clone, but it's -really- slow.
         $Inf = Forme::find()
             ->andFilterWhere(['=', 'lemme', $lemme->lemme])
             ->andFilterWhere(['=', 'catgram', $lemme->catgram])
@@ -205,7 +274,6 @@ class SearchController extends Controller
             $vrb['Inf']->add($forme->forme);
         }
 
-        // Create sets, to filter out duplicate.
         foreach (['1S', '2S', '3S', '1P', '2P', '3P'] as $personne) {
             $vrb['Ind-pr']["$personne"] = new Set();
         }
@@ -214,12 +282,81 @@ class SearchController extends Controller
             $vrb['Ind-pr']["$personne"]->add($forme->forme);
         }
 
-        // Create the $vrb variable in the view
-        $res = [
+        foreach (['1S', '2S', '3S', '1P', '2P', '3P'] as $personne) {
+            $vrb['Ind-imp']["$personne"] = new Set();
+        }
+        foreach ($Ind_imp->each() as $forme) {
+            $personne = $forme->num . $forme->person;
+            $vrb['Ind-imp']["$personne"]->add($forme->forme);
+        }
+
+        foreach (['1S', '2S', '3S', '1P', '2P', '3P'] as $personne) {
+            $vrb['Ind-ps']["$personne"] = new Set();
+        }
+        foreach ($Ind_ps->each() as $forme) {
+            $personne = $forme->num . $forme->person;
+            $vrb['Ind-ps']["$personne"]->add($forme->forme);
+        }
+
+        foreach (['1S', '2S', '3S', '1P', '2P', '3P'] as $personne) {
+            $vrb['Ind-fut']["$personne"] = new Set();
+        }
+        foreach ($Ind_fut->each() as $forme) {
+            $personne = $forme->num . $forme->person;
+            $vrb['Ind-fut']["$personne"]->add($forme->forme);
+        }
+
+        foreach (['1S', '2S', '3S', '1P', '2P', '3P'] as $personne) {
+            $vrb['Cond-pr']["$personne"] = new Set();
+        }
+        foreach ($Cond_pr->each() as $forme) {
+            $personne = $forme->num . $forme->person;
+            $vrb['Cond-pr']["$personne"]->add($forme->forme);
+        }
+
+        foreach (['1S', '2S', '3S', '1P', '2P', '3P'] as $personne) {
+            $vrb['Sub-pr']["$personne"] = new Set();
+        }
+        foreach ($Sub_pr->each() as $forme) {
+            $personne = $forme->num . $forme->person;
+            $vrb['Sub-pr']["$personne"]->add($forme->forme);
+        }
+
+        foreach (['1S', '2S', '3S', '1P', '2P', '3P'] as $personne) {
+            $vrb['Sub-imp']["$personne"] = new Set();
+        }
+        foreach ($Sub_imp->each() as $forme) {
+            $personne = $forme->num . $forme->person;
+            $vrb['Sub-imp']["$personne"]->add($forme->forme);
+        }
+
+        // Only specific personnes for sub-imp.
+        foreach (['2S', '1P', '2P'] as $personne) {
+            $vrb['Imp-pr']["$personne"] = new Set();
+        }
+        foreach ($Imp_pr->each() as $forme) {
+            $personne = $forme->num . $forme->person;
+            $vrb['Imp-pr']["$personne"]->add($forme->forme);
+        }
+
+        // For Ppres, there's only one temps.
+        $vrb['Ppres'] = new Set();
+        foreach ($Ppres->each() as $forme) {
+            $vrb['Ppres']->add($forme->forme);
+        }
+
+        // Different keys for Pp.
+        foreach (['MS', 'FS', 'MP', 'FP'] as $personne) {
+            $vrb['Pp']["$personne"] = new Set();
+        }
+        foreach ($Pp->each() as $forme) {
+            $personne = $forme->genre . $forme->person;
+            $vrb['Pp']["$personne"]->add($forme->forme);
+        }
+
+        return $this->renderPartial('detail-Vrb', [
             'lemme' => $lemme,
             'vrb' => $vrb,
-        ];
-
-        return $this->renderPartial('detail-Vrb', $res);
+        ]);
     }
 }

@@ -1,39 +1,42 @@
-<?php
-/* Widget used when expanding a row. Shows foreign key data. */
-
-use yii\widgets\DetailView;
-/* @var $model The related model, a model instance. */
-
-$lemme = $models[0]; // Same for every row
-?>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-4">
-            <table class="table">
-                <thead class="thead-light">
+        <table class="table col-md-4">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"><?= $lemme->lemme ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if ($dp['MS'] !== '') : ?>
                     <tr>
-                        <th scope="col">Forme</th>
-                        <th scope="col">Genre</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Personne</th>
-                        <th scope="col">Notes</th>
+                        <th scope="row">Masculin singulier</th>
+                        <td><?= $dp['MS'] ?></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($models as $forme) : ?>
-                        <tr>
-                            <td><?= $forme->forme ?></td>
-                            <td><?= $forme->genre ?></td>
-                            <td><?= $forme->num ?></td>
-                            <td><?= $forme->person ?></td>
-                            <td><?= $forme->notes ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
+                <?php endif; ?>
+                <?php if ($dp['MP'] !== '') : ?>
+                    <tr>
+                        <th scope="row">Masculin pluriel</th>
+                        <td><?= $dp['MP'] ?></td>
+                    </tr>
+                <?php endif; ?>
+                <?php if ($dp['FS'] !== '') : ?>
+                    <tr>
+                        <th scope="row">Féminin singulier</th>
+                        <td><?= $dp['FS'] ?></td>
+                    </tr>
+                <?php endif; ?>
+                <?php if ($dp['FP'] !== '') : ?>
+                    <tr>
+                        <th scope="row">Féminin pluriel</th>
+                        <td><?= $dp['FP'] ?></td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+
         <div class="col-md-8">
-            <table class="table">
+            <table class="table ml-1">
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">Lemme</th>

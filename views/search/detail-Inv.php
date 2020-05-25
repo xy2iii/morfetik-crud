@@ -1,11 +1,3 @@
-<?php
-/* Widget used when expanding a row. Shows foreign key data. */
-
-use yii\widgets\DetailView;
-/* @var $model The related model, a model instance. */
-
-$lemme = $models[0]; // Same for every row
-?>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-4">
@@ -16,9 +8,9 @@ $lemme = $models[0]; // Same for every row
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($models as $forme) : ?>
+                    <?php foreach ($inv as $forme) : ?>
                         <tr>
-                            <td><?= $forme->forme ?></td>
+                            <td><?= $forme ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
