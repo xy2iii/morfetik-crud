@@ -28,6 +28,7 @@ CrudAsset::register($this);
             'id' => 'crud-datatable',
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
+            'filterUrl' => '@web/crud/adjectif',
             'pjax' => true,
             'columns' => require(__DIR__ . '/_columns.php'),
             'toolbar' => [
