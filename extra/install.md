@@ -3,7 +3,7 @@ It also assumes a MySQL database. This can change easily: the database could be 
 
 1. Install MySQL, Apache, Apache's PHP module, and various required PHP extensions for Yii, and clone the repository.
 
-    sudo apt install mariadb-server mariadb-client apache2 libapache2-mod-php php php-mbstring php-gd php-curl php7.3-xml php7.3-mysql unzip git -y
+    sudo apt install mariadb-server mariadb-client apache2 libapache2-mod-php php php-mbstring php-gd php-curl php-ds php7.3-xml php7.3-mysql unzip git -y
     git clone https://github.com/xy2iii/morfetik-crud.git
 
 2. Install Composer:

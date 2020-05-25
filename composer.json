@@ -27,7 +27,8 @@
         "kartik-v/yii2-editable": "@dev",
         "johnitvn/yii2-ajaxcrud": "*",
         "kartik-v/yii2-widget-rangeinput": "@dev",
-        "yiisoft/yii2-debug": "^2.1"
+        "yiisoft/yii2-debug": "^2.1",
+        "php-ds/php-ds": "^1.2"
     },
     "require-dev": {
         "yiisoft/yii2-gii": "~2.1.0",

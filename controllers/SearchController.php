@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use Ds\Set;
+
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -105,9 +107,119 @@ class SearchController extends Controller
         // expandRowKey is the model ID, supplied by Krajee GridView.
         $id = $request->post('expandRowKey');
 
-        $lemme = Forme::findOne($id)->lemme;
-        $formes = Forme::find()->where(['lemme' => $lemme])->all();
+        $lemme = Forme::findOne($id);
+        // Make sure the search is strict, no matter what the search mode is.
+        $baseQuery = Forme::find()
+            ->andFilterWhere(['=', 'lemme', $lemme->lemme])
+            ->andFilterWhere(['=', 'catgram', $lemme->catgram]);
 
-        return $this->renderPartial('_expand-row', ['models' => $formes]);
+        // Render the correct view based on the lemme's cat field.
+        // Each different Cat is a different way to render, and they are based
+        // on different catgram values.
+        // See the SQL generators for the "forme" table in extra/.
+        $cat = $lemme->cat;
+        switch ($cat) {
+            case "Adj":
+                return $this->renderPartial('detail-Adj', ['models' => $baseQuery]);
+                break;
+            case "Dp":
+                return $this->renderPartial('detail-Dp', ['models' => $baseQuery]);
+                break;
+            case "Inv":
+                return $this->renderPartial('detail-Inv', ['models' => $baseQuery]);
+                break;
+            case "Nom":
+                return $this->renderPartial('detail-Nom', ['models' => $baseQuery]);
+                break;
+            case "Vrb":
+                return $this->renderForVrb($lemme);
+                break;
+        }
+    }
+
+    private function renderForVrb($lemme)
+    {
+        // For performance, recreate the queries directly
+        // These are the same as the $baseQuery
+        // We could clone, but it's -really- slow
+        $lemme = Forme::find()
+            ->andFilterWhere(['=', 'lemme', $lemme->lemme])
+            ->andFilterWhere(['=', 'catgram', $lemme->catgram])
+            ->one();
+        $Inf = Forme::find()
+            ->andFilterWhere(['=', 'lemme', $lemme->lemme])
+            ->andFilterWhere(['=', 'catgram', $lemme->catgram])
+            ->andFilterWhere(['temps' => 'Inf']);
+        $Ind_pr = Forme::find()
+            ->andFilterWhere(['=', 'lemme', $lemme->lemme])
+            ->andFilterWhere(['=', 'catgram', $lemme->catgram])
+            ->andFilterWhere(['temps' => 'Ind-pr']);
+        $Ind_imp = Forme::find()
+            ->andFilterWhere(['=', 'lemme', $lemme->lemme])
+            ->andFilterWhere(['=', 'catgram', $lemme->catgram])
+            ->andFilterWhere(['temps' => 'Ind-imp']);
+        $Ind_ps = Forme::find()
+            ->andFilterWhere(['=', 'lemme', $lemme->lemme])
+            ->andFilterWhere(['=', 'catgram', $lemme->catgram])
+            ->andFilterWhere(['temps' => 'Ind-ps']);
+        $Ind_fut = Forme::find()
+            ->andFilterWhere(['=', 'lemme', $lemme->lemme])
+            ->andFilterWhere(['=', 'catgram', $lemme->catgram])
+            ->andFilterWhere(['temps' => 'Ind-fut']);
+        $Cond_pr = Forme::find()
+            ->andFilterWhere(['=', 'lemme', $lemme->lemme])
+            ->andFilterWhere(['=', 'catgram', $lemme->catgram])
+            ->andFilterWhere(['temps' => 'Cond-pr']);
+        $Sub_pr = Forme::find()
+            ->andFilterWhere(['=', 'lemme', $lemme->lemme])
+            ->andFilterWhere(['=', 'catgram', $lemme->catgram])
+            ->andFilterWhere(['temps' => 'Sub-pr']);
+        $Sub_imp = Forme::find()
+            ->andFilterWhere(['=', 'lemme', $lemme->lemme])
+            ->andFilterWhere(['=', 'catgram', $lemme->catgram])
+            ->andFilterWhere(['temps' => 'Sub-imp']);
+        $Imp_pr = Forme::find()
+            ->andFilterWhere(['=', 'lemme', $lemme->lemme])
+            ->andFilterWhere(['=', 'catgram', $lemme->catgram])
+            ->andFilterWhere(['temps' => 'Imp-pr']);
+        $Ppres = Forme::find()
+            ->andFilterWhere(['=', 'lemme', $lemme->lemme])
+            ->andFilterWhere(['=', 'catgram', $lemme->catgram])
+            ->andFilterWhere(['temps' => 'Ppres']);
+        $Pp = Forme::find()
+            ->andFilterWhere(['=', 'lemme', $lemme->lemme])
+            ->andFilterWhere(['=', 'catgram', $lemme->catgram])
+            ->andFilterWhere(['temps' => 'Pp']);
+
+        $vrb = [];
+        /* For each request, add each temps. We need to manage duplicates, too.
+         * Manage it in batch, using each().
+         * Each case is different, so we use different for loops.
+         * Use sets to resolve duplicates. For example, "breveter" has multiple
+         * flexions, and some formes are duplicates, and some are not.
+         */
+
+        // For inf, there's only one temps.
+        $vrb['Inf'] = new Set();
+        foreach ($Inf->each() as $forme) {
+            $vrb['Inf']->add($forme->forme);
+        }
+
+        // Create sets, to filter out duplicate.
+        foreach (['1S', '2S', '3S', '1P', '2P', '3P'] as $personne) {
+            $vrb['Ind-pr']["$personne"] = new Set();
+        }
+        foreach ($Ind_pr->each() as $forme) {
+            $personne = $forme->num . $forme->person;
+            $vrb['Ind-pr']["$personne"]->add($forme->forme);
+        }
+
+        // Create the $vrb variable in the view
+        $res = [
+            'lemme' => $lemme,
+            'vrb' => $vrb,
+        ];
+
+        return $this->renderPartial('detail-Vrb', $res);
     }
 }

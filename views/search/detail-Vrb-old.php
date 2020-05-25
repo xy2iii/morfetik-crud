@@ -22,7 +22,7 @@ function array_uunique(array $array, callable $comparator): array
     return $unique_array;
 }
 
-function displayForme($filteringCallback, $models)
+function displayVrb($filteringCallback, $models)
 {
     $comparator = function ($a, $b) {
         return $a->forme <=> $b->forme;
@@ -34,10 +34,8 @@ function displayForme($filteringCallback, $models)
         $str = $forme->forme;
         Yii::trace('before substr');
         if (mb_substr($str, -1) === '°') { // Forme rare
-            Yii::trace('before substr check');
             $str = mb_substr($str, 0, -1); // Get every character except the last
             // Add a label marking this as a 'rare' form
-            Yii::trace('after substr check');
             $str .= '<span class="badge badge-info ml-1">Rare</span>';
             return $str;
         } else {
@@ -47,247 +45,237 @@ function displayForme($filteringCallback, $models)
     return join(' / ', $formesString);
 }
 
-$Inf = displayForme(function ($forme) {
+$lemme = $models[0]; // Same for every row
+
+$Inf = displayVrb(function ($forme) {
     return $forme->temps === 'Inf';
 }, $models);
 
-$IndPr_1_S = displayForme(function ($forme) {
+$IndPr_1_S = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-pr'
         && $forme->num === '1'
         && $forme->person === 'S';
 }, $models);
-$IndPr_2_S = displayForme(function ($forme) {
+$IndPr_2_S = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-pr'
         && $forme->num === '2'
         && $forme->person === 'S';
 }, $models);
-$IndPr_3_S = displayForme(function ($forme) {
+$IndPr_3_S = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-pr'
         && $forme->num === '3'
         && $forme->person === 'S';
 }, $models);
-$IndPr_1_P = displayForme(function ($forme) {
+$IndPr_1_P = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-pr'
         && $forme->num === '1'
         && $forme->person === 'P';
 }, $models);
-$IndPr_2_P = displayForme(function ($forme) {
+$IndPr_2_P = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-pr'
         && $forme->num === '2'
         && $forme->person === 'P';
 }, $models);
-$IndPr_3_P = displayForme(function ($forme) {
+$IndPr_3_P = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-pr'
         && $forme->num === '3'
         && $forme->person === 'P';
 }, $models);
 
-$IndImp_1_S = displayForme(function ($forme) {
+$IndImp_1_S = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-imp'
         && $forme->num === '1'
         && $forme->person === 'S';
 }, $models);
-$IndImp_2_S = displayForme(function ($forme) {
+$IndImp_2_S = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-imp'
         && $forme->num === '2'
         && $forme->person === 'S';
 }, $models);
-$IndImp_3_S = displayForme(function ($forme) {
+$IndImp_3_S = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-imp'
         && $forme->num === '3'
         && $forme->person === 'S';
 }, $models);
-$IndImp_1_P = displayForme(function ($forme) {
+$IndImp_1_P = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-imp'
         && $forme->num === '1'
         && $forme->person === 'P';
 }, $models);
-$IndImp_2_P = displayForme(function ($forme) {
+$IndImp_2_P = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-imp'
         && $forme->num === '2'
         && $forme->person === 'P';
 }, $models);
-$IndImp_3_P = displayForme(function ($forme) {
+$IndImp_3_P = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-imp'
         && $forme->num === '3'
         && $forme->person === 'P';
 }, $models);
 
-$IndPs_1_S = displayForme(function ($forme) {
+$IndPs_1_S = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-ps'
         && $forme->num === '1'
         && $forme->person === 'S';
 }, $models);
-$IndPs_2_S = displayForme(function ($forme) {
+$IndPs_2_S = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-ps'
         && $forme->num === '2'
         && $forme->person === 'S';
 }, $models);
-$IndPs_3_S = displayForme(function ($forme) {
+$IndPs_3_S = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-ps'
         && $forme->num === '3'
         && $forme->person === 'S';
 }, $models);
-$IndPs_1_P = displayForme(function ($forme) {
+$IndPs_1_P = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-ps'
         && $forme->num === '1'
         && $forme->person === 'P';
 }, $models);
-$IndPs_2_P = displayForme(function ($forme) {
+$IndPs_2_P = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-ps'
         && $forme->num === '2'
         && $forme->person === 'P';
 }, $models);
-$IndPs_3_P = displayForme(function ($forme) {
+$IndPs_3_P = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-ps'
         && $forme->num === '3'
         && $forme->person === 'P';
 }, $models);
 
-$IndFut_1_S = displayForme(function ($forme) {
+$IndFut_1_S = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-fut'
         && $forme->num === '1'
         && $forme->person === 'S';
 }, $models);
-$IndFut_2_S = displayForme(function ($forme) {
+$IndFut_2_S = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-fut'
         && $forme->num === '2'
         && $forme->person === 'S';
 }, $models);
-$IndFut_3_S = displayForme(function ($forme) {
+$IndFut_3_S = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-fut'
         && $forme->num === '3'
         && $forme->person === 'S';
 }, $models);
-$IndFut_1_P = displayForme(function ($forme) {
+$IndFut_1_P = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-fut'
         && $forme->num === '1'
         && $forme->person === 'P';
 }, $models);
-$IndFut_2_P = displayForme(function ($forme) {
+$IndFut_2_P = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-fut'
         && $forme->num === '2'
         && $forme->person === 'P';
 }, $models);
-$IndFut_3_P = displayForme(function ($forme) {
+$IndFut_3_P = displayVrb(function ($forme) {
     return $forme->temps === 'Ind-fut'
         && $forme->num === '3'
         && $forme->person === 'P';
 }, $models);
 
-$CondPr_1_S = displayForme(function ($forme) {
+$CondPr_1_S = displayVrb(function ($forme) {
     return $forme->temps === 'Cond-pr'
         && $forme->num === '1'
         && $forme->person === 'S';
 }, $models);
-$CondPr_2_S = displayForme(function ($forme) {
+$CondPr_2_S = displayVrb(function ($forme) {
     return $forme->temps === 'Cond-pr'
         && $forme->num === '2'
         && $forme->person === 'S';
 }, $models);
-$CondPr_3_S = displayForme(function ($forme) {
+$CondPr_3_S = displayVrb(function ($forme) {
     return $forme->temps === 'Cond-pr'
         && $forme->num === '3'
         && $forme->person === 'S';
 }, $models);
-$CondPr_1_P = displayForme(function ($forme) {
+$CondPr_1_P = displayVrb(function ($forme) {
     return $forme->temps === 'Cond-pr'
         && $forme->num === '1'
         && $forme->person === 'P';
 }, $models);
-$CondPr_2_P = displayForme(function ($forme) {
+$CondPr_2_P = displayVrb(function ($forme) {
     return $forme->temps === 'Cond-pr'
         && $forme->num === '2'
         && $forme->person === 'P';
 }, $models);
-$CondPr_3_P = displayForme(function ($forme) {
+$CondPr_3_P = displayVrb(function ($forme) {
     return $forme->temps === 'Cond-pr'
-        && $forme->num === '3'
-        && $forme->person === 'P';
-}, $models);
-
-$SubPr_1_S = displayForme(function ($forme) {
-    return $forme->temps === 'Sub-pr'
-        && $forme->num === '1'
-        && $forme->person === 'S';
-}, $models);
-$SubPr_2_S = displayForme(function ($forme) {
-    return $forme->temps === 'Sub-pr'
-        && $forme->num === '2'
-        && $forme->person === 'S';
-}, $models);
-$SubPr_3_S = displayForme(function ($forme) {
-    return $forme->temps === 'Sub-pr'
-        && $forme->num === '3'
-        && $forme->person === 'S';
-}, $models);
-$SubPr_1_P = displayForme(function ($forme) {
-    return $forme->temps === 'Sub-pr'
-        && $forme->num === '1'
-        && $forme->person === 'P';
-}, $models);
-$SubPr_2_P = displayForme(function ($forme) {
-    return $forme->temps === 'Sub-pr'
-        && $forme->num === '2'
-        && $forme->person === 'P';
-}, $models);
-$SubPr_3_P = displayForme(function ($forme) {
-    return $forme->temps === 'Sub-pr'
         && $forme->num === '3'
         && $forme->person === 'P';
 }, $models);
 
+$SubPr_1_S = displayVrb(function ($forme) {
+    return $forme->temps === 'Sub-pr'
+        && $forme->num === '1'
+        && $forme->person === 'S';
+}, $models);
+$SubPr_2_S = displayVrb(function ($forme) {
+    return $forme->temps === 'Sub-pr'
+        && $forme->num === '2'
+        && $forme->person === 'S';
+}, $models);
+$SubPr_3_S = displayVrb(function ($forme) {
+    return $forme->temps === 'Sub-pr'
+        && $forme->num === '3'
+        && $forme->person === 'S';
+}, $models);
+$SubPr_1_P = displayVrb(function ($forme) {
+    return $forme->temps === 'Sub-pr'
+        && $forme->num === '1'
+        && $forme->person === 'P';
+}, $models);
+$SubPr_2_P = displayVrb(function ($forme) {
+    return $forme->temps === 'Sub-pr'
+        && $forme->num === '2'
+        && $forme->person === 'P';
+}, $models);
+$SubPr_3_P = displayVrb(function ($forme) {
+    return $forme->temps === 'Sub-pr'
+        && $forme->num === '3'
+        && $forme->person === 'P';
+}, $models);
 
-$SubImp_1_S = displayForme(function ($forme) {
+
+$SubImp_1_S = displayVrb(function ($forme) {
     return $forme->temps === 'Sub-imp'
         && $forme->num === '1'
         && $forme->person === 'S';
 }, $models);
-$SubImp_2_S = displayForme(function ($forme) {
+$SubImp_2_S = displayVrb(function ($forme) {
     return $forme->temps === 'Sub-imp'
         && $forme->num === '2'
         && $forme->person === 'S';
 }, $models);
-$SubImp_3_S = displayForme(function ($forme) {
+$SubImp_3_S = displayVrb(function ($forme) {
     return $forme->temps === 'Sub-imp'
         && $forme->num === '3'
         && $forme->person === 'S';
 }, $models);
-$SubImp_1_P = displayForme(function ($forme) {
+$SubImp_1_P = displayVrb(function ($forme) {
     return $forme->temps === 'Sub-imp'
         && $forme->num === '1'
         && $forme->person === 'P';
 }, $models);
-$SubImp_2_P = displayForme(function ($forme) {
+$SubImp_2_P = displayVrb(function ($forme) {
     return $forme->temps === 'Sub-imp'
         && $forme->num === '2'
         && $forme->person === 'P';
 }, $models);
-$SubImp_3_P = displayForme(function ($forme) {
+$SubImp_3_P = displayVrb(function ($forme) {
     return $forme->temps === 'Sub-imp'
         && $forme->num === '3'
         && $forme->person === 'P';
 }, $models);
 
-$Ppres = displayForme(function ($forme) {
+$Ppres = displayVrb(function ($forme) {
     return $forme->temps === 'Ppres';
 }, $models);
 ?>
-<div class="container-fluid">
-    <div class="row">
-        <table class="table col-md-4">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">Lemme</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><b><?= $Inf ?></b></td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table col-md-4">
+<div class="row">
+    <div class="col-md-4">
+        <table class='table'>
             <thead class="thead-light">
                 <tr>
                     <th scope="col">Infinitif</th>
@@ -301,9 +289,32 @@ $Ppres = displayForme(function ($forme) {
         </table>
     </div>
 
+    <div class="col-md-8">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Lemme</th>
+                    <th scope="col">Ligature</th>
+                    <th scope="col">Graphsav</th>
+                    <th scope="col">Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b><?= $lemme->lemme ?></b> </td>
+                    <td><?= $lemme->lig ?></td>
+                    <td><?= $lemme->graphsav ?></td>
+                    <td><?= $lemme->notes ?></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <div class="row">
-        <table class="table col-md-4">
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <table class="table">
             <thead class="thead-light">
                 <tr>
                     <th scope="col"></th>
@@ -320,7 +331,7 @@ $Ppres = displayForme(function ($forme) {
                     <td><?= $IndPr_2_S ?></td>
                 </tr>
                 <tr>
-                    <th scope="row">Il / Elle</th>
+                    <th scope="row">Il / Elle / On</th>
                     <td><?= $IndPr_3_S ?></td>
                 </tr>
                 <tr>
@@ -337,8 +348,9 @@ $Ppres = displayForme(function ($forme) {
                 </tr>
             </tbody>
         </table>
-
-        <table class="table col-md-4">
+    </div>
+    <div class="col-md-4">
+        <table class="table">
             <thead class="thead-light">
                 <tr>
                     <th scope="col"></th>
@@ -355,7 +367,7 @@ $Ppres = displayForme(function ($forme) {
                     <td><?= $IndImp_2_S ?></td>
                 </tr>
                 <tr>
-                    <th scope="row">Il / Elle</th>
+                    <th scope="row">Il / Elle / On</th>
                     <td><?= $IndImp_3_S ?></td>
                 </tr>
                 <tr>
@@ -372,8 +384,10 @@ $Ppres = displayForme(function ($forme) {
                 </tr>
             </tbody>
         </table>
+    </div>
 
-        <table class="table col-md-4">
+    <div class="col-md-4">
+        <table class="table">
             <thead class="thead-light">
                 <tr>
                     <th scope="col"></th>
@@ -390,7 +404,7 @@ $Ppres = displayForme(function ($forme) {
                     <td><?= $IndPs_2_S ?></td>
                 </tr>
                 <tr>
-                    <th scope="row">Il / Elle</th>
+                    <th scope="row">Il / Elle / On</th>
                     <td><?= $IndPs_3_S ?></td>
                 </tr>
                 <tr>
@@ -408,10 +422,12 @@ $Ppres = displayForme(function ($forme) {
             </tbody>
         </table>
     </div>
+</div>
 
 
-    <div class="row">
-        <table class="table col-md-4">
+<div class="row">
+    <div class="col-md-4">
+        <table class="table">
             <thead class="thead-light">
                 <tr>
                     <th scope="col"></th>
@@ -428,7 +444,7 @@ $Ppres = displayForme(function ($forme) {
                     <td><?= $IndFut_2_S ?></td>
                 </tr>
                 <tr>
-                    <th scope="row">Il / Elle</th>
+                    <th scope="row">Il / Elle / On</th>
                     <td><?= $IndFut_3_S ?></td>
                 </tr>
                 <tr>
@@ -445,8 +461,10 @@ $Ppres = displayForme(function ($forme) {
                 </tr>
             </tbody>
         </table>
+    </div>
 
-        <table class="table col-md-4">
+    <div class="col-md-4">
+        <table class="table">
             <thead class="thead-light">
                 <tr>
                     <th scope="col"></th>
@@ -463,7 +481,7 @@ $Ppres = displayForme(function ($forme) {
                     <td><?= $CondPr_2_S ?></td>
                 </tr>
                 <tr>
-                    <th scope="row">Il / Elle</th>
+                    <th scope="row">Il / Elle / On</th>
                     <td><?= $CondPr_3_S ?></td>
                 </tr>
                 <tr>
@@ -480,8 +498,10 @@ $Ppres = displayForme(function ($forme) {
                 </tr>
             </tbody>
         </table>
+    </div>
 
-        <table class="table col-md-4">
+    <div class="col-md-4">
+        <table class="table">
             <thead class="thead-light">
                 <tr>
                     <th scope="col"></th>
@@ -498,7 +518,7 @@ $Ppres = displayForme(function ($forme) {
                     <td><?= $SubPr_2_S ?></td>
                 </tr>
                 <tr>
-                    <th scope="row">Il / Elle</th>
+                    <th scope="row">Il / Elle / On</th>
                     <td><?= $SubPr_3_S ?></td>
                 </tr>
                 <tr>
@@ -516,10 +536,12 @@ $Ppres = displayForme(function ($forme) {
             </tbody>
         </table>
     </div>
+</div>
 
 
-    <div class="row">
-        <table class="table col-md-4">
+<div class="row">
+    <div class="col-md-4">
+        <table class="table">
             <thead class="thead-light">
                 <tr>
                     <th scope="col"></th>
@@ -536,7 +558,7 @@ $Ppres = displayForme(function ($forme) {
                     <td><?= $SubImp_2_S ?></td>
                 </tr>
                 <tr>
-                    <th scope="row">Il / Elle</th>
+                    <th scope="row">Il / Elle / On</th>
                     <td><?= $SubImp_3_S ?></td>
                 </tr>
                 <tr>
@@ -553,8 +575,10 @@ $Ppres = displayForme(function ($forme) {
                 </tr>
             </tbody>
         </table>
+    </div>
 
-        <table class="table col-md-4">
+    <div class="col-md-4">
+        <table class="table">
             <thead class="thead-light">
                 <tr>
                     <th scope="col"></th>
@@ -588,47 +612,47 @@ $Ppres = displayForme(function ($forme) {
                 </tr>
             </tbody>
         </table>
+    </div>
 
-        <div class="col-md-4">
-            <table class="table">
-                <thead class="thead-light">
-                    <tr>
-                        <th scope="col">Participe présent</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><?= $Ppres ?></td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="col-md-4">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Participe présent</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><?= $Ppres ?></td>
+                </tr>
+            </tbody>
+        </table>
 
-            <table class="table">
-                <thead class="thead-light">
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col">Participe passé</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Masculin</td>
-                        <td><?= $Ppres ?></td>
-                    </tr>
-                    <tr>
-                        <td>Féminin</td>
-                        <td><?= $Ppres ?></td>
-                    </tr>
-                    <tr>
-                        <td>Masculins</td>
-                        <td><?= $Ppres ?></td>
-                    </tr>
-                    <tr>
-                        <td>Féminins</td>
-                        <td><?= $Ppres ?></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Participe passé</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Masculin</th>
+                    <td><?= $Ppres ?></td>
+                </tr>
+                <tr>
+                    <th scope="row">Féminin</th>
+                    <td><?= $Ppres ?></td>
+                </tr>
+                <tr>
+                    <th scope="row">Masculins</th>
+                    <td><?= $Ppres ?></td>
+                </tr>
+                <tr>
+                    <th scope="row">Féminins</th>
+                    <td><?= $Ppres ?></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

@@ -19,7 +19,7 @@ class FormeSearch extends Forme
     public function rules()
     {
         return [
-            [['forme', 'lemme', 'catgram', 'temps', 'genre', 'num', 'person'], 'safe'],
+            [['forme', 'lemme', 'catgram', 'temps', 'genre', 'num', 'person', 'lig', 'graphsav', 'notes'], 'safe'],
         ];
     }
 
@@ -57,19 +57,23 @@ class FormeSearch extends Forme
         if ($isAccentSearch) {
             if ($isStrict) {
                 $query
-                    ->andFilterWhere(['regexp', 'forme', '^' . $this->forme . '$']);
+                    ->andFilterWhere(['regexp', 'forme', '^' . $this->forme . '$'])
+                    ->andFilterWhere(['regexp', 'lemme', '^' . $this->lemme . '$']);
             } else {
                 $query
-                    ->andFilterWhere(['regexp', 'forme', '^' . $this->forme . '(.*)$']);
+                    ->andFilterWhere(['regexp', 'forme', '^' . $this->forme . '(.*)$'])
+                    ->andFilterWhere(['regexp', 'lemme', '^' . $this->lemme . '(.*)$']);
             }
         } else {
             if ($isStrict) {
                 $query
-                    ->andFilterWhere(['=', 'forme', $this->forme]);
+                    ->andFilterWhere(['=', 'forme', $this->forme])
+                    ->andFilterWhere(['=', 'lemme', $this->lemme]);
             } else {
                 // false as the fourth param allows us to include %.
                 $query
-                    ->andFilterWhere(['like', 'forme', $this->forme . '%', false]);
+                    ->andFilterWhere(['like', 'forme', $this->forme . '%', false])
+                    ->andFilterWhere(['like', 'lemme', $this->lemme . '%', false]);
             }
         }
 
@@ -78,7 +82,10 @@ class FormeSearch extends Forme
             ->andFilterWhere(['like', 'temps', $this->temps])
             ->andFilterWhere(['like', 'num', $this->num])
             ->andFilterWhere(['like', 'genre', $this->genre])
-            ->andFilterWhere(['like', 'person', $this->person]);
+            ->andFilterWhere(['like', 'person', $this->person])
+            ->andFilterWhere(['like', 'lig', $this->lig])
+            ->andFilterWhere(['like', 'graphsav', $this->graphsav])
+            ->andFilterWhere(['like', 'notes', $this->notes]);
 
         $query->distinct();
 

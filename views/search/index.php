@@ -124,7 +124,7 @@ echo Yii::$app->request->url;
         [
             'attribute' => 'temps',
             'vAlign' => 'middle',
-            'width' => '4rem',
+            'width' => '8rem',
         ],
         [
             'attribute' => 'num',
@@ -138,6 +138,21 @@ echo Yii::$app->request->url;
         ],
         [
             'attribute' => 'person',
+            'vAlign' => 'middle',
+            'width' => '4rem',
+        ],
+        [
+            'attribute' => 'lig',
+            'vAlign' => 'middle',
+            'width' => '4rem',
+        ],
+        [
+            'attribute' => 'graphsav',
+            'vAlign' => 'middle',
+            'width' => '4rem',
+        ],
+        [
+            'attribute' => 'notes',
             'vAlign' => 'middle',
             'width' => '4rem',
         ],
@@ -162,3 +177,170 @@ echo Yii::$app->request->url;
     }
     ?>
 </div>
+<h1>Guide d'utilisation</h1>
+<p>
+    Morfetik permet de rechercher un mot, quelle que soit sa forme, et d'obtenir des informations morphosyntaxiques dessus. <br>
+    Par exemple, en recherchant <b>mangeâmes</b>, on apprend que ce mot est une forme du verbe <i>manger</i>, au passé simple à la première personne du pluriel.
+</p>
+<h2>Table des codes pour "Catégorie secondaire"</h2>
+<p>
+    Morfetik retourne une catégorie principale, qui est la catégorie gramaticale générale du verbe, et une catégorie gramaticale secondaire qui précise. Cette table décrit les différents codes:
+</p>
+<table class="table table-sm table-hover table-bordered">
+    <thead class="thead-light">
+        <tr>
+            <th>Abréviation</th>
+            <th>Signification</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>adj</td>
+            <td>Adjectif</td>
+        </tr>
+        <tr>
+            <td>adj(f)</td>
+            <td>Adjectif(le plus souvent au féminin)</td>
+        </tr>
+        <tr>
+            <td>adj(m)</td>
+            <td>Adjectif(le plus souvent au masculin)</td>
+        </tr>
+        <tr>
+            <td>adjf</td>
+            <td>Adjectif féminin</td>
+        </tr>
+        <tr>
+            <td>adjfs</td>
+            <td>Adjectif féminin singulier</td>
+        </tr>
+        <tr>
+            <td>adjfp</td>
+            <td>Adjectif féminin pluriel</td>
+        </tr>
+        <tr>
+            <td>adjm</td>
+            <td>Adjectif masculin</td>
+        </tr>
+        <tr>
+            <td>adjms</td>
+            <td>Adjectif masculin singulier</td>
+        </tr>
+        <tr>
+            <td>adjmp</td>
+            <td>Adjectif masculin pluriel</td>
+        </tr>
+        <tr>
+            <td>adjord</td>
+            <td>Adjectif ordinal</td>
+        </tr>
+        <tr>
+            <td>Adv</td>
+            <td>Adverbe</td>
+        </tr>
+        <tr>
+            <td>C:Coord</td>
+            <td>Conjonction de coordination</td>
+        </tr>
+        <tr>
+            <td>C:Sub</td>
+            <td>Conjonction de subordination</td>
+        </tr>
+        <tr>
+            <td>D:Déf</td>
+            <td>Déterminant défini</td>
+        </tr>
+        <tr>
+            <td>D:Dém</td>
+            <td>Déterminant démonstratif</td>
+        </tr>
+        <tr>
+            <td>D:Excl</td>
+            <td>Déterminant exclamatif</td>
+        </tr>
+        <tr>
+            <td>D:Ind</td>
+            <td>Déterminant indicatif</td>
+        </tr>
+        <tr>
+            <td>D:Inte</td>
+            <td>Déterminant interrogatif</td>
+        </tr>
+        <tr>
+            <td>D:Num</td>
+            <td>Déterminant numéral</td>
+        </tr>
+        <tr>
+            <td>D:Part</td>
+            <td>Déterminant partitif</td>
+        </tr>
+        <tr>
+            <td>D:Poss</td>
+            <td>Déterminant possessif</td>
+        </tr>
+        <tr>
+            <td>D:Rel</td>
+            <td>Déterminant relatif</td>
+        </tr>
+        <tr>
+            <td>Interj</td>
+            <td>Interjection</td>
+        </tr>
+        <tr>
+            <td>nf</td>
+            <td>Nom féminin</td>
+        </tr>
+        <tr>
+            <td>nfp</td>
+            <td>Nom féminin pluriel</td>
+        </tr>
+        <tr>
+            <td>nfs</td>
+            <td>Nom féminin singulier</td>
+        </tr>
+        <tr>
+            <td>nm</td>
+            <td>Nom masculin</td>
+        </tr>
+        <tr>
+            <td>nmp</td>
+            <td>Nom masculin pluriel</td>
+        </tr>
+        <tr>
+            <td>nms</td>
+            <td>Nom masculin singulier</td>
+        </tr>
+        <tr>
+            <td>P:Dém</td>
+            <td>Pronom démonstratif</td>
+        </tr>
+        <tr>
+            <td>P:Ind</td>
+            <td>Pronom indicatif</td>
+        </tr>
+        <tr>
+            <td>P:Int</td>
+            <td>Pronom interrogatif</td>
+        </tr>
+        <tr>
+            <td>P:Pers</td>
+            <td>Pronom personnel</td>
+        </tr>
+        <tr>
+            <td>P:Poss</td>
+            <td>Pronom possessif</td>
+        </tr>
+        <tr>
+            <td>P:Rel</td>
+            <td>Pronom relatif</td>
+        </tr>
+        <tr>
+            <td>Prép</td>
+            <td>Préposition</td>
+        </tr>
+        <tr>
+            <td>Verbe</td>
+            <td>Verbe</td>
+        </tr>
+    </tbody>
+</table>
