@@ -29,7 +29,7 @@ CrudAsset::register($this);
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
             'pjax' => true,
-            'pjaxOptions' => ['options' => ['enablePushState' => false]],
+            'pjaxSettings' => ['options' => ['enablePushState' => false]],
             'columns' => require(__DIR__ . '/_columns.php'),
             'toolbar' => [
                 [

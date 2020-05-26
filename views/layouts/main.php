@@ -15,7 +15,7 @@ AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html lang="<?= Yii::$app->language ?>" class="min-vh-100">
 
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
@@ -29,7 +29,7 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 
-<body>
+<body class="mb-5">
     <?php $this->beginBody() ?>
 
     <div class="wrap">
@@ -73,13 +73,13 @@ AppAsset::register($this);
         </div>
     </div>
 
-    <footer class="footer">
+    <footer class="footer sticky-footer-wrapper bg-dark mt-2">
         <div class="container-fluid">
             <div class="row">
-                <p class="col-md-6">
+                <p class="col text-light">
                     <a href="https://lipn.univ-paris13.fr/">LIPN</a> - <?= date('Y') ?>
                 </p>
-                <p class="col-md-6 text-right">
+                <p class="col text-light text-right">
                     <a href="https://lipn.univ-paris13.fr/accueil/equipe/rcln/">Équipe RCLN</a>
                 </p>
             </div>

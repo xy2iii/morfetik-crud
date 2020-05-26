@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -10,7 +11,10 @@ use yii\bootstrap4\ActiveForm;
 
 <div class="adjectif-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form =
+        ActiveForm::begin([
+            'action' => Url::toRoute(['crud/adjectif/update', 'id' => $model->ID])
+        ]); ?>
 
     <?= $form->field($model, 'ID')->textInput(['maxlength' => true]) ?>
 
