@@ -3,10 +3,12 @@
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
+$baseUrl = '/morfetik';
 $config = [
     'id' => 'morfetik',
     'name' => 'Morfetik',
     'basePath' => dirname(__DIR__),
+    'homeUrl' => YII_ENV_DEV ? '' : $baseUrl, // If in a subfolder, rewrite
     'bootstrap' => [
         'log',
         'app\config\Aliases', // The baseURL is defined here.
@@ -88,7 +90,7 @@ $config = [
             'enablePrettyUrl' => true, // Don't show index.php?a=z....
             'showScriptName' => false,
             'hostInfo' => YII_ENV_DEV ? '' : 'https://tal.lipn.univ-paris13.fr',
-            'baseUrl' => YII_ENV_DEV ? '' : '/morfetik', // If in a subfolder, rewrite
+            'baseUrl' => YII_ENV_DEV ? '' : $baseUrl, // If in a subfolder, rewrite
             'rules' => [],
         ],
     ],
