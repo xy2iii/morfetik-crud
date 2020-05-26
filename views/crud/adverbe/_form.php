@@ -10,10 +10,7 @@ use yii\bootstrap4\ActiveForm;
 
 <div class="adverbe-form">
 
-	<?php $form =
-		ActiveForm::begin([
-			'action' => Url::toRoute(['crud/adverbe/update', 'id' => $model->ID])
-		]); ?>
+	<?php $form = ActiveForm::begin(); ?>
 
 	<?= $form->field($model, 'ID')->textInput(['maxlength' => true]) ?>
 

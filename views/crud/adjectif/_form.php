@@ -12,9 +12,7 @@ use yii\bootstrap4\ActiveForm;
 <div class="adjectif-form">
 
     <?php $form =
-        ActiveForm::begin([
-            'action' => Url::toRoute(['crud/adjectif/update', 'id' => $model->ID])
-        ]); ?>
+        ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'ID')->textInput(['maxlength' => true]) ?>
 
@@ -30,7 +28,7 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'Notes')->textarea(['rows' => 6]) ?>
 
-
+    <?= var_dump($form); ?>
     <?php if (!Yii::$app->request->isAjax) { ?>
         <div class="form-group">
             <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
