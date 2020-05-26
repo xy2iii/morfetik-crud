@@ -31,11 +31,11 @@ $config = [
             'bundles' => [
                 'yii\bootstrap\BootstrapAsset' => [
                     'sourcePath' => null,
-                    'css' => ['css/bootstrap.min.css'],
+                    'css' => ['@web/css/bootstrap.min.css'],
                 ],
                 'yii\bootstrap4\BootstrapAsset' => [
                     'sourcePath' => null,
-                    'css' => ['css/bootstrap.min.css'],
+                    'css' => ['@web/css/bootstrap.min.css'],
                 ],
             ],
         ],
