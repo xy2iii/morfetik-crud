@@ -22,7 +22,7 @@ $this->registerJs(
 
     $(document).pjax('a', pjaxContainer)
     $(document).on('submit', form, function(event) {
-        $.pjax.submit(event, pjaxContainer)
+        $.pjax.submit(event, pjaxContainer, {push:false})
     })
     $.pjax.defaults.timeout = 10000;
     ",
