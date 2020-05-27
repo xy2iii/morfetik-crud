@@ -1,5 +1,7 @@
 <?php
 
+use app\models\search\Forme;
+
 /**
  * Transform the sets to strings.
  * Will append a label if the forme is rare,
@@ -44,6 +46,8 @@ $vrb['Sub-imp'] = transform($vrb['Sub-imp']);
 $vrb['Imp-pr'] = transform($vrb['Imp-pr']);
 $vrb['Ppres'] = transform_each($vrb['Ppres']->toArray());
 $vrb['Pp'] = transform($vrb['Pp']);
+
+$elision = Forme::isElision($lemme->lemme);
 ?>
 
 <div class="row">
@@ -95,10 +99,12 @@ $vrb['Pp'] = transform($vrb['Pp']);
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">Je</th>
-                    <td><?= $vrb['Ind-pr']['1S'] ?></td>
-                </tr>
+                <?php if ($elision) : ?>
+                    <th scope="row">J'</th>
+                <?php else : ?>
+                    <th scope="row">J'</th>
+                <?php endif ?>
+                <td><?= $vrb['Ind-pr']['1S'] ?></td>
                 <tr>
                     <th scope="row">Tu</th>
                     <td><?= $vrb['Ind-pr']['2S'] ?></td>
@@ -132,7 +138,11 @@ $vrb['Pp'] = transform($vrb['Pp']);
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">Je</th>
+                    <?php if ($elision) : ?>
+                        <th scope="row">J'</th>
+                    <?php else : ?>
+                        <th scope="row">J'</th>
+                    <?php endif ?>
                     <td><?= $vrb['Ind-imp']['1S'] ?></td>
                 </tr>
                 <tr>
@@ -169,7 +179,11 @@ $vrb['Pp'] = transform($vrb['Pp']);
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">Je</th>
+                    <?php if ($elision) : ?>
+                        <th scope="row">J'</th>
+                    <?php else : ?>
+                        <th scope="row">J'</th>
+                    <?php endif ?>
                     <td><?= $vrb['Ind-ps']['1S'] ?></td>
                 </tr>
                 <tr>
@@ -209,7 +223,11 @@ $vrb['Pp'] = transform($vrb['Pp']);
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">Je</th>
+                    <?php if ($elision) : ?>
+                        <th scope="row">J'</th>
+                    <?php else : ?>
+                        <th scope="row">J'</th>
+                    <?php endif ?>
                     <td><?= $vrb['Ind-fut']['1S'] ?></td>
                 </tr>
                 <tr>
@@ -246,7 +264,11 @@ $vrb['Pp'] = transform($vrb['Pp']);
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">Je</th>
+                    <?php if ($elision) : ?>
+                        <th scope="row">J'</th>
+                    <?php else : ?>
+                        <th scope="row">J'</th>
+                    <?php endif ?>
                     <td><?= $vrb['Cond-pr']['1S'] ?></td>
                 </tr>
                 <tr>
@@ -283,7 +305,11 @@ $vrb['Pp'] = transform($vrb['Pp']);
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">Je</th>
+                    <?php if ($elision) : ?>
+                        <th scope="row">J'</th>
+                    <?php else : ?>
+                        <th scope="row">J'</th>
+                    <?php endif ?>
                     <td><?= $vrb['Sub-pr']['1S'] ?></td>
                 </tr>
                 <tr>
@@ -323,7 +349,11 @@ $vrb['Pp'] = transform($vrb['Pp']);
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">Je</th>
+                    <?php if ($elision) : ?>
+                        <th scope="row">J'</th>
+                    <?php else : ?>
+                        <th scope="row">J'</th>
+                    <?php endif ?>
                     <td><?= $vrb['Sub-imp']['1S'] ?></td>
                 </tr>
                 <tr>

@@ -165,6 +165,7 @@ class Forme extends ActiveRecord
     {
         $primaryCategory = $cat;
     }
+
     /**
      * Returns whether the current Forme is a "locution"
      * or not. This is determined by the category name.
@@ -174,6 +175,95 @@ class Forme extends ActiveRecord
     public function isLocution()
     {
         return substr($this->primaryCategory, -3) === 'loc';
+    }
+
+    private static $hMuetTable = [
+        "hâbler",
+        "hacher",
+        "hachurer",
+        "haïr",
+        "hâler",
+        "haler",
+        "halkiner",
+        "haleter",
+        "hancher",
+        "handicaper",
+        "hannetonner",
+        "hanter",
+        "happer",
+        "haranguer",
+        "harasser",
+        "harceler",
+        "harder",
+        "haricoter",
+        "harnacher",
+        "harpailler",
+        "harper",
+        "harponner",
+        "hasarder",
+        "hâter",
+        "haubaner",
+        "haubanner",
+        "hausser",
+        "haver",
+        "havir",
+        "héler",
+        "hennir",
+        "hercher",
+        "hérisser",
+        "hérissonner",
+        "herscher",
+        "herscher",
+        "herser",
+        "heurter",
+        "hiérarchiser",
+        "highlifer",
+        "hisser",
+        "hocher",
+        "hogner",
+        "hôler",
+        "hollandiser",
+        "hongrer",
+        "hongroyer",
+        "honnir",
+        "hoqueter",
+        "hotter",
+        "houblonner",
+        "houer",
+        "houpper",
+        "hourder",
+        "hourdir",
+        "houspiller",
+        "housser",
+        "hucher",
+        "huer",
+        "huir",
+        "hululer",
+        "humer",
+        "humoter",
+        "hurler",
+        "hutter",
+    ];
+
+    /**
+     * Returns whether the Lemme itself is an elision.
+     * For example, aimer is an elision, because it can be said
+     * as "j'aime".
+     * @param string The lemme, as a string.
+     * @return bool Whether the passed Lemme is an elision or not.
+     */
+    public static function isElision($lemme)
+    {
+        // Check if the first letter is a voyelle
+        $firstChar = mb_substr($lemme, 0, 1);
+        $voyelles = ['a', 'e', 'i', 'o', 'u'];
+
+        if (in_array($firstChar, $voyelles)) {
+            return true;
+        }
+
+        // Check if it has an "h muet (h aspiré)"
+        return in_array($lemme, static::$hMuetTable);
     }
 
     /**
