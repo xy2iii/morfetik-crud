@@ -3,13 +3,14 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use app\widgets\Alert;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use yii\bootstrap4\Breadcrumbs;
+
 use app\assets\AppAsset;
+use app\widgets\Alert;
 
 AppAsset::register($this);
 ?>
@@ -44,18 +45,49 @@ AppAsset::register($this);
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav ml-auto'],
             'items' => [
-                ['label' => Yii::t('app', 'Search'), 'url' => ['/search']],
-                ['label' => Yii::t('app', 'Publications'), 'url' => ['/site/publications']],
-                ['label' => Yii::t('app', 'About'), 'url' => ['/site/about']],
-                ['label' => Yii::t('app', 'Contact'), 'url' => ['/site/contact']],
-                Yii::$app->user->can('editor') ? ['label' => Yii::t('app', 'Edition'), 'url' => ['/site/edit-dashboard']] : '',
-                Yii::$app->user->can('admin') ? ['label' => Yii::t('app', 'Admin'), 'url' => ['/admin']] : '',
-                Yii::$app->user->isGuest ? (['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']]) : ('<li class="nav-item">'
+                [
+                    'label' => Yii::t('app', 'Search'),
+                    'url' => ['/search'],
+                    'active' => Yii::$app->requestedRoute === 'search',
+                ],
+                [
+                    'label' => Yii::t('app', 'Edition'),
+                    'url' => ['/site/edit-dashboard'],
+                    'visible' => Yii::$app->user->can('editor'),
+                    'active' => Yii::$app->requestedRoute === 'site/edit-dashboard',
+                ],
+                [
+                    'label' => Yii::t('app', 'Admin'),
+                    'url' => ['/admin'],
+                    'visible' => Yii::$app->user->can('admin'),
+                    'active' => Yii::$app->requestedRoute === 'admin',
+                ],
+                [
+                    'label' => Yii::t('app', 'Publications'),
+                    'url' => ['/site/publications'],
+                    'active' => Yii::$app->requestedRoute === 'site/publications',
+                ],
+                [
+                    'label' => Yii::t('app', 'About'),
+                    'url' => ['/site/about'],
+                    'active' => Yii::$app->requestedRoute === 'site/about',
+                    'options' => ['class' => 'navbar-btn']
+                ],
+                [
+                    'label' => Yii::t('app', 'Contact'),
+                    'url' => ['/site/contact'],
+                    'active' => Yii::$app->requestedRoute === 'site/contact',
+                ],
+                Yii::$app->user->isGuest ? ([
+                    'label' => Yii::t('app', 'Login'),
+                    'url' => ['/site/login'],
+                    'active' => Yii::$app->requestedRoute === 'site/login',
+                ]) : ('<li class="nav-item">'
                     . Html::beginForm(['/site/logout'], 'post')
                     . Html::submitButton(
                         Yii::t('app', 'Logout') . ' (' . Yii::$app->user->identity->username . ') ' . (Yii::$app->user->can('admin') ? '<span class="badge badge-danger">Admin</span>' : (Yii::$app->user->can('editor') ? '<span class="badge badge-info">' . Yii::t('app', 'Editeur') . '</span>' : '')),
 
-                        ['class' => 'btn btn-link logout']
+                        ['class' => 'btn btn-link pl-0 logout']
                     )
                     . Html::endForm())
             ],

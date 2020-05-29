@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Url;
-use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 use yii\web\View;
 use yii\widgets\Pjax;
@@ -19,7 +18,7 @@ use app\models\search\Forme;
 $this->registerJs(
     "
     const form = '.ajax-submit';
-    const pjaxContainer = '#container-pjax';
+    const pjaxContainer = $('#container-pjax');
 
     $(document).pjax('a', pjaxContainer)
     $(document).on('submit', form, function(event) {
@@ -38,26 +37,29 @@ $formModel->forme = $session->get('forme');
 $formModel->accent = $session->get('accent');
 $formModel->strict = $session->get('strict');
 
-$this->title = Yii::t('app', 'Search') .
+$this->title = 'Recherche avancée' .
     ($session->has('forme') ? ': ' . $session->get('forme') : '');
 
-$this->params['breadcrumbs'][0] = $this->title;
+$this->params['breadcrumbs'][0] =
+    [
+        'label' => 'Recherche',
+        'url' => ['/search'],
+    ];
+$this->params['breadcrumbs'][1] = $this->title;
 ?>
 
-<div class="row">
-    <div class="col-md-10">
-        <div class='mb-4'>
-            <?php Pjax::begin(['enablePushState' => false]);
-            $form = ActiveForm::begin(
-                [
-                    'action' => Url::toRoute('/search'),
-                    'options' => [
-                        'class' => 'ajax-submit',
-                    ],
-                ]
-            );
-            echo $form->field($formModel, 'forme', [
-                'inputTemplate' => '<div class="input-group">
+<div class='mb-4'>
+    <?php Pjax::begin(['enablePushState' => false]);
+    $form = ActiveForm::begin(
+        [
+            'action' => Url::toRoute('/search'),
+            'options' => [
+                'class' => 'ajax-submit',
+            ],
+        ]
+    );
+    echo $form->field($formModel, 'forme', [
+        'inputTemplate' => '<div class="input-group">
     <div class="input-group input-group-lg">
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">
@@ -70,155 +72,121 @@ $this->params['breadcrumbs'][0] = $this->title;
         </div>
     </div>
 </div>',
-                'enableLabel' => false,
-                'inputOptions' => [
-                    'placeholder' => 'Rechercher une forme: chevaux, mangeâmes...'
-                ]
-            ]);
-            echo $form->field($formModel, 'accent', [
-                'enableClientValidation' => false, // Don't show colored borders when input is correct.
-            ])->checkbox()->label(
-                'Sensible aux accents<small class="ml-2">(prise en compte des accents dans la recherche pour une sélectivité plus grande des formes) </small>'
-            );
-            ActiveForm::end();
-            Pjax::end();
-            ?>
-        </div>
-    </div>
-
-    <div class="col-md-2 d-none d-md-block">
-        <div class="btn-group-vertical">
-            <button class="btn btn-secondary btn-sm" type="button" data-toggle="modal" data-target="#userGuide" aria-expanded="false" aria-controls="userGuide">
-                Guide d'utilisation
-            </button>
-            <?= Html::a('Recherche avancée', ['search/advanced'], ['class' => 'btn btn-sm btn-outline-secondary', 'data-pjax' => 0]) ?>
-        </div>
-    </div>
-    <div class="d-md-none col">
-        <button class="btn btn-secondary btn-sm" type="button" data-toggle="modal" data-target="#userGuide" aria-expanded="false" aria-controls="userGuide">
-            Guide d'utilisation
-        </button>
-        <?= Html::a('Recherche avancée', ['search/advanced'], ['class' => 'btn btn-sm btn-outline-secondary', 'data-pjax' => 0]) ?>
-    </div>
+        'enableLabel' => false,
+        'inputOptions' => [
+            'placeholder' => 'Rechercher une forme: chevaux, mangeâmes...'
+        ]
+    ]);
+    echo $form->field($formModel, 'accent', [
+        'enableClientValidation' => false, // Don't show colored borders when input is correct.
+    ])->checkbox()->label(
+        'Sensible aux accents<small class="ml-2">(prise en compte des accents dans la recherche pour une sélectivité plus grande des formes) </small>'
+    );
+    echo $form->field($formModel, 'strict', [
+        'enableClientValidation' => false, // Don't show colored borders when input is correct.
+    ])->checkbox()->label(
+        'Recherche stricte<small class="ml-2">(recherche exacte du mot tapé ; sinon, recherche de tous les mots commençant par le mot tapé)</small>'
+    );
+    ActiveForm::end();
+    Pjax::end();
+    ?>
 </div>
-
-<div class="row">
-    <div class="col">
-        <div id="container-pjax">
-            <?php
-            $columns = [
-                [
-                    'class' => 'kartik\grid\ExpandRowColumn',
-                    'width' => '50px',
-                    'value' => function ($model, $key, $index, $column) {
-                        return GridView::ROW_COLLAPSED;
-                    },
-                    // Will pass expandRowKey and expandRowInd to the controller.
-                    // See https://demos.krajee.com/grid#expand-row-column
-                    'detailUrl' => Url::to(['expand-row']),
-                    'detailRowCssClass' => '',
-                    'headerOptions' => ['class' => 'kartik-sheet-style'],
-                    'detailAnimationDuration' => 'fast',
+<div id="container-pjax">
+    <?php
+    $columns = [
+        [
+            'class' => 'kartik\grid\ExpandRowColumn',
+            'width' => '50px',
+            'value' => function ($model, $key, $index, $column) {
+                return GridView::ROW_COLLAPSED;
+            },
+            // Will pass expandRowKey and expandRowInd to the controller.
+            // See https://demos.krajee.com/grid#expand-row-column
+            'detailUrl' => Url::to(['expand-row']),
+            'detailRowCssClass' => '',
+            'headerOptions' => ['class' => 'kartik-sheet-style'],
+            'detailAnimationDuration' => 'fast',
+        ],
+        [
+            'attribute' => 'lemme',
+            'vAlign' => 'middle',
+        ],
+        [
+            'attribute' => 'primaryCategory',
+            'vAlign' => 'middle',
+            'format' => 'html',
+            'value' => function ($data) {
+                $after = $data->isLocution()
+                    ? '&nbsp;<span class="badge badge-secondary">Locution</span>'
+                    : '';
+                return Forme::categoryToLabel($data->primaryCategory) . $after;
+            },
+        ],
+        [
+            'attribute' => 'catgram',
+            'vAlign' => 'middle',
+            'width' => '4rem',
+        ],
+        [
+            'attribute' => 'temps',
+            'vAlign' => 'middle',
+            'width' => '8rem',
+        ],
+        [
+            'attribute' => 'num',
+            'vAlign' => 'middle',
+            'width' => '4rem',
+        ],
+        [
+            'attribute' => 'genre',
+            'vAlign' => 'middle',
+            'width' => '4rem',
+        ],
+        [
+            'attribute' => 'person',
+            'vAlign' => 'middle',
+            'width' => '4rem',
+        ],
+        [
+            'attribute' => 'lig',
+            'vAlign' => 'middle',
+            'width' => '4rem',
+        ],
+        [
+            'attribute' => 'graphsav',
+            'vAlign' => 'middle',
+            'width' => '4rem',
+        ],
+        [
+            'attribute' => 'notes',
+            'vAlign' => 'middle',
+            'width' => '4rem',
+        ],
+    ];
+    if (isset($dataProvider)) {
+        echo GridView::widget([
+            'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel, // Give to the grid a model that can search anywhere.
+            'filterUrl' => '@web/search',
+            'columns' => $columns,
+            'pjax' => true,
+            'pjaxSettings' => [
+                'options' => [
+                    'id' => 'container-pjax',
+                    'enablePushState' => false,
                 ],
-                [
-                    'attribute' => 'lemme',
-                    'vAlign' => 'middle',
-                ],
-                [
-                    'attribute' => 'primaryCategory',
-                    'vAlign' => 'middle',
-                    'format' => 'html',
-                    'value' => function ($data) {
-                        $after = $data->isLocution()
-                            ? '&nbsp;<span class="badge badge-secondary">Locution</span>'
-                            : '';
-                        return Forme::categoryToLabel($data->primaryCategory) . $after;
-                    },
-                ],
-                [
-                    'attribute' => 'catgram',
-                    'vAlign' => 'middle',
-                    'width' => '4rem',
-                ],
-                [
-                    'attribute' => 'temps',
-                    'vAlign' => 'middle',
-                    'width' => '8rem',
-                ],
-                [
-                    'attribute' => 'num',
-                    'vAlign' => 'middle',
-                    'width' => '4rem',
-                ],
-                [
-                    'attribute' => 'genre',
-                    'vAlign' => 'middle',
-                    'width' => '4rem',
-                ],
-                [
-                    'attribute' => 'person',
-                    'vAlign' => 'middle',
-                    'width' => '4rem',
-                ],
-                [
-                    'attribute' => 'lig',
-                    'vAlign' => 'middle',
-                    'width' => '4rem',
-                ],
-                [
-                    'attribute' => 'graphsav',
-                    'vAlign' => 'middle',
-                    'width' => '4rem',
-                ],
-                [
-                    'attribute' => 'notes',
-                    'vAlign' => 'middle',
-                    'width' => '4rem',
-                ],
-                [
-                    'class' => '\kartik\grid\ActionColumn',
-                    'header' => 'Resources externes',
-                    // Each callback is a new button.
-                    'template' => '{neoveille} {franceterme}',
-                    'buttons' => [
-                        "neoveille" => function ($url, $model) {
-                            return '
-                            <a title="Néoveille: statistiques" href="https://tal.lipn.univ-paris13.fr/neoveille/html/phc_anglicismes/html/index.search.php?word='
-                                . $model->lemme . '"><i class="fa fa-paper-plane"></i></a>
-                            ';
-                        },
-                        "franceterme" => function ($url, $model) {
-                            return '
-                            <a title="FranceTerme: recherche du mot" href="http://www.culture.fr/franceterme/result?francetermeSearchTerme='
-                                . $model->lemme . '&francetermeSearchDomaine=0&francetermeSearchSubmit=rechercher&action=search"><i class="fa fa-university"></i></a>
-                            ';
-                        },
-                    ]
-                ]
-            ];
-            if (isset($dataProvider)) {
-                echo GridView::widget([
-                    'dataProvider' => $dataProvider,
-                    //'filterModel' => $searchModel, // Give to the grid a model that can search anywhere.
-                    //'filterUrl' => '@web/search',
-                    'columns' => $columns,
-                    'pjax' => true,
-                    'pjaxSettings' => [
-                        'options' => [
-                            'id' => 'container-pjax',
-                            'enablePushState' => false,
-                        ],
-                    ],
-                    'bordered' => true,
-                    'striped' => true,
-                    'condensed' => true,
-                    'responsive' => true,
-                ]);
-            }
-            ?>
-        </div>
-    </div>
+            ],
+            'bordered' => true,
+            'striped' => true,
+            'condensed' => true,
+            'responsive' => true,
+        ]);
+    }
+    ?>
 </div>
+<button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#userGuide" aria-expanded="false" aria-controls="userGuide">
+    Guide d'utilisation
+</button>
 
 <div class="modal fade" id="userGuide" tabindex="-1" role="dialog" aria-labelledby="User guide" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
@@ -639,5 +607,13 @@ $this->params['breadcrumbs'][0] = $this->title;
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="collapse card" id="userGuidec">
+    <div class="card-header">
+        <h1>Guide d'utilisation</h1>
+    </div>
+    <div class="card-body">
     </div>
 </div>

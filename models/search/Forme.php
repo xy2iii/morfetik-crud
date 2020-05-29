@@ -91,7 +91,7 @@ class Forme extends ActiveRecord
         // Locution (préposition)
         'loc Prép' => 'prep-loc',
         // Locution (phrase)
-        'loc' => 'phrase-loc',
+        'loc' => 'loc-loc',
         'loc Ph' => 'phrase-loc',
         // Sigle
         'sig' => 'sigle',
@@ -293,7 +293,7 @@ class Forme extends ActiveRecord
             'lemmeid' => 'Lemmeid',
             'lemme' => 'Lemme',
             'primaryCategory' => 'Catégorie',
-            'catgram' => 'Catégorie secondaire',
+            'catgram' => 'Sous-catégorie',
             'cat' => 'Catégorie',
             'genre' => 'Genre',
             'num' => 'Nombre',

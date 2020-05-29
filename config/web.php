@@ -8,7 +8,7 @@ $config = [
     'id' => 'morfetik',
     'name' => 'Morfetik',
     'basePath' => dirname(__DIR__),
-    'homeUrl' => YII_ENV_DEV ? '' : $baseUrl, // If in a subfolder, rewrite
+    'homeUrl' => YII_ENV_DEV ? '/' : $baseUrl, // If in a subfolder, rewrite
     'bootstrap' => [
         'log',
         'app\config\Aliases', // The baseURL is defined here.

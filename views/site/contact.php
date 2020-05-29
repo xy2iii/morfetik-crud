@@ -23,11 +23,5 @@ $this->params['breadcrumbs'][] = $this->title;
             </a>
         </h2>
         <p>Responsable du projet Morfetik.</p>
-        <h2>Équipe RCLN
-            <a class='btn btn-primary' href="https://lipn.univ-paris13.fr/accueil/equipe/rcln/">
-                <i class="fas fa-globe"></i> Site
-            </a>
-        </h2>
-        <p>Équipe travaillant sur le traitement automatisé des languages.</p>
     </div>
 </div>

@@ -9,7 +9,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-publications">
     <h1><?= Html::encode($this->title) ?></h1>
-    <h2>Articles</h2>
+    <h2 class="mt-4">Article</h2>
     <p>
         <b>GREZKA A. (2017).</b> <a href="https://www.eer.cz/files/2017-1/2017_1-07_Grezka.pdf">"Morfetik, un dictionnaire morphologique : l’exemple du lexique de la perception"</a>. In <i>W. BANYS (ed)</i>, Études sémantico-syntaxiques des langues romanes, Neophilologica, 29, Université de Silésie, Katowice (Pologne), pp. 89-99.
     </p>
@@ -39,11 +39,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <b>CARTIER E. et J.-F. SABLAYROLLES (2009).</b> <a href="https://halshs.archives-ouvertes.fr/halshs-00736530v1">"Néologismes, dictionnaires et informatique. Cahiers de Lexicologie"</a>, Centre National de la Recherche Scientifique, 2008-2 (93), pp.175-192.
     </p>
-    <h2>Posters</h2>
+    <h2 class="mt-4">Poster</h2>
     <p>
         <b>GREZKA A. (2015).</b> "Dictionnaires morphologiques du français contemporain : présentation de Morfetik, éléments d'un modèle pour le TAL", TALN 2015, 22-25 juin 2015, Université de Caen Basse-Normandie, Caen (France).
     </p>
-    <h2>Communication</h2>
+    <h2 class="mt-4">Communication</h2>
     <p>
         <b>GREZKA A. (2017).</b> "Élaboration d'outils méthodologiques pour décrire la langue », 6 mars 2017, Université de Niigata (Japon).
     </p>
@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <b>GREZKA A. et M. MATHIEU-COLAS (2015).</b> "Morfetik. Présentation et enjeux". Journée d’étude ConSciLa : Dictionnaires et morphologie flexionnelle du français contemporain : état des lieux et perspectives, 2 novembre 2015, Université Paris 3-Sorbonne Nouvelle, Paris (France).
     </p>
-    <h2>Journée d’étude organisée dans le cadre de Morfetik</h2>
+    <h2 class="mt-4">Journée d’étude organisée dans le cadre de Morfetik</h2>
     <p>
         <a href="
         http://www.culturecommunication.gouv.fr/Thematiques/Langue-francaise-et-langues-de-France/Actualites/Dictionnaires-et-morphologie-flexionnelle-du-francais-contemporain-etat-des-lieux-et-perspectives">Journée d’étude ConSciLa : Dictionnaires et morphologie flexionnelle du français contemporain : état des lieux et perspectives</a>, Université Paris 3-Sorbonne Nouvelle, 2 novembre 2015 </p>
