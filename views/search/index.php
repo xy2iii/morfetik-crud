@@ -200,7 +200,7 @@ $this->params['breadcrumbs'][0] = $this->title;
                 echo GridView::widget([
                     'dataProvider' => $dataProvider,
                     //'filterModel' => $searchModel, // Give to the grid a model that can search anywhere.
-                    //'filterUrl' => '@web/search',
+                    'filterUrl' => '@web/search',
                     'columns' => $columns,
                     'pjax' => true,
                     'pjaxSettings' => [
