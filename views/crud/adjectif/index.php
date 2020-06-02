@@ -6,7 +6,6 @@ use yii\bootstrap4\Modal;
 use kartik\grid\GridView;
 use app\assets\CrudAsset;
 use app\widgets\crud\BulkButtonWidget;
-use yii\web\View;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\AdjectifSearch */
@@ -21,14 +20,6 @@ $this->params['breadcrumbs'][0] =
 $this->params['breadcrumbs'][1] = $this->title;
 
 CrudAsset::register($this);
-
-$this->registerJs(
-    "
-    $.pjax.defaults.push = false;
-    ",
-    View::POS_READY,
-    'pjax-handler'
-);
 
 ?>
 <div class="adjectif-index">

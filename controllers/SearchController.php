@@ -143,6 +143,10 @@ class SearchController extends Controller
         $dataProvider = $searchModel->search($params);
 
         if (Yii::$app->request->isAjax) {
+            $response = Yii::$app->getResponse();
+            $destination = Url::to(Yii::$app->requestedRoute);
+            $response->getHeaders()->set('X-Pjax-Url', $destination);
+            $response->getHeaders()->set('Location', $destination);
             return $this->renderAjax(
                 'advanced',
                 [

@@ -23,7 +23,7 @@ $this->registerJs(
 
     $(document).pjax('a', pjaxContainer)
     $(document).on('submit', form, function(event) {
-        $.pjax.submit(event, pjaxContainer, {push:false})
+        $.pjax.submit(event, pjaxContainer)
     })
     $.pjax.defaults.timeout = 10000;
     ",
@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][0] = $this->title;
 <div class="row">
     <div class="col-md-10">
         <div class='mb-4'>
-            <?php Pjax::begin(['enablePushState' => false]);
+            <?php Pjax::begin();
             $form = ActiveForm::begin(
                 [
                     'action' => Url::toRoute('/search'),
