@@ -8,6 +8,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\Response;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 use yii\filters\AccessControl;
 use kartik\grid\EditableColumnAction;
@@ -111,6 +112,10 @@ abstract class AbstractController extends Controller
         $request = Yii::$app->request;
         if ($request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
+            $response = Yii::$app->getResponse();
+            $destination = Url::to([Yii::$app->requestedRoute]);
+            $response->getHeaders()->set('X-Pjax-Url', $destination);
+            $response->getHeaders()->set('Location', $destination);
             return [
                 'title' => Yii::t('app', '{item} #', ['item' => $this->getName()]) . $id,
                 'content' => $this->renderAjax('view', [
@@ -141,6 +146,10 @@ abstract class AbstractController extends Controller
 
         if ($request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
+            $response = Yii::$app->getResponse();
+            $destination = Url::to([Yii::$app->requestedRoute]);
+            $response->getHeaders()->set('X-Pjax-Url', $destination);
+            $response->getHeaders()->set('Location', $destination);
             if ($request->isGet) {
                 return [
                     'title' => Yii::t('app', 'Create new {item}', ['item' => $this->getName()]),
@@ -204,6 +213,10 @@ abstract class AbstractController extends Controller
             *   Process for ajax request
             */
             Yii::$app->response->format = Response::FORMAT_JSON;
+            $response = Yii::$app->getResponse();
+            $destination = Url::to([Yii::$app->requestedRoute]);
+            $response->getHeaders()->set('X-Pjax-Url', $destination);
+            $response->getHeaders()->set('Location', $destination);
             if ($request->isGet) {
                 return [
                     'title' => Yii::t('app', 'Update {item} #', ['item' => $this->getName()]) . $id,
@@ -268,6 +281,10 @@ abstract class AbstractController extends Controller
             *   Process for ajax request
             */
             Yii::$app->response->format = Response::FORMAT_JSON;
+            $response = Yii::$app->getResponse();
+            $destination = Url::to([Yii::$app->requestedRoute]);
+            $response->getHeaders()->set('X-Pjax-Url', $destination);
+            $response->getHeaders()->set('Location', $destination);
             return ['forceClose' => true, 'forceReload' => '#crud-datatable-pjax'];
         } else {
             /*
@@ -298,6 +315,10 @@ abstract class AbstractController extends Controller
             *   Process for ajax request
             */
             Yii::$app->response->format = Response::FORMAT_JSON;
+            $response = Yii::$app->getResponse();
+            $destination = Url::to([Yii::$app->requestedRoute]);
+            $response->getHeaders()->set('X-Pjax-Url', $destination);
+            $response->getHeaders()->set('Location', $destination);
             return ['forceClose' => true, 'forceReload' => '#crud-datatable-pjax'];
         } else {
             /*
