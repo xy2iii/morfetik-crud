@@ -6,11 +6,16 @@ use yii\bootstrap4\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Grammaire */
 /* @var $form yii\bootstrap4\ActiveForm */
+
+$isNew = $model->isNewRecord;
+$suffix = $isNew ? 'create' : 'update';
+$path = '/crud/grammaire/' . $suffix;
 ?>
 
 <div class="grammaire-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form =
+        ActiveForm::begin(['action' => [$path, 'id' => $model->ID]]); ?>
 
     <?= $form->field($model, 'ID')->textInput(['maxlength' => true]) ?>
 

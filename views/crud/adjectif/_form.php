@@ -16,8 +16,6 @@ $flexArray = array_map(function ($m) {
 $isNew = $model->isNewRecord;
 $suffix = $isNew ? 'create' : 'update';
 $path = '/crud/adjectif/' . $suffix;
-echo $path;
-Yii::trace($isNew);
 ?>
 
 <div class="adjectif-form">

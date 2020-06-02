@@ -10,5 +10,6 @@ use yii\helpers\Html;
 <div class="nom-create">
     <?= $this->render('_form', [
         'model' => $model,
+        'relatedModel' => $relatedModel
     ]) ?>
 </div>

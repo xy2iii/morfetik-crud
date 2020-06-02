@@ -18,6 +18,6 @@ class GrammaireController extends AbstractController
     }
     protected function getName()
     {
-        return 'Code verbe';
+        return 'Grammaire';
     }
 }

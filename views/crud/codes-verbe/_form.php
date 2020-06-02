@@ -6,11 +6,16 @@ use yii\bootstrap4\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\CodesVerbe */
 /* @var $form yii\bootstrap4\ActiveForm */
+
+$isNew = $model->isNewRecord;
+$suffix = $isNew ? 'create' : 'update';
+$path = '/crud/codes-verbe/' . $suffix;
 ?>
 
 <div class="codes-verbe-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form =
+        ActiveForm::begin(['action' => [$path, 'id' => $model->Code]]); ?>
 
     <?= $form->field($model, 'Code')->textInput(['maxlength' => true]) ?>
 

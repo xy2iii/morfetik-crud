@@ -6,11 +6,16 @@ use yii\bootstrap4\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\CodesAdjectif */
 /* @var $form yii\bootstrap4\ActiveForm */
+
+$isNew = $model->isNewRecord;
+$suffix = $isNew ? 'create' : 'update';
+$path = '/crud/codes-adjectif/' . $suffix;
 ?>
 
 <div class="codes-adjectif-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form =
+        ActiveForm::begin(['action' => [$path, 'id' => $model->Code]]); ?>
 
     <?= $form->field($model, 'Code')->textInput(['maxlength' => true]) ?>
 

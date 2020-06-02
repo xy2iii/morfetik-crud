@@ -6,11 +6,21 @@ use yii\bootstrap4\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Verbe */
 /* @var $form yii\bootstrap4\ActiveForm */
+
+$flexArray = $relatedModel::find()->select(['Code'])->all();
+$flexArray = array_map(function ($m) {
+    return $m->Code;
+}, $flexArray);
+
+$isNew = $model->isNewRecord;
+$suffix = $isNew ? 'create' : 'update';
+$path = '/crud/verbe/' . $suffix;
 ?>
 
 <div class="verbe-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form =
+        ActiveForm::begin(['action' => [$path, 'id' => $model->ID]]); ?>
 
     <?= $form->field($model, 'ID')->textInput(['maxlength' => true]) ?>
 

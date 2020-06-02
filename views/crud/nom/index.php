@@ -11,7 +11,7 @@ use app\widgets\crud\BulkButtonWidget;
 /* @var $searchModel app\models\AdjectifSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Adjectifs';
+$this->title = 'Noms';
 $this->params['breadcrumbs'][0] =
     [
         'label' => 'Edition',
