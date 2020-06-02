@@ -12,12 +12,18 @@ $flexArray = $relatedModel::find()->select(['Code'])->all();
 $flexArray = array_map(function ($m) {
     return $m->Code;
 }, $flexArray);
+
+$isNew = $model->isNewRecord;
+$suffix = $isNew ? 'create' : 'update';
+$path = '/crud/adjectif/' . $suffix;
+echo $path;
+Yii::trace($isNew);
 ?>
 
 <div class="adjectif-form">
 
     <?php $form =
-        ActiveForm::begin(); ?>
+        ActiveForm::begin(['action' => [$path, 'id' => $model->ID]]); ?>
 
     <?= $form->field($model, 'ID')->textInput(['maxlength' => true]) ?>
 
