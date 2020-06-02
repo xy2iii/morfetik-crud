@@ -7,6 +7,7 @@ use Ds\Set;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\helpers\Url;
 use app\models\search\Forme;
 use app\models\search\FormeSearch;
 use app\models\search\SearchBarForm;
@@ -71,6 +72,11 @@ class SearchController extends Controller
         $dataProvider = $searchModel->search($params);
 
         if (Yii::$app->request->isAjax) {
+            Yii::trace('kore ga ajax desu');
+            $response = Yii::$app->getResponse();
+            $destination = Url::to(Yii::$app->requestedRoute);
+            $response->getHeaders()->set('X-Pjax-Url', $destination);
+            $response->getHeaders()->set('Location', $destination);
             return $this->renderAjax(
                 'index',
                 [
@@ -143,6 +149,7 @@ class SearchController extends Controller
         $dataProvider = $searchModel->search($params);
 
         if (Yii::$app->request->isAjax) {
+            Yii::trace('kore ga ajax desu');
             $response = Yii::$app->getResponse();
             $destination = Url::to(Yii::$app->requestedRoute);
             $response->getHeaders()->set('X-Pjax-Url', $destination);
