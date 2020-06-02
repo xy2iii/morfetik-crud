@@ -6,6 +6,7 @@ use yii\bootstrap4\Modal;
 use kartik\grid\GridView;
 use app\assets\CrudAsset;
 use app\widgets\crud\BulkButtonWidget;
+use yii\web\View;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\AdjectifSearch */
