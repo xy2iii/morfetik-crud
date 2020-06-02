@@ -94,6 +94,11 @@ abstract class AbstractController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $relatedModel = $this->getRelatedModel();
 
+        $response = Yii::$app->getResponse();
+        $destination = Url::to([Yii::$app->requestedRoute]);
+        $response->getHeaders()->set('X-Pjax-Url', $destination);
+        $response->getHeaders()->set('Location', $destination);
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
