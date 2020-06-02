@@ -99,12 +99,14 @@ $elision = Forme::isElision($lemme->lemme);
                 </tr>
             </thead>
             <tbody>
-                <?php if ($elision) : ?>
-                    <th scope="row">J'</th>
-                <?php else : ?>
-                    <th scope="row">J'</th>
-                <?php endif ?>
-                <td><?= $vrb['Ind-pr']['1S'] ?></td>
+                <tr>
+                    <?php if ($elision) : ?>
+                        <th scope="row">J'</th>
+                    <?php else : ?>
+                        <th scope="row">Je</th>
+                    <?php endif ?>
+                    <td><?= $vrb['Ind-pr']['1S'] ?></td>
+                </tr>
                 <tr>
                     <th scope="row">Tu</th>
                     <td><?= $vrb['Ind-pr']['2S'] ?></td>
@@ -141,7 +143,7 @@ $elision = Forme::isElision($lemme->lemme);
                     <?php if ($elision) : ?>
                         <th scope="row">J'</th>
                     <?php else : ?>
-                        <th scope="row">J'</th>
+                        <th scope="row">Je</th>
                     <?php endif ?>
                     <td><?= $vrb['Ind-imp']['1S'] ?></td>
                 </tr>
@@ -182,7 +184,7 @@ $elision = Forme::isElision($lemme->lemme);
                     <?php if ($elision) : ?>
                         <th scope="row">J'</th>
                     <?php else : ?>
-                        <th scope="row">J'</th>
+                        <th scope="row">Je</th>
                     <?php endif ?>
                     <td><?= $vrb['Ind-ps']['1S'] ?></td>
                 </tr>
@@ -226,7 +228,7 @@ $elision = Forme::isElision($lemme->lemme);
                     <?php if ($elision) : ?>
                         <th scope="row">J'</th>
                     <?php else : ?>
-                        <th scope="row">J'</th>
+                        <th scope="row">Je</th>
                     <?php endif ?>
                     <td><?= $vrb['Ind-fut']['1S'] ?></td>
                 </tr>
@@ -267,7 +269,7 @@ $elision = Forme::isElision($lemme->lemme);
                     <?php if ($elision) : ?>
                         <th scope="row">J'</th>
                     <?php else : ?>
-                        <th scope="row">J'</th>
+                        <th scope="row">Je</th>
                     <?php endif ?>
                     <td><?= $vrb['Cond-pr']['1S'] ?></td>
                 </tr>
@@ -308,7 +310,7 @@ $elision = Forme::isElision($lemme->lemme);
                     <?php if ($elision) : ?>
                         <th scope="row">J'</th>
                     <?php else : ?>
-                        <th scope="row">J'</th>
+                        <th scope="row">Je</th>
                     <?php endif ?>
                     <td><?= $vrb['Sub-pr']['1S'] ?></td>
                 </tr>
@@ -352,7 +354,7 @@ $elision = Forme::isElision($lemme->lemme);
                     <?php if ($elision) : ?>
                         <th scope="row">J'</th>
                     <?php else : ?>
-                        <th scope="row">J'</th>
+                        <th scope="row">Je</th>
                     <?php endif ?>
                     <td><?= $vrb['Sub-imp']['1S'] ?></td>
                 </tr>

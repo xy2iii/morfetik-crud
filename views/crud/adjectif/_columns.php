@@ -2,8 +2,16 @@
 
 use kartik\editable\Editable;
 use kartik\grid\GridView;
-use app\views\crud\GridHelper;
 use Yii\helpers\Url;
+
+use app\views\crud\GridHelper;
+
+/* @var relatedModel Related model to this catégorie. */
+
+$flexArray = $relatedModel::find()->select(['Code'])->all();
+$flexArray = array_map(function ($m) {
+    return $m->Code;
+}, $flexArray);
 
 return [
     GridHelper::getCheckboxColumn(),
@@ -35,8 +43,7 @@ return [
         'attribute' => 'CatGram',
         'vAlign' => 'middle',
         'editableOptions' => [
-            'header' => 'Catégorie grammaticale',
-            'size' => 'md',
+            'header' => Yii::t('app', 'Gramatical category'),
             'inputType' => Editable::INPUT_TEXT,
             'formOptions' => ['action' => ['editable']],
         ],
@@ -45,10 +52,10 @@ return [
         'class' => '\kartik\grid\EditableColumn',
         'attribute' => 'Flex',
         'vAlign' => 'middle',
-        'hAlign' => 'center',
         'editableOptions' => [
-            'header' => 'Flexion',
-            'inputType' => Editable::INPUT_TEXT,
+            'header' => Yii::t('app', 'Flexion'),
+            'inputType' => Editable::INPUT_DROPDOWN_LIST,
+            'data' => $flexArray,
             'formOptions' => ['action' => ['editable']],
         ],
     ],

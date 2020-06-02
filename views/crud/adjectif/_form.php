@@ -7,6 +7,11 @@ use yii\bootstrap4\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Adjectif */
 /* @var $form yii\bootstrap4\ActiveForm */
+
+$flexArray = $relatedModel::find()->select(['Code'])->all();
+$flexArray = array_map(function ($m) {
+    return $m->Code;
+}, $flexArray);
 ?>
 
 <div class="adjectif-form">
@@ -20,7 +25,7 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'CatGram')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'Flex')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Flex')->dropDownList($flexArray) ?>
 
     <?= $form->field($model, 'Lig')->textInput(['maxlength' => true]) ?>
 
@@ -28,7 +33,6 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'Notes')->textarea(['rows' => 6]) ?>
 
-    <?= var_dump($form); ?>
     <?php if (!Yii::$app->request->isAjax) { ?>
         <div class="form-group">
             <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

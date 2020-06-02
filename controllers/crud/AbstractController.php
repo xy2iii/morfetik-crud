@@ -91,10 +91,12 @@ abstract class AbstractController extends Controller
     {
         $searchModel = $this->getSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $relatedModel = $this->getRelatedModel();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'relatedModel' => $relatedModel,
         ]);
     }
 
@@ -135,6 +137,7 @@ abstract class AbstractController extends Controller
     {
         $request = Yii::$app->request;
         $model = $this->getModel();
+        $relatedModel = $this->getRelatedModel();
 
         if ($request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
@@ -143,6 +146,7 @@ abstract class AbstractController extends Controller
                     'title' => Yii::t('app', 'Create new {item}', ['item' => $this->getName()]),
                     'content' => $this->renderAjax('create', [
                         'model' => $model,
+                        'relatedModel' => $relatedModel,
                     ]),
                     'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-outline-secondary mr-auto', 'data-dismiss' => "modal"]) .
                         Html::button(Yii::t('app', 'Save'), ['class' => 'btn btn-primary', 'type' => "submit"])
@@ -161,6 +165,7 @@ abstract class AbstractController extends Controller
                     'title' => Yii::t('app', 'Create new {item}', ['item' => $this->getName()]),
                     'content' => $this->renderAjax('create', [
                         'model' => $model,
+                        'relatedModel' => $relatedModel,
                     ]),
                     'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-outline-secondary mr-auto', 'data-dismiss' => "modal"]) .
                         Html::button(Yii::t('app', 'Save'), ['class' => 'btn btn-primary', 'type' => "submit"])
@@ -192,6 +197,7 @@ abstract class AbstractController extends Controller
     {
         $request = Yii::$app->request;
         $model = $this->findModel($id);
+        $relatedModel = $this->getRelatedModel();
 
         if ($request->isAjax) {
             /*
@@ -203,6 +209,7 @@ abstract class AbstractController extends Controller
                     'title' => Yii::t('app', 'Update {item} #', ['item' => $this->getName()]) . $id,
                     'content' => $this->renderAjax('update', [
                         'model' => $model,
+                        'relatedModel' => $relatedModel,
                     ]),
                     'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-outline-secondary mr-auto', 'data-dismiss' => "modal"]) .
                         Html::button(Yii::t('app', 'Save'), ['class' => 'btn btn-primary', 'type' => "submit"])
@@ -213,6 +220,7 @@ abstract class AbstractController extends Controller
                     'title' => Yii::t('app', '{item} #', ['item' => $this->getName()]) . $id,
                     'content' => $this->renderAjax('view', [
                         'model' => $model,
+                        'relatedModel' => $relatedModel,
                     ]),
                     'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-outline-secondary mr-auto', 'data-dismiss' => "modal"]) .
                         Html::a(Yii::t('app', 'Edit'), ['update', 'id' => $id], ['class' => 'btn btn-primary', 'role' => 'modal-remote'])
@@ -222,6 +230,7 @@ abstract class AbstractController extends Controller
                     'title' => Yii::t('app', 'Update {item} #', ['item' => $this->getName()]) . $id,
                     'content' => $this->renderAjax('update', [
                         'model' => $model,
+                        'relatedModel' => $relatedModel,
                     ]),
                     'footer' => Html::button(Yii::t('app', 'Close'), ['class' => 'btn btn-outline-secondary mr-auto', 'data-dismiss' => "modal"]) .
                         Html::button(Yii::t('app', 'Save'), ['class' => 'btn btn-primary', 'type' => "submit"])
@@ -236,6 +245,7 @@ abstract class AbstractController extends Controller
             } else {
                 return $this->render('update', [
                     'model' => $model,
+                    'relatedModel' => $relatedModel,
                 ]);
             }
         }
