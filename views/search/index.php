@@ -44,20 +44,22 @@ $this->title = Yii::t('app', 'Search') .
 $this->params['breadcrumbs'][0] = $this->title;
 ?>
 
-<div class="row">
-    <div class="col-md-10">
-        <div class='mb-4'>
-            <?php Pjax::begin();
-            $form = ActiveForm::begin(
-                [
-                    'action' => Url::toRoute('/search'),
-                    'options' => [
-                        'class' => 'ajax-submit',
-                    ],
-                ]
-            );
-            echo $form->field($formModel, 'forme', [
-                'inputTemplate' => '<div class="input-group">
+
+<div class="card mb-5">
+    <div class="row no-gutters">
+        <div class="col-md-9">
+            <div class="card-body">
+                <?php Pjax::begin();
+                $form = ActiveForm::begin(
+                    [
+                        'action' => Url::toRoute('/search'),
+                        'options' => [
+                            'class' => 'ajax-submit',
+                        ],
+                    ]
+                );
+                echo $form->field($formModel, 'forme', [
+                    'inputTemplate' => '<div class="input-group">
     <div class="input-group input-group-lg">
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">
@@ -70,35 +72,38 @@ $this->params['breadcrumbs'][0] = $this->title;
         </div>
     </div>
 </div>',
-                'enableLabel' => false,
-                'inputOptions' => [
-                    'placeholder' => 'Rechercher une forme: chevaux, mangeâmes...'
-                ]
-            ]);
-            echo $form->field($formModel, 'accent', [
-                'enableClientValidation' => false, // Don't show colored borders when input is correct.
-            ])->checkbox()->label(
-                'Sensible aux accents<small class="ml-2">(prise en compte des accents dans la recherche pour une sélectivité plus grande des formes) </small>'
-            );
-            ActiveForm::end();
-            Pjax::end();
-            ?>
+                    'enableLabel' => false,
+                    'inputOptions' => [
+                        'placeholder' => 'Rechercher une forme : chevaux, mangeâmes...'
+                    ]
+                ]);
+                echo $form->field($formModel, 'accent', [
+                    'enableClientValidation' => false, // Don't show colored borders when input is correct.
+                ])->checkbox()->label(
+                    'Sensible aux accents<small class="ml-2">(prise en compte des accents dans la recherche pour une sélectivité plus grande des formes) </small>'
+                );
+                ActiveForm::end();
+                Pjax::end();
+                ?>
+            </div>
         </div>
-    </div>
 
-    <div class="col-md-2 d-none d-md-block">
-        <div class="btn-group-vertical">
-            <button class="btn btn-secondary btn-sm" type="button" data-toggle="modal" data-target="#userGuide" aria-expanded="false" aria-controls="userGuide">
-                Guide d'utilisation
-            </button>
-            <?= Html::a('Recherche avancée', ['search/advanced'], ['class' => 'btn btn-sm btn-outline-secondary', 'data-pjax' => 0]) ?>
+        <div class="col-md-3 d-none d-md-block">
+            <ul class="list-group list-group-flush">
+                <a class="list-group-item  list-group-item-action" type="button" data-toggle="modal" data-target="#userGuide" aria-expanded="false" aria-controls="userGuide">
+                    Guide d'utilisation
+                </a>
+                <?= Html::a('Recherche avancée', ['search/advanced'], ['class' => 'list-group-item list-group-item-action', 'data-pjax' => 0]) ?>
+            </ul>
         </div>
-    </div>
-    <div class="d-md-none col">
-        <button class="btn btn-secondary btn-sm" type="button" data-toggle="modal" data-target="#userGuide" aria-expanded="false" aria-controls="userGuide">
-            Guide d'utilisation
-        </button>
-        <?= Html::a('Recherche avancée', ['search/advanced'], ['class' => 'btn btn-sm btn-outline-secondary', 'data-pjax' => 0]) ?>
+        <div class="d-md-none col">
+            <ul class="list-group list-group-flush">
+                <a class="list-group-item  list-group-item-action" type="button" data-toggle="modal" data-target="#userGuide" aria-expanded="false" aria-controls="userGuide">
+                    Guide d'utilisation
+                </a>
+                <?= Html::a('Recherche avancée', ['search/advanced'], ['class' => 'list-group-item list-group-item-action', 'data-pjax' => 0]) ?>
+            </ul>
+        </div>
     </div>
 </div>
 

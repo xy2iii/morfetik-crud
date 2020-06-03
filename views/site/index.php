@@ -12,8 +12,8 @@ $this->title = 'Morfetik';
                 <h1 class="text-center">Morfetik</h1>
             </div>
             <div class="col-md-8">
-                <h2 class>Une ressource lexicale pour le traitement automatique du language</h2>
-                <p>
+                <h2 class>Une ressource lexicale pour le traitement automatique du langage</h2>
+                <p class="text-justify">
                     La ressource lexicale Morfetik est un dictionnaire morphologique des mots simples et composés du français (noms, adjectifs, déterminants, pronoms, verbes, adverbes, prépositions, conjonctions, interjections, locutions). Morfetik permet d'obtenir, pour n'importe quel mot français, l'ensemble de ses formes (pluriel des noms, féminin et pluriel des adjectifs, formes conjuguées des verbes, etc.), ou bien, réciproquement, d'identifier le mot (la forme de base, le "lemme") correspondant à n'importe quelle forme fléchie. La ressource recense actuellement plus de 100 000 mots.
                 </p>
                 <p class="d-flex align-items-end justify-content-end">

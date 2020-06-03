@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Url;
+use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 use yii\web\View;
 use yii\widgets\Pjax;
@@ -18,11 +19,11 @@ use app\models\search\Forme;
 $this->registerJs(
     "
     const form = '.ajax-submit';
-    const pjaxContainer = $('#container-pjax');
+    const pjaxContainer = '#container-pjax';
 
     $(document).pjax('a', pjaxContainer)
     $(document).on('submit', form, function(event) {
-        $.pjax.submit(event, pjaxContainer, {push:false})
+        $.pjax.submit(event, pjaxContainer)
     })
     $.pjax.defaults.timeout = 10000;
     ",
@@ -48,18 +49,21 @@ $this->params['breadcrumbs'][0] =
 $this->params['breadcrumbs'][1] = $this->title;
 ?>
 
-<div class='mb-4'>
-    <?php Pjax::begin(['enablePushState' => false]);
-    $form = ActiveForm::begin(
-        [
-            'action' => Url::toRoute('/search'),
-            'options' => [
-                'class' => 'ajax-submit',
-            ],
-        ]
-    );
-    echo $form->field($formModel, 'forme', [
-        'inputTemplate' => '<div class="input-group">
+<div class="card mb-5">
+    <div class="row no-gutters">
+        <div class="col-md-9">
+            <div class="card-body">
+                <?php Pjax::begin();
+                $form = ActiveForm::begin(
+                    [
+                        'action' => Url::toRoute('/search'),
+                        'options' => [
+                            'class' => 'ajax-submit',
+                        ],
+                    ]
+                );
+                echo $form->field($formModel, 'forme', [
+                    'inputTemplate' => '<div class="input-group">
     <div class="input-group input-group-lg">
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">
@@ -72,121 +76,143 @@ $this->params['breadcrumbs'][1] = $this->title;
         </div>
     </div>
 </div>',
-        'enableLabel' => false,
-        'inputOptions' => [
-            'placeholder' => 'Rechercher une forme: chevaux, mangeâmes...'
-        ]
-    ]);
-    echo $form->field($formModel, 'accent', [
-        'enableClientValidation' => false, // Don't show colored borders when input is correct.
-    ])->checkbox()->label(
-        'Sensible aux accents<small class="ml-2">(prise en compte des accents dans la recherche pour une sélectivité plus grande des formes) </small>'
-    );
-    echo $form->field($formModel, 'strict', [
-        'enableClientValidation' => false, // Don't show colored borders when input is correct.
-    ])->checkbox()->label(
-        'Recherche stricte<small class="ml-2">(recherche exacte du mot tapé ; sinon, recherche de tous les mots commençant par le mot tapé)</small>'
-    );
-    ActiveForm::end();
-    Pjax::end();
-    ?>
+                    'enableLabel' => false,
+                    'inputOptions' => [
+                        'placeholder' => 'Rechercher une forme : chevaux, mangeâmes...'
+                    ]
+                ]);
+                echo $form->field($formModel, 'accent', [
+                    'enableClientValidation' => false, // Don't show colored borders when input is correct.
+                ])->checkbox()->label(
+                    'Sensible aux accents<small class="ml-2">(prise en compte des accents dans la recherche pour une sélectivité plus grande des formes) </small>'
+                );
+                echo $form->field($formModel, 'strict', [
+                    'enableClientValidation' => false, // Don't show colored borders when input is correct.
+                ])->checkbox()->label(
+                    'Recherche stricte<small class="ml-2">(recherche exacte du mot tapé ; sinon, recherche de tous les mots commençant par le mot tapé)</small>'
+                );
+                ActiveForm::end();
+                Pjax::end();
+                ?>
+            </div>
+        </div>
+
+        <div class="col-md-3 d-none d-md-block">
+            <ul class="list-group list-group-flush">
+                <a class="list-group-item  list-group-item-action" type="button" data-toggle="modal" data-target="#userGuide" aria-expanded="false" aria-controls="userGuide">
+                    Guide d'utilisation
+                </a>
+                <?= Html::a('Recherche simple', ['search/advanced'], ['class' => 'list-group-item list-group-item-action', 'data-pjax' => 0]) ?>
+            </ul>
+        </div>
+        <div class="d-md-none col">
+            <ul class="list-group list-group-flush">
+                <a class="list-group-item  list-group-item-action" type="button" data-toggle="modal" data-target="#userGuide" aria-expanded="false" aria-controls="userGuide">
+                    Guide d'utilisation
+                </a>
+                <?= Html::a('Recherche simple', ['search/advanced'], ['class' => 'list-group-item list-group-item-action', 'data-pjax' => 0]) ?>
+            </ul>
+        </div>
+    </div>
 </div>
-<div id="container-pjax">
-    <?php
-    $columns = [
-        [
-            'class' => 'kartik\grid\ExpandRowColumn',
-            'width' => '50px',
-            'value' => function ($model, $key, $index, $column) {
-                return GridView::ROW_COLLAPSED;
-            },
-            // Will pass expandRowKey and expandRowInd to the controller.
-            // See https://demos.krajee.com/grid#expand-row-column
-            'detailUrl' => Url::to(['expand-row']),
-            'detailRowCssClass' => '',
-            'headerOptions' => ['class' => 'kartik-sheet-style'],
-            'detailAnimationDuration' => 'fast',
-        ],
-        [
-            'attribute' => 'lemme',
-            'vAlign' => 'middle',
-        ],
-        [
-            'attribute' => 'primaryCategory',
-            'vAlign' => 'middle',
-            'format' => 'html',
-            'value' => function ($data) {
-                $after = $data->isLocution()
-                    ? '&nbsp;<span class="badge badge-secondary">Locution</span>'
-                    : '';
-                return Forme::categoryToLabel($data->primaryCategory) . $after;
-            },
-        ],
-        [
-            'attribute' => 'catgram',
-            'vAlign' => 'middle',
-            'width' => '4rem',
-        ],
-        [
-            'attribute' => 'temps',
-            'vAlign' => 'middle',
-            'width' => '8rem',
-        ],
-        [
-            'attribute' => 'num',
-            'vAlign' => 'middle',
-            'width' => '4rem',
-        ],
-        [
-            'attribute' => 'genre',
-            'vAlign' => 'middle',
-            'width' => '4rem',
-        ],
-        [
-            'attribute' => 'person',
-            'vAlign' => 'middle',
-            'width' => '4rem',
-        ],
-        [
-            'attribute' => 'lig',
-            'vAlign' => 'middle',
-            'width' => '4rem',
-        ],
-        [
-            'attribute' => 'graphsav',
-            'vAlign' => 'middle',
-            'width' => '4rem',
-        ],
-        [
-            'attribute' => 'notes',
-            'vAlign' => 'middle',
-            'width' => '4rem',
-        ],
-    ];
-    if (isset($dataProvider)) {
-        echo GridView::widget([
-            'dataProvider' => $dataProvider,
-            'filterModel' => $searchModel, // Give to the grid a model that can search anywhere.
-            'filterUrl' => '@web/search',
-            'columns' => $columns,
-            'pjax' => true,
-            'pjaxSettings' => [
-                'options' => [
-                    'id' => 'container-pjax',
-                    'enablePushState' => false,
+
+<div class="row">
+    <div class="col">
+        <div id="container-pjax">
+            <?php
+            $columns = [
+                [
+                    'class' => 'kartik\grid\ExpandRowColumn',
+                    'width' => '50px',
+                    'value' => function ($model, $key, $index, $column) {
+                        return GridView::ROW_COLLAPSED;
+                    },
+                    // Will pass expandRowKey and expandRowInd to the controller.
+                    // See https://demos.krajee.com/grid#expand-row-column
+                    'detailUrl' => Url::to(['expand-row']),
+                    'detailRowCssClass' => '',
+                    'headerOptions' => ['class' => 'kartik-sheet-style'],
+                    'detailAnimationDuration' => 'fast',
                 ],
-            ],
-            'bordered' => true,
-            'striped' => true,
-            'condensed' => true,
-            'responsive' => true,
-        ]);
-    }
-    ?>
+                [
+                    'attribute' => 'lemme',
+                    'vAlign' => 'middle',
+                ],
+                [
+                    'attribute' => 'primaryCategory',
+                    'vAlign' => 'middle',
+                    'format' => 'html',
+                    'value' => function ($data) {
+                        $after = $data->isLocution()
+                            ? '&nbsp;<span class="badge badge-secondary">Locution</span>'
+                            : '';
+                        return Forme::categoryToLabel($data->primaryCategory) . $after;
+                    },
+                ],
+                [
+                    'attribute' => 'catgram',
+                    'vAlign' => 'middle',
+                    'width' => '4rem',
+                ],
+                [
+                    'attribute' => 'temps',
+                    'vAlign' => 'middle',
+                    'width' => '8rem',
+                ],
+                [
+                    'attribute' => 'num',
+                    'vAlign' => 'middle',
+                    'width' => '4rem',
+                ],
+                [
+                    'attribute' => 'genre',
+                    'vAlign' => 'middle',
+                    'width' => '4rem',
+                ],
+                [
+                    'attribute' => 'person',
+                    'vAlign' => 'middle',
+                    'width' => '4rem',
+                ],
+                [
+                    'attribute' => 'lig',
+                    'vAlign' => 'middle',
+                    'width' => '4rem',
+                ],
+                [
+                    'attribute' => 'graphsav',
+                    'vAlign' => 'middle',
+                    'width' => '4rem',
+                ],
+                [
+                    'attribute' => 'notes',
+                    'vAlign' => 'middle',
+                    'width' => '4rem',
+                ],
+            ];
+            if (isset($dataProvider)) {
+                echo GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    'filterModel' => $searchModel, // Give to the grid a model that can search anywhere.
+                    'filterUrl' => '@web/search',
+                    'columns' => $columns,
+                    'pjax' => true,
+                    'pjaxSettings' => [
+                        'options' => [
+                            'id' => 'container-pjax',
+                            'enablePushState' => false,
+                        ],
+                    ],
+                    'bordered' => true,
+                    'striped' => true,
+                    'condensed' => true,
+                    'responsive' => true,
+                ]);
+            }
+            ?>
+        </div>
+    </div>
 </div>
-<button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#userGuide" aria-expanded="false" aria-controls="userGuide">
-    Guide d'utilisation
-</button>
 
 <div class="modal fade" id="userGuide" tabindex="-1" role="dialog" aria-labelledby="User guide" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
