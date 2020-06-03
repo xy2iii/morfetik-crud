@@ -261,7 +261,7 @@ $elision = Forme::isElision($lemme->lemme);
             <thead class="thead-light">
                 <tr>
                     <th scope="col"></th>
-                    <th scope="col">Conditionel présent</th>
+                    <th scope="col">Conditionnel présent</th>
                 </tr>
             </thead>
             <tbody>
