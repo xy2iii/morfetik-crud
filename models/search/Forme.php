@@ -177,6 +177,7 @@ class Forme extends ActiveRecord
         return substr($this->primaryCategory, -3) === 'loc';
     }
 
+    // Exception table.
     private static $hMuetTable = [
         "hâbler",
         "hacher",
@@ -262,8 +263,9 @@ class Forme extends ActiveRecord
             return true;
         }
 
-        // Check if it has an "h muet (h aspiré)"
-        return in_array($lemme, static::$hMuetTable);
+        // Check if it has an "h muet (h aspiré)". 
+        // It must NOT be in this table to have an elision.
+        return !in_array($lemme, static::$hMuetTable);
     }
 
     /**
