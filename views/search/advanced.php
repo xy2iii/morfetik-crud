@@ -72,7 +72,7 @@ $this->params['breadcrumbs'][1] = $this->title;
         </div>
         {input}
         <div class="input-group-append">
-            <button class="btn btn-outline-primary">Rechercher</button>
+            <button class="btn btn-primary">Rechercher</button>
         </div>
     </div>
 </div>',
@@ -102,7 +102,7 @@ $this->params['breadcrumbs'][1] = $this->title;
                 <a class="list-group-item  list-group-item-action" type="button" data-toggle="modal" data-target="#userGuide" aria-expanded="false" aria-controls="userGuide">
                     Guide d'utilisation
                 </a>
-                <?= Html::a('Recherche simple', ['search/advanced'], ['class' => 'list-group-item list-group-item-action', 'data-pjax' => 0]) ?>
+                <?= Html::a('Recherche simple', ['/search'], ['class' => 'list-group-item list-group-item-action', 'data-pjax' => 0]) ?>
             </ul>
         </div>
         <div class="d-md-none col">
@@ -110,7 +110,7 @@ $this->params['breadcrumbs'][1] = $this->title;
                 <a class="list-group-item  list-group-item-action" type="button" data-toggle="modal" data-target="#userGuide" aria-expanded="false" aria-controls="userGuide">
                     Guide d'utilisation
                 </a>
-                <?= Html::a('Recherche simple', ['search/advanced'], ['class' => 'list-group-item list-group-item-action', 'data-pjax' => 0]) ?>
+                <?= Html::a('Recherche simple', ['/search'], ['class' => 'list-group-item list-group-item-action', 'data-pjax' => 0]) ?>
             </ul>
         </div>
     </div>

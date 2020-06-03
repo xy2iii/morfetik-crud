@@ -68,7 +68,7 @@ $this->params['breadcrumbs'][0] = $this->title;
         </div>
         {input}
         <div class="input-group-append">
-            <button class="btn btn-outline-primary">Rechercher</button>
+            <button class="btn btn-primary">Rechercher</button>
         </div>
     </div>
 </div>',

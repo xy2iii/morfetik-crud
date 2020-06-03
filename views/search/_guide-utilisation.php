@@ -10,24 +10,26 @@
             <div class="row">
                 <div class="col-md-2">
                     <nav id="table-of-contents" class="navbar navbar-light bg-light">
-                        <a class="navbar-brand" href="#">Contenu</a>
-                        <nav class="nav nav-pills flex-column">
-                            <a class="nav-link" href="#utilisation">L'utilisation</a>
-                            <a class="nav-link" href="#reference">Référence</a>
-                            <nav class="nav nav-pills nav-justified flex-column">
-                                <a class="nav-link ml-2 my-1" href="#categories-grammaticales">Les catégories grammaticales</a>
-                                <a class="nav-link ml-2 my-1" href="#sous-categories-grammaticales">Les sous-catégories grammaticales</a>
+                        <div class="position-sticky">
+                            <a class="navbar-brand" href="#">Contenu</a>
+                            <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="#utilisation">L'utilisation</a>
+                                <a class="nav-link" href="#espace-de-travail">L'espace de travail</a>
+                                <a class="nav-link" href="#categories-grammaticales">Les catégories grammaticales</a>
+                                <a class="nav-link" href="#sous-categories-grammaticales">Les sous-catégories grammaticales</a>
                                 <nav class="nav nav-pills nav-justified flex-column">
-                                    <a class="nav-link ml-4 my-1" href="#adjectifs">Adjectifs</a>
-                                    <a class="nav-link ml-4 my-1" href="#determinants">Déterminants</a>
-                                    <a class="nav-link ml-4 my-1" href="#noms">Noms</a>
-                                    <a class="nav-link ml-4 my-1" href="#verbes">Verbes</a>
+                                    <a class="nav-link ml-2 my-1" href="#adjectifs">Adjectifs</a>
+                                    <a class="nav-link ml-2 my-1" href="#determinants">Déterminants</a>
+                                    <a class="nav-link ml-2 my-1" href="#noms">Noms</a>
+                                    <a class="nav-link ml-2 my-1" href="#verbes">Verbes</a>
                                 </nav>
-                                <a class="nav-link ml-2 my-1" href="#nombre">Le nombre</a>
-                                <a class="nav-link ml-2 my-1" href="#genre">Le genre</a>
-                                <a class="nav-link ml-2 my-1" href="#personne">La personne</a>
+                                <a class="nav-link" href="#nombre">Le nombre</a>
+                                <a class="nav-link" href="#genre">Le genre</a>
+                                <a class="nav-link" href="#personne">La personne</a>
+                                <a class="nav-link" href="#formes-rares">Les formes rares</a>
+                                <a class="nav-link" href="#ressources-externes">Ressources externes</a>
                             </nav>
-                        </nav>
+                        </div>
                     </nav>
                 </div>
                 <div class="col-md-10 text-justify position-relative h-100">
@@ -47,10 +49,17 @@
                                 <li>avec ou sans prise en compte des accents. La prise en compte des accents permet une sélectivité plus grande des formes.</li>
                                 <li>stricte (par défaut), c’est-à-dire une recherche exacte du mot tapé ou large, une recherche de tous les mots commençant par le mot tapé.</li>
                             </ul>
-                            Cliquer ensuite sur l'un des liens représentant le lemme, une fenêtre contenant le résultat s'affichera
+                            Cliquer ensuite sur l'un des liens représentant le lemme, une fenêtre contenant le résultat s'affichera.
                         </p>
-                        <h2 class="mt-4" id="reference">Réference</h2>
-                        <h3 class="mt-3" id="categories-grammaticales">Les catégories grammaticales</h3>
+                        <h2 class="mt-4" id="espace-de-travail">L'espace de travail</h2>
+                        <p>L'espace de travail se décompose en 2 parties:
+                            <ul>
+                                <li>Un espace de recherche, composé d'un champ, d'un menu à option ("Sensible aux accents"), d'un bouton "Recherche" et d'un bouton "Recherche avancée"</li>
+                                <li>Un champ pour les résultats suivant la taille du tableau informatif</li>
+                            </ul>
+                            Pour chaque résultat, on pourra cliquer sur le <i class="fa fa-plus-square"></i> pour obtenir toutes les informations sur le mot.
+                        </p>
+                        <h2 class="mt-4" id="categories-grammaticales">Les catégories grammaticales</h2>
                         <ul>
                             <li>Adjectif</li>
                             <li>Nom</li>
@@ -62,8 +71,8 @@
                             <li>Préposition</li>
                             <li>Interjection</li>
                         </ul>
-                        <h3 class="mt-3" id="sous-categories-grammaticales">Les sous-catégories grammaticales</h3>
-                        <h4 id="adjectifs">Adjectifs</h4>
+                        <h2 class="mt-4" id="sous-categories-grammaticales">Les sous-catégories grammaticales</h2>
+                        <h3 class="mt-3" id="adjectifs">Adjectifs</h3>
                         <table class="table table-sm table-hover table-bordered">
                             <thead class="thead-light">
                                 <tr>
@@ -127,7 +136,7 @@
                             </tbody>
                         </table>
 
-                        <h4 id="determinants">Déterminants</h4>
+                        <h3 class="mt-3" id="determinants">Déterminants</h3>
                         <table class="table table-sm table-hover table-bordered">
                             <thead class="thead-light">
                                 <tr>
@@ -239,7 +248,7 @@
                             </tbody>
                         </table>
 
-                        <h4 id="noms">Noms</h4>
+                        <h3 class="mt-3" id="noms">Noms</h3>
                         <table class="table table-sm table-hover table-bordered">
                             <thead class="thead-light">
                                 <tr>
@@ -283,7 +292,7 @@
                             </tbody>
                         </table>
 
-                        <h4 id="verbes">Verbes</h4>
+                        <h3 class="mt-3" id="verbes">Verbes</h3>
                         <table class="table table-sm table-hover table-bordered">
                             <thead class="thead-light">
                                 <tr>
@@ -311,7 +320,7 @@
                             </tbody>
                         </table>
 
-                        <h3 class="mt-3" id="temps">Les temps</h3>
+                        <h3 class="mt-3" class="mt-3" id="temps">Les temps</h3>
                         <table class="table table-sm table-hover table-bordered">
                             <thead class="thead-light">
                                 <tr>
@@ -369,7 +378,7 @@
 
                         <div class="row">
                             <div class="col-md-4">
-                                <h3 class="mt-3" id="nombre">Le nombre</h3>
+                                <h2 class="mt-4" id="nombre">Le nombre</h2>
                                 <table class="table table-sm table-hover table-bordered">
                                     <thead class="thead-light">
                                         <tr>
@@ -390,7 +399,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <h3 class="mt-3" id="genre">Le genre</h3>
+                                <h2 class="mt-4" id="genre">Le genre</h2>
                                 <table class="table table-sm table-hover table-bordered">
                                     <thead class="thead-light">
                                         <tr>
@@ -411,7 +420,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <h3 class="mt-3" id="personne">La personne</h3>
+                                <h2 class="mt-4" id="personne">La personne</h2>
                                 <table class="table table-sm table-hover table-bordered">
                                     <thead class="thead-light">
                                         <tr>
@@ -436,6 +445,16 @@
                                 </table>
                             </div>
                         </div>
+
+                        <h3 class="mt-3" class="mt-3" id="formes-rares">Les formes rares</h3>
+                        <p>
+                            Le signe <span class="badge badge-info">Rare</span> indique les flexions rares et/ou archaïques, notamment pour les verbes (veuillons, partissiez, dormie...) et pour quelques adjcetifs (châtaine, gringalette...)
+                        </p>
+
+                        <h3 class="mt-3" class="mt-3" id="ressources-externes">Les ressources externes </h3>
+                        <p>
+                            Le signe <span class="badge badge-info">Rare</span> indique les flexions rares et/ou archaïques, notamment pour les verbes (veuillons, partissiez, dormie...) et pour quelques adjcetifs (châtaine, gringalette...)
+                        </p>
                     </div>
                 </div>
             </div>
