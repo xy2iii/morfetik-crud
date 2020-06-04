@@ -12,6 +12,10 @@ function adminer_object()
 
     // Specify enabled plugins here.
     $plugins = [
+        new AdminerEditTextArea(),
+        new AdminerEnumOption(),
+        new AdminerLoginServers([":/var/run/mysqld/mysqld.sock" => "MySQL Morfetik"]),
+        new AdminerSoftware(),
         new AdminerTheme("default-orange"),
     ];
 
