@@ -1,26 +1,41 @@
 <?php
+setlocale(LC_ALL, array("fr_FR.UTF-8", "French"));
+ini_set('include_path', get_include_path() . PATH_SEPARATOR . dirname(__FILE__));
+ini_set('include_path', get_include_path() . PATH_SEPARATOR . dirname(__FILE__) . DIRECTORY_SEPARATOR . "plugins");
+ini_set('display_errors', 1);
+ini_set('error_log', dirname(__FILE__) . '/php_errors.log');
+chdir(dirname(__FILE__));
 
 function adminer_object()
 {
-    // Required to run any plugin.
-    include_once "./plugins/plugin.php";
 
-    // Plugins auto-loader.
+    // required to run any plugin
+    include_once "plugins/plugin.php";
+
+    // autoloader
     foreach (glob("plugins/*.php") as $filename) {
-        include_once "./$filename";
+        include_once "$filename";
     }
 
-    // Specify enabled plugins here.
-    $plugins = [
-        new AdminerEditTextArea(),
-        new AdminerEnumOption(),
-        //new AdminerLoginServers([":/var/run/mysqld/mysqld.sock" => "MySQL Morfetik"]),
-        new AdminerSoftware(),
-        new AdminerTheme("default-orange"),
-    ];
+    $plugins = array(
+        // specify enabled plugins here
+        new AdminerEditTextarea,
+        new AdminerEnumOption,
+        /*
+        //new AdminerDatabaseHide(array("mysql", "information_schema", "performance_schema")),
+        new AdminerLoginServers(array(
+            ":/var/run/mysqld/mysqld.sock" => "MySQL LDI",
+        )),
+        //new AdminerVersionNoverify
+        */
+    );
 
-    return new AdminerPlugin($plugins);
+    /* It is possible to combine customization and plugins: */
+    class AdminerCustomization extends AdminerPlugin
+    {
+    }
+
+    return new AdminerCustomization($plugins);
 }
 
-// Include original Adminer or Adminer Editor.
-include "./_adminer.php";
+include_once "adminer.php";
