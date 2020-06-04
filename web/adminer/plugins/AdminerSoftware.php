@@ -14,15 +14,4 @@ class AdminerSoftware
         // database name, will be escaped by Adminer
         return 'morfetik2';
     }
-
-    function credentials()
-    {
-        // server, username and password for connecting to database
-        return array('localhost', 'user', 'pass');
-    }
-    function login($login, $password)
-    {
-        // validate user submitted credentials
-        return ($login == 'ldi' && $password == 'ldildi1313');
-    }
 }
