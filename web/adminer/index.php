@@ -14,7 +14,7 @@ function adminer_object()
     $plugins = [
         new AdminerEditTextArea(),
         new AdminerEnumOption(),
-        new AdminerLoginServers([":/var/run/mysqld/mysqld.sock" => "MySQL Morfetik"]),
+        //new AdminerLoginServers([":/var/run/mysqld/mysqld.sock" => "MySQL Morfetik"]),
         new AdminerSoftware(),
         new AdminerTheme("default-orange"),
     ];
