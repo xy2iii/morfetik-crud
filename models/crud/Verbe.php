@@ -38,6 +38,7 @@ class Verbe extends \yii\db\ActiveRecord
             [['Flex'], 'string', 'max' => 20],
             [['Lig'], 'string', 'max' => 5],
             [['Standard'], 'string', 'max' => 256],
+            [['pronominal'], 'number'],
             [['ID'], 'unique'],
         ];
     }
@@ -55,6 +56,7 @@ class Verbe extends \yii\db\ActiveRecord
             'Lig' => 'Lig',
             'Standard' => 'Standard',
             'Notes' => 'Notes',
+            'pronominal' => 'Pronominal',
         ];
     }
 }

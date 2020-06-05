@@ -49,7 +49,7 @@ class FormeSearch extends Forme
 
 
         $query
-            ->select('lemmeid, lemme, catgram, cat, genre, num, person, temps, rare, lig, graphsav, notes, infos, prono');
+            ->select('lemmeid, lemme, catgram, cat, genre, num, person, temps, rare, lig, graphsav, notes, infos, pronominal');
 
         /* If an accented search is set, use a MySQL collation that does accent-sensitive search.
          * See https://stackoverflow.com/questions/500826/how-to-conduct-an-accent-sensitive-search-in-mysql.

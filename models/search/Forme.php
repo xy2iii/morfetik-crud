@@ -26,7 +26,7 @@ use yii\db\ActiveRecord;
  * @property string $graphsav
  * @property string $notes
  * @property string $infos
- * @property string $prono
+ * @property string $pronominal
  */
 class Forme extends ActiveRecord
 {
@@ -265,7 +265,11 @@ class Forme extends ActiveRecord
 
         // Check if it has an "h muet (h aspiré)". 
         // It must NOT be in this table to have an elision.
-        return !in_array($lemme, static::$hMuetTable);
+        if ($firstChar === 'h') {
+            return !in_array($lemme, static::$hMuetTable);
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -306,7 +310,7 @@ class Forme extends ActiveRecord
             'graphsav' => 'Graphie savante',
             'notes' => 'Notes',
             'infos' => 'Infos',
-            'prono' => 'Prono',
+            'pronominal' => 'Pronominal',
         ];
     }
 }

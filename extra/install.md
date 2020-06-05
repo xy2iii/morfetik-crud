@@ -97,6 +97,8 @@ It is set for the LIPN by default.
 3. Restart apache:
     sudo systemctl restart apache2
 
-Yii:
-./yii migrate --migrationPath=@yii/rbac/migrations
-./yii migrate
+6. Run the createFormes() stored procedure to generate the 'formes' table:
+```sql
+-- MySQL
+call createFormes();
+```

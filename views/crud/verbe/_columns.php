@@ -2,6 +2,7 @@
 
 use kartik\editable\Editable;
 use app\views\crud\GridHelper;
+use app\models\enums\Pronominal;
 
 return [
     GridHelper::getCheckboxColumn(),
@@ -14,7 +15,7 @@ return [
         'editableOptions' => [
             'header' => Yii::t('app', 'ID'),
             'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['/nom/editable']],
+            'formOptions' => ['action' => ['editable']],
         ],
     ],
     [
@@ -24,7 +25,7 @@ return [
         'editableOptions' => [
             'header' => Yii::t('app', 'Lemma'),
             'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['/nom/editable']],
+            'formOptions' => ['action' => ['editable']],
         ],
     ],
     [
@@ -34,7 +35,7 @@ return [
         'editableOptions' => [
             'header' => Yii::t('app', 'Gramatical category'),
             'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['/nom/editable']],
+            'formOptions' => ['action' => ['editable']],
         ],
     ],
     [
@@ -44,7 +45,7 @@ return [
         'editableOptions' => [
             'header' => Yii::t('app', 'Flexion'),
             'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['/nom/editable']],
+            'formOptions' => ['action' => ['editable']],
         ],
     ],
     [
@@ -54,7 +55,7 @@ return [
         'editableOptions' => [
             'header' => Yii::t('app', 'Ligature'),
             'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['/nom/editable']],
+            'formOptions' => ['action' => ['editable']],
         ],
     ],
     [
@@ -64,7 +65,7 @@ return [
         'editableOptions' => [
             'header' => Yii::t('app', 'Ligature'),
             'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['/nom/editable']],
+            'formOptions' => ['action' => ['editable']],
         ],
     ],
     [
@@ -74,7 +75,18 @@ return [
         'editableOptions' => [
             'header' => Yii::t('app', 'Notes'),
             'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['/nom/editable']],
+            'formOptions' => ['action' => ['editable']],
+        ],
+    ],
+    [
+        'class' => '\kartik\grid\EditableColumn',
+        'attribute' => 'pronominal',
+        'vAlign' => 'middle',
+        'editableOptions' => [
+            'header' => Yii::t('app', 'Flexion'),
+            'inputType' => Editable::INPUT_DROPDOWN_LIST,
+            'data' => Pronominal::listData(),
+            'formOptions' => ['action' => ['editable']],
         ],
     ],
     GridHelper::getActionColumn(),

@@ -7,13 +7,13 @@ use yii\db\Migration;
  */
 class m200513_142326_morfetik_schema extends Migration
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function safeUp()
-    {
-        $connection = Yii::$app->getDb();
-        $command = $connection->createCommand("
+  /**
+   * {@inheritdoc}
+   */
+  public function safeUp()
+  {
+    $connection = Yii::$app->getDb();
+    $command = $connection->createCommand("
         CREATE TABLE `acodes` (
           `Code` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
           `Rad` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -23,16 +23,16 @@ class m200513_142326_morfetik_schema extends Migration
           `FP` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
           PRIMARY KEY (`Code`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
-        $command->execute();
-        $command = $connection->createCommand("
+    $command->execute();
+    $command = $connection->createCommand("
         CREATE TABLE `adv` (
           `ID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
           `Lemme` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
           PRIMARY KEY (`ID`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
         ");
-        $command->execute();
-        $command = $connection->createCommand("
+    $command->execute();
+    $command = $connection->createCommand("
         CREATE TABLE `alemmes` (
           `ID` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
           `Lemme` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -44,8 +44,8 @@ class m200513_142326_morfetik_schema extends Migration
           PRIMARY KEY (`ID`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
         ");
-        $command->execute();
-        $command = $connection->createCommand("
+    $command->execute();
+    $command = $connection->createCommand("
         CREATE TABLE `gram` (
           `ID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
           `Lemme` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -58,8 +58,8 @@ class m200513_142326_morfetik_schema extends Migration
           PRIMARY KEY (`ID`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
         ");
-        $command->execute();
-        $command = $connection->createCommand("
+    $command->execute();
+    $command = $connection->createCommand("
         CREATE TABLE `nscodes` (
           `Code` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
           `Rad` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -68,8 +68,8 @@ class m200513_142326_morfetik_schema extends Migration
           PRIMARY KEY (`Code`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
         ");
-        $command->execute();
-        $command = $connection->createCommand("
+    $command->execute();
+    $command = $connection->createCommand("
         CREATE TABLE `nslemmes` (
           `ID` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
           `Lemme` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -84,16 +84,16 @@ class m200513_142326_morfetik_schema extends Migration
           PRIMARY KEY (`ID`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
         ");
-        $command->execute();
-        $command = $connection->createCommand("
+    $command->execute();
+    $command = $connection->createCommand("
         CREATE TABLE `vpr_import` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `verbe` varchar(255) NOT NULL,
           PRIMARY KEY (`id`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
         ");
-        $command->execute();
-        $command = $connection->createCommand("
+    $command->execute();
+    $command = $connection->createCommand("
         CREATE TABLE `vscodes` (
           `Code` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
           `Modele` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -153,8 +153,8 @@ class m200513_142326_morfetik_schema extends Migration
           PRIMARY KEY (`Code`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8;        
         ");
-        $command->execute();
-        $command = $connection->createCommand("
+    $command->execute();
+    $command = $connection->createCommand("
         CREATE TABLE `vslemmes` (
           `ID` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
           `Lemme` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -163,13 +163,14 @@ class m200513_142326_morfetik_schema extends Migration
           `Lig` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
           `Standard` varchar(256) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
           `Notes` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+          `pronominal` tinyint NOT NULL DEFAULT 0,
           PRIMARY KEY (`ID`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
         ");
-        $command->execute();
-        $command = $connection->createCommand("
+    $command->execute();
+    $command = $connection->createCommand("
 CREATE TABLE `formes` (
-    `formeid` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+    `formeid` bigint COLLATE utf8_unicode_ci NOT NULL AUTO_INCREMENT,
     `forme` varchar(510) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
     `lemmeid` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
     `lemme` varchar(510) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -180,11 +181,11 @@ CREATE TABLE `formes` (
     `person` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
     `temps` varchar(510) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
     `rare` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-    `lig` varchar(510) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+    `lig` varchar(510) COLLATE utf8_unicode_ci DEFAULT '',
     `graphsav` varchar(510) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-    `notes` varchar(510) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+    `notes` varchar(510) COLLATE utf8_unicode_ci DEFAULT '',
     `infos` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
-    `prono` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+    `pronominal` tinyint NOT NULL DEFAULT 0,
     KEY `formeid` (`formeid`),
     KEY `forme` (`forme`(333)),
     KEY `lemmeid` (`lemmeid`),
@@ -202,27 +203,27 @@ CREATE TABLE `formes` (
     KEY `infos` (`infos`),
 	UNIQUE INDEX `forme_lemme` (`forme`(40), formeid, `lemme`(40))
   ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
-        $command->execute();
-    }
+    $command->execute();
+  }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function safeDown()
-    {
-        $this->dropTable('acodes');
-        $this->dropTable('adv');
-        $this->dropTable('alemmes');
-        $this->dropTable('gram');
-        $this->dropTable('nscodes');
-        $this->dropTable('nslemmes');
-        $this->dropTable('vpr_import');
-        $this->dropTable('vscodes');
-        $this->dropTable('vslemmes');
-        $this->dropTable('formes');
-    }
+  /**
+   * {@inheritdoc}
+   */
+  public function safeDown()
+  {
+    $this->dropTable('acodes');
+    $this->dropTable('adv');
+    $this->dropTable('alemmes');
+    $this->dropTable('gram');
+    $this->dropTable('nscodes');
+    $this->dropTable('nslemmes');
+    $this->dropTable('vpr_import');
+    $this->dropTable('vscodes');
+    $this->dropTable('vslemmes');
+    $this->dropTable('formes');
+  }
 
-    /*
+  /*
     // Use up()/down() to run migration code without a transaction.
     public function up()
     {

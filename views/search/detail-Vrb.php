@@ -1,6 +1,7 @@
 <?php
 
 use app\models\search\Forme;
+use app\models\enums\Pronominal;
 
 /**
  * Transform the sets to strings.
@@ -48,6 +49,43 @@ $vrb['Ppres'] = transform_each($vrb['Ppres']->toArray());
 $vrb['Pp'] = transform($vrb['Pp']);
 
 $elision = Forme::isElision($lemme->lemme);
+
+$pronominalValue = $lemme->pronominal;
+echo 'before cond';
+if ($pronominalValue === Pronominal::getValueByName('Non') || $pronominalValue === Pronominal::getValueByName('Peut-être?')) {
+    echo 'cond 1';
+    $prono = [
+        '1S' => '',
+        '2S' => '',
+        '3S' => '',
+        '1P' => '',
+        '2P' => '',
+        '3P' => '',
+    ];
+} else if ($pronominalValue === Pronominal::getValueByName('Oui')) {
+    echo 'cond 2';
+    $prono = [
+        '1S' => "m'",
+        '2S' => "t'",
+        '3S' => "s'",
+        '1P' => "nous ",
+        '2P' => "vous ",
+        '3P' => "s'",
+    ];
+} else if ($pronominalValue === Pronominal::getValueByName('Oui + non')) {
+    echo 'cond 3';
+    $prono = [
+        '1S' => "(m') ",
+        '2S' => "(t') ",
+        '3S' => "(s') ",
+        '1P' => "(nous) ",
+        '2P' => "(vous) ",
+        '3P' => "(s') ",
+    ];
+}
+$isPronominal = ($pronominalValue === Pronominal::getValueByName('Oui') || $pronominalValue === Pronominal::getValueByName('Oui + non'));
+
+echo 'prono:' . $lemme->pronominal;
 ?>
 
 <div class="row">
@@ -101,31 +139,35 @@ $elision = Forme::isElision($lemme->lemme);
             <tbody>
                 <tr>
                     <?php if ($elision) : ?>
-                        <th scope="row">J'</th>
+                        <?php if ($isPronominal) : ?>
+                            <th scope="row">J' (Je)</th>
+                        <?php else : ?>
+                            <th scope="row">J'</th>
+                        <?php endif ?>
                     <?php else : ?>
                         <th scope="row">Je</th>
                     <?php endif ?>
-                    <td><?= $vrb['Ind-pr']['1S'] ?></td>
+                    <td><?= $prono['1S'] ?><?= $vrb['Ind-pr']['1S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Tu</th>
-                    <td><?= $vrb['Ind-pr']['2S'] ?></td>
+                    <td><?= $prono['2S'] ?><?= $vrb['Ind-pr']['2S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Il / Elle / On</th>
-                    <td><?= $vrb['Ind-pr']['3S'] ?></td>
+                    <td><?= $prono['3S'] ?><?= $vrb['Ind-pr']['3S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Nous</th>
-                    <td><?= $vrb['Ind-pr']['1P'] ?></td>
+                    <td><?= $prono['1P'] ?><?= $vrb['Ind-pr']['1P'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Vous</th>
-                    <td><?= $vrb['Ind-pr']['2P'] ?></td>
+                    <td><?= $prono['2P'] ?><?= $vrb['Ind-pr']['2P'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Ils / Elles</th>
-                    <td><?= $vrb['Ind-pr']['3P'] ?></td>
+                    <td><?= $prono['3P'] ?><?= $vrb['Ind-pr']['3P'] ?></td>
                 </tr>
             </tbody>
         </table>
@@ -141,31 +183,35 @@ $elision = Forme::isElision($lemme->lemme);
             <tbody>
                 <tr>
                     <?php if ($elision) : ?>
-                        <th scope="row">J'</th>
+                        <?php if ($isPronominal) : ?>
+                            <th scope="row">J' (Je)</th>
+                        <?php else : ?>
+                            <th scope="row">J'</th>
+                        <?php endif ?>
                     <?php else : ?>
                         <th scope="row">Je</th>
                     <?php endif ?>
-                    <td><?= $vrb['Ind-imp']['1S'] ?></td>
+                    <td><?= $prono['1S'] ?><?= $vrb['Ind-imp']['1S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Tu</th>
-                    <td><?= $vrb['Ind-imp']['2S'] ?></td>
+                    <td><?= $prono['2S'] ?><?= $vrb['Ind-imp']['2S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Il / Elle / On</th>
-                    <td><?= $vrb['Ind-imp']['3S'] ?></td>
+                    <td><?= $prono['3S'] ?><?= $vrb['Ind-imp']['3S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Nous</th>
-                    <td><?= $vrb['Ind-imp']['1P'] ?></td>
+                    <td><?= $prono['1P'] ?><?= $vrb['Ind-imp']['1P'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Vous</th>
-                    <td><?= $vrb['Ind-imp']['2P'] ?></td>
+                    <td><?= $prono['2P'] ?><?= $vrb['Ind-imp']['2P'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Ils / Elles</th>
-                    <td><?= $vrb['Ind-imp']['3P'] ?></td>
+                    <td><?= $prono['3P'] ?><?= $vrb['Ind-imp']['3P'] ?></td>
                 </tr>
             </tbody>
         </table>
@@ -182,31 +228,35 @@ $elision = Forme::isElision($lemme->lemme);
             <tbody>
                 <tr>
                     <?php if ($elision) : ?>
-                        <th scope="row">J'</th>
+                        <?php if ($isPronominal) : ?>
+                            <th scope="row">J' (Je)</th>
+                        <?php else : ?>
+                            <th scope="row">J'</th>
+                        <?php endif ?>
                     <?php else : ?>
                         <th scope="row">Je</th>
                     <?php endif ?>
-                    <td><?= $vrb['Ind-ps']['1S'] ?></td>
+                    <td><?= $prono['1S'] ?><?= $vrb['Ind-ps']['1S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Tu</th>
-                    <td><?= $vrb['Ind-ps']['2S'] ?></td>
+                    <td><?= $prono['2S'] ?><?= $vrb['Ind-ps']['2S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Il / Elle / On</th>
-                    <td><?= $vrb['Ind-ps']['3S'] ?></td>
+                    <td><?= $prono['3S'] ?><?= $vrb['Ind-ps']['3S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Nous</th>
-                    <td><?= $vrb['Ind-ps']['1P'] ?></td>
+                    <td><?= $prono['1P'] ?><?= $vrb['Ind-ps']['1P'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Vous</th>
-                    <td><?= $vrb['Ind-ps']['2P'] ?></td>
+                    <td><?= $prono['2P'] ?><?= $vrb['Ind-ps']['2P'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Ils / Elles</th>
-                    <td><?= $vrb['Ind-ps']['3P'] ?></td>
+                    <td><?= $prono['3P'] ?><?= $vrb['Ind-ps']['3P'] ?></td>
                 </tr>
             </tbody>
         </table>
@@ -226,31 +276,35 @@ $elision = Forme::isElision($lemme->lemme);
             <tbody>
                 <tr>
                     <?php if ($elision) : ?>
-                        <th scope="row">J'</th>
+                        <?php if ($isPronominal) : ?>
+                            <th scope="row">J' (Je)</th>
+                        <?php else : ?>
+                            <th scope="row">J'</th>
+                        <?php endif ?>
                     <?php else : ?>
                         <th scope="row">Je</th>
                     <?php endif ?>
-                    <td><?= $vrb['Ind-fut']['1S'] ?></td>
+                    <td><?= $prono['1S'] ?><?= $vrb['Ind-fut']['1S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Tu</th>
-                    <td><?= $vrb['Ind-fut']['2S'] ?></td>
+                    <td><?= $prono['2S'] ?><?= $vrb['Ind-fut']['2S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Il / Elle / On</th>
-                    <td><?= $vrb['Ind-fut']['3S'] ?></td>
+                    <td><?= $prono['3S'] ?><?= $vrb['Ind-fut']['3S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Nous</th>
-                    <td><?= $vrb['Ind-fut']['1P'] ?></td>
+                    <td><?= $prono['1P'] ?><?= $vrb['Ind-fut']['1P'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Vous</th>
-                    <td><?= $vrb['Ind-fut']['2P'] ?></td>
+                    <td><?= $prono['2P'] ?><?= $vrb['Ind-fut']['2P'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Ils / Elles</th>
-                    <td><?= $vrb['Ind-fut']['3P'] ?></td>
+                    <td><?= $prono['3P'] ?><?= $vrb['Ind-fut']['3P'] ?></td>
                 </tr>
             </tbody>
         </table>
@@ -267,31 +321,35 @@ $elision = Forme::isElision($lemme->lemme);
             <tbody>
                 <tr>
                     <?php if ($elision) : ?>
-                        <th scope="row">J'</th>
+                        <?php if ($isPronominal) : ?>
+                            <th scope="row">J' (Je)</th>
+                        <?php else : ?>
+                            <th scope="row">J'</th>
+                        <?php endif ?>
                     <?php else : ?>
                         <th scope="row">Je</th>
                     <?php endif ?>
-                    <td><?= $vrb['Cond-pr']['1S'] ?></td>
+                    <td><?= $prono['1S'] ?><?= $vrb['Cond-pr']['1S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Tu</th>
-                    <td><?= $vrb['Cond-pr']['2S'] ?></td>
+                    <td><?= $prono['2S'] ?><?= $vrb['Cond-pr']['2S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Il / Elle / On</th>
-                    <td><?= $vrb['Cond-pr']['3S'] ?></td>
+                    <td><?= $prono['3S'] ?><?= $vrb['Cond-pr']['3S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Nous</th>
-                    <td><?= $vrb['Cond-pr']['1P'] ?></td>
+                    <td><?= $prono['1P'] ?><?= $vrb['Cond-pr']['1P'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Vous</th>
-                    <td><?= $vrb['Cond-pr']['2P'] ?></td>
+                    <td><?= $prono['2P'] ?><?= $vrb['Cond-pr']['2P'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Ils / Elles</th>
-                    <td><?= $vrb['Cond-pr']['3P'] ?></td>
+                    <td><?= $prono['3P'] ?><?= $vrb['Cond-pr']['3P'] ?></td>
                 </tr>
             </tbody>
         </table>
@@ -308,31 +366,35 @@ $elision = Forme::isElision($lemme->lemme);
             <tbody>
                 <tr>
                     <?php if ($elision) : ?>
-                        <th scope="row">J'</th>
+                        <?php if ($isPronominal) : ?>
+                            <th scope="row">J' (Je)</th>
+                        <?php else : ?>
+                            <th scope="row">J'</th>
+                        <?php endif ?>
                     <?php else : ?>
                         <th scope="row">Je</th>
                     <?php endif ?>
-                    <td><?= $vrb['Sub-pr']['1S'] ?></td>
+                    <td><?= $prono['1S'] ?><?= $vrb['Sub-pr']['1S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Tu</th>
-                    <td><?= $vrb['Sub-pr']['2S'] ?></td>
+                    <td><?= $prono['2S'] ?><?= $vrb['Sub-pr']['2S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Il / Elle / On</th>
-                    <td><?= $vrb['Sub-pr']['3S'] ?></td>
+                    <td><?= $prono['3S'] ?><?= $vrb['Sub-pr']['3S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Nous</th>
-                    <td><?= $vrb['Sub-pr']['1P'] ?></td>
+                    <td><?= $prono['1P'] ?><?= $vrb['Sub-pr']['1P'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Vous</th>
-                    <td><?= $vrb['Sub-pr']['2P'] ?></td>
+                    <td><?= $prono['2P'] ?><?= $vrb['Sub-pr']['2P'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Ils / Elles</th>
-                    <td><?= $vrb['Sub-pr']['3P'] ?></td>
+                    <td><?= $prono['3P'] ?><?= $vrb['Sub-pr']['3P'] ?></td>
                 </tr>
             </tbody>
         </table>
@@ -352,31 +414,35 @@ $elision = Forme::isElision($lemme->lemme);
             <tbody>
                 <tr>
                     <?php if ($elision) : ?>
-                        <th scope="row">J'</th>
+                        <?php if ($isPronominal) : ?>
+                            <th scope="row">J' (Je)</th>
+                        <?php else : ?>
+                            <th scope="row">J'</th>
+                        <?php endif ?>
                     <?php else : ?>
                         <th scope="row">Je</th>
                     <?php endif ?>
-                    <td><?= $vrb['Sub-imp']['1S'] ?></td>
+                    <td><?= $prono['1S'] ?><?= $vrb['Sub-imp']['1S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Tu</th>
-                    <td><?= $vrb['Sub-imp']['2S'] ?></td>
+                    <td><?= $prono['2S'] ?><?= $vrb['Sub-imp']['2S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Il / Elle / On</th>
-                    <td><?= $vrb['Sub-imp']['3S'] ?></td>
+                    <td><?= $prono['3S'] ?><?= $vrb['Sub-imp']['3S'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Nous</th>
-                    <td><?= $vrb['Sub-imp']['1P'] ?></td>
+                    <td><?= $prono['1P'] ?><?= $vrb['Sub-imp']['1P'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Vous</th>
-                    <td><?= $vrb['Sub-imp']['2P'] ?></td>
+                    <td><?= $prono['2P'] ?><?= $vrb['Sub-imp']['2P'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">Ils / Elles</th>
-                    <td><?= $vrb['Sub-imp']['3P'] ?></td>
+                    <td><?= $prono['3P'] ?><?= $vrb['Sub-imp']['3P'] ?></td>
                 </tr>
             </tbody>
         </table>
