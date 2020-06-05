@@ -51,9 +51,7 @@ $vrb['Pp'] = transform($vrb['Pp']);
 $elision = Forme::isElision($lemme->lemme);
 
 $pronominalValue = $lemme->pronominal;
-echo 'before cond';
 if ($pronominalValue === Pronominal::getValueByName('Non') || $pronominalValue === Pronominal::getValueByName('Peut-être?')) {
-    echo 'cond 1';
     $prono = [
         '1S' => '',
         '2S' => '',
@@ -63,7 +61,6 @@ if ($pronominalValue === Pronominal::getValueByName('Non') || $pronominalValue =
         '3P' => '',
     ];
 } else if ($pronominalValue === Pronominal::getValueByName('Oui')) {
-    echo 'cond 2';
     $prono = [
         '1S' => "m'",
         '2S' => "t'",
@@ -73,7 +70,6 @@ if ($pronominalValue === Pronominal::getValueByName('Non') || $pronominalValue =
         '3P' => "s'",
     ];
 } else if ($pronominalValue === Pronominal::getValueByName('Oui + non')) {
-    echo 'cond 3';
     $prono = [
         '1S' => "(m') ",
         '2S' => "(t') ",

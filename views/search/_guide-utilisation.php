@@ -28,6 +28,10 @@
                                 <a class="nav-link" href="#personne">La personne</a>
                                 <a class="nav-link" href="#formes-rares">Les formes rares</a>
                                 <a class="nav-link" href="#ressources-externes">Ressources externes</a>
+                                <nav class="nav nav-pills nav-justified flex-column">
+                                    <a class="nav-link ml-2 my-1" href="#neoveille">Néoveille</a>
+                                    <a class="nav-link ml-2 my-1" href="#franceterme">FranceTerme</a>
+                                </nav>
                             </nav>
                         </div>
                     </nav>
@@ -453,7 +457,16 @@
 
                         <h3 class="mt-3" class="mt-3" id="ressources-externes">Les ressources externes </h3>
                         <p>
-                            Le signe <span class="badge badge-info">Rare</span> indique les flexions rares et/ou archaïques, notamment pour les verbes (veuillons, partissiez, dormie...) et pour quelques adjcetifs (châtaine, gringalette...)
+                            Vous pouvez compléter les résultats de votre recherche en cliquant sur les ressources externes <i class="fa fa-paper-plane"></i> (Néoveille) et <i class="fa fa-university"></i> (FranceTerme).
+
+                            <h4 class="mt-4" id="neoveille">Néoveille</h4>
+                            <p>
+                                A compléter
+                            </p>
+                            <h4 class="mt-4" id="franceterme">FranceTerme</h4>
+                            <p>
+                                FranceTerme est une base de données terminologiques de la délégation générale à la langue française et aux langues de France du ministère de la culture français (<a href="https://www.culture.gouv.fr/Sites-thematiques/Langue-francaise-et-langues-de-France/La-DGLFLF">DGLFLF)</a>, qui rassemble les récents néologismes avalisés par la Commission d'enrichissement de la langue française et parus au <em>Journal officiel</em>, remplaçant les termes importés d'autres langues. Elle a pour mission de promouvoir l'utilisation de mots en français, pour enrichir la langue française et éviter son recul dans le monde.
+                            </p>
                         </p>
                     </div>
                 </div>

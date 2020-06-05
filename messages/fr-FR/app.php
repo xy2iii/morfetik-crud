@@ -15,7 +15,7 @@ return [
     'Code' => 'Code',
     'Create' => 'Créer',
     'Create more' => "Créer d'autres",
-    'Create new {item}' => 'Créer un nouvel {item}',
+    'Create new {item}' => 'Créer un nouveau {item}',
     'Delete' => 'Supprimer',
     'Delete all' => 'Tout supprimer',
     'Edit' => 'Modifier',
