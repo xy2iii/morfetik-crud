@@ -106,22 +106,28 @@ DocumentRoot "/var/www/html/web"
 </Directory>
 ```
 2. Enable mod-rewrite:
-```
+```shell
 sudo a2enmod rewrite
 ```
 3. Restart apache:
-```
+```shell
 sudo systemctl restart apache2
 ```
 
 # Populating database
 
-1. Populate the MySQL database with the `morfetik.sql` at the root of the repo:
+Populate the MySQL database with the `morfetik.sql` at the root of the repo:
 ```shell
 sudo mysql -u root < morfetik.sql
 ```
-2. Run the createFormes() stored procedure to generate the 'formes' table:
-```sql
--- MySQL
-call createFormes();
+
+# Systemd
+
+1. Copy the `createformes.service` and `createformes.timer` from the `extra/systemd` in this repository.
+2. Add them to your systemd.
+3. Activate and run the service **once**. *The site may be laggy for a bit, as it will generate the 'formes' table.*
+```shell
+sudo systemctl enable createformes.timer
+sudo systemctl start createformes.timer
+sodm systemctl start createformes.service
 ```

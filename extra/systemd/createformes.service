@@ -1,0 +1,8 @@
+[Unit]
+Description=Génération de la table 'formes' à un intervalle donné
+
+[Service]
+ExecStart=/usr/bin/mysql --defaults-extra-file="/users/hugo.elhaj/mysql_pass.ini" morfetik2 -e "call createFormes()"
+
+[Install]
+WantedBy=default.target
