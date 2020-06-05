@@ -80,8 +80,6 @@ if ($pronominalValue === Pronominal::getValueByName('Non') || $pronominalValue =
     ];
 }
 $isPronominal = ($pronominalValue === Pronominal::getValueByName('Oui') || $pronominalValue === Pronominal::getValueByName('Oui + non'));
-
-echo 'prono:' . $lemme->pronominal;
 ?>
 
 <div class="row">
