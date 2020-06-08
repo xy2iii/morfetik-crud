@@ -18,7 +18,7 @@ class AdjectifSearch extends Adjectif
     public function rules()
     {
         return [
-            [['ID', 'Lemme', 'CatGram', 'Flex', 'Lig', 'Standard', 'Notes'], 'safe'],
+            [['ID', 'Lemme', 'CatGram', 'souscatgram', 'Flex', 'Lig', 'Standard', 'Notes'], 'safe'],
         ];
     }
 

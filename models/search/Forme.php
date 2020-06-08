@@ -30,90 +30,6 @@ use yii\db\ActiveRecord;
  */
 class Forme extends ActiveRecord
 {
-    // The primary category of each form.
-    private $primaryCategory;
-
-    private static $catgramToCategory = [
-        '' => '',
-        // Adjectifs
-        'adj' => 'adj',
-        'adjm' => 'adj',
-        'adjf' => 'adj',
-        'adj(m)' => 'adj',
-        'adj(f)' => 'adj',
-        'adjms' => 'adj',
-        'adjfs' => 'adj',
-        'adjmp' => 'adj',
-        'adjfp' => 'adj',
-        'adjord' => 'adj',
-        // Adjectif-locution
-        'loc adj' => 'adj-loc',
-        // Adverbes
-        'adv' => 'adv',
-        'Adv' => 'adv',
-        // Adverbe-locution
-        'loc adv' => 'adv-loc',
-        // Grammaire: déterminants
-        'D' => 'det',
-        'D:Déf' => 'det',
-        'D:Dém' => 'det',
-        'D:Ind' => 'det',
-        'D:Int' => 'det',
-        'D:Excl' => 'det',
-        'D:Num' => 'det',
-        'D:Part' => 'det',
-        'D:Poss' => 'det',
-        'D:Rel' => 'det',
-        // Locution (déterminant)
-        'loc D' => 'det-loc',
-        // Pronoms
-        'P' => 'pronom',
-        'P:Dém' => 'pronom',
-        'P:Ddém' => 'pronom',
-        'P:Ind' => 'pronom',
-        'P:Int' => 'pronom',
-        'P:Pers' => 'pronom',
-        'P:Poss' => 'pronom',
-        'P:Rel' => 'pronom',
-        // Locution (pronom)
-        'loc P' => 'pronom-loc',
-        // Conjonctions
-        'C:Coord' => 'conj',
-        'C:Sub' => 'conj',
-        // Locution (conjonction)
-        'loc C' => 'conj-loc',
-        // Interjection
-        'Interj' => 'interj',
-        // Locution (interjection)
-        'loc Interj' => 'interj-loc',
-        // Préposition
-        'Prép' => 'prep',
-        // Locution (préposition)
-        'loc Prép' => 'prep-loc',
-        // Locution (phrase)
-        'loc' => 'loc-loc',
-        'loc Ph' => 'phrase-loc',
-        // Sigle
-        'sig' => 'sigle',
-        // Noms
-        'nm' => 'nom',
-        'nms' => 'nom',
-        'nmp' => 'nom',
-        'nf' => 'nom',
-        'nfs' => 'nom',
-        'nfp' => 'nom',
-        'np' => 'nom',
-        // Locution (nom)
-        'loc n' => 'nom-loc',
-        // Verbes
-        'Verbe' => 'verbe',
-        'vrb' => 'verbe',
-        'vi' => 'verbe',
-        'vt' => 'verbe',
-        'vt (vpr)' => 'verbe',
-        // Locution (verbe)
-        'loc v' => 'verbe-loc',
-    ];
     /**
      * Human-readable labels for primary categories.
      * Returns an array with two fields:
@@ -122,28 +38,86 @@ class Forme extends ActiveRecord
      */
     private static $categoryToLabel = [
         '' => '',
-        'adj' => 'Adjectif',
-        'adv' => 'Adverbe',
-        'det' => 'Déterminant',
-        'pronom' => 'Déterminant',
-        'conj' => 'Conjonction',
-        'interj' => 'Interjection',
-        'prep' => 'Préposition',
-        'sig' => 'Sigle',
-        'nom' => 'Nom',
-        'verbe' => 'Verbe',
-        // Locutions
-        'adj-loc' => 'Adjectif',
-        'adv-loc' => 'Adverbe',
-        'det-loc' => 'Déterminant',
-        'pronom-loc' => 'Déterminant',
-        'conj-loc' => 'Conjonction',
-        'interj-loc' => 'Interjection',
-        'prep-loc' => 'Préposition',
-        'phrase-loc' => 'Phrase',
-        'nom-loc' => 'Nom',
-        'verbe-loc' => 'Verbe',
+        // Adjectifs
+        'adj' => ['Adjectif', false],
+        'adjm' => ['Adjectif', false],
+        'adjf' => ['Adjectif', false],
+        'adj(m)' => ['Adjectif', false],
+        'adj(f)' => ['Adjectif', false],
+        'adjms' => ['Adjectif', false],
+        'adjfs' => ['Adjectif', false],
+        'adjmp' => ['Adjectif', false],
+        'adjfp' => ['Adjectif', false],
+        'adjord' => ['Adjectif', false],
+        // Adjectif-locution
+        'loc adj' => ['Adjectif', true],
+        // Adverbes
+        'adv' => ['Adverbe', false],
+        'Adv' => ['Adverbe', false],
+        // Adverbe-locution
+        'loc adv' => ['Adverbe', true],
+        // Grammaire: déterminants
+        'D' => ['Déterminant', false],
+        'D:Déf' => ['Déterminant', false],
+        'D:Dém' => ['Déterminant', false],
+        'D:Ind' => ['Déterminant', false],
+        'D:Int' => ['Déterminant', false],
+        'D:Excl' => ['Déterminant', false],
+        'D:Num' => ['Déterminant', false],
+        'D:Part' => ['Déterminant', false],
+        'D:Poss' => ['Déterminant', false],
+        'D:Rel' => ['Déterminant', false],
+        // Locution (déterminant)
+        'loc D' => ['Déterminant', true],
+        // Pronoms
+        'P' => ['Pronom', false],
+        'P:Dém' => ['Pronom', false],
+        'P:Ddém' => ['Pronom', false],
+        'P:Ind' => ['Pronom', false],
+        'P:Int' => ['Pronom', false],
+        'P:Pers' => ['Pronom', false],
+        'P:Poss' => ['Pronom', false],
+        'P:Rel' => ['Pronom', false],
+        // Locution (pronom)
+        'loc P' => ['Pronom', true],
+        // Conjonctions
+        'C:Coord' => ['Conjonction', false],
+        'C:Sub' => ['Conjonction', false],
+        // Locution (conjonction)
+        'loc C' => ['Conjonction', true],
+        // Interjection
+        'Interj' => ['Interjection', false],
+        // Locution (interjection)
+        'loc Interj' => ['Interjection', true],
+        // Préposition
+        'Prép' => ['Préposition', false],
+        // Locution (préposition)
+        'loc Prép' => ['Préposition', true],
+        // Locution (phrase)
+        'loc' => ['Locution', true],
+        'loc Ph' => ['Locution', true],
+        // Sigle
+        'sig' => ['Sigle', false],
+        // Noms
+        'nm' => ['Nom', false],
+        'nms' => ['Nom', false],
+        'nmp' => ['Nom', false],
+        'nf' => ['Nom', false],
+        'nfs' => ['Nom', false],
+        'nfp' => ['Nom', false],
+        'np' => ['Nom', false],
+        // Locution (nom)
+        'loc n' => ['Nom', true],
+        // Verbes
+        'Verbe' => ['Verbe', false],
+        'vrb' => ['Verbe', false],
+        'vi' => ['Verbe', false],
+        'vt' => ['Verbe', false],
+        'vt (vpr)' => ['Verbe', false],
+        // Locution (verbe)
+        'loc v' => ['Verbe', true],
     ];
+
     public static function categoryToLabel($cat)
     {
         return static::$categoryToLabel[$cat];
@@ -155,26 +129,20 @@ class Forme extends ActiveRecord
      * This is used to get the "primary" category of any given lemma.
      * @return string The given category.
      */
-    public function getPrimaryCategory()
+    public function getCatgram()
     {
-        return isset($primaryCategory)
-            ? $primaryCategory
-            : static::$catgramToCategory[$this->catgram];
-    }
-    public function setPrimaryCategory($cat)
-    {
-        $primaryCategory = $cat;
+        return static::categoryToLabel($this->catgram)[0];
     }
 
     /**
      * Returns whether the current Forme is a "locution"
-     * or not. This is determined by the category name.
-     * If it ends with "loc", then the category is a locution.
+     * or not. This is determined by the second field in the array.
      * @return bool Whether the current Forme is a locution or not.
+     * XXX: change label
      */
     public function isLocution()
     {
-        return substr($this->primaryCategory, -3) === 'loc';
+        return static::categoryToLabel($this->catgram)[1];
     }
 
     // Exception table.
@@ -298,9 +266,8 @@ class Forme extends ActiveRecord
             'forme' => 'Forme',
             'lemmeid' => 'Lemmeid',
             'lemme' => 'Lemme',
-            'primaryCategory' => 'Catégorie',
-            'catgram' => 'Sous-catégorie',
-            'cat' => 'Catégorie',
+            'catgram' => 'Catégorie',
+            'cat' => 'Sous-catégorie',
             'genre' => 'Genre',
             'num' => 'Nombre',
             'person' => 'Personne',

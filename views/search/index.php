@@ -130,20 +130,19 @@ $this->params['breadcrumbs'][0] = $this->title;
                     'vAlign' => 'middle',
                 ],
                 [
-                    'attribute' => 'primaryCategory',
+                    'attribute' => 'catgram',
                     'vAlign' => 'middle',
                     'format' => 'html',
                     'value' => function ($data) {
                         $after = $data->isLocution()
                             ? '&nbsp;<span class="badge badge-secondary">Locution</span>'
                             : '';
-                        return Forme::categoryToLabel($data->primaryCategory) . $after;
+                        return $data->getCatgram() . $after . ' (' . $data->catgram . ')';
                     },
                 ],
                 [
-                    'attribute' => 'catgram',
+                    'attribute' => 'souscatgram',
                     'vAlign' => 'middle',
-                    'width' => '4rem',
                 ],
                 [
                     'attribute' => 'temps',

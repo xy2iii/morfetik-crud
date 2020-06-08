@@ -26,6 +26,7 @@
                                 <a class="nav-link" href="#nombre">Le nombre</a>
                                 <a class="nav-link" href="#genre">Le genre</a>
                                 <a class="nav-link" href="#personne">La personne</a>
+                                <a class="nav-link" href="#domaine">Les formes rares</a>
                                 <a class="nav-link" href="#formes-rares">Les formes rares</a>
                                 <a class="nav-link" href="#ressources-externes">Ressources externes</a>
                                 <nav class="nav nav-pills nav-justified flex-column">
@@ -450,20 +451,404 @@
                             </div>
                         </div>
 
-                        <h3 class="mt-3" class="mt-3" id="formes-rares">Les formes rares</h3>
+                        <h2 class="mt-3" id="domaine">Les domaines</h2>
+                        <table class="table table-sm table-hover table-bordered">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Domaine</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>admin.</td>
+                                    <td>administration</td>
+                                </tr>
+                                <tr>
+                                    <td>aéron.</td>
+                                    <td>aéronautique</td>
+                                </tr>
+                                <tr>
+                                    <td>agric.</td>
+                                    <td>agriculture</td>
+                                </tr>
+                                <tr>
+                                    <td>alim.</td>
+                                    <td>alimentation</td>
+                                </tr>
+                                <tr>
+                                    <td>ameub.-décor.</td>
+                                    <td>ameublement et décoration</td>
+                                </tr>
+                                <tr>
+                                    <td>anthrop.</td>
+                                    <td>anthropologie</td>
+                                </tr>
+                                <tr>
+                                    <td>archit.</td>
+                                    <td>architecture</td>
+                                </tr>
+                                <tr>
+                                    <td>art</td>
+                                    <td>art</td>
+                                </tr>
+                                <tr>
+                                    <td>artisan.</td>
+                                    <td>artisanat</td>
+                                </tr>
+                                <tr>
+                                    <td>arts déc.</td>
+                                    <td>arts décoratifs</td>
+                                </tr>
+                                <tr>
+                                    <td>astron.</td>
+                                    <td>astronomie</td>
+                                </tr>
+                                <tr>
+                                    <td>audiovis.</td>
+                                    <td>audiovisuel</td>
+                                </tr>
+                                <tr>
+                                    <td>biol.</td>
+                                    <td>biologie</td>
+                                </tr>
+                                <tr>
+                                    <td>bois</td>
+                                    <td>bois</td>
+                                </tr>
+                                <tr>
+                                    <td>bot.</td>
+                                    <td>botanique</td>
+                                </tr>
+                                <tr>
+                                    <td>chasse</td>
+                                    <td>chasse</td>
+                                </tr>
+                                <tr>
+                                    <td>chim.</td>
+                                    <td>chimie</td>
+                                </tr>
+                                <tr>
+                                    <td>cin.-phot.</td>
+                                    <td>cinéma et photographie</td>
+                                </tr>
+                                <tr>
+                                    <td>comm.</td>
+                                    <td>commerce</td>
+                                </tr>
+                                <tr>
+                                    <td>communic.</td>
+                                    <td>communication (divers)</td>
+                                </tr>
+                                <tr>
+                                    <td>constr.</td>
+                                    <td>construction</td>
+                                </tr>
+                                <tr>
+                                    <td>croy.-idéol.</td>
+                                    <td>croyances et idéologies</td>
+                                </tr>
+                                <tr>
+                                    <td>cuirs-peaux</td>
+                                    <td>cuirs et peaux</td>
+                                </tr>
+                                <tr>
+                                    <td>culture</td>
+                                    <td>culture (divers)</td>
+                                </tr>
+                                <tr>
+                                    <td>danse</td>
+                                    <td>danse</td>
+                                </tr>
+                                <tr>
+                                    <td>droit-jus.</td>
+                                    <td>droit et justice</td>
+                                </tr>
+                                <tr>
+                                    <td>écon.</td>
+                                    <td>économie</td>
+                                </tr>
+                                <tr>
+                                    <td>écrit</td>
+                                    <td>écrit (divers)</td>
+                                </tr>
+                                <tr>
+                                    <td>livre</td>
+                                    <td>édition et métiers du livre</td>
+                                </tr>
+                                <tr>
+                                    <td>éduc.</td>
+                                    <td>éducation</td>
+                                </tr>
+                                <tr>
+                                    <td>électr.</td>
+                                    <td>électricité</td>
+                                </tr>
+                                <tr>
+                                    <td>électron.</td>
+                                    <td>électronique</td>
+                                </tr>
+                                <tr>
+                                    <td>élev.</td>
+                                    <td>élevage</td>
+                                </tr>
+                                <tr>
+                                    <td>énergie</td>
+                                    <td>énergie (divers)</td>
+                                </tr>
+                                <tr>
+                                    <td>environn.-urb.</td>
+                                    <td>environnement et urbanisme</td>
+                                </tr>
+                                <tr>
+                                    <td>espace</td>
+                                    <td>espace</td>
+                                </tr>
+                                <tr>
+                                    <td>fin.</td>
+                                    <td>finance</td>
+                                </tr>
+                                <tr>
+                                    <td>géog.</td>
+                                    <td>géographie</td>
+                                </tr>
+                                <tr>
+                                    <td>géol.</td>
+                                    <td>géologie</td>
+                                </tr>
+                                <tr>
+                                    <td>géosc.</td>
+                                    <td>géosciences (divers)</td>
+                                </tr>
+                                <tr>
+                                    <td>habill.</td>
+                                    <td>habillement</td>
+                                </tr>
+                                <tr>
+                                    <td>habit.</td>
+                                    <td>habitat</td>
+                                </tr>
+                                <tr>
+                                    <td>hist.</td>
+                                    <td>histoire</td>
+                                </tr>
+                                <tr>
+                                    <td>industr.</td>
+                                    <td>industrie (divers)</td>
+                                </tr>
+                                <tr>
+                                    <td>info.-doc.</td>
+                                    <td>information et documentation</td>
+                                </tr>
+                                <tr>
+                                    <td>inform.</td>
+                                    <td>informatique</td>
+                                </tr>
+                                <tr>
+                                    <td>jeux</td>
+                                    <td>jeux</td>
+                                </tr>
+                                <tr>
+                                    <td>ling.</td>
+                                    <td>linguistique</td>
+                                </tr>
+                                <tr>
+                                    <td>littér.</td>
+                                    <td>littérature</td>
+                                </tr>
+                                <tr>
+                                    <td>lois.</td>
+                                    <td>loisirs</td>
+                                </tr>
+                                <tr>
+                                    <td>manut.-stock.</td>
+                                    <td>manutention et stockage</td>
+                                </tr>
+                                <tr>
+                                    <td>matér.</td>
+                                    <td>matériaux</td>
+                                </tr>
+                                <tr>
+                                    <td>math.</td>
+                                    <td>mathématiques</td>
+                                </tr>
+                                <tr>
+                                    <td>mécan.</td>
+                                    <td>mécanique</td>
+                                </tr>
+                                <tr>
+                                    <td>méd.</td>
+                                    <td>médecine</td>
+                                </tr>
+                                <tr>
+                                    <td>métaux</td>
+                                    <td>métaux</td>
+                                </tr>
+                                <tr>
+                                    <td>métrol.</td>
+                                    <td>métrologie</td>
+                                </tr>
+                                <tr>
+                                    <td>mil.</td>
+                                    <td>militaire</td>
+                                </tr>
+                                <tr>
+                                    <td>min.</td>
+                                    <td>minéralogie</td>
+                                </tr>
+                                <tr>
+                                    <td>mines-carr.</td>
+                                    <td>mines et carrières</td>
+                                </tr>
+                                <tr>
+                                    <td>mus.</td>
+                                    <td>musique</td>
+                                </tr>
+                                <tr>
+                                    <td>nautique</td>
+                                    <td>nautique</td>
+                                </tr>
+                                <tr>
+                                    <td>nucl.</td>
+                                    <td>nucléaire</td>
+                                </tr>
+                                <tr>
+                                    <td>pêche</td>
+                                    <td>pêche</td>
+                                </tr>
+                                <tr>
+                                    <td>pétrole</td>
+                                    <td>pétrole</td>
+                                </tr>
+                                <tr>
+                                    <td>phil.</td>
+                                    <td>philosophie</td>
+                                </tr>
+                                <tr>
+                                    <td>phys.</td>
+                                    <td>physique</td>
+                                </tr>
+                                <tr>
+                                    <td>pol.</td>
+                                    <td>politique</td>
+                                </tr>
+                                <tr>
+                                    <td>presse</td>
+                                    <td>presse</td>
+                                </tr>
+                                <tr>
+                                    <td>protect.-sécur.</td>
+                                    <td>protection et sécurité</td>
+                                </tr>
+                                <tr>
+                                    <td>psych.</td>
+                                    <td>psychologie</td>
+                                </tr>
+                                <tr>
+                                    <td>relig.</td>
+                                    <td>religions</td>
+                                </tr>
+                                <tr>
+                                    <td>sc.</td>
+                                    <td>sciences (divers)</td>
+                                </tr>
+                                <tr>
+                                    <td>sémiol.-symbol.</td>
+                                    <td>sémiologie et symbolique</td>
+                                </tr>
+                                <tr>
+                                    <td>serv.</td>
+                                    <td>services (divers)</td>
+                                </tr>
+                                <tr>
+                                    <td>soc.</td>
+                                    <td>société</td>
+                                </tr>
+                                <tr>
+                                    <td>spect.</td>
+                                    <td>spectacles</td>
+                                </tr>
+                                <tr>
+                                    <td>sports</td>
+                                    <td>sports</td>
+                                </tr>
+                                <tr>
+                                    <td>techn.</td>
+                                    <td>techniques (divers)</td>
+                                </tr>
+                                <tr>
+                                    <td>télécomm.</td>
+                                    <td>télécommunications</td>
+                                </tr>
+                                <tr>
+                                    <td>tempor.</td>
+                                    <td>temporalité</td>
+                                </tr>
+                                <tr>
+                                    <td>text.</td>
+                                    <td>textile</td>
+                                </tr>
+                                <tr>
+                                    <td>théât.</td>
+                                    <td>théâtre</td>
+                                </tr>
+                                <tr>
+                                    <td>therm.</td>
+                                    <td>thermique</td>
+                                </tr>
+                                <tr>
+                                    <td>toil.-parure</td>
+                                    <td>toilette et parure</td>
+                                </tr>
+                                <tr>
+                                    <td>transp.</td>
+                                    <td>transports (divers)</td>
+                                </tr>
+                                <tr>
+                                    <td>trav.</td>
+                                    <td>travail</td>
+                                </tr>
+                                <tr>
+                                    <td>ménag.</td>
+                                    <td>travaux et équipement ménagers</td>
+                                </tr>
+                                <tr>
+                                    <td>trav.publ.</td>
+                                    <td>travaux publics</td>
+                                </tr>
+                                <tr>
+                                    <td>vie quot.</td>
+                                    <td>vie quotidienne (divers)</td>
+                                </tr>
+                                <tr>
+                                    <td>voy.</td>
+                                    <td>voyages</td>
+                                </tr>
+                                <tr>
+                                    <td>zool.</td>
+                                    <td>zoologie</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
                         <p>
                             Le signe <span class="badge badge-info">Rare</span> indique les flexions rares et/ou archaïques, notamment pour les verbes (veuillons, partissiez, dormie...) et pour quelques adjcetifs (châtaine, gringalette...)
                         </p>
 
-                        <h3 class="mt-3" class="mt-3" id="ressources-externes">Les ressources externes </h3>
+                        <h2 class="mt-3" id="formes-rares">Les formes rares</h2>
+                        <p>
+                            Le signe <span class="badge badge-info">Rare</span> indique les flexions rares et/ou archaïques, notamment pour les verbes (veuillons, partissiez, dormie...) et pour quelques adjcetifs (châtaine, gringalette...)
+                        </p>
+
+                        <h2 class="mt-3" id="ressources-externes">Les ressources externes </h2>
                         <p>
                             Vous pouvez compléter les résultats de votre recherche en cliquant sur les ressources externes <i class="fa fa-paper-plane"></i> (Néoveille) et <i class="fa fa-university"></i> (FranceTerme).
 
-                            <h4 class="mt-4" id="neoveille">Néoveille</h4>
+                            <h3 class="mt-4" id="neoveille">Néoveille</h3>
                             <p>
                                 A compléter
                             </p>
-                            <h4 class="mt-4" id="franceterme">FranceTerme</h4>
+                            <h3 class="mt-4" id="franceterme">FranceTerme</h3>
                             <p>
                                 FranceTerme est une base de données terminologiques de la délégation générale à la langue française et aux langues de France du ministère de la culture français (<a href="https://www.culture.gouv.fr/Sites-thematiques/Langue-francaise-et-langues-de-France/La-DGLFLF">DGLFLF)</a>, qui rassemble les récents néologismes avalisés par la Commission d'enrichissement de la langue française et parus au <em>Journal officiel</em>, remplaçant les termes importés d'autres langues. Elle a pour mission de promouvoir l'utilisation de mots en français, pour enrichir la langue française et éviter son recul dans le monde.
                             </p>

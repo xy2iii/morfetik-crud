@@ -6,7 +6,7 @@ set
     "insert into formes
 (forme, lemmeid, lemme, catgram, cat, 
 genre, num, person, temps, 
-rare, lig, graphsav, notes, infos)
+rare, lig, graphsav, notes, infos, souscatgram)
 select
   concat(
     substr(lemme, 1, length(lemme) - rad),
@@ -28,7 +28,8 @@ select
   lig,
   '' as graphsav,
   notes,
-  '' as infos
+  '' as infos,
+  souscatgram
 from
   ( select  
   *,

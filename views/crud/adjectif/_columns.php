@@ -50,6 +50,16 @@ return [
     ],
     [
         'class' => '\kartik\grid\EditableColumn',
+        'attribute' => 'souscatgram',
+        'vAlign' => 'middle',
+        'editableOptions' => [
+            'header' => Yii::t('app', 'Sous-catégorie grammaticale'),
+            'inputType' => Editable::INPUT_TEXT,
+            'formOptions' => ['action' => ['editable']],
+        ],
+    ],
+    [
+        'class' => '\kartik\grid\EditableColumn',
         'attribute' => 'Flex',
         'vAlign' => 'middle',
         'editableOptions' => [

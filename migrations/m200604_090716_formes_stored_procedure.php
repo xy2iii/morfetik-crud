@@ -9,22 +9,22 @@ use yii\db\Migration;
  */
 class m200604_090716_formes_stored_procedure extends Migration
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function safeUp()
-    {
-        $connection = Yii::$app->getDb();
+  /**
+   * {@inheritdoc}
+   */
+  public function safeUp()
+  {
+    $connection = Yii::$app->getDb();
 
-        // proc-adj.sql
-        $command = $connection->createCommand(<<<EOD
+    // proc-adj.sql
+    $command = $connection->createCommand(<<<EOD
 create procedure adjectif (IN flexion varchar(255), IN genre varchar(255), IN num varchar(255)) BEGIN
 set
     @sql = CONCAT(
     "insert into formes
 (forme, lemmeid, lemme, catgram, cat, 
 genre, num, person, temps, 
-rare, lig, graphsav, notes, infos)
+rare, lig, graphsav, notes, infos, souscatgram)
 select
     concat(
     substr(lemme, 1, length(lemme) - rad),
@@ -46,7 +46,8 @@ select
     lig,
     '' as graphsav,
     notes,
-    '' as infos
+    '' as infos,
+    souscatgram
 from
     ( select  
     *,
@@ -67,10 +68,10 @@ execute stmt;
 deallocate prepare stmt;
 END;
 EOD);
-        $command->execute();
+    $command->execute();
 
-        // proc-nom.sql
-        $command = $connection->createCommand(<<<EOD
+    // proc-nom.sql
+    $command = $connection->createCommand(<<<EOD
 create procedure nom (IN flexion varchar(255), IN num varchar(255)) BEGIN
 set
   @sql = CONCAT(
@@ -120,10 +121,10 @@ execute stmt;
 deallocate prepare stmt;
 END
 EOD);
-        $command->execute();
+    $command->execute();
 
-        // proc-verbe.sql
-        $command = $connection->createCommand(<<<EOD
+    // proc-verbe.sql
+    $command = $connection->createCommand(<<<EOD
 create procedure verbe (IN flexion varchar(255), IN temps varchar(255),
 IN num varchar(255), IN person varchar(255), IN genre varchar(255)) BEGIN
 set
@@ -175,10 +176,10 @@ execute stmt;
 deallocate prepare stmt;
 END
 EOD);
-        $command->execute();
+    $command->execute();
 
-        // main.sql
-        $command = $connection->createCommand(<<<EOD
+    // main.sql
+    $command = $connection->createCommand(<<<EOD
 create procedure createFormes () BEGIN
 
 delete from formes;
@@ -273,26 +274,26 @@ from gram;
 
 END
 EOD);
-        $command->execute();
-    }
+    $command->execute();
+  }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function safeDown()
-    {
-        $connection = Yii::$app->getDb();
-        $command = $connection->createCommand("drop procedure createFormes;");
-        $command->execute();
-        $command = $connection->createCommand("drop procedure verbe;");
-        $command->execute();
-        $command = $connection->createCommand("drop procedure nom;");
-        $command->execute();
-        $command = $connection->createCommand("drop procedure adjectif;");
-        $command->execute();
-    }
+  /**
+   * {@inheritdoc}
+   */
+  public function safeDown()
+  {
+    $connection = Yii::$app->getDb();
+    $command = $connection->createCommand("drop procedure createFormes;");
+    $command->execute();
+    $command = $connection->createCommand("drop procedure verbe;");
+    $command->execute();
+    $command = $connection->createCommand("drop procedure nom;");
+    $command->execute();
+    $command = $connection->createCommand("drop procedure adjectif;");
+    $command->execute();
+  }
 
-    /*
+  /*
     // Use up()/down() to run migration code without a transaction.
     public function up()
     {
