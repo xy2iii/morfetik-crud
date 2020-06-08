@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <h2 class="mt-5">Qui sommes-nous?</h2>
     <p class="lead text-danger">à remplir</p>
-    <h2 class="mt-5">Contibuteurs</h2>
+    <h2 class="mt-5">Contributeurs</h2>
     <h3>Contributeurs linguistiques</h3>
     <table class="table">
         <thead class="thead-light">
