@@ -65,14 +65,15 @@ call verbe('Pp::P:M', 'Pp', '', 'P', 'M');
 call verbe('Pp::P:F', 'Pp', '', 'P', 'F');
 
 insert into formes
-(forme, lemmeid, lemme, catgram, cat, 
+(forme, lemmeid, lemme, catgram, souscatgram, cat, 
 genre, num, person, temps, 
-rare, lig, graphsav, notes, infos, prono)
+rare, lig, graphsav, notes, infos, pronominal)
 select
   forme as forme,
   id as lemmeid,
   lemme,
   catgram as catgram,
+  souscatgram,
   case
     when catgram = 'C:Coord'
     or catgram = 'C:Sub'
@@ -84,14 +85,38 @@ select
   Gender as genre,
   Number as num,
   Person as person,
-  NULL as temps,
+  '' as temps,
   '0' as rare,
   '' as lig,
   '' as graphsav,
   notes,
   '' as infos,
-  '0' as prono
+  '0' as pronominal
 from gram;
+
+
+insert into formes
+(forme, lemmeid, lemme, catgram, souscatgram, cat, 
+genre, num, person, temps, 
+rare, lig, graphsav, notes, infos, pronominal)
+select
+  lemme as forme,
+  id as lemmeid,
+  lemme,
+  'adv' as catgram,
+  souscatgram,
+  'adv' as cat,
+  '' as genre,
+  '' as num,
+  '' as person,
+  '' as temps,
+  '0' as rare,
+  '' as lig,
+  '' as graphsav,
+  '' as notes,
+  '' as infos,
+  '0' as pronominal
+from adv;
 
 END $$
 delimiter ;

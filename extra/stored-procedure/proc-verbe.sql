@@ -1,11 +1,9 @@
-delimiter $$
-drop procedure verbe$$
 create procedure verbe (IN flexion varchar(255), IN temps varchar(255),
 IN num varchar(255), IN person varchar(255), IN genre varchar(255)) BEGIN
 set
   @sql = CONCAT(
     "insert into formes
-(forme, lemmeid, lemme, catgram, cat, 
+(forme, lemmeid, lemme, catgram, souscatgram, cat, 
 genre, num, person, temps, 
 rare, lig, graphsav, notes, infos, pronominal)
     select
@@ -20,6 +18,7 @@ rare, lig, graphsav, notes, infos, pronominal)
   id as lemmeid,
   lemme,
   catgram,
+  souscatgram,
   'Vrb' as cat,
   '",genre,"' as genre,
   '",num,"' as num,
@@ -29,8 +28,8 @@ rare, lig, graphsav, notes, infos, pronominal)
   lig,
   '' as graphsav,
   notes,
-  '' as infos
-  pronominal,
+  '' as infos,
+  pronominal
 from
   ( select
   *,
@@ -49,5 +48,4 @@ FROM
 execute stmt;
 
 deallocate prepare stmt;
-END $$
-delimiter ;
+END

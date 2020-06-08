@@ -1,12 +1,10 @@
-delimiter $$
-drop procedure adjectif$$
 create procedure adjectif (IN flexion varchar(255), IN genre varchar(255), IN num varchar(255)) BEGIN
 set
   @sql = CONCAT(
     "insert into formes
-(forme, lemmeid, lemme, catgram, cat, 
+(forme, lemmeid, lemme, catgram, souscatgram, cat, 
 genre, num, person, temps, 
-rare, lig, graphsav, notes, infos, souscatgram)
+rare, lig, graphsav, notes, infos)
 select
   concat(
     substr(lemme, 1, length(lemme) - rad),
@@ -19,6 +17,7 @@ select
   id as lemmeid,
   lemme,
   catgram,
+  souscatgram,
   'Adj' as cat,
   '",genre,"' as genre,
   '",num,"' as num,
@@ -28,8 +27,7 @@ select
   lig,
   '' as graphsav,
   notes,
-  '' as infos,
-  souscatgram
+  '' as infos
 from
   ( select  
   *,
@@ -48,5 +46,4 @@ FROM
 execute stmt;
 
 deallocate prepare stmt;
-END $$
-delimiter ;
+END

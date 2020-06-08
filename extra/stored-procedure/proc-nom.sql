@@ -1,10 +1,8 @@
-delimiter $$
-drop procedure nom$$
 create procedure nom (IN flexion varchar(255), IN num varchar(255)) BEGIN
 set
   @sql = CONCAT(
     "insert into formes
-(forme, lemmeid, lemme, catgram, cat, 
+(forme, lemmeid, lemme, catgram, souscatgram, cat, 
 genre, num, person, temps, 
 rare, lig, graphsav, notes, infos)
 select
@@ -19,6 +17,7 @@ select
   id as lemmeid,
   lemme,
   catgram,
+  souscatgram,
   'Nom' as cat,
   upper(substr(catgram, 2, 1)) as genre,
   '",num,"' as num,
@@ -47,5 +46,4 @@ FROM
 execute stmt;
 
 deallocate prepare stmt;
-END $$
-delimiter ;
+END

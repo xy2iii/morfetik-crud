@@ -5,13 +5,18 @@ use kartik\grid\GridView;
 use Yii\helpers\Url;
 
 use app\views\crud\GridHelper;
-
+use app\models\crud\config\ConfigAdjectifSouscatgram;
 /* @var relatedModel Related model to this catégorie. */
 
-$flexArray = $relatedModel::find()->select(['Code'])->all();
-$flexArray = array_map(function ($m) {
-    return $m->Code;
-}, $flexArray);
+$tmp = $relatedModel::find()->select(['Code'])->all();
+foreach ($tmp as $m) {
+    $flexArray[$m->Code] = $m->Code;
+}
+
+$tmp = ConfigAdjectifSouscatgram::find()->select(['option'])->all();
+foreach ($tmp as $m) {
+    $sousCatgramArray[$m->option] = $m->option;
+}
 
 return [
     GridHelper::getCheckboxColumn(),
@@ -54,7 +59,8 @@ return [
         'vAlign' => 'middle',
         'editableOptions' => [
             'header' => Yii::t('app', 'Sous-catégorie grammaticale'),
-            'inputType' => Editable::INPUT_TEXT,
+            'inputType' => Editable::INPUT_DROPDOWN_LIST,
+            'data' => $sousCatgramArray,
             'formOptions' => ['action' => ['editable']],
         ],
     ],

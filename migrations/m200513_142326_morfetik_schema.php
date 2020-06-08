@@ -28,6 +28,7 @@ class m200513_142326_morfetik_schema extends Migration
         CREATE TABLE `adv` (
           `ID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
           `Lemme` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+          `souscatgram` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
           PRIMARY KEY (`ID`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
         ");
@@ -52,6 +53,7 @@ class m200513_142326_morfetik_schema extends Migration
           `Lemme` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
           `Forme` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
           `CatGram` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+          `souscatgram` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
           `Gender` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
           `Number` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
           `Person` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
@@ -75,6 +77,7 @@ class m200513_142326_morfetik_schema extends Migration
           `ID` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
           `Lemme` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
           `CatGram` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+          `souscatgram` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
           `Flex` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
           `Dom` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
           `Grs` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -160,6 +163,7 @@ class m200513_142326_morfetik_schema extends Migration
           `ID` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
           `Lemme` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
           `CatGram` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'vrb',
+          `souscatgram` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
           `Flex` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
           `Lig` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
           `Standard` varchar(256) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -176,6 +180,7 @@ CREATE TABLE `formes` (
     `lemmeid` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
     `lemme` varchar(510) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
     `catgram` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+    `souscatgram` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
     `cat` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
     `genre` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
     `num` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -187,7 +192,6 @@ CREATE TABLE `formes` (
     `notes` varchar(510) COLLATE utf8_unicode_ci DEFAULT '',
     `infos` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
     `pronominal` tinyint NOT NULL DEFAULT 0,
-    `souscatgram` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
     KEY `formeid` (`formeid`),
     KEY `forme` (`forme`(333)),
     KEY `lemmeid` (`lemmeid`),
