@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </thead>
         <tbody>
             <tr>
-                <td>GREZKA Aude</td>
+                <td><a href="https://lipn.univ-paris13.fr/~grezka/">GREZKA Aude</a></td>
                 <td>CNRS/LIPN - Équipe RCLN (<a href="https://www.univ-paris13.fr/">Université Sorbonne Paris Nord</a>)</td>
             </tr>
             <tr>
