@@ -6,12 +6,17 @@ use yii\bootstrap4\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Verbe */
 /* @var $form yii\bootstrap4\ActiveForm */
+use app\models\crud\config\ConfigVerbeSouscatgram;
 
-$flexArray = $relatedModel::find()->select(['Code'])->all();
-$flexArray = array_map(function ($m) {
-    return $m->Code;
-}, $flexArray);
+$tmp = $relatedModel::find()->select(['Code'])->all();
+foreach ($tmp as $m) {
+    $flexArray[$m->Code] = $m->Code;
+}
 
+$tmp = ConfigVerbeSouscatgram::find()->select(['option'])->all();
+foreach ($tmp as $m) {
+    $sousCatgramArray[$m->option] = $m->option;
+}
 $isNew = $model->isNewRecord;
 $suffix = $isNew ? 'create' : 'update';
 $path = '/crud/verbe/' . $suffix;
@@ -27,6 +32,11 @@ $path = '/crud/verbe/' . $suffix;
     <?= $form->field($model, 'Lemme')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'CatGram')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'souscatgram')->dropDownList($sousCatgramArray) ?>
+
+    <?= $form->field($model, 'Flex')->dropDownList($flexArray) ?>
+
 
     <?= $form->field($model, 'Flex')->textInput(['maxlength' => true]) ?>
 

@@ -8,14 +8,14 @@ use Yii;
  * @property int $id
  * @property string $option
  */
-class ConfigGramCatgram extends \yii\db\ActiveRecord
+class ConfigNomSouscatgram extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'config_gram_catgram';
+        return 'config_nslemmes_souscatgram';
     }
 
     /**

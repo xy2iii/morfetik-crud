@@ -28,7 +28,7 @@ CrudAsset::register($this);
             'id' => 'crud-datatable',
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
-            'filterUrl' => '@web/config/adjectif_souscatgram',
+            'filterUrl' => '@web/crud/config/adjectif_souscatgram',
             'pjax' => true,
             'pjaxSettings' => ['options' => ['enablePushState' => false]],
             'columns' => require(__DIR__ . '/_columns.php'),

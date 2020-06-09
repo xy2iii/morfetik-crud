@@ -5,8 +5,6 @@ namespace app\models\crud\config;
 use Yii;
 
 /**
- * This is the model class for table "config_alemmes_souscatgram".
- *
  * @property int $id
  * @property string $option
  */

@@ -6,6 +6,18 @@ use yii\bootstrap4\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Grammaire */
 /* @var $form yii\bootstrap4\ActiveForm */
+use app\models\crud\config\ConfigGramCatgram;
+use app\models\crud\config\ConfigGramSouscatgram;
+
+$tmp = ConfigGramCatgram::find()->select(['option'])->all();
+foreach ($tmp as $m) {
+    $catgramArray[$m->option] = $m->option;
+}
+
+$tmp = ConfigGramSouscatgram::find()->select(['option'])->all();
+foreach ($tmp as $m) {
+    $sousCatgramArray[$m->option] = $m->option;
+}
 
 $isNew = $model->isNewRecord;
 $suffix = $isNew ? 'create' : 'update';
@@ -23,11 +35,15 @@ $path = '/crud/grammaire/' . $suffix;
 
     <?= $form->field($model, 'Forme')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'Gender')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'CatGram')->dropDownList($catgramArray) ?>
 
-    <?= $form->field($model, 'Number')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'souscatgram')->dropDownList($sousCatgramArray) ?>
 
-    <?= $form->field($model, 'Person')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Gender')->dropDownList(['' => '', 'M' => 'M', 'F' => 'F']) ?>
+
+    <?= $form->field($model, 'Number')->dropDownList(['' => '', 'S' => 'S', 'P' => 'P']) ?>
+
+    <?= $form->field($model, 'Person')->dropDownList(['' => '', '1' => '1', '2' => '2', '3' => '3']) ?>
 
     <?= $form->field($model, 'Notes')->textInput(['maxlength' => true]) ?>
 

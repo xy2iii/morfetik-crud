@@ -2,6 +2,18 @@
 
 use kartik\editable\Editable;
 use app\views\crud\GridHelper;
+use app\models\crud\config\ConfigGramCatgram;
+use app\models\crud\config\ConfigGramSouscatgram;
+
+$tmp = ConfigGramCatgram::find()->select(['option'])->all();
+foreach ($tmp as $m) {
+    $catgramArray[$m->option] = $m->option;
+}
+
+$tmp = ConfigGramSouscatgram::find()->select(['option'])->all();
+foreach ($tmp as $m) {
+    $sousCatgramArray[$m->option] = $m->option;
+}
 
 return [
     GridHelper::getCheckboxColumn(),
@@ -42,7 +54,19 @@ return [
         'vAlign' => 'middle',
         'editableOptions' => [
             'header' => Yii::t('app', 'Gramatical category'),
-            'inputType' => Editable::INPUT_TEXT,
+            'inputType' => Editable::INPUT_DROPDOWN_LIST,
+            'data' => $catgramArray,
+            'formOptions' => ['action' => ['editable']],
+        ],
+    ],
+    [
+        'class' => '\kartik\grid\EditableColumn',
+        'attribute' => 'souscatgram',
+        'vAlign' => 'middle',
+        'editableOptions' => [
+            'header' => Yii::t('app', 'Sous-catégorie grammaticale'),
+            'inputType' => Editable::INPUT_DROPDOWN_LIST,
+            'data' => $sousCatgramArray,
             'formOptions' => ['action' => ['editable']],
         ],
     ],
@@ -52,7 +76,8 @@ return [
         'vAlign' => 'middle',
         'editableOptions' => [
             'header' => Yii::t('app', 'Gender'),
-            'inputType' => Editable::INPUT_TEXT,
+            'inputType' => Editable::INPUT_DROPDOWN_LIST,
+            'data' => ['' => '', 'M' => 'M', 'F' => 'F'],
             'formOptions' => ['action' => ['editable']],
         ],
     ],
@@ -62,7 +87,8 @@ return [
         'vAlign' => 'middle',
         'editableOptions' => [
             'header' => Yii::t('app', 'Number'),
-            'inputType' => Editable::INPUT_TEXT,
+            'inputType' => Editable::INPUT_DROPDOWN_LIST,
+            'data' => ['' => '', 'S' => 'S', 'P' => 'P'],
             'formOptions' => ['action' => ['editable']],
         ],
     ],
@@ -73,6 +99,7 @@ return [
         'editableOptions' => [
             'header' => Yii::t('app', 'Person'),
             'inputType' => Editable::INPUT_TEXT,
+            'data' => ['' => '', '1' => '1', '2' => '2', '3' => '3'],
             'formOptions' => ['action' => ['editable']],
         ],
     ],

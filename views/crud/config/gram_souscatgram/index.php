@@ -27,7 +27,7 @@ CrudAsset::register($this);
             'id' => 'crud-datatable',
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
-            'filterUrl' => '@web/crud/config/gram_catgram',
+            'filterUrl' => '@web/crud/config/gram_souscatgram',
             'pjax' => true,
             'pjaxSettings' => ['options' => ['enablePushState' => false]],
             'columns' => require(__DIR__ . '/_columns.php'),
@@ -54,7 +54,7 @@ CrudAsset::register($this);
             'hover' => true,
             'panel' => [
                 'type' => 'secondary',
-                'heading' => '<i class="fas fa-cogs"></i>' . ' Configuration: Grammaire, catégorie grammaticale',
+                'heading' => '<i class="fas fa-cogs"></i>' . ' Configuration: Grammaire, sous-catégorie grammaticale',
                 'before' => '<em>' . Yii::t('app', '* Resize table columns just like a spreadsheet by dragging the column edges') . '.</em>',
                 'after' => BulkButtonWidget::widget([
                     'buttons' => Html::a(

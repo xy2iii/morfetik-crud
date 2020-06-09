@@ -5,7 +5,6 @@ use kartik\grid\GridView;
 use Yii\helpers\Url;
 
 use app\views\crud\GridHelper;
-use app\models\crud\config\ConfigAdjectifSouscatgram;
 /* @var relatedModel Related model to this catégorie. */
 
 return [

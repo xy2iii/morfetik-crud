@@ -18,7 +18,7 @@ class VerbeSearch extends Verbe
     public function rules()
     {
         return [
-            [['ID', 'Lemme', 'CatGram', 'Flex', 'Lig', 'Standard', 'Notes', 'pronominal'], 'safe'],
+            [['ID', 'Lemme', 'CatGram', 'souscatgram', 'Flex', 'Lig', 'Standard', 'Notes', 'pronominal'], 'safe'],
         ];
     }
 
@@ -57,6 +57,7 @@ class VerbeSearch extends Verbe
         $query->andFilterWhere(['like', 'ID', $this->ID])
             ->andFilterWhere(['like', 'Lemme', $this->Lemme])
             ->andFilterWhere(['like', 'CatGram', $this->CatGram])
+            ->andFilterWhere(['like', 'souscatgram', $this->CatGram])
             ->andFilterWhere(['like', 'Flex', $this->Flex])
             ->andFilterWhere(['like', 'Lig', $this->Lig])
             ->andFilterWhere(['like', 'Standard', $this->Standard])

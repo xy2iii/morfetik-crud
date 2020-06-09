@@ -7,6 +7,7 @@ use yii\bootstrap4\ActiveForm;
 /* @var $model app\models\Adverbe */
 /* @var $form yii\bootstrap4\ActiveForm */
 
+use app\models\crud\config\ConfigAdverbeSouscatgram;
 
 $tmp = ConfigAdverbeSouscatgram::find()->select(['option'])->all();
 foreach ($tmp as $m) {
@@ -27,7 +28,7 @@ $path = '/crud/adverbe/' . $suffix;
 
 	<?= $form->field($model, 'Lemme')->textInput(['maxlength' => true]) ?>
 
-	<?= $form->field($model, 'souscatgram')->dropDownList($flexArray) ?>
+	<?= $form->field($model, 'souscatgram')->dropDownList($sousCatgramArray) ?>
 
 	<?php if (!Yii::$app->request->isAjax) { ?>
 		<div class="form-group">

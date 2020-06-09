@@ -1,16 +1,16 @@
 <?php
 
-namespace app\models\crud;
+namespace app\models\crud\config;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\crud\Grammaire;
+use app\models\crud\config\ConfigGramSousatgram;
 
 /**
- * GrammaireSearch represents the model behind the search form about `app\models\Grammaire`.
+ * AdjectifSearch represents the model behind the search form about `app\models\Adjectif`.
  */
-class GrammaireSearch extends Grammaire
+class ConfigGramSouscatgramSearch extends ConfigGramSouscatgram
 {
     /**
      * @inheritdoc
@@ -18,7 +18,7 @@ class GrammaireSearch extends Grammaire
     public function rules()
     {
         return [
-            [['ID', 'Lemme', 'Forme', 'CatGram', 'souscatgram', 'Gender', 'Number', 'Person', 'Notes'], 'safe'],
+            [['ID', 'option'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class GrammaireSearch extends Grammaire
      */
     public function search($params)
     {
-        $query = Grammaire::find();
+        $query = ConfigGramSouscatgram::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -55,14 +55,7 @@ class GrammaireSearch extends Grammaire
         }
 
         $query->andFilterWhere(['like', 'ID', $this->ID])
-            ->andFilterWhere(['like', 'Lemme', $this->Lemme])
-            ->andFilterWhere(['like', 'Forme', $this->Forme])
-            ->andFilterWhere(['like', 'CatGram', $this->CatGram])
-            ->andFilterWhere(['like', 'souscatgram', $this->souscatgram])
-            ->andFilterWhere(['like', 'Gender', $this->Gender])
-            ->andFilterWhere(['like', 'Number', $this->Number])
-            ->andFilterWhere(['like', 'Person', $this->Person])
-            ->andFilterWhere(['like', 'Notes', $this->Notes]);
+            ->andFilterWhere(['like', 'option', $this->option]);
 
         return $dataProvider;
     }

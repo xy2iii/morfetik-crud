@@ -7,10 +7,18 @@ use yii\bootstrap4\ActiveForm;
 /* @var $model app\models\Nom */
 /* @var $form yii\bootstrap4\ActiveForm */
 
-$flexArray = $relatedModel::find()->select(['Code'])->all();
-$flexArray = array_map(function ($m) {
-    return $m->Code;
-}, $flexArray);
+use app\models\crud\config\ConfigNomSouscatgram;
+/* @var relatedModel Related model to this catégorie. */
+
+$tmp = $relatedModel::find()->select(['Code'])->all();
+foreach ($tmp as $m) {
+    $flexArray[$m->Code] = $m->Code;
+}
+
+$tmp = ConfigNomSouscatgram::find()->select(['option'])->all();
+foreach ($tmp as $m) {
+    $sousCatgramArray[$m->option] = $m->option;
+}
 
 $isNew = $model->isNewRecord;
 $suffix = $isNew ? 'create' : 'update';
@@ -28,13 +36,15 @@ $path = '/crud/nom/' . $suffix;
 
     <?= $form->field($model, 'CatGram')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'Flex')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'souscatgram')->dropDownList($sousCatgramArray) ?>
 
-    <?= $form->field($model, 'Dom')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Flex')->dropDownList($flexArray) ?>
 
-    <?= $form->field($model, 'Grs')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Dom')->dropDownList(['+' => 'Oui', '' => 'Non']) ?>
 
-    <?= $form->field($model, 'Maj')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Grs')->dropDownList(['+' => 'Oui', '' => 'Non']) ?>
+
+    <?= $form->field($model, 'Maj')->dropDownList(['+' => 'Oui', '' => 'Non']) ?>
 
     <?= $form->field($model, 'Lig')->textInput(['maxlength' => true]) ?>
 
