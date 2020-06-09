@@ -6,9 +6,9 @@ use yii\helpers\Url;
 $this->title = 'Morfetik';
 
 $this->registerCss("
-.fit-image{
+.fit-image > img{
+    height:100px;
     object-fit: cover;
-    height: 100%;
 }
 ");
 ?>
@@ -36,15 +36,21 @@ $this->registerCss("
 </div>
 
 <div class="row">
-    <div class="col d-flex justify-content-center" style="height: 200px;">
-        <a href="https://www.culture.gouv.fr/Sites-thematiques/Langue-francaise-et-langues-de-France/La-DGLFLF" class="img-responsive fit-image">
-            <img class="img-responsive fit-image" src="<?= Url::to('@web/img/dglflf.jpg') ?>" alt="Logo DGLFLF">
+    <div class="col d-flex flex-wrap align-items-center  justify-content-center" style="">
+        <a href="https://www.culture.gouv.fr/Sites-thematiques/Langue-francaise-et-langues-de-France/La-DGLFLF" class="fit-image">
+            <img class="img-responsive" src="<?= Url::to('@web/img/ministere-culture.png') ?>" alt="Logo DGLFLF">
         </a>
-        <a href="https://anr.fr/ProjetIA-10-LABX-0083" class="img-responsive fit-image pl-2">
-            <img class="img-responsive fit-image" src="<?= Url::to('@web/img/labex.png') ?>" alt="Logo LABEX">
+        <a href="https://anr.fr/ProjetIA-10-LABX-0083" class="fit-image pl-2">
+            <img class="img-responsive" src="<?= Url::to('@web/img/labex.jpg') ?>" alt="Logo LABEX">
         </a>
-        <a href="https://lipn.univ-paris13.fr/" class="img-responsive fit-image pl-4">
-            <img src="<?= Url::to('@web/img/lipn.svg') ?>" alt="Logo LIPN">
+        <a href="http://www.cnrs.fr/fr/page-daccueil" class="fit-image pl-4">
+            <img class=" img-responsive" src="<?= Url::to('@web/img/cnrs.png') ?>" alt="Logo CNRS">
+        </a>
+        <a href="https://anr.fr/" class="fit-image pl-4">
+            <img class="img-responsive" src="<?= Url::to('@web/img/anr.png') ?>" alt="Logo ANR">
+        </a>
+        <a href="https://www.univ-paris13.fr/" class="fit-image pl-4">
+            <img class="img-responsive" src="<?= Url::to('@web/img/uspn.jpg') ?>" alt="Logo USPN">
         </a>
     </div>
 </div>

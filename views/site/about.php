@@ -54,6 +54,47 @@ $this->params['breadcrumbs'][] = $this->title;
             </tr>
         </tbody>
     </table>
+    <h3>Réflexions sur l'évolution du projet</h3>
+    <table class="table">
+        <thead class="thead-light">
+            <th>Contributeur</th>
+            <th>Institution</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="https://lipn.univ-paris13.fr/~grezka/">GREZKA Aude</a></td>
+                <td>CNRS/LIPN - Équipe RCLN (<a href="https://www.univ-paris13.fr/">Université Sorbonne Paris Nord</a>)</td>
+            </tr>
+            <tr>
+                <td><a href="https://lipn.univ-paris13.fr/~cartier/">CARTIER Emmanuel</a> (mars-juin 2020)</td>
+                <td>LIPN - Équipe RCLN (<a href="https://www.univ-paris13.fr/">Université Sorbonne Paris Nord</a>)</td>
+            </tr>
+            <tr>
+                <td>MATTHIEU-COLAS Michel</td>
+                <td><a href="https://www.univ-paris13.fr/">Université Sorbonne Paris Nord</a></td>
+            </tr>
+            <tr>
+                <td>CATACH Laurent (2015-2017)</td>
+                <td>Consultant en édition numérique</td>
+            </tr>
+            <tr>
+                <td>JACQUET-PFAU (2015-2017)</td>
+                <td><a href="https://www.univ-paris13.fr/">Université Sorbonne Paris Nord</a></td>
+            </tr>
+            <tr>
+                <td>LE TALLEC LLORET Gabrielle (2015-2017)</td>
+                <td><a href="https://www.univ-paris13.fr/">Université Sorbonne Paris Nord</a></td>
+            </tr>
+            <tr>
+                <td>MARTIN-BERTHET François (2015-2017)</td>
+                <td><a href="https://www.univ-paris13.fr/">Université Sorbonne Paris Nord</a></td>
+            </tr>
+            <tr>
+                <td>SABLAYROLLES Jean-François (2015-2017)</td>
+                <td><a href="https://www.univ-paris13.fr/">Université Sorbonne Paris Nord</a></td>
+            </tr>
+        </tbody>
+    </table>
     <h2 class="mt-5">Financements</h2>
     <h3>2020</h3>
     <p>
