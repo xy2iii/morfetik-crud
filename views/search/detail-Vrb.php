@@ -61,23 +61,45 @@ if ($pronominalValue === Pronominal::getValueByName('Non') || $pronominalValue =
         '3P' => '',
     ];
 } else if ($pronominalValue === Pronominal::getValueByName('Oui')) {
-    $prono = [
-        '1S' => "m'",
-        '2S' => "t'",
-        '3S' => "s'",
-        '1P' => "nous ",
-        '2P' => "vous ",
-        '3P' => "s'",
-    ];
+    if ($elision) {
+        $prono = [
+            '1S' => "m'",
+            '2S' => "t'",
+            '3S' => "s'",
+            '1P' => "nous ",
+            '2P' => "vous ",
+            '3P' => "s'",
+        ];
+    } else {
+        $prono = [
+            '1S' => "me ",
+            '2S' => "te ",
+            '3S' => "se ",
+            '1P' => "nous ",
+            '2P' => "vous ",
+            '3P' => "se ",
+        ];
+    }
 } else if ($pronominalValue === Pronominal::getValueByName('Oui + non')) {
-    $prono = [
-        '1S' => "(m') ",
-        '2S' => "(t') ",
-        '3S' => "(s') ",
-        '1P' => "(nous) ",
-        '2P' => "(vous) ",
-        '3P' => "(s') ",
-    ];
+    if ($elision) {
+        $prono = [
+            '1S' => "(m') ",
+            '2S' => "(t') ",
+            '3S' => "(s') ",
+            '1P' => "(nous) ",
+            '2P' => "(vous) ",
+            '3P' => "(s') ",
+        ];
+    } else {
+        $prono = [
+            '1S' => "(me) ",
+            '2S' => "(te) ",
+            '3S' => "(se) ",
+            '1P' => "(nous) ",
+            '2P' => "(vous) ",
+            '3P' => "(se) ",
+        ];
+    }
 }
 $isPronominal = ($pronominalValue === Pronominal::getValueByName('Oui') || $pronominalValue === Pronominal::getValueByName('Oui + non'));
 ?>
@@ -134,7 +156,7 @@ $isPronominal = ($pronominalValue === Pronominal::getValueByName('Oui') || $pron
                 <tr>
                     <?php if ($elision) : ?>
                         <?php if ($isPronominal) : ?>
-                            <th scope="row">J' (Je)</th>
+                            <th scope="row">Je</th>
                         <?php else : ?>
                             <th scope="row">J'</th>
                         <?php endif ?>
@@ -178,7 +200,7 @@ $isPronominal = ($pronominalValue === Pronominal::getValueByName('Oui') || $pron
                 <tr>
                     <?php if ($elision) : ?>
                         <?php if ($isPronominal) : ?>
-                            <th scope="row">J' (Je)</th>
+                            <th scope="row">Je me</th>
                         <?php else : ?>
                             <th scope="row">J'</th>
                         <?php endif ?>
@@ -223,7 +245,7 @@ $isPronominal = ($pronominalValue === Pronominal::getValueByName('Oui') || $pron
                 <tr>
                     <?php if ($elision) : ?>
                         <?php if ($isPronominal) : ?>
-                            <th scope="row">J' (Je)</th>
+                            <th scope="row">Je me</th>
                         <?php else : ?>
                             <th scope="row">J'</th>
                         <?php endif ?>
@@ -271,7 +293,7 @@ $isPronominal = ($pronominalValue === Pronominal::getValueByName('Oui') || $pron
                 <tr>
                     <?php if ($elision) : ?>
                         <?php if ($isPronominal) : ?>
-                            <th scope="row">J' (Je)</th>
+                            <th scope="row">Je me</th>
                         <?php else : ?>
                             <th scope="row">J'</th>
                         <?php endif ?>
@@ -316,7 +338,7 @@ $isPronominal = ($pronominalValue === Pronominal::getValueByName('Oui') || $pron
                 <tr>
                     <?php if ($elision) : ?>
                         <?php if ($isPronominal) : ?>
-                            <th scope="row">J' (Je)</th>
+                            <th scope="row">Je me</th>
                         <?php else : ?>
                             <th scope="row">J'</th>
                         <?php endif ?>
@@ -361,7 +383,7 @@ $isPronominal = ($pronominalValue === Pronominal::getValueByName('Oui') || $pron
                 <tr>
                     <?php if ($elision) : ?>
                         <?php if ($isPronominal) : ?>
-                            <th scope="row">J' (Je)</th>
+                            <th scope="row">Je me</th>
                         <?php else : ?>
                             <th scope="row">J'</th>
                         <?php endif ?>
@@ -409,7 +431,7 @@ $isPronominal = ($pronominalValue === Pronominal::getValueByName('Oui') || $pron
                 <tr>
                     <?php if ($elision) : ?>
                         <?php if ($isPronominal) : ?>
-                            <th scope="row">J' (Je)</th>
+                            <th scope="row">Je me</th>
                         <?php else : ?>
                             <th scope="row">J'</th>
                         <?php endif ?>
