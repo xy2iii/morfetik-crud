@@ -26,6 +26,7 @@
                                 <a class="nav-link" href="#nombre">Le nombre</a>
                                 <a class="nav-link" href="#genre">Le genre</a>
                                 <a class="nav-link" href="#personne">La personne</a>
+                                <a class="nav-link" href="#temps">Les temps</a>
                                 <a class="nav-link" href="#domaine">Les formes rares</a>
                                 <a class="nav-link" href="#formes-rares">Les formes rares</a>
                                 <a class="nav-link" href="#ressources-externes">Ressources externes</a>
@@ -45,7 +46,7 @@
                                 <li><em>avoir</em>, verbe, imparfait de l'indicatif, 1re personne du pluriel</li>
                                 <li><em>avion</em>, nm, pluriel</li>
                             </ul>
-                            Si maintenant on clique sur le mot avoir, on obtient toute sa conjugaison. 
+                            Si maintenant on clique sur le mot <em>avoir</em>, on obtient toute sa conjugaison. 
                         </p>
                         <h2 class="mt-4" id="utilisation">L'utilisation</h2>
                         <p>
@@ -57,7 +58,7 @@
                             Cliquer ensuite sur l'un des liens représentant le lemme, une fenêtre contenant le résultat s'affichera.
                         </p>
                         <h2 class="mt-4" id="espace-de-travail">L'espace de travail</h2>
-                        <p>L'espace de travail se décompose en 2 parties:
+                        <p>L'espace de travail se décompose en 2 parties :
                             <ul>
                                 <li>Un espace de recherche, composé d'un champ, d'un menu à option ("Sensible aux accents"), d'un bouton "Recherche" et d'un bouton "Recherche avancée"</li>
                                 <li>Un champ pour les résultats suivant la taille du tableau informatif</li>
@@ -172,10 +173,10 @@
                                 </tr>
                                 <tr>
                                     <td>D:Ind</td>
-                                    <td>Déterminant indicatif</td>
+                                    <td>Déterminant indéfini</td>
                                 </tr>
                                 <tr>
-                                    <td>D:Inte</td>
+                                    <td>D:Int</td>
                                     <td>Déterminant interrogatif</td>
                                 </tr>
                                 <tr>
@@ -228,7 +229,7 @@
                                 </tr>
                                 <tr>
                                     <td>P:Ind</td>
-                                    <td>Pronom indicatif</td>
+                                    <td>Pronom indéfini</td>
                                 </tr>
                                 <tr>
                                     <td>P:Int</td>
@@ -837,7 +838,7 @@
 
                         <h2 class="mt-3" id="formes-rares">Les formes rares</h2>
                         <p>
-                            Le signe <span class="badge badge-info">Rare</span> indique les flexions rares et/ou archaïques, notamment pour les verbes (veuillons, partissiez, dormie...) et pour quelques adjcetifs (châtaine, gringalette...)
+                            Le signe <span class="badge badge-info">Rare</span> indique les flexions rares et/ou archaïques, notamment pour les verbes (<em>veuillons, partissiez, dormie...</em>) et pour quelques adjectifs (<em>châtaine, gringalette...</em>)
                         </p>
 
                         <h2 class="mt-3" id="ressources-externes">Les ressources externes </h2>
@@ -846,11 +847,11 @@
 
                             <h3 class="mt-4" id="neoveille">Néoveille</h3>
                             <p>
-                                A compléter
+                                <p class="lead text-danger">à remplir</p>
                             </p>
                             <h3 class="mt-4" id="franceterme">FranceTerme</h3>
                             <p>
-                                FranceTerme est une base de données terminologiques de la délégation générale à la langue française et aux langues de France du ministère de la culture français (<a href="https://www.culture.gouv.fr/Sites-thematiques/Langue-francaise-et-langues-de-France/La-DGLFLF">DGLFLF)</a>, qui rassemble les récents néologismes avalisés par la Commission d'enrichissement de la langue française et parus au <em>Journal officiel</em>, remplaçant les termes importés d'autres langues. Elle a pour mission de promouvoir l'utilisation de mots en français, pour enrichir la langue française et éviter son recul dans le monde.
+                                FranceTerme est une base de données terminologiques de la Délégation Générale à la Langue Française et aux Langues de France du ministère de la culture français (<a href="https://www.culture.gouv.fr/Sites-thematiques/Langue-francaise-et-langues-de-France/La-DGLFLF">DGLFLF)</a>, qui rassemble les récents néologismes avalisés par la Commission d'enrichissement de la langue française et parus au <em>Journal officiel</em>, remplaçant les termes importés d'autres langues. Elle a pour mission de promouvoir l'utilisation de mots en français, pour enrichir la langue française et éviter son recul dans le monde.
                             </p>
                         </p>
                     </div>

@@ -11,7 +11,7 @@ use app\widgets\crud\BulkButtonWidget;
 /* @var $searchModel app\models\AdjectifSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Adjectifs';
+$this->title = 'Adverbes';
 $this->params['breadcrumbs'][0] =
     [
         'label' => 'Edition',
@@ -20,15 +20,14 @@ $this->params['breadcrumbs'][0] =
 $this->params['breadcrumbs'][1] = $this->title;
 
 CrudAsset::register($this);
-
 ?>
-<div class="adjectif-index">
+<div class="adverbe-index">
     <div id="ajaxCrudDatatable">
         <?= GridView::widget([
             'id' => 'crud-datatable',
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
-            'filterUrl' => '@web/config/adjectif_souscatgram',
+            'filterUrl' => '@web/config/adverbe_souscatgram',
             'pjax' => true,
             'pjaxSettings' => ['options' => ['enablePushState' => false]],
             'columns' => require(__DIR__ . '/_columns.php'),
@@ -55,7 +54,7 @@ CrudAsset::register($this);
             'hover' => true,
             'panel' => [
                 'type' => 'secondary',
-                'heading' => '<i class="fas fa-cogs"></i>' . ' Configuration: Adjectif, sous-catégorie grammaticale',
+                'heading' => '<i class="fas fa-cogs"></i>' . ' Configuration: Adverbe, sous-catégorie grammaticale',
                 'before' => '<em>' . Yii::t('app', '* Resize table columns just like a spreadsheet by dragging the column edges') . '.</em>',
                 'after' => BulkButtonWidget::widget([
                     'buttons' => Html::a(

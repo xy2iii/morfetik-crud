@@ -7,6 +7,12 @@ use yii\bootstrap4\ActiveForm;
 /* @var $model app\models\Adverbe */
 /* @var $form yii\bootstrap4\ActiveForm */
 
+
+$tmp = ConfigAdverbeSouscatgram::find()->select(['option'])->all();
+foreach ($tmp as $m) {
+	$sousCatgramArray[$m->option] = $m->option;
+}
+
 $isNew = $model->isNewRecord;
 $suffix = $isNew ? 'create' : 'update';
 $path = '/crud/adverbe/' . $suffix;
@@ -21,6 +27,7 @@ $path = '/crud/adverbe/' . $suffix;
 
 	<?= $form->field($model, 'Lemme')->textInput(['maxlength' => true]) ?>
 
+	<?= $form->field($model, 'souscatgram')->dropDownList($flexArray) ?>
 
 	<?php if (!Yii::$app->request->isAjax) { ?>
 		<div class="form-group">

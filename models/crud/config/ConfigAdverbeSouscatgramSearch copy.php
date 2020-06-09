@@ -1,16 +1,16 @@
 <?php
 
-namespace app\models\crud;
+namespace app\models\crud\config;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\crud\Adverbe;
+use app\models\crud\config\ConfigAdverbeSouscatgram;
 
 /**
- * AdverbeSearch represents the model behind the search form about `app\models\Adverbe`.
+ * AdjectifSearch represents the model behind the search form about `app\models\Adjectif`.
  */
-class AdverbeSearch extends Adverbe
+class ConfigAdverbeSouscatgramSearch extends ConfigAdverbeSouscatgram
 {
     /**
      * @inheritdoc
@@ -18,7 +18,7 @@ class AdverbeSearch extends Adverbe
     public function rules()
     {
         return [
-            [['ID', 'Lemme', 'souscatgram'], 'safe'],
+            [['ID', 'option'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class AdverbeSearch extends Adverbe
      */
     public function search($params)
     {
-        $query = Adverbe::find();
+        $query = ConfigAdverbeSouscatgram::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -55,8 +55,7 @@ class AdverbeSearch extends Adverbe
         }
 
         $query->andFilterWhere(['like', 'ID', $this->ID])
-            ->andFilterWhere(['like', 'Lemme', $this->Lemme])
-            ->andFilterWhere(['like', 'souscatgram', $this->souscatgram]);
+            ->andFilterWhere(['like', 'option', $this->option]);
 
         return $dataProvider;
     }

@@ -1,14 +1,12 @@
 <?php
 
 use kartik\editable\Editable;
+use kartik\grid\GridView;
+use Yii\helpers\Url;
 
 use app\views\crud\GridHelper;
-use app\models\crud\config\ConfigAdverbeSouscatgram;
-
-$tmp = ConfigAdverbeSouscatgram::find()->select(['option'])->all();
-foreach ($tmp as $m) {
-    $sousCatgramArray[$m->option] = $m->option;
-}
+use app\models\crud\config\ConfigAdjectifSouscatgram;
+/* @var relatedModel Related model to this catégorie. */
 
 return [
     GridHelper::getCheckboxColumn(),
@@ -25,22 +23,12 @@ return [
     ],
     [
         'class' => '\kartik\grid\EditableColumn',
-        'attribute' => 'Lemme',
+        'attribute' => 'option',
         'vAlign' => 'middle',
         'editableOptions' => [
-            'header' => Yii::t('app', 'Lemma'),
+            'header' => 'Option',
+            'size' => 'md',
             'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['editable']],
-        ],
-    ],
-    [
-        'class' => '\kartik\grid\EditableColumn',
-        'attribute' => 'souscatgram',
-        'vAlign' => 'middle',
-        'editableOptions' => [
-            'header' => Yii::t('app', 'Sous-catégorie grammaticale'),
-            'inputType' => Editable::INPUT_DROPDOWN_LIST,
-            'data' => $sousCatgramArray,
             'formOptions' => ['action' => ['editable']],
         ],
     ],
