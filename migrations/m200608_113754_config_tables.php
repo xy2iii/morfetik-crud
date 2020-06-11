@@ -53,7 +53,7 @@ class m200608_113754_config_tables extends Migration
     $command = $connection->createCommand("
         insert into config_adv_souscatgram (option, description) values
         ('loc adv', 'Locution adverbiale'),
-        ('', 'Vide')
+        ('', 'Non rempli')
         ");
     $command->execute();
 
@@ -100,7 +100,7 @@ class m200608_113754_config_tables extends Migration
         ('P:Pers', 'Pronom personnel'),
         ('P:Poss', 'Pronom possessif'),
         ('P:Rel', 'Pronom relatif'),
-        ('', 'Vide')
+        ('', 'Non rempli')
         ");
     $command->execute();
 
@@ -141,7 +141,7 @@ class m200608_113754_config_tables extends Migration
         ('P:Pers', 'Pronom personnel'),
         ('P:Poss', 'Pronom possessif'),
         ('P:Rel', 'Pronom relatif'),
-        ('', 'Vide')
+        ('', 'Non rempli')
         ");
     $command->execute();
 
@@ -164,7 +164,7 @@ class m200608_113754_config_tables extends Migration
         ('nfp', 'Nom féminin pluriel'),
         ('np', 'Nom pluriel'),
         ('loc n', 'Location nominale'),
-        ('', 'Vide')
+        ('', 'Non rempli')
         ");
     $command->execute();
 
@@ -183,7 +183,7 @@ class m200608_113754_config_tables extends Migration
         ('vt', 'Verbe transitif'),
         ('vt (vpr)', 'Verbe transitif (verbe pronominal)'),
         ('loc v', 'Locution verbale'),
-        ('', 'Vide')
+        ('', 'Non rempli')
         ");
     $command->execute();
   }
