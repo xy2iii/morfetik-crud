@@ -73,7 +73,8 @@ class SiteController extends Controller
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            $absoluteHomeUrl = Url::home(true);
+            return Yii::$app->getResponse()->redirect($absoluteHomeUrl);
         }
 
         $model = new LoginForm();
@@ -96,7 +97,8 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->goHome();
+        $absoluteHomeUrl = Url::home(true);
+        return Yii::$app->getResponse()->redirect($absoluteHomeUrl);
     }
 
     /**
