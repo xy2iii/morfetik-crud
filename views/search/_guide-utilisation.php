@@ -27,7 +27,7 @@
                                 <a class="nav-link" href="#genre">Le genre</a>
                                 <a class="nav-link" href="#personne">La personne</a>
                                 <a class="nav-link" href="#temps">Les temps</a>
-                                <a class="nav-link" href="#domaine">Les formes rares</a>
+                                <a class="nav-link" href="#domaine">Les domaines</a>
                                 <a class="nav-link" href="#formes-rares">Les formes rares</a>
                                 <a class="nav-link" href="#ressources-externes">Ressources externes</a>
                                 <nav class="nav nav-pills nav-justified flex-column">
@@ -122,14 +122,6 @@
                                 <tr>
                                     <td>adjord</td>
                                     <td>Adjectif numéral ordinal</td>
-                                </tr>
-                                <tr>
-                                    <td>adjms</td>
-                                    <td>Adjectif masculin singulier</td>
-                                </tr>
-                                <tr>
-                                    <td>adjmp</td>
-                                    <td>Adjectif masculin pluriel</td>
                                 </tr>
                                 <tr>
                                     <td>adjord</td>
@@ -313,15 +305,15 @@
                                 </tr>
                                 <tr>
                                     <td>vt</td>
-                                    <td>Nom masculin singulier</td>
+                                    <td>Verbe transitif</td>
                                 </tr>
                                 <tr>
                                     <td>vt (vpr)</td>
-                                    <td>Nom masculin pluriel</td>
+                                    <td>Verbe transitif (verbe pronominale)</td>
                                 </tr>
                                 <tr>
                                     <td>loc v&nbsp;<span class="badge badge-secondary">Locution</span></td>
-                                    <td>Locution nominale</td>
+                                    <td>Locution verbale</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -831,11 +823,6 @@
                                 </tr>
                             </tbody>
                         </table>
-
-                        <p>
-                            Le signe <span class="badge badge-info">Rare</span> indique les flexions rares et/ou archaïques, notamment pour les verbes (veuillons, partissiez, dormie...) et pour quelques adjcetifs (châtaine, gringalette...)
-                        </p>
-
                         <h2 class="mt-3" id="formes-rares">Les formes rares</h2>
                         <p>
                             Le signe <span class="badge badge-info">Rare</span> indique les flexions rares et/ou archaïques, notamment pour les verbes (<em>veuillons, partissiez, dormie...</em>) et pour quelques adjectifs (<em>châtaine, gringalette...</em>)

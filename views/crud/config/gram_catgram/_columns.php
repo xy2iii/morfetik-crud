@@ -31,5 +31,16 @@ return [
             'formOptions' => ['action' => ['editable']],
         ],
     ],
+    [
+        'class' => '\kartik\grid\EditableColumn',
+        'attribute' => 'description',
+        'vAlign' => 'middle',
+        'editableOptions' => [
+            'header' => 'Description',
+            'size' => 'md',
+            'inputType' => Editable::INPUT_TEXT,
+            'formOptions' => ['action' => ['editable']],
+        ],
+    ],
     GridHelper::getActionColumn(),
 ];

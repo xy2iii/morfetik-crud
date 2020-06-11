@@ -5,14 +5,14 @@ use app\views\crud\GridHelper;
 use app\models\crud\config\ConfigGramCatgram;
 use app\models\crud\config\ConfigGramSouscatgram;
 
-$tmp = ConfigGramCatgram::find()->select(['option'])->all();
+$tmp = ConfigGramCatgram::find()->select(['option', 'description'])->all();
 foreach ($tmp as $m) {
-    $catgramArray[$m->option] = $m->option;
+    $catgramArray[$m->option] = "$m->option ($m->description)";
 }
 
-$tmp = ConfigGramSouscatgram::find()->select(['option'])->all();
+$tmp = ConfigGramSouscatgram::find()->select(['option', 'description'])->all();
 foreach ($tmp as $m) {
-    $sousCatgramArray[$m->option] = $m->option;
+    $sousCatgramArray[$m->option] = "$m->option ($m->description)";
 }
 
 return [

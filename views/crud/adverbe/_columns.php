@@ -5,10 +5,10 @@ use kartik\editable\Editable;
 use app\views\crud\GridHelper;
 use app\models\crud\config\ConfigAdverbeSouscatgram;
 
-$tmp = ConfigAdverbeSouscatgram::find()->select(['option'])->all();
+$tmp = ConfigAdverbeSouscatgram::find()->select(['option', 'description'])->all();
 
 foreach ($tmp as $m) {
-    $sousCatgramArray[$m->option] = $m->option;
+    $sousCatgramArray[$m->option] = "$m->option ($m->description)";
 }
 
 return [

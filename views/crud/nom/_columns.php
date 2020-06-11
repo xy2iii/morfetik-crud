@@ -11,9 +11,9 @@ foreach ($tmp as $m) {
     $flexArray[$m->Code] = $m->Code;
 }
 
-$tmp = ConfigNomSouscatgram::find()->select(['option'])->all();
+$tmp = ConfigNomSouscatgram::find()->select(['option', 'description'])->all();
 foreach ($tmp as $m) {
-    $sousCatgramArray[$m->option] = $m->option;
+    $sousCatgramArray[$m->option] = "$m->option ($m->description)";
 }
 
 return [

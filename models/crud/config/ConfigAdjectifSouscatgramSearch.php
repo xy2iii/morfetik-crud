@@ -18,7 +18,7 @@ class ConfigAdjectifSouscatgramSearch extends ConfigAdjectifSouscatgram
     public function rules()
     {
         return [
-            [['ID', 'option'], 'safe'],
+            [['ID', 'option', 'description'], 'safe'],
         ];
     }
 
@@ -55,7 +55,8 @@ class ConfigAdjectifSouscatgramSearch extends ConfigAdjectifSouscatgram
         }
 
         $query->andFilterWhere(['like', 'ID', $this->ID])
-            ->andFilterWhere(['like', 'option', $this->option]);
+            ->andFilterWhere(['like', 'option', $this->option])
+            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }
