@@ -7,7 +7,7 @@ $this->title = 'Morfetik';
 
 $this->registerCss("
 .fit-image > img{
-    height:100px;
+    width:150px;
     object-fit: cover;
 }
 ");
@@ -43,11 +43,14 @@ $this->registerCss("
         <a href="https://anr.fr/ProjetIA-10-LABX-0083" class="fit-image pl-2">
             <img class="img-responsive" src="<?= Url::to('@web/img/labex.jpg') ?>" alt="Logo LABEX">
         </a>
+        <a href="https://anr.fr/" class="fit-image pl-4">
+            <img class="img-responsive" src="<?= Url::to('@web/img/anr.png') ?>" alt="Logo ANR">
+        </a>
         <a href="http://www.cnrs.fr/fr/page-daccueil" class="fit-image pl-4">
             <img class=" img-responsive" src="<?= Url::to('@web/img/cnrs.png') ?>" alt="Logo CNRS">
         </a>
         <a href="https://anr.fr/" class="fit-image pl-4">
-            <img class="img-responsive" src="<?= Url::to('@web/img/anr.png') ?>" alt="Logo ANR">
+            <img class="img-responsive" src="<?= Url::to('@web/img/lipn.svg') ?>" alt="Logo LIPN">
         </a>
         <a href="https://www.univ-paris13.fr/" class="fit-image pl-4">
             <img class="img-responsive" src="<?= Url::to('@web/img/uspn.jpg') ?>" alt="Logo USPN">
