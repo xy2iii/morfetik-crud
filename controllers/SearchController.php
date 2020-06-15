@@ -238,12 +238,23 @@ class SearchController extends Controller
 
         // Add each dp form. Manage duplicates with sets. 
         $dp = [];
-        foreach (['MS', 'FS', 'MP', 'FP'] as $genre) {
+        foreach ([
+            'Vide',
+            'S', 'P', 'M', 'F', 'MS', 'FS', 'MP', 'FP',
+            'S1', 'S2', 'S3', 'P1', 'P2', 'P3',
+            'MS1', 'MS2', 'MS3', 'MP1', 'MP2', 'MP3',
+            'FS1', 'FS2', 'FS3', 'FP1', 'FP2', 'FP3',
+        ] as $genre) {
             $dp[$genre] = new Set();
         }
         foreach ($result->each() as $forme) {
-            $genre = $forme->genre . $forme->num;
-            $dp[$genre]->add($forme->forme);
+            $genre = $forme->genre . $forme->num . $forme->person;
+
+            if ($genre === "") {
+                $dp["Vide"]->add($forme->forme);
+            } else {
+                $dp[$genre]->add($forme->forme);
+            }
         }
 
         return $this->renderPartial('detail-Dp', [

@@ -267,7 +267,7 @@ class Forme extends ActiveRecord
             'lemmeid' => 'Lemmeid',
             'lemme' => 'Lemme',
             'catgram' => 'Catégorie',
-            'cat' => 'Sous-catégorie',
+            'souscatgram' => 'Sous-catégorie',
             'genre' => 'Genre',
             'num' => 'Nombre',
             'person' => 'Personne',
