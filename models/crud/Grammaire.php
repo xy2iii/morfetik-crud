@@ -16,8 +16,8 @@ class Grammaire extends ActiveRecord
     public function rules()
     {
         return [
-            [['ID', 'Lemme', 'Forme', 'CatGram',], 'required'],
-            [['Gender', 'Number', 'Person', 'Notes'], 'default', 'value' => ''],
+            [['Lemme', 'Forme', 'CatGram',], 'required'],
+            [['souscatgram', 'Gender', 'Number', 'Person', 'Notes'], 'default', 'value' => ''],
         ];
     }
 }

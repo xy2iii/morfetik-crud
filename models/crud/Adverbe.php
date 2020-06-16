@@ -16,7 +16,8 @@ class Adverbe extends ActiveRecord
     public function rules()
     {
         return [
-            [['ID', 'Lemme'], 'required'],
+            [['Lemme'], 'required'],
+            [['souscatgram'], 'default', 'value' => ''],
         ];
     }
 }

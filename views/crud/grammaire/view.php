@@ -6,14 +6,14 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Grammaire */
 ?>
 <div class="grammaire-view">
- 
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'ID',
             'Lemme',
             'Forme',
             'CatGram',
+            'souscatgram',
             'Gender',
             'Number',
             'Person',

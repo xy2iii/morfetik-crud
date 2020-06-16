@@ -17,7 +17,7 @@ class Adjectif extends ActiveRecord
     {
         return [
             [['Lemme', 'CatGram', 'Flex',], 'required'],
-            [['Lig'], 'default', 'value' => ''],
+            [['Lig', 'souscatgram'], 'default', 'value' => ''],
             [['Standard', 'Notes'], 'default']
         ];
     }

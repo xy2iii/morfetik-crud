@@ -57,6 +57,7 @@ class AdjectifSearch extends Adjectif
         $query->andFilterWhere(['like', 'ID', $this->ID])
             ->andFilterWhere(['like', 'Lemme', $this->Lemme])
             ->andFilterWhere(['like', 'CatGram', $this->CatGram])
+            ->andFilterWhere(['like', 'souscatgram', $this->souscatgram])
             ->andFilterWhere(['like', 'Flex', $this->Flex])
             ->andFilterWhere(['like', 'Lig', $this->Lig])
             ->andFilterWhere(['like', 'Standard', $this->Standard])

@@ -6,12 +6,12 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Adverbe */
 ?>
 <div class="adverbe-view">
- 
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'ID',
             'Lemme',
+            'souscatgram',
         ],
     ]) ?>
 

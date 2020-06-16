@@ -9,14 +9,14 @@ use yii\bootstrap4\ActiveForm;
 use app\models\crud\config\ConfigGramCatgram;
 use app\models\crud\config\ConfigGramSouscatgram;
 
-$tmp = ConfigGramCatgram::find()->select(['option'])->all();
+$tmp = ConfigGramCatgram::find()->select(['option', 'description'])->all();
 foreach ($tmp as $m) {
-    $catgramArray[$m->option] = $m->option;
+    $catgramArray[$m->option] = "$m->option ($m->description)";
 }
 
-$tmp = ConfigGramSouscatgram::find()->select(['option'])->all();
+$tmp = ConfigGramSouscatgram::find()->select(['option', 'description'])->all();
 foreach ($tmp as $m) {
-    $sousCatgramArray[$m->option] = $m->option;
+    $sousCatgramArray[$m->option] = "$m->option ($m->description)";
 }
 
 $isNew = $model->isNewRecord;
@@ -28,8 +28,6 @@ $path = '/crud/grammaire/' . $suffix;
 
     <?php $form =
         ActiveForm::begin(['action' => [$path, 'id' => $model->ID]]); ?>
-
-    <?= $form->field($model, 'ID')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'Lemme')->textInput(['maxlength' => true]) ?>
 
@@ -46,7 +44,6 @@ $path = '/crud/grammaire/' . $suffix;
     <?= $form->field($model, 'Person')->dropDownList(['' => '', '1' => '1', '2' => '2', '3' => '3']) ?>
 
     <?= $form->field($model, 'Notes')->textInput(['maxlength' => true]) ?>
-
 
     <?php if (!Yii::$app->request->isAjax) { ?>
         <div class="form-group">

@@ -22,16 +22,6 @@ return [
     GridHelper::getExpandRowColumn(),
     [
         'class' => '\kartik\grid\EditableColumn',
-        'attribute' => 'ID',
-        'vAlign' => 'middle',
-        'editableOptions' => [
-            'header' => Yii::t('app', 'ID'),
-            'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['editable']],
-        ],
-    ],
-    [
-        'class' => '\kartik\grid\EditableColumn',
         'attribute' => 'Lemme',
         'vAlign' => 'middle',
         'editableOptions' => [
@@ -43,6 +33,7 @@ return [
     [
         'class' => '\kartik\grid\EditableColumn',
         'attribute' => 'CatGram',
+        'width' => '6rem',
         'vAlign' => 'middle',
         'editableOptions' => [
             'header' => Yii::t('app', 'Gramatical category'),

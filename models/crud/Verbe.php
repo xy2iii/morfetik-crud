@@ -31,9 +31,10 @@ class Verbe extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['ID', 'Lemme', 'Flex'], 'required'],
+            [['Lemme', 'Flex'], 'required'],
             [['Notes'], 'string'],
-            [['ID', 'CatGram'], 'string', 'max' => 10],
+            [['CatGram'], 'string', 'max' => 10],
+            [['souscatgram'], 'default', 'value' => ''],
             [['Lemme'], 'string', 'max' => 255],
             [['Flex'], 'string', 'max' => 20],
             [['Lig'], 'string', 'max' => 5],

@@ -16,16 +16,6 @@ return [
     GridHelper::getSerialColumn(),
     [
         'class' => '\kartik\grid\EditableColumn',
-        'attribute' => 'ID',
-        'vAlign' => 'middle',
-        'editableOptions' => [
-            'header' => Yii::t('app', 'ID'),
-            'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['editable']],
-        ],
-    ],
-    [
-        'class' => '\kartik\grid\EditableColumn',
         'attribute' => 'Lemme',
         'vAlign' => 'middle',
         'editableOptions' => [

@@ -16,8 +16,8 @@ class Nom extends ActiveRecord
     public function rules()
     {
         return [
-            [['ID', 'Lemme', 'CatGram', 'Flex'], 'required'],
-            [['Dom', 'Grs', 'Maj', 'Lig', 'Standard', 'Notes'], 'default', 'value' => ''],
+            [['Lemme', 'CatGram', 'Flex'], 'required'],
+            [['souscatgram', 'Dom', 'Grs', 'Maj', 'Lig', 'Standard', 'Notes'], 'default', 'value' => ''],
         ];
     }
 }

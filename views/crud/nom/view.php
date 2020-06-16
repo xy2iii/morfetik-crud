@@ -6,13 +6,13 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Nom */
 ?>
 <div class="nom-view">
- 
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'ID',
             'Lemme',
             'CatGram',
+            'souscatgram',
             'Flex',
             'Dom',
             'Grs',

@@ -9,9 +9,10 @@ use yii\bootstrap4\ActiveForm;
 
 use app\models\crud\config\ConfigAdverbeSouscatgram;
 
-$tmp = ConfigAdverbeSouscatgram::find()->select(['option'])->all();
+$tmp = ConfigAdverbeSouscatgram::find()->select(['option', 'description'])->all();
+
 foreach ($tmp as $m) {
-	$sousCatgramArray[$m->option] = $m->option;
+	$sousCatgramArray[$m->option] = "$m->option ($m->description)";
 }
 
 $isNew = $model->isNewRecord;
@@ -23,8 +24,6 @@ $path = '/crud/adverbe/' . $suffix;
 
 	<?php $form =
 		ActiveForm::begin(['action' => [$path, 'id' => $model->ID]]); ?>
-
-	<?= $form->field($model, 'ID')->textInput(['maxlength' => true]) ?>
 
 	<?= $form->field($model, 'Lemme')->textInput(['maxlength' => true]) ?>
 

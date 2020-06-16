@@ -6,16 +6,17 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Verbe */
 ?>
 <div class="verbe-view">
- 
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'ID',
             'Lemme',
             'CatGram',
+            'souscatgram',
             'Flex',
             'Lig',
             'Standard',
+            'pronominal',
             'Notes:ntext',
         ],
     ]) ?>
