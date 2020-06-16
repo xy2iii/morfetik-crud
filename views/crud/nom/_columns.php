@@ -69,8 +69,7 @@ return [
         'vAlign' => 'middle',
         'editableOptions' => [
             'header' => Yii::t('app', 'Dom'),
-            'inputType' => Editable::INPUT_DROPDOWN_LIST,
-            'data' => ['+' => 'Oui', '' => 'Non'],
+            'inputType' => Editable::INPUT_TEXT,
             'formOptions' => ['action' => ['editable']],
         ],
     ],

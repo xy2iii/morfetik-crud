@@ -38,7 +38,7 @@ $path = '/crud/nom/' . $suffix;
 
     <?= $form->field($model, 'Flex')->dropDownList($flexArray) ?>
 
-    <?= $form->field($model, 'Dom')->dropDownList(['+' => 'Oui', '' => 'Non']) ?>
+    <?= $form->field($model, 'Dom')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'Grs')->dropDownList(['+' => 'Oui', '' => 'Non']) ?>
 
