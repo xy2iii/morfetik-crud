@@ -30,8 +30,6 @@ $path = '/crud/adjectif/' . $suffix;
     <?php $form =
         ActiveForm::begin(['action' => [$path, 'id' => $model->ID]]); ?>
 
-    <?= $form->field($model, 'ID')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'Lemme')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'CatGram')->textInput(['maxlength' => true]) ?>

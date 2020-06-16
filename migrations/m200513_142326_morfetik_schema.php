@@ -26,7 +26,7 @@ class m200513_142326_morfetik_schema extends Migration
     $command->execute();
     $command = $connection->createCommand("
         CREATE TABLE `adv` (
-          `ID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+          `ID` bigint COLLATE utf8_unicode_ci NOT NULL AUTO_INCREMENT,
           `Lemme` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
           `souscatgram` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
           PRIMARY KEY (`ID`)
@@ -35,7 +35,7 @@ class m200513_142326_morfetik_schema extends Migration
     $command->execute();
     $command = $connection->createCommand("
         CREATE TABLE `alemmes` (
-          `ID` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+          `ID` bigint COLLATE utf8_unicode_ci NOT NULL AUTO_INCREMENT,
           `Lemme` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
           `CatGram` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
           `souscatgram` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -49,7 +49,7 @@ class m200513_142326_morfetik_schema extends Migration
     $command->execute();
     $command = $connection->createCommand("
         CREATE TABLE `gram` (
-          `ID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+          `ID` bigint COLLATE utf8_unicode_ci NOT NULL AUTO_INCREMENT,
           `Lemme` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
           `Forme` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
           `CatGram` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
@@ -74,7 +74,7 @@ class m200513_142326_morfetik_schema extends Migration
     $command->execute();
     $command = $connection->createCommand("
         CREATE TABLE `nslemmes` (
-          `ID` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+          `ID` bigint COLLATE utf8_unicode_ci NOT NULL AUTO_INCREMENT,
           `Lemme` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
           `CatGram` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
           `souscatgram` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -160,7 +160,7 @@ class m200513_142326_morfetik_schema extends Migration
     $command->execute();
     $command = $connection->createCommand("
         CREATE TABLE `vslemmes` (
-          `ID` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+          `ID` bigint COLLATE utf8_unicode_ci NOT NULL AUTO_INCREMENT,
           `Lemme` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
           `CatGram` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'vrb',
           `souscatgram` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',

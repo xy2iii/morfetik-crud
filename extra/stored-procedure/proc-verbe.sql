@@ -15,7 +15,7 @@ rare, lig, graphsav, notes, infos, pronominal)
         else `",flexion,"` end
     )
   ) as forme,
-  id as lemmeid,
+  concat('V', id) as lemmeid,
   lemme,
   catgram,
   souscatgram,

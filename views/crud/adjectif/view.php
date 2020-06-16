@@ -11,9 +11,9 @@ use yii\helpers\Html;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'ID',
             'Lemme',
             'CatGram',
+            'souscatgram',
             'Flex',
             'Lig',
             'Standard',

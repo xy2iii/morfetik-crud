@@ -7,7 +7,7 @@ use yii\helpers\Html;
 $this->title = Yii::t('app', 'Publications');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-publications">
+<div class="site-publications text-justify">
     <h1><?= Html::encode($this->title) ?></h1>
     <h2 class="mt-5">Article</h2>
     <p>

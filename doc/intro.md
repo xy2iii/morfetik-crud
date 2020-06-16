@@ -2,7 +2,7 @@
 
 Morfetik  allows to query words from the French language in any form, and get back the original form, as well as lexical information on the lemma.
 
-# Structure of the application
+## Application structure
 
 The application is developped in PHP, with the [Yii framework](https://www.yiiframework.com/). A useful resource to understand it quickly is the Yii "Getting Started" guide, which [you can find here](https://www.yiiframework.com/doc/guide/2.0/en/start-prerequisites).
 he web app is developped in MVC-style. For example, views related to the search functionality will be found in `views/search`.
@@ -12,9 +12,7 @@ Here's a quick tour of what Morfetik does:
 * [it has a CRUD edition interface](./crud.md). Related functionality is in `crud` folders.
 * [it has an administration interface](./admin.md). Related functionality is in `admin` folders, as well as in `models/User.php`.
 
-# Design
-
-For the most part, Morfetik is a CRUD over a few database tables. 
+## Design
 
 The project has been around for a very long time, so the database design is old, antiquated and doens't work well in places. Morfetik tries to patch around these issues to the best of our ability. If you see something odd with the handling of the DB in application code, that's why.
 
@@ -44,10 +42,35 @@ What's a code? The easiest way to see is with an example. Let's select from `ale
 ```sql
 select * from nslemmes where Lemme="pomme" limit 1;
 +--------+-------+---------+------+------+-----+-----+-----+----------+-------+
-| ID     | Lemme | CatGram | Flex | Dom  | Grs | Maj | Lig | Standard | Notes |
+| ID    | Lemme | CatGram | Flex | Dom  | Grs | Maj | Lig | Standard | Notes |
 +--------+-------+---------+------+------+-----+-----+-----+----------+-------+
-| N52413 | pomme | nf      | 01   | NULL |     |     |     | NULL     | NULL  |
+| 52413 | pomme | nf      | 01   | NULL |     |     |     | NULL     | NULL  |
 +--------+-------+---------+------+------+-----+-----+-----+----------+-------+
 ```
 
-We get, for the word "pomme", along with some information about the word, Flex equal to 40. This field is used to create "flexions" of the lemme, which are kind of like extended forms of the word. If we look for that 40 in the `nslemmes` table, we get:
+We get, for the word "pomme", along with some information about the word, Flex equal to 01. This field is used to create "flexions" of the lemme, which are kind of like extended forms of the word. If we look for that 01 in the `nscodes` table, we get:
+
+```sql
+select * from nscodes where Code='01';
++------+-----+------+------+
+| Code | Rad | S    | P    |
++------+-----+------+------+
+| 01   | 0   |      | s    |
++------+-----+------+------+
+```
+
+All tables with codes contain suffixes for each different form. The suffixes available are different based on the type of form.
+Here:
+- for 'S' (singulier), the suffix is empty
+- for 'P' (pluriel), the suffix is 's'.
+
+After the editor fills these tables, they are joined by a [stored procedure](./stored-procedure.md) into one big table, called `formes`. This table is used by the application to display results. (This way was chosen for the database to be backwards-compatible with the old application, as the same technique was used then.)
+
+```sql
+XXX: put result of quering 'pomme'
+```
+
+In summary:
+- the small tables, like `nscodes` and `nslemmes` are used for edition, in the [CRUD](./crud.md)
+- a stored procedure creates the `formes` table.
+- the `formes` table is used for displaying to the user. 

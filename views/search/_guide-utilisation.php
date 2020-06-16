@@ -19,14 +19,14 @@
                                 <a class="nav-link" href="#sous-categories-grammaticales">Les sous-catégories grammaticales</a>
                                 <nav class="nav nav-pills nav-justified flex-column">
                                     <a class="nav-link ml-2 my-1" href="#adjectifs">Adjectifs</a>
-                                    <a class="nav-link ml-2 my-1" href="#determinants">Déterminants</a>
+                                    <a class="nav-link ml-2 my-1" href="#determinants">Conjonctions, déterminants, prépositions, pronoms, sigles</a>
                                     <a class="nav-link ml-2 my-1" href="#noms">Noms</a>
                                     <a class="nav-link ml-2 my-1" href="#verbes">Verbes</a>
                                 </nav>
+                                <a class="nav-link" href="#temps">Les temps</a>
                                 <a class="nav-link" href="#nombre">Le nombre</a>
                                 <a class="nav-link" href="#genre">Le genre</a>
                                 <a class="nav-link" href="#personne">La personne</a>
-                                <a class="nav-link" href="#temps">Les temps</a>
                                 <a class="nav-link" href="#domaine">Les domaines</a>
                                 <a class="nav-link" href="#formes-rares">Les formes rares</a>
                                 <a class="nav-link" href="#ressources-externes">Ressources externes</a>
@@ -134,7 +134,7 @@
                             </tbody>
                         </table>
 
-                        <h3 class="mt-3" id="determinants">Déterminants</h3>
+                        <h3 class="mt-3" id="determinants">Conjonctions, déterminants, prépositions, pronoms, sigles</h3>
                         <table class="table table-sm table-hover table-bordered">
                             <thead class="thead-light">
                                 <tr>
@@ -188,6 +188,10 @@
                                     <td>Déterminant relatif</td>
                                 </tr>
                                 <tr>
+                                    <td>Interj</td>
+                                    <td>Interjection</td>
+                                </tr>
+                                <tr>
                                     <td>loc <span class="badge badge-secondary">Locution</span></td>
                                     <td>Locution</td>
                                 </tr>
@@ -214,6 +218,10 @@
                                 <tr>
                                     <td>loc Prép&nbsp;<span class="badge badge-secondary">Locution</span></td>
                                     <td>Locution prépositionnelle</td>
+                                </tr>
+                                <tr>
+                                    <td>Prép</td>
+                                    <td>Préposition</td>
                                 </tr>
                                 <tr>
                                     <td>P:Dém</td>
@@ -309,7 +317,7 @@
                                 </tr>
                                 <tr>
                                     <td>vt (vpr)</td>
-                                    <td>Verbe transitif (verbe pronominale)</td>
+                                    <td>Verbe transitif (verbe pronominal)</td>
                                 </tr>
                                 <tr>
                                     <td>loc v&nbsp;<span class="badge badge-secondary">Locution</span></td>
@@ -445,6 +453,9 @@
                         </div>
 
                         <h2 class="mt-3" id="domaine">Les domaines</h2>
+                        <p>
+                            Le champ <em>Domaine</em> fait référence au secteur d’activité auquel renvoie le mot décrit. Les indications de domaine ont pour fonction essentielle de mieux décrire le lexique (parmi d'autres descripteurs) et non de rendre compte de réalités extra-linguistiques. Le codage permet, d’une part, d'identifier automatiquement le vocabulaire relatif à thème donné : il suffit d'extraire toutes les unités lexicales associées à un domaine spécifique. D’autre part, les indications de domaines d’emploi permettent de concourir à désambiguïser des unités lexicales (pour plus d’informations, voir le travail de Buvet et Mathieu-Colas, <a href="https://halshs.archives-ouvertes.fr/halshs-00489905">Les champs 'domaine' et "sous-domaine' dans les dictionnaires électroniques</a>. Cahiers de Lexicologie, Centre National de la Recherche Scientifique, 1999, pp.173-191. ⟨halshs-00489905⟩.
+                        </p>
                         <table class="table table-sm table-hover table-bordered">
                             <thead class="thead-light">
                                 <tr>

@@ -1,3 +1,5 @@
 # Morfetik CRUD
 
-The CRUD is an administration interface.
+The CRUD allows users to create, view, update and delete new words.
+
+[]

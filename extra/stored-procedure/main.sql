@@ -70,7 +70,7 @@ genre, num, person, temps,
 rare, lig, graphsav, notes, infos, pronominal)
 select
   forme as forme,
-  id as lemmeid,
+  concat('G',id) as lemmeid,
   lemme,
   catgram as catgram,
   souscatgram,
@@ -101,7 +101,7 @@ genre, num, person, temps,
 rare, lig, graphsav, notes, infos, pronominal)
 select
   lemme as forme,
-  id as lemmeid,
+  concat('X',id) as lemmeid,
   lemme,
   'adv' as catgram,
   souscatgram,

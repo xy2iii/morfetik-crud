@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <a class='btn btn-sm btn-secondary' href="https://lipn.univ-paris13.fr/accueil/equipe/rcln/">
                 <i class='fas fa-globe'></i> Site
             </a>
-            <br>Équipe travaillant sur le traitement automatisé des languages.</p>
+            <br>Équipe travaillant sur le traitement automatique du langage.</p>
 
     </div>
 </div>

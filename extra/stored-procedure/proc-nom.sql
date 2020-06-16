@@ -14,7 +14,7 @@ select
         else `",flexion,"` end
     )
   ) as forme,
-  id as lemmeid,
+  concat('N', id) as lemmeid,
   lemme,
   catgram,
   souscatgram,

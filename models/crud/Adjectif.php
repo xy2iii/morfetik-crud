@@ -16,7 +16,7 @@ class Adjectif extends ActiveRecord
     public function rules()
     {
         return [
-            [['ID', 'Lemme', 'CatGram', 'Flex',], 'required'],
+            [['Lemme', 'CatGram', 'Flex',], 'required'],
             [['Lig'], 'default', 'value' => ''],
             [['Standard', 'Notes'], 'default']
         ];

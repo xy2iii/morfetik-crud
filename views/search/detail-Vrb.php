@@ -101,7 +101,20 @@ if ($pronominalValue === Pronominal::getValueByName('Non') || $pronominalValue =
         ];
     }
 }
-$isPronominal = ($pronominalValue === Pronominal::getValueByName('Oui') || $pronominalValue === Pronominal::getValueByName('Oui + non'));
+$isPronominal = ($pronominalValue === Pronominal::getValueByName('Oui'));
+$isBothFormsPronominal =  $pronominalValue === Pronominal::getValueByName('Oui + non');
+
+if ($elision) {
+    if ($isPronominal) {
+        $firstPerson = 'Je';
+    } else if ($isBothFormsPronominal) {
+        $firstPerson = "J' (Je)";
+    } else {
+        $firstPerson = "J'";
+    }
+} else {
+    $firstPerson = 'Je';
+}
 ?>
 
 <div class="row">
@@ -154,15 +167,7 @@ $isPronominal = ($pronominalValue === Pronominal::getValueByName('Oui') || $pron
             </thead>
             <tbody>
                 <tr>
-                    <?php if ($elision) : ?>
-                        <?php if ($isPronominal) : ?>
-                            <th scope="row">Je</th>
-                        <?php else : ?>
-                            <th scope="row">J'</th>
-                        <?php endif ?>
-                    <?php else : ?>
-                        <th scope="row">Je</th>
-                    <?php endif ?>
+                    <th scope="row"><?= $firstPerson ?></th>
                     <td><?= $prono['1S'] ?><?= $vrb['Ind-pr']['1S'] ?></td>
                 </tr>
                 <tr>
@@ -198,15 +203,7 @@ $isPronominal = ($pronominalValue === Pronominal::getValueByName('Oui') || $pron
             </thead>
             <tbody>
                 <tr>
-                    <?php if ($elision) : ?>
-                        <?php if ($isPronominal) : ?>
-                            <th scope="row">Je me</th>
-                        <?php else : ?>
-                            <th scope="row">J'</th>
-                        <?php endif ?>
-                    <?php else : ?>
-                        <th scope="row">Je</th>
-                    <?php endif ?>
+                    <th scope="row"><?= $firstPerson ?></th>
                     <td><?= $prono['1S'] ?><?= $vrb['Ind-imp']['1S'] ?></td>
                 </tr>
                 <tr>
@@ -243,15 +240,7 @@ $isPronominal = ($pronominalValue === Pronominal::getValueByName('Oui') || $pron
             </thead>
             <tbody>
                 <tr>
-                    <?php if ($elision) : ?>
-                        <?php if ($isPronominal) : ?>
-                            <th scope="row">Je me</th>
-                        <?php else : ?>
-                            <th scope="row">J'</th>
-                        <?php endif ?>
-                    <?php else : ?>
-                        <th scope="row">Je</th>
-                    <?php endif ?>
+                    <th scope="row"><?= $firstPerson ?></th>
                     <td><?= $prono['1S'] ?><?= $vrb['Ind-ps']['1S'] ?></td>
                 </tr>
                 <tr>
@@ -291,15 +280,7 @@ $isPronominal = ($pronominalValue === Pronominal::getValueByName('Oui') || $pron
             </thead>
             <tbody>
                 <tr>
-                    <?php if ($elision) : ?>
-                        <?php if ($isPronominal) : ?>
-                            <th scope="row">Je me</th>
-                        <?php else : ?>
-                            <th scope="row">J'</th>
-                        <?php endif ?>
-                    <?php else : ?>
-                        <th scope="row">Je</th>
-                    <?php endif ?>
+                    <th scope="row"><?= $firstPerson ?></th>
                     <td><?= $prono['1S'] ?><?= $vrb['Ind-fut']['1S'] ?></td>
                 </tr>
                 <tr>
@@ -336,15 +317,7 @@ $isPronominal = ($pronominalValue === Pronominal::getValueByName('Oui') || $pron
             </thead>
             <tbody>
                 <tr>
-                    <?php if ($elision) : ?>
-                        <?php if ($isPronominal) : ?>
-                            <th scope="row">Je me</th>
-                        <?php else : ?>
-                            <th scope="row">J'</th>
-                        <?php endif ?>
-                    <?php else : ?>
-                        <th scope="row">Je</th>
-                    <?php endif ?>
+                    <th scope="row"><?= $firstPerson ?></th>
                     <td><?= $prono['1S'] ?><?= $vrb['Cond-pr']['1S'] ?></td>
                 </tr>
                 <tr>
@@ -381,15 +354,7 @@ $isPronominal = ($pronominalValue === Pronominal::getValueByName('Oui') || $pron
             </thead>
             <tbody>
                 <tr>
-                    <?php if ($elision) : ?>
-                        <?php if ($isPronominal) : ?>
-                            <th scope="row">Je me</th>
-                        <?php else : ?>
-                            <th scope="row">J'</th>
-                        <?php endif ?>
-                    <?php else : ?>
-                        <th scope="row">Je</th>
-                    <?php endif ?>
+                    <th scope="row"><?= $firstPerson ?></th>
                     <td><?= $prono['1S'] ?><?= $vrb['Sub-pr']['1S'] ?></td>
                 </tr>
                 <tr>
@@ -429,15 +394,7 @@ $isPronominal = ($pronominalValue === Pronominal::getValueByName('Oui') || $pron
             </thead>
             <tbody>
                 <tr>
-                    <?php if ($elision) : ?>
-                        <?php if ($isPronominal) : ?>
-                            <th scope="row">Je me</th>
-                        <?php else : ?>
-                            <th scope="row">J'</th>
-                        <?php endif ?>
-                    <?php else : ?>
-                        <th scope="row">Je</th>
-                    <?php endif ?>
+                    <th scope="row"><?= $firstPerson ?></th>
                     <td><?= $prono['1S'] ?><?= $vrb['Sub-imp']['1S'] ?></td>
                 </tr>
                 <tr>
