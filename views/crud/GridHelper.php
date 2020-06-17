@@ -49,6 +49,7 @@ class GridHelper
             // Will pass expandRowKey and expandRowInd to the controller.
             // See https://demos.krajee.com/grid#expand-row-column
             'detailUrl' => Url::to(['expand-row']),
+            'detailRowCssClass' => '',
             'headerOptions' => ['class' => 'kartik-sheet-style'],
             'detailAnimationDuration' => 'fast',
         ];

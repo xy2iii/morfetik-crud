@@ -20,4 +20,13 @@ class CodesAdjectif extends ActiveRecord
             [['MS', 'MP', 'FS', 'FP'], 'default', 'value' => ''],
         ];
     }
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'Rad' => 'Radical',
+        ];
+    }
 }

@@ -104,8 +104,8 @@ class CodesVerbe extends \yii\db\ActiveRecord
         return [
             'Code' => 'Code',
             'Modele' => 'Modèle',
-            'Rad' => 'Rad',
-            'Rmodele' => 'Rmodele',
+            'Rad' => 'Radical',
+            'Rmodele' => 'Radical modele',
             'Inf' => 'Infinitif',
             'Indpr1S' => 'Ind:pr:1S',
             'Indpr2S' => 'Ind:pr:2S',

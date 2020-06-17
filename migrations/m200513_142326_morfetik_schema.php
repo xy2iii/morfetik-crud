@@ -40,8 +40,6 @@ class m200513_142326_morfetik_schema extends Migration
           `CatGram` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
           `souscatgram` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
           `Flex` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-          `Lig` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-          `Standard` varchar(256) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
           `Notes` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
           PRIMARY KEY (`ID`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -80,10 +78,6 @@ class m200513_142326_morfetik_schema extends Migration
           `souscatgram` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
           `Flex` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
           `Dom` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-          `Grs` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-          `Maj` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-          `Lig` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-          `Standard` varchar(256) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
           `Notes` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
           PRIMARY KEY (`ID`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -165,8 +159,6 @@ class m200513_142326_morfetik_schema extends Migration
           `CatGram` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'vrb',
           `souscatgram` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
           `Flex` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-          `Lig` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-          `Standard` varchar(256) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
           `Notes` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
           `pronominal` tinyint NOT NULL DEFAULT 0,
           PRIMARY KEY (`ID`)
@@ -186,9 +178,6 @@ CREATE TABLE `formes` (
     `num` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
     `person` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
     `temps` varchar(510) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-    `rare` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-    `lig` varchar(510) COLLATE utf8_unicode_ci DEFAULT '',
-    `graphsav` varchar(510) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
     `notes` varchar(510) COLLATE utf8_unicode_ci DEFAULT '',
     `infos` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
     `pronominal` tinyint NOT NULL DEFAULT 0,
@@ -202,9 +191,6 @@ CREATE TABLE `formes` (
     KEY `num` (`num`),
     KEY `person` (`person`),
     KEY `temps` (`temps`(333)),
-    KEY `rare` (`rare`),
-    KEY `lig` (`lig`(333)),
-    KEY `graphsav` (`graphsav`(333)),
     KEY `notes` (`notes`(333)),
     KEY `infos` (`infos`),
 	UNIQUE INDEX `forme_lemme` (`forme`(40), formeid, `lemme`(40))

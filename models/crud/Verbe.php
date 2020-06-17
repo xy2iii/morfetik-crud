@@ -36,11 +36,7 @@ class Verbe extends \yii\db\ActiveRecord
             [['CatGram'], 'string', 'max' => 10],
             [['souscatgram'], 'default', 'value' => ''],
             [['Lemme'], 'string', 'max' => 255],
-            [['Flex'], 'string', 'max' => 20],
-            [['Lig'], 'string', 'max' => 5],
-            [['Standard'], 'string', 'max' => 256],
             [['pronominal'], 'number'],
-            [['ID'], 'unique'],
         ];
     }
 
@@ -50,13 +46,9 @@ class Verbe extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID' => 'ID',
             'Lemme' => 'Lemme',
-            'CatGram' => 'Cat Gram',
-            'Flex' => 'Flex',
-            'Lig' => 'Lig',
-            'Standard' => 'Standard',
-            'Notes' => 'Notes',
+            'CatGram' => 'Catégorie grammaticale',
+            'souscatgram' => 'Sous-catégorie grammaticale',
             'pronominal' => 'Pronominal',
         ];
     }

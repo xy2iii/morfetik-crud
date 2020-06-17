@@ -65,26 +65,6 @@ return [
     ],
     [
         'class' => '\kartik\grid\EditableColumn',
-        'attribute' => 'Lig',
-        'vAlign' => 'middle',
-        'editableOptions' => [
-            'header' => Yii::t('app', 'Ligature'),
-            'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['editable']],
-        ],
-    ],
-    [
-        'class' => '\kartik\grid\EditableColumn',
-        'attribute' => 'Standard',
-        'vAlign' => 'middle',
-        'editableOptions' => [
-            'header' => Yii::t('app', 'Ligature'),
-            'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['editable']],
-        ],
-    ],
-    [
-        'class' => '\kartik\grid\EditableColumn',
         'attribute' => 'Notes',
         'vAlign' => 'middle',
         'editableOptions' => [

@@ -21,9 +21,6 @@ use yii\db\ActiveRecord;
  * @property string $num
  * @property string $person
  * @property string $temps
- * @property string $rare
- * @property string $lig
- * @property string $graphsav
  * @property string $notes
  * @property string $infos
  * @property string $pronominal
@@ -272,9 +269,6 @@ class Forme extends ActiveRecord
             'num' => 'Nombre',
             'person' => 'Personne',
             'temps' => 'Temps',
-            'rare' => 'Rare',
-            'lig' => 'Ligature',
-            'graphsav' => 'Graphie savante',
             'notes' => 'Notes',
             'infos' => 'Infos',
             'pronominal' => 'Pronominal',

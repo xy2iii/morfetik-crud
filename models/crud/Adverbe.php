@@ -20,4 +20,13 @@ class Adverbe extends ActiveRecord
             [['souscatgram'], 'default', 'value' => ''],
         ];
     }
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'souscatgram' => 'Sous-catégorie grammaticale',
+        ];
+    }
 }

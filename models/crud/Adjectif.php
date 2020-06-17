@@ -17,8 +17,18 @@ class Adjectif extends ActiveRecord
     {
         return [
             [['Lemme', 'CatGram', 'Flex',], 'required'],
-            [['Lig', 'souscatgram'], 'default', 'value' => ''],
-            [['Standard', 'Notes'], 'default']
+            [['souscatgram'], 'default', 'value' => ''],
+            [['Notes'], 'default']
+        ];
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'CatGram' => 'Catégorie grammaticale',
+            'souscatgram' => 'Sous-catégorie grammaticale',
         ];
     }
 }

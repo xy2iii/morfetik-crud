@@ -343,12 +343,29 @@ abstract class AbstractController extends Controller
         // Check the request for the presence of $expandRowKey.
         $id = $request->post('expandRowKey');
 
-        // Get the related model.
+        // Get the model and related model.
         $model = $this->findModel($id);
         $relatedModel = $this->getRelatedModel()::find()
             ->where(['Code' => $model->Flex])
             ->one();
-        return $this->renderPartial('_expand-row', ['model' => $relatedModel]);
+
+        // Make the base form.
+        // Rad represents the numbers of characters to remove to get the base form.
+        $remove = - ($relatedModel->Rad);
+        if ($remove !== 0) {
+            $baseForm = mb_substr($model->Lemme, 0, $remove);
+        } else {
+            $baseForm = $model->Lemme;
+        }
+
+        return $this->renderPartial(
+            '_expand-row',
+            [
+                'model' => $model,
+                'relatedModel' => $relatedModel,
+                'baseForm' => $baseForm,
+            ]
+        );
     }
 
     /**

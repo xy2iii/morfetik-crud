@@ -19,7 +19,7 @@ class FormeSearch extends Forme
     public function rules()
     {
         return [
-            [['forme', 'lemme', 'catgram', 'temps', 'genre', 'num', 'person', 'lig', 'graphsav', 'notes'], 'safe'],
+            [['forme', 'lemme', 'catgram', 'temps', 'genre', 'num', 'person', 'notes'], 'safe'],
         ];
     }
 
@@ -49,7 +49,7 @@ class FormeSearch extends Forme
 
 
         $query
-            ->select('lemmeid, lemme, catgram, cat, genre, num, person, temps, rare, lig, graphsav, notes, infos, pronominal');
+            ->select('lemmeid, lemme, catgram, cat, genre, num, person, temps, notes, infos, pronominal');
 
         /* If an accented search is set, use a MySQL collation that does accent-sensitive search.
          * See https://stackoverflow.com/questions/500826/how-to-conduct-an-accent-sensitive-search-in-mysql.
@@ -83,8 +83,6 @@ class FormeSearch extends Forme
             ->andFilterWhere(['like', 'num', $this->num])
             ->andFilterWhere(['like', 'genre', $this->genre])
             ->andFilterWhere(['like', 'person', $this->person])
-            ->andFilterWhere(['like', 'lig', $this->lig])
-            ->andFilterWhere(['like', 'graphsav', $this->graphsav])
             ->andFilterWhere(['like', 'notes', $this->notes]);
 
         $query->distinct();

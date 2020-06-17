@@ -18,7 +18,7 @@ class NomSearch extends Nom
     public function rules()
     {
         return [
-            [['ID', 'Lemme', 'CatGram', 'souscatgram', 'Flex', 'Dom', 'Grs', 'Maj', 'Lig', 'Standard', 'Notes'], 'safe'],
+            [['ID', 'Lemme', 'CatGram', 'souscatgram', 'Flex', 'Dom', 'Notes'], 'safe'],
         ];
     }
 
@@ -60,10 +60,6 @@ class NomSearch extends Nom
             ->andFilterWhere(['like', 'souscatgram', $this->souscatgram])
             ->andFilterWhere(['like', 'Flex', $this->Flex])
             ->andFilterWhere(['like', 'Dom', $this->Dom])
-            ->andFilterWhere(['like', 'Grs', $this->Grs])
-            ->andFilterWhere(['like', 'Maj', $this->Maj])
-            ->andFilterWhere(['like', 'Lig', $this->Lig])
-            ->andFilterWhere(['like', 'Standard', $this->Standard])
             ->andFilterWhere(['like', 'Notes', $this->Notes]);
 
         return $dataProvider;

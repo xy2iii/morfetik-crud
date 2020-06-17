@@ -67,7 +67,7 @@ call verbe('Pp::P:F', 'Pp', '', 'P', 'F');
 insert into formes
 (forme, lemmeid, lemme, catgram, souscatgram, cat, 
 genre, num, person, temps, 
-rare, lig, graphsav, notes, infos, pronominal)
+notes, infos, pronominal)
 select
   forme as forme,
   concat('G',id) as lemmeid,
@@ -86,9 +86,6 @@ select
   Number as num,
   Person as person,
   '' as temps,
-  '0' as rare,
-  '' as lig,
-  '' as graphsav,
   notes,
   '' as infos,
   '0' as pronominal
@@ -98,7 +95,7 @@ from gram;
 insert into formes
 (forme, lemmeid, lemme, catgram, souscatgram, cat, 
 genre, num, person, temps, 
-rare, lig, graphsav, notes, infos, pronominal)
+notes, infos, pronominal)
 select
   lemme as forme,
   concat('X',id) as lemmeid,
@@ -110,9 +107,6 @@ select
   '' as num,
   '' as person,
   '' as temps,
-  '0' as rare,
-  '' as lig,
-  '' as graphsav,
   '' as notes,
   '' as infos,
   '0' as pronominal

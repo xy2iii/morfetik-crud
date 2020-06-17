@@ -75,48 +75,6 @@ return [
     ],
     [
         'class' => '\kartik\grid\EditableColumn',
-        'attribute' => 'Grs',
-        'vAlign' => 'middle',
-        'editableOptions' => [
-            'header' => Yii::t('app', 'Grs'),
-            'inputType' => Editable::INPUT_DROPDOWN_LIST,
-            'data' => ['+' => 'Oui', '' => 'Non'],
-            'formOptions' => ['action' => ['editable']],
-        ],
-    ],
-    [
-        'class' => '\kartik\grid\EditableColumn',
-        'attribute' => 'Maj',
-        'vAlign' => 'middle',
-        'editableOptions' => [
-            'header' => Yii::t('app', 'Maj'),
-            'inputType' => Editable::INPUT_DROPDOWN_LIST,
-            'data' => ['+' => 'Oui', '' => 'Non'],
-            'formOptions' => ['action' => ['editable']],
-        ],
-    ],
-    [
-        'class' => '\kartik\grid\EditableColumn',
-        'attribute' => 'Lig',
-        'vAlign' => 'middle',
-        'editableOptions' => [
-            'header' => Yii::t('app', 'Ligature'),
-            'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['editable']],
-        ],
-    ],
-    [
-        'class' => '\kartik\grid\EditableColumn',
-        'attribute' => 'Standard',
-        'vAlign' => 'middle',
-        'editableOptions' => [
-            'header' => Yii::t('app', 'Standard'),
-            'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['editable']],
-        ],
-    ],
-    [
-        'class' => '\kartik\grid\EditableColumn',
         'attribute' => 'Notes',
         'vAlign' => 'middle',
         'editableOptions' => [

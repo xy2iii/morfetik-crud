@@ -67,28 +67,6 @@ return [
     ],
     [
         'class' => '\kartik\grid\EditableColumn',
-        'attribute' => 'Lig',
-        'vAlign' => 'middle',
-        'hAlign' => 'center',
-        'editableOptions' => [
-            'header' => 'Ligature',
-            'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['editable']],
-        ],
-    ],
-    [
-        'class' => '\kartik\grid\EditableColumn',
-        'attribute' => 'Standard',
-        'vAlign' => 'middle',
-        'hAlign' => 'center',
-        'editableOptions' => [
-            'header' => 'Standard',
-            'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['editable']],
-        ],
-    ],
-    [
-        'class' => '\kartik\grid\EditableColumn',
         'attribute' => 'Notes',
         'vAlign' => 'middle',
         'hAlign' => 'center',

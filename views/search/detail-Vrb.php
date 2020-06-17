@@ -138,16 +138,12 @@ if ($elision) {
             <thead class="thead-light">
                 <tr>
                     <th scope="col">Lemme</th>
-                    <th scope="col">Ligature</th>
-                    <th scope="col">Graphsav</th>
                     <th scope="col">Notes</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><b><?= $lemme->lemme ?></b> </td>
-                    <td><?= $lemme->lig ?></td>
-                    <td><?= $lemme->graphsav ?></td>
                     <td><?= $lemme->notes ?></td>
                 </tr>
             </tbody>
@@ -444,11 +440,11 @@ if ($elision) {
                 </tr>
                 <tr>
                     <th scope="row">1<sup>ème</sup> pluriel</th>
-                    <td><?= $vrb['Imp-pr']['2S'] ?></td>
+                    <td><?= $vrb['Imp-pr']['1P'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">2<sup>ème</sup> pluriel</th>
-                    <td><?= $vrb['Imp-pr']['2S'] ?></td>
+                    <td><?= $vrb['Imp-pr']['2P'] ?></td>
                 </tr>
                 <tr>
                     <th scope="row">&nbsp;</th>

@@ -20,4 +20,13 @@ class CodesNom extends ActiveRecord
             [['S', 'P'], 'default', 'value' => ''],
         ];
     }
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'Rad' => 'Radical',
+        ];
+    }
 }

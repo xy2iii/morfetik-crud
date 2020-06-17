@@ -165,16 +165,6 @@ $this->params['breadcrumbs'][0] = $this->title;
                     'width' => '4rem',
                 ],
                 [
-                    'attribute' => 'lig',
-                    'vAlign' => 'middle',
-                    'width' => '4rem',
-                ],
-                [
-                    'attribute' => 'graphsav',
-                    'vAlign' => 'middle',
-                    'width' => '4rem',
-                ],
-                [
                     'attribute' => 'notes',
                     'vAlign' => 'middle',
                     'width' => '4rem',

@@ -17,7 +17,18 @@ class Nom extends ActiveRecord
     {
         return [
             [['Lemme', 'CatGram', 'Flex'], 'required'],
-            [['souscatgram', 'Dom', 'Grs', 'Maj', 'Lig', 'Standard', 'Notes'], 'default', 'value' => ''],
+            [['souscatgram', 'Dom', 'Notes'], 'default', 'value' => ''],
+        ];
+    }
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'CatGram' => 'Catégorie grammaticale',
+            'souscatgram' => 'Sous-catégorie grammaticale',
+            'Dom' => 'Domaine',
         ];
     }
 }

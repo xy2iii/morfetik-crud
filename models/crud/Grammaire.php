@@ -20,4 +20,17 @@ class Grammaire extends ActiveRecord
             [['souscatgram', 'Gender', 'Number', 'Person', 'Notes'], 'default', 'value' => ''],
         ];
     }
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'CatGram' => 'Catégorie grammaticale',
+            'souscatgram' => 'Sous-catégorie grammaticale',
+            'Gender' => 'Genre',
+            'Number' => 'Nombre',
+            'Person' => 'Personne',
+        ];
+    }
 }

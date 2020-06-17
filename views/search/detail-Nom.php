@@ -48,16 +48,12 @@ $nom['FP'] = $nom['FP']->join(' / ');
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">Lemme</th>
-                        <th scope="col">Ligature</th>
-                        <th scope="col">Graphsav</th>
                         <th scope="col">Notes</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><b><?= $lemme->lemme ?></b> </td>
-                        <td><?= $lemme->lig ?></td>
-                        <td><?= $lemme->graphsav ?></td>
                         <td><?= $lemme->notes ?></td>
                     </tr>
                 </tbody>
