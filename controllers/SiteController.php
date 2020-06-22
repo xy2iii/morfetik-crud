@@ -78,9 +78,11 @@ class SiteController extends Controller
             return Yii::$app->getResponse()->redirect($absoluteHomeUrl);
         }
 
+        // On login, redirect to home page.
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            $absoluteHomeUrl = Url::home(true);
+            return Yii::$app->getResponse()->redirect($absoluteHomeUrl);
         }
 
         $model->password = '';
