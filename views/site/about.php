@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td>CNRS/LIPN - Équipe RCLN (<a href="https://www.univ-paris13.fr/">Université Sorbonne Paris Nord</a>)</td>
             </tr>
             <tr>
-                <td>MATTHIEU-COLAS Michel</td>
+                <td><a href="http://www.mathieu-colas.fr/michel" />MATTHIEU-COLAS Michel</a></td>
                 <td><a href="https://www.univ-paris13.fr/">Université Sorbonne Paris Nord</a></td>
             </tr>
         </tbody>
@@ -66,31 +66,31 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td>CNRS/LIPN - Équipe RCLN (<a href="https://www.univ-paris13.fr/">Université Sorbonne Paris Nord</a>)</td>
             </tr>
             <tr>
-                <td><a href="https://lipn.univ-paris13.fr/~cartier/">CARTIER Emmanuel</a> (mars-juin 2020)</td>
+                <td><a href="https://lipn.univ-paris13.fr/~cartier/">CARTIER Emmanuel</a></td>
                 <td>LIPN - Équipe RCLN (<a href="https://www.univ-paris13.fr/">Université Sorbonne Paris Nord</a>)</td>
             </tr>
             <tr>
-                <td>MATTHIEU-COLAS Michel</td>
-                <td><a href="https://www.univ-paris13.fr/">Université Sorbonne Paris Nord</a></td>
+                <td><a href="http://www.mathieu-colas.fr/michel" />MATTHIEU-COLAS Michel</a></td>
+                <td><a href=" https://www.univ-paris13.fr/">Université Sorbonne Paris Nord</a> </td>
             </tr>
             <tr>
-                <td>CATACH Laurent (2015-2017)</td>
+                <td><a href="https://fr.linkedin.com/in/lcatach">CATACH Laurent</a> (2015-2017)</td>
                 <td>Consultant en édition numérique</td>
             </tr>
             <tr>
-                <td>JACQUET-PFAU (2015-2017)</td>
+                <td><a href="http://www.leslyriades.fr/spip.php?article520">JACQUET-PFAU Christine</a> (2015-2017)</td>
                 <td><a href="https://www.college-de-france.fr">Collège de France</a></td>
             </tr>
             <tr>
-                <td>LE TALLEC LLORET Gabrielle (2015-2017)</td>
+                <td><a href="https://www.researchgate.net/profile/Gabrielle_Le_Tallec-Lloret">LE TALLEC LLORET Gabrielle</a> (2015-2017)</td>
                 <td><a href="https://www.univ-paris13.fr/">Université Sorbonne Paris Nord</a></td>
             </tr>
             <tr>
-                <td>MARTIN-BERTHET François (2015-2017)</td>
+                <td><a href="https://data.bnf.fr/fr/13185178/francoise_martin-berthet/">MARTIN-BERTHET Françoise</a> (2015-2017)</td>
                 <td><a href="https://www.univ-paris13.fr/">Université Sorbonne Paris Nord</a></td>
             </tr>
             <tr>
-                <td>SABLAYROLLES Jean-François (2015-2017)</td>
+                <td><a href="https://data.bnf.fr/fr/13579648/jean-francois_sablayrolles/">SABLAYROLLES Jean-François</a> (2015-2017)</td>
                 <td><a href="https://www.univ-paris13.fr/">Université Sorbonne Paris Nord</a></td>
             </tr>
         </tbody>
