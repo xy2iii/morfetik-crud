@@ -15,8 +15,6 @@ use yii\helpers\Html;
             'CatGram',
             'souscatgram',
             'Flex',
-            'Lig',
-            'Standard',
             'Notes:ntext',
         ],
     ]) ?>

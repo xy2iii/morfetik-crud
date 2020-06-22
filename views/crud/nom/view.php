@@ -15,10 +15,6 @@ use yii\widgets\DetailView;
             'souscatgram',
             'Flex',
             'Dom',
-            'Grs',
-            'Maj',
-            'Lig',
-            'Standard',
             'Notes:ntext',
         ],
     ]) ?>

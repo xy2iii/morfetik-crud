@@ -40,14 +40,6 @@ $path = '/crud/nom/' . $suffix;
 
     <?= $form->field($model, 'Dom')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'Grs')->dropDownList(['+' => 'Oui', '' => 'Non']) ?>
-
-    <?= $form->field($model, 'Maj')->dropDownList(['+' => 'Oui', '' => 'Non']) ?>
-
-    <?= $form->field($model, 'Lig')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'Standard')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'Notes')->textarea(['rows' => 6]) ?>
 
 

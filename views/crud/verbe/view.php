@@ -14,8 +14,6 @@ use yii\widgets\DetailView;
             'CatGram',
             'souscatgram',
             'Flex',
-            'Lig',
-            'Standard',
             'pronominal',
             'Notes:ntext',
         ],
