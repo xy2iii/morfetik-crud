@@ -17,6 +17,8 @@ use yii\widgets\DetailView;
             'Gender',
             'Number',
             'Person',
+            'variante',
+            'infos',
             'Notes',
         ],
     ]) ?>

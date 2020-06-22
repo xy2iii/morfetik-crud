@@ -43,6 +43,10 @@ $path = '/crud/grammaire/' . $suffix;
 
     <?= $form->field($model, 'Person')->dropDownList(['' => '', '1' => '1', '2' => '2', '3' => '3']) ?>
 
+    <?= $form->field($model, 'variante')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'infos')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'Notes')->textInput(['maxlength' => true]) ?>
 
     <?php if (!Yii::$app->request->isAjax) { ?>

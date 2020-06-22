@@ -67,6 +67,26 @@ return [
     ],
     [
         'class' => '\kartik\grid\EditableColumn',
+        'attribute' => 'variante',
+        'vAlign' => 'middle',
+        'hAlign' => 'center',
+        'editableOptions' => [
+            'inputType' => Editable::INPUT_TEXT,
+            'formOptions' => ['action' => ['editable']],
+        ],
+    ],
+    [
+        'class' => '\kartik\grid\EditableColumn',
+        'attribute' => 'infos',
+        'vAlign' => 'middle',
+        'hAlign' => 'center',
+        'editableOptions' => [
+            'inputType' => Editable::INPUT_TEXT,
+            'formOptions' => ['action' => ['editable']],
+        ],
+    ],
+    [
+        'class' => '\kartik\grid\EditableColumn',
         'attribute' => 'Notes',
         'vAlign' => 'middle',
         'hAlign' => 'center',

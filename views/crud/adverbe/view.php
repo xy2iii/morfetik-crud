@@ -12,6 +12,9 @@ use yii\widgets\DetailView;
         'attributes' => [
             'Lemme',
             'souscatgram',
+            'variante',
+            'infos',
+            'Notes'
         ],
     ]) ?>
 

@@ -35,5 +35,32 @@ return [
             'formOptions' => ['action' => ['editable']],
         ],
     ],
+    [
+        'class' => '\kartik\grid\EditableColumn',
+        'attribute' => 'variante',
+        'vAlign' => 'middle',
+        'editableOptions' => [
+            'inputType' => Editable::INPUT_TEXT,
+            'formOptions' => ['action' => ['editable']],
+        ],
+    ],
+    [
+        'class' => '\kartik\grid\EditableColumn',
+        'attribute' => 'infos',
+        'vAlign' => 'middle',
+        'editableOptions' => [
+            'inputType' => Editable::INPUT_TEXT,
+            'formOptions' => ['action' => ['editable']],
+        ],
+    ],
+    [
+        'class' => '\kartik\grid\EditableColumn',
+        'attribute' => 'Notes',
+        'vAlign' => 'middle',
+        'editableOptions' => [
+            'inputType' => Editable::INPUT_TEXT,
+            'formOptions' => ['action' => ['editable']],
+        ],
+    ],
     GridHelper::getActionColumn(),
 ];

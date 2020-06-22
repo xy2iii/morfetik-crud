@@ -40,6 +40,10 @@ $path = '/crud/verbe/' . $suffix;
 
     <?= $form->field($model, 'Flex')->dropDownList($flexArray) ?>
 
+    <?= $form->field($model, 'variante')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'infos')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'pronominal')->dropDownList($pronominalArray) ?>
 
     <?= $form->field($model, 'Notes')->textarea(['rows' => 6]) ?>

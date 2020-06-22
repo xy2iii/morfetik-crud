@@ -17,7 +17,7 @@ class Adverbe extends ActiveRecord
     {
         return [
             [['Lemme'], 'required'],
-            [['souscatgram'], 'default', 'value' => ''],
+            [['souscatgram', 'variante', 'infos', 'Notes'], 'default', 'value' => ''],
         ];
     }
     /**
@@ -27,6 +27,7 @@ class Adverbe extends ActiveRecord
     {
         return [
             'souscatgram' => 'Sous-catégorie grammaticale',
+            'infos' => 'Information sémantique'
         ];
     }
 }

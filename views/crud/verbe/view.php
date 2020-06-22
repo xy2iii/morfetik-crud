@@ -16,6 +16,8 @@ use app\models\enums\Pronominal;
             'CatGram',
             'souscatgram',
             'Flex',
+            'variante',
+            'infos',
             [
                 'attribute' => 'pronominal',
                 'value' => Pronominal::getLabel($model->pronominal),

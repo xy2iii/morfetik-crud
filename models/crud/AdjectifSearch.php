@@ -18,7 +18,7 @@ class AdjectifSearch extends Adjectif
     public function rules()
     {
         return [
-            [['ID', 'Lemme', 'CatGram', 'souscatgram', 'Flex', 'Notes'], 'safe'],
+            [['ID', 'Lemme', 'CatGram', 'souscatgram', 'Flex', 'variante', 'infos', 'Notes'], 'safe'],
         ];
     }
 
@@ -59,6 +59,8 @@ class AdjectifSearch extends Adjectif
             ->andFilterWhere(['like', 'CatGram', $this->CatGram])
             ->andFilterWhere(['like', 'souscatgram', $this->souscatgram])
             ->andFilterWhere(['like', 'Flex', $this->Flex])
+            ->andFilterWhere(['like', 'variante', $this->variante])
+            ->andFilterWhere(['like', 'infos', $this->infos])
             ->andFilterWhere(['like', 'Notes', $this->Notes]);
 
         return $dataProvider;

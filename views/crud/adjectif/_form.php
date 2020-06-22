@@ -38,6 +38,10 @@ $path = '/crud/adjectif/' . $suffix;
 
     <?= $form->field($model, 'Flex')->dropDownList($flexArray) ?>
 
+    <?= $form->field($model, 'variante')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'infos')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'Notes')->textarea(['rows' => 6]) ?>
 
     <?php if (!Yii::$app->request->isAjax) { ?>

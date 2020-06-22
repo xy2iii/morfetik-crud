@@ -18,7 +18,7 @@ class GrammaireSearch extends Grammaire
     public function rules()
     {
         return [
-            [['ID', 'Lemme', 'Forme', 'CatGram', 'souscatgram', 'Gender', 'Number', 'Person', 'Notes'], 'safe'],
+            [['ID', 'Lemme', 'Forme', 'CatGram', 'souscatgram', 'Gender', 'Number', 'Person', 'variante', 'infos', 'Notes'], 'safe'],
         ];
     }
 
@@ -62,6 +62,8 @@ class GrammaireSearch extends Grammaire
             ->andFilterWhere(['like', 'Gender', $this->Gender])
             ->andFilterWhere(['like', 'Number', $this->Number])
             ->andFilterWhere(['like', 'Person', $this->Person])
+            ->andFilterWhere(['like', 'variante', $this->variante])
+            ->andFilterWhere(['like', 'infos', $this->infos])
             ->andFilterWhere(['like', 'Notes', $this->Notes]);
 
         return $dataProvider;

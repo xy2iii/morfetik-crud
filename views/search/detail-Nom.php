@@ -49,12 +49,16 @@ $nom['FP'] = $nom['FP']->join(' / ');
                     <tr>
                         <th scope="col">Lemme</th>
                         <th scope="col">Notes</th>
+                        <th scope="col">Variante</th>
+                        <th scope="col">Informations sémantiques</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><b><?= $lemme->lemme ?></b> </td>
                         <td><?= $lemme->notes ?></td>
+                        <td><?= $lemme->variante ?></td>
+                        <td><?= $lemme->infos ?></td>
                     </tr>
                 </tbody>
             </table>

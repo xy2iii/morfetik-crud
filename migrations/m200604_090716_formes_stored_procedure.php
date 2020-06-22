@@ -20,41 +20,41 @@ class m200604_090716_formes_stored_procedure extends Migration
     $command = $connection->createCommand(<<<EOD
 create procedure adjectif (IN flexion varchar(255), IN genre varchar(255), IN num varchar(255)) BEGIN
 set
-  @sql = CONCAT(
-    "insert into formes
+@sql = CONCAT(
+  "insert into formes
 (forme, lemmeid, lemme, catgram, souscatgram, cat, 
 genre, num, person, temps, 
-notes, infos)
+variante, infos, notes)
 select
-  concat(
-    substr(lemme, 1, length(lemme) - rad),
-    (
-      case
-        when `",flexion,"` is null then ''
-        else `",flexion,"` end
-    )
-  ) as forme,
-  concat('A',id) as lemmeid,
-  lemme,
-  catgram,
-  souscatgram,
-  'Adj' as cat,
-  '",genre,"' as genre,
-  '",num,"' as num,
-  '' as person,
-  '' as temps,
-  notes,
-  '' as infos
-from
-  ( select  
-  *,
-  SUBSTRING_INDEX(SUBSTRING_INDEX(alemmes.flex, ';', _numbers.n), ';', -1)
-  as sep_flex
-    from
-     _numbers inner join alemmes
-     on CHAR_LENGTH(alemmes.flex)
-       -CHAR_LENGTH(REPLACE(alemmes.flex, ';', '')) >= _numbers.n-1 ) as d
-  join acodes on sep_flex = acodes.code;");
+concat(
+  substr(lemme, 1, length(lemme) - rad),
+  (
+    case
+      when `",flexion,"` is null then ''
+      else `",flexion,"` end
+  )
+) as forme,
+concat('A', id) as lemmeid,
+lemme,
+catgram,
+souscatgram,
+'Adj' as cat,
+'",genre,"' as genre,
+'",num,"' as num,
+'' as person,
+'' as temps,
+variante,
+infos,
+notes from
+( select  
+*,
+SUBSTRING_INDEX(SUBSTRING_INDEX(alemmes.flex, ';', _numbers.n), ';', -1)
+as sep_flex
+  from
+   _numbers inner join alemmes
+   on CHAR_LENGTH(alemmes.flex)
+     -CHAR_LENGTH(REPLACE(alemmes.flex, ';', '')) >= _numbers.n-1 ) as d
+join acodes on sep_flex = acodes.code;");
 
 prepare stmt
 FROM
@@ -120,54 +120,55 @@ EOD);
 
     // proc-verbe.sql
     $command = $connection->createCommand(<<<EOD
-    create procedure verbe (IN flexion varchar(255), IN temps varchar(255),
-    IN num varchar(255), IN person varchar(255), IN genre varchar(255)) BEGIN
-    set
-      @sql = CONCAT(
-        "insert into formes
-    (forme, lemmeid, lemme, catgram, souscatgram, cat, 
-    genre, num, person, temps, 
-    notes, infos, pronominal)
-        select
-      concat(
-        substr(lemme, 1, length(lemme) - rad),
-        (
-          case
-            when `",flexion,"` is null then ''
-            else `",flexion,"` end
-        )
-      ) as forme,
-      concat('V', id) as lemmeid,
-      lemme,
-      catgram,
-      souscatgram,
-      'Vrb' as cat,
-      '",genre,"' as genre,
-      '",num,"' as num,
-      '",person,"' as person,
-      '",temps,"' as temps,
-      notes,
-      '' as infos,
-      pronominal
-    from
-      ( select
-      *,
-      SUBSTRING_INDEX(SUBSTRING_INDEX(vslemmes.flex, ';', _numbers.n), ';', -1)
-      as sep_flex
-        from
-         _numbers inner join vslemmes
-         on CHAR_LENGTH(vslemmes.flex)
-           -CHAR_LENGTH(REPLACE(vslemmes.flex, ';', '')) >= _numbers.n-1 ) as d
-      join vscodes on sep_flex = vscodes.code;");
-    
-    prepare stmt
-    FROM
-      @sql;
-    
-    execute stmt;
-    
-    deallocate prepare stmt;
-    END
+create procedure verbe (IN flexion varchar(255), IN temps varchar(255),
+IN num varchar(255), IN person varchar(255), IN genre varchar(255)) BEGIN
+set
+@sql = CONCAT(
+  "insert into formes
+(forme, lemmeid, lemme, catgram, souscatgram, cat, 
+genre, num, person, temps, 
+variante, infos, notes, pronominal)
+  select
+concat(
+  substr(lemme, 1, length(lemme) - rad),
+  (
+    case
+      when `",flexion,"` is null then ''
+      else `",flexion,"` end
+  )
+) as forme,
+concat('V', id) as lemmeid,
+lemme,
+catgram,
+souscatgram,
+'Vrb' as cat,
+'",genre,"' as genre,
+'",num,"' as num,
+'",person,"' as person,
+'",temps,"' as temps,
+variante,
+infos,
+notes,
+pronominal
+from
+( select
+*,
+SUBSTRING_INDEX(SUBSTRING_INDEX(vslemmes.flex, ';', _numbers.n), ';', -1)
+as sep_flex
+  from
+    _numbers inner join vslemmes
+    on CHAR_LENGTH(vslemmes.flex)
+      -CHAR_LENGTH(REPLACE(vslemmes.flex, ';', '')) >= _numbers.n-1 ) as d
+join vscodes on sep_flex = vscodes.code;");
+
+prepare stmt
+FROM
+  @sql;
+
+execute stmt;
+
+deallocate prepare stmt;
+END
     
 EOD);
     $command->execute();
@@ -241,7 +242,7 @@ call verbe('Pp::P:F', 'Pp', '', 'P', 'F');
 insert into formes
 (forme, lemmeid, lemme, catgram, souscatgram, cat, 
 genre, num, person, temps, 
-notes, infos, pronominal)
+variante, infos, notes, pronominal)
 select
   forme as forme,
   concat('G',id) as lemmeid,
@@ -260,8 +261,9 @@ select
   Number as num,
   Person as person,
   '' as temps,
+  variante,
+  infos,
   notes,
-  '' as infos,
   '0' as pronominal
 from gram;
 
@@ -269,7 +271,7 @@ from gram;
 insert into formes
 (forme, lemmeid, lemme, catgram, souscatgram, cat, 
 genre, num, person, temps, 
-notes, infos, pronominal)
+variante, infos, notes, pronominal)
 select
   lemme as forme,
   concat('X',id) as lemmeid,
@@ -281,8 +283,9 @@ select
   '' as num,
   '' as person,
   '' as temps,
-  '' as notes,
-  '' as infos,
+  variante,
+  infos,
+  notes,
   '0' as pronominal
 from adv;
 

@@ -29,6 +29,13 @@ $path = '/crud/adverbe/' . $suffix;
 
 	<?= $form->field($model, 'souscatgram')->dropDownList($sousCatgramArray) ?>
 
+	<?= $form->field($model, 'variante')->textInput(['maxlength' => true]) ?>
+
+	<?= $form->field($model, 'infos')->textInput(['maxlength' => true]) ?>
+
+	<?= $form->field($model, 'Notes')->textarea(['rows' => 6]) ?>
+
+
 	<?php if (!Yii::$app->request->isAjax) { ?>
 		<div class="form-group">
 			<?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

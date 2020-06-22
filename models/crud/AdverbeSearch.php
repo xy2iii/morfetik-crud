@@ -18,7 +18,7 @@ class AdverbeSearch extends Adverbe
     public function rules()
     {
         return [
-            [['ID', 'Lemme', 'souscatgram'], 'safe'],
+            [['ID', 'Lemme', 'souscatgram', 'variante', 'infos', 'Notes'], 'safe'],
         ];
     }
 
@@ -56,7 +56,10 @@ class AdverbeSearch extends Adverbe
 
         $query->andFilterWhere(['like', 'ID', $this->ID])
             ->andFilterWhere(['like', 'Lemme', $this->Lemme])
-            ->andFilterWhere(['like', 'souscatgram', $this->souscatgram]);
+            ->andFilterWhere(['like', 'souscatgram', $this->souscatgram])
+            ->andFilterWhere(['like', 'variante', $this->variante])
+            ->andFilterWhere(['like', 'infos', $this->infos])
+            ->andFilterWhere(['like', 'Notes', $this->Notes]);
 
         return $dataProvider;
     }

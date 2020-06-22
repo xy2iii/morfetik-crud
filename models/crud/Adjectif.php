@@ -17,7 +17,7 @@ class Adjectif extends ActiveRecord
     {
         return [
             [['Lemme', 'CatGram', 'Flex',], 'required'],
-            [['souscatgram'], 'default', 'value' => ''],
+            [['variante', 'infos', 'souscatgram'], 'default', 'value' => ''],
             [['Notes'], 'default']
         ];
     }
@@ -29,6 +29,7 @@ class Adjectif extends ActiveRecord
         return [
             'CatGram' => 'Catégorie grammaticale',
             'souscatgram' => 'Sous-catégorie grammaticale',
+            'infos' => 'Information sémantique',
         ];
     }
 }

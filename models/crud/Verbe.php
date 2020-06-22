@@ -34,7 +34,7 @@ class Verbe extends \yii\db\ActiveRecord
             [['Lemme', 'Flex'], 'required'],
             [['Notes'], 'string'],
             [['CatGram'], 'string', 'max' => 10],
-            [['souscatgram'], 'default', 'value' => ''],
+            [['souscatgram', 'variante', 'infos'], 'default', 'value' => ''],
             [['Lemme'], 'string', 'max' => 255],
             [['pronominal'], 'number'],
         ];
@@ -49,6 +49,7 @@ class Verbe extends \yii\db\ActiveRecord
             'Lemme' => 'Lemme',
             'CatGram' => 'Catégorie grammaticale',
             'souscatgram' => 'Sous-catégorie grammaticale',
+            'infos' => 'Information sémantique',
             'pronominal' => 'Pronominal',
         ];
     }

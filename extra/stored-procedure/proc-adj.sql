@@ -4,7 +4,7 @@ set
     "insert into formes
 (forme, lemmeid, lemme, catgram, souscatgram, cat, 
 genre, num, person, temps, 
-notes, infos)
+variante, infos, notes)
 select
   concat(
     substr(lemme, 1, length(lemme) - rad),
@@ -23,8 +23,9 @@ select
   '",num,"' as num,
   '' as person,
   '' as temps,
-  notes,
-  '' as infos
+  variante,
+  infos,
+  notes
 from
   ( select  
   *,

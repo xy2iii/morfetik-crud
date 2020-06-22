@@ -17,7 +17,7 @@ class Grammaire extends ActiveRecord
     {
         return [
             [['Lemme', 'Forme', 'CatGram',], 'required'],
-            [['souscatgram', 'Gender', 'Number', 'Person', 'Notes'], 'default', 'value' => ''],
+            [['souscatgram', 'Gender', 'Number', 'Person', 'variante', 'infos', 'Notes'], 'default', 'value' => ''],
         ];
     }
     /**
@@ -31,6 +31,7 @@ class Grammaire extends ActiveRecord
             'Gender' => 'Genre',
             'Number' => 'Nombre',
             'Person' => 'Personne',
+            'infos' => 'Information sémantique'
         ];
     }
 }

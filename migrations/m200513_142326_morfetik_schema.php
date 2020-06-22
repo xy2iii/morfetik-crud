@@ -29,6 +29,9 @@ class m200513_142326_morfetik_schema extends Migration
           `ID` bigint COLLATE utf8mb4_unicode_ci NOT NULL AUTO_INCREMENT,
           `Lemme` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
           `souscatgram` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+          `variante` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+          `infos` varchar(510) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+          `Notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
           PRIMARY KEY (`ID`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
         ");
@@ -40,6 +43,8 @@ class m200513_142326_morfetik_schema extends Migration
           `CatGram` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
           `souscatgram` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
           `Flex` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+          `variante` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+          `infos` varchar(510) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
           `Notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
           PRIMARY KEY (`ID`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
@@ -55,6 +60,8 @@ class m200513_142326_morfetik_schema extends Migration
           `Gender` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
           `Number` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
           `Person` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+          `variante` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+          `infos` varchar(510) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
           `Notes` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
           PRIMARY KEY (`ID`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -159,6 +166,8 @@ class m200513_142326_morfetik_schema extends Migration
           `CatGram` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'vrb',
           `souscatgram` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
           `Flex` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+          `variante` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+          `infos` varchar(510) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
           `Notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
           `pronominal` tinyint NOT NULL DEFAULT 0,
           PRIMARY KEY (`ID`)
@@ -168,9 +177,9 @@ class m200513_142326_morfetik_schema extends Migration
     $command = $connection->createCommand("
 CREATE TABLE `formes` (
     `formeid` bigint COLLATE utf8mb4_unicode_ci NOT NULL AUTO_INCREMENT,
-    `forme` varchar(510) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-    `lemmeid` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-    `lemme` varchar(510) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+    `forme` varchar(510) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `lemmeid` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+    `lemme` varchar(510) COLLATE utf8mb4_unicode_ci NOT NULL,
     `catgram` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
     `souscatgram` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
     `cat` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -178,8 +187,9 @@ CREATE TABLE `formes` (
     `num` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
     `person` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
     `temps` varchar(510) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+    `variante` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+    `infos` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
     `notes` varchar(510) COLLATE utf8mb4_unicode_ci DEFAULT '',
-    `infos` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
     `pronominal` tinyint NOT NULL DEFAULT 0,
     KEY `formeid` (`formeid`),
     KEY `forme` (`forme`(333)),

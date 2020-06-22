@@ -21,8 +21,9 @@ use yii\db\ActiveRecord;
  * @property string $num
  * @property string $person
  * @property string $temps
- * @property string $notes
+ * @property string $variante
  * @property string $infos
+ * @property string $notes
  * @property string $pronominal
  */
 class Forme extends ActiveRecord
