@@ -186,6 +186,112 @@ class m200608_113754_config_tables extends Migration
         ('', 'Non rempli')
         ");
     $command->execute();
+
+    $command = $connection->createCommand("
+        CREATE TABLE `config_domaine` (
+          ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+          option varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+          description varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+        ");
+    $command->execute();
+
+    $command = $connection->createCommand("
+        insert into config_domaine (option, description) values
+        ('admin.','administration'),
+        ('aéron.','aéronautique'),
+        ('agric.','agriculture'),
+        ('alim.','alimentation'),
+        ('ameub.-décor.','ameublement et décoration'),
+        ('anthrop.','anthropologie'),
+        ('archit.','architecture'),
+        ('art','art'),
+        ('artisan.','artisanat'),
+        ('arts déc.','arts décoratifs'),
+        ('astron.','astronomie'),
+        ('audiovis.','audiovisuel'),
+        ('biol.','biologie'),
+        ('bois','bois'),
+        ('bot.','botanique'),
+        ('chasse','chasse'),
+        ('chim.','chimie'),
+        ('cin.-phot.','cinéma et photographie'),
+        ('comm.','commerce'),
+        ('communic.','communication (divers)'),
+        ('constr.','construction'),
+        ('croy.-idéol.','croyances et idéologies'),
+        ('cuirs-peaux','cuirs et peaux'),
+        ('culture','culture (divers)'),
+        ('danse','danse'),
+        ('droit-jus.','droit et justice'),
+        ('écon.','économie'),
+        ('écrit','écrit (divers)'),
+        ('livre','édition et métiers du livre'),
+        ('éduc.','éducation'),
+        ('électr.','électricité'),
+        ('électron.','électronique'),
+        ('élev.','élevage'),
+        ('énergie','énergie (divers)'),
+        ('environn.-urb.','environnement et urbanisme'),
+        ('espace','espace'),
+        ('fin.','finance'),
+        ('géog.','géographie'),
+        ('géol.','géologie'),
+        ('géosc.','géosciences (divers)'),
+        ('habill.','habillement'),
+        ('habit.','habitat'),
+        ('hist.','histoire'),
+        ('industr.','industrie (divers)'),
+        ('info.-doc.','information et documentation'),
+        ('inform.','informatique'),
+        ('jeux','jeux'),
+        ('ling.','linguistique'),
+        ('littér.','littérature'),
+        ('lois.','loisirs'),
+        ('manut.-stock.','manutention et stockage'),
+        ('matér.','matériaux'),
+        ('math.','mathématiques'),
+        ('mécan.','mécanique'),
+        ('méd.','médecine'),
+        ('métaux','métaux'),
+        ('métrol.','métrologie'),
+        ('mil.','militaire'),
+        ('min.','minéralogie'),
+        ('mines-carr.','mines et carrières'),
+        ('mus.','musique'),
+        ('nautique','nautique'),
+        ('nucl.','nucléaire'),
+        ('pêche','pêche'),
+        ('pétrole','pétrole'),
+        ('phil.','philosophie'),
+        ('phys.','physique'),
+        ('pol.','politique'),
+        ('presse','presse'),
+        ('protect.-sécur.','protection et sécurité'),
+        ('psych.','psychologie'),
+        ('relig.','religions'),
+        ('sc.','sciences (divers)'),
+        ('sémiol.-symbol.','sémiologie et symbolique'),
+        ('serv.','services (divers)'),
+        ('soc.','société'),
+        ('spect.','spectacles'),
+        ('sports','sports'),
+        ('techn.','techniques (divers)'),
+        ('télécomm.','télécommunications'),
+        ('tempor.','temporalité'),
+        ('text.','textile'),
+        ('théât.','théâtre'),
+        ('therm.','thermique'),
+        ('toil.-parure','toilette et parure'),
+        ('transp.','transports (divers)'),
+        ('trav.','travail'),
+        ('ménag.','travaux et équipement ménagers'),
+        ('trav.publ.','travaux publics'),
+        ('vie quot.','vie quotidienne (divers)'),
+        ('voy.','voyages'),
+        ('zool.','zoologie')
+        ");
+    $command->execute();
   }
 
   /**
@@ -199,6 +305,7 @@ class m200608_113754_config_tables extends Migration
     $this->dropTable('config_gram_souscatgram');
     $this->dropTable('config_nslemmes_souscatgram');
     $this->dropTable('config_vslemmes_souscatgram');
+    $this->dropTable('config_domaine');
   }
 
   /*

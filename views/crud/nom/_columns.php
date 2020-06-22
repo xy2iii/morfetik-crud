@@ -4,6 +4,7 @@ use kartik\editable\Editable;
 use app\views\crud\GridHelper;
 
 use app\models\crud\config\ConfigNomSouscatgram;
+use app\models\crud\config\ConfigDomaine;
 /* @var relatedModel Related model to this catégorie. */
 
 $tmp = $relatedModel::find()->select(['Code'])->all();
@@ -14,6 +15,11 @@ foreach ($tmp as $m) {
 $tmp = ConfigNomSouscatgram::find()->select(['option', 'description'])->all();
 foreach ($tmp as $m) {
     $sousCatgramArray[$m->option] = "$m->option ($m->description)";
+}
+
+$tmp = ConfigDomaine::find()->select(['option', 'description'])->all();
+foreach ($tmp as $m) {
+    $domaineArray[$m->option] = "$m->option ($m->description)";
 }
 
 return [
@@ -68,8 +74,8 @@ return [
         'attribute' => 'Dom',
         'vAlign' => 'middle',
         'editableOptions' => [
-            'header' => Yii::t('app', 'Dom'),
-            'inputType' => Editable::INPUT_TEXT,
+            'inputType' => Editable::INPUT_DROPDOWN_LIST,
+            'data' => $domaineArray,
             'formOptions' => ['action' => ['editable']],
         ],
     ],

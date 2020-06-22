@@ -8,6 +8,7 @@ use yii\bootstrap4\ActiveForm;
 /* @var $form yii\bootstrap4\ActiveForm */
 
 use app\models\crud\config\ConfigNomSouscatgram;
+use app\models\crud\config\ConfigDomaine;
 /* @var relatedModel Related model to this catégorie. */
 
 $tmp = $relatedModel::find()->select(['Code'])->all();
@@ -18,6 +19,11 @@ foreach ($tmp as $m) {
 $tmp = ConfigNomSouscatgram::find()->select(['option', 'description'])->all();
 foreach ($tmp as $m) {
     $sousCatgramArray[$m->option] = "$m->option ($m->description)";
+}
+
+$tmp = ConfigDomaine::find()->select(['option', 'description'])->all();
+foreach ($tmp as $m) {
+    $domaineArray[$m->option] = "$m->option ($m->description)";
 }
 
 $isNew = $model->isNewRecord;
@@ -38,7 +44,7 @@ $path = '/crud/nom/' . $suffix;
 
     <?= $form->field($model, 'Flex')->dropDownList($flexArray) ?>
 
-    <?= $form->field($model, 'Dom')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Dom')->dropDownList($domaineArray) ?>
 
     <?= $form->field($model, 'Notes')->textarea(['rows' => 6]) ?>
 
