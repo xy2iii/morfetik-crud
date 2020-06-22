@@ -65,21 +65,21 @@ return [
     ],
     [
         'class' => '\kartik\grid\EditableColumn',
-        'attribute' => 'Notes',
-        'vAlign' => 'middle',
-        'editableOptions' => [
-            'header' => Yii::t('app', 'Notes'),
-            'inputType' => Editable::INPUT_TEXT,
-            'formOptions' => ['action' => ['editable']],
-        ],
-    ],
-    [
-        'class' => '\kartik\grid\EditableColumn',
         'attribute' => 'pronominal',
         'vAlign' => 'middle',
         'editableOptions' => [
             'inputType' => Editable::INPUT_DROPDOWN_LIST,
             'data' => Pronominal::listData(),
+            'formOptions' => ['action' => ['editable']],
+        ],
+    ],
+    [
+        'class' => '\kartik\grid\EditableColumn',
+        'attribute' => 'Notes',
+        'vAlign' => 'middle',
+        'editableOptions' => [
+            'header' => Yii::t('app', 'Notes'),
+            'inputType' => Editable::INPUT_TEXT,
             'formOptions' => ['action' => ['editable']],
         ],
     ],

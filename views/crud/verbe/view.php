@@ -2,6 +2,8 @@
 
 use yii\widgets\DetailView;
 
+use app\models\enums\Pronominal;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Verbe */
 ?>
@@ -14,7 +16,10 @@ use yii\widgets\DetailView;
             'CatGram',
             'souscatgram',
             'Flex',
-            'pronominal',
+            [
+                'attribute' => 'pronominal',
+                'value' => Pronominal::getLabel($model->pronominal),
+            ],
             'Notes:ntext',
         ],
     ]) ?>
