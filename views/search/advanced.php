@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][1] = $this->title;
                 <?php Pjax::begin();
                 $form = ActiveForm::begin(
                     [
-                        'action' => Url::toRoute('/search'),
+                        'action' => Url::toRoute('/search/advanced'),
                         'options' => [
                             'class' => 'ajax-submit',
                         ],
@@ -139,20 +139,19 @@ $this->params['breadcrumbs'][1] = $this->title;
                     'vAlign' => 'middle',
                 ],
                 [
-                    'attribute' => 'primaryCategory',
+                    'attribute' => 'catgram',
                     'vAlign' => 'middle',
                     'format' => 'html',
                     'value' => function ($data) {
                         $after = $data->isLocution()
                             ? '&nbsp;<span class="badge badge-secondary">Locution</span>'
                             : '';
-                        return Forme::categoryToLabel($data->primaryCategory) . $after;
+                        return $data->getCatgram() . $after . ' (' . $data->catgram . ')';
                     },
                 ],
                 [
-                    'attribute' => 'catgram',
+                    'attribute' => 'souscatgram',
                     'vAlign' => 'middle',
-                    'width' => '4rem',
                 ],
                 [
                     'attribute' => 'temps',
@@ -171,16 +170,6 @@ $this->params['breadcrumbs'][1] = $this->title;
                 ],
                 [
                     'attribute' => 'person',
-                    'vAlign' => 'middle',
-                    'width' => '4rem',
-                ],
-                [
-                    'attribute' => 'lig',
-                    'vAlign' => 'middle',
-                    'width' => '4rem',
-                ],
-                [
-                    'attribute' => 'graphsav',
                     'vAlign' => 'middle',
                     'width' => '4rem',
                 ],
@@ -214,7 +203,7 @@ $this->params['breadcrumbs'][1] = $this->title;
                 echo GridView::widget([
                     'dataProvider' => $dataProvider,
                     'filterModel' => $searchModel, // Give to the grid a model that can search anywhere.
-                    'filterUrl' => '@web/search',
+                    'filterUrl' => '@web/search/advanced',
                     'columns' => $columns,
                     'pjax' => true,
                     'pjaxSettings' => [
