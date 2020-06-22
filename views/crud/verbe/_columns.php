@@ -64,12 +64,14 @@ return [
         ],
     ],
     [
-        'class' => '\kartik\grid\EditableColumn',
+        'class' => 'kartik\grid\EditableColumn',
+        'filter' => Pronominal::listData(),
         'attribute' => 'pronominal',
         'vAlign' => 'middle',
         'editableOptions' => [
             'inputType' => Editable::INPUT_DROPDOWN_LIST,
             'data' => Pronominal::listData(),
+            'displayValueConfig' => Pronominal::listData(),
             'formOptions' => ['action' => ['editable']],
         ],
     ],
