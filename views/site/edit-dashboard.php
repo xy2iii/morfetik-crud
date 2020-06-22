@@ -37,6 +37,7 @@ $this->title = 'Edition';
                     <a class="list-group-item list-group-item-action text-center" href="<?= Url::toRoute('crud/config/gram_souscatgram'); ?>"><strong>Grammaire</strong> : sous-catégorie grammaticale</a>
                     <a class="list-group-item list-group-item-action text-center" href="<?= Url::toRoute('crud/config/nom_souscatgram'); ?>"><strong>Nom</strong> : sous-catégorie grammaticale</a>
                     <a class="list-group-item list-group-item-action text-center" href="<?= Url::toRoute('crud/config/verbe_souscatgram'); ?>"><strong>Verbe</strong> : sous-catégorie grammaticale</a>
+                    <a class="list-group-item list-group-item-action text-center" href="<?= Url::toRoute('crud/config/domaine'); ?>">Domaine</a>
                 </ul>
             </div>
         </div>
