@@ -49,7 +49,7 @@ $this->registerCss("
         <a href="http://www.cnrs.fr/fr/page-daccueil" class="fit-image pl-4">
             <img class=" img-responsive" src="<?= Url::to('@web/img/cnrs.png') ?>" alt="Logo CNRS">
         </a>
-        <a href="https://anr.fr/" class="fit-image pl-4">
+        <a href="https://lipn.univ-paris13.fr/" class="fit-image pl-4">
             <img class="img-responsive" src="<?= Url::to('@web/img/lipn.svg') ?>" alt="Logo LIPN">
         </a>
         <a href="https://www.univ-paris13.fr/" class="fit-image pl-4">
