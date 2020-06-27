@@ -85,6 +85,8 @@ class m200513_142326_morfetik_schema extends Migration
           `souscatgram` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
           `Flex` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
           `Dom` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+          `variante` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+          `infos` varchar(510) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
           `Notes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
           PRIMARY KEY (`ID`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;

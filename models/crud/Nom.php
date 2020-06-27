@@ -17,7 +17,7 @@ class Nom extends ActiveRecord
     {
         return [
             [['Lemme', 'CatGram', 'Flex'], 'required'],
-            [['souscatgram', 'Dom', 'Notes'], 'default', 'value' => ''],
+            [['souscatgram', 'Dom', 'Notes', 'variante', 'infos'], 'default', 'value' => ''],
         ];
     }
     /**

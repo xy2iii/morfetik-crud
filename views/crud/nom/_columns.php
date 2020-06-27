@@ -8,6 +8,7 @@ use app\models\crud\config\ConfigDomaine;
 /* @var relatedModel Related model to this catégorie. */
 
 $tmp = $relatedModel::find()->select(['Code'])->all();
+
 foreach ($tmp as $m) {
     $flexArray[$m->Code] = $m->Code;
 }
@@ -76,6 +77,24 @@ return [
         'editableOptions' => [
             'inputType' => Editable::INPUT_DROPDOWN_LIST,
             'data' => $domaineArray,
+            'formOptions' => ['action' => ['editable']],
+        ],
+    ],
+    [
+        'class' => '\kartik\grid\EditableColumn',
+        'attribute' => 'variante',
+        'vAlign' => 'middle',
+        'editableOptions' => [
+            'inputType' => Editable::INPUT_TEXT,
+            'formOptions' => ['action' => ['editable']],
+        ],
+    ],
+    [
+        'class' => '\kartik\grid\EditableColumn',
+        'attribute' => 'infos',
+        'vAlign' => 'middle',
+        'editableOptions' => [
+            'inputType' => Editable::INPUT_TEXT,
             'formOptions' => ['action' => ['editable']],
         ],
     ],

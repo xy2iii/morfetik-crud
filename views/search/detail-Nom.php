@@ -44,7 +44,7 @@ $nom['FP'] = $nom['FP']->join(' / ');
         </table>
 
         <div class="col-md-8">
-            <table class="table ml-1">
+            <table class="table">
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">Lemme</th>
