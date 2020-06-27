@@ -9,15 +9,13 @@ use yii\bootstrap4\ActiveForm;
 
 $isNew = $model->isNewRecord;
 $suffix = $isNew ? 'create' : 'update';
-$path = 'crud/codes-nom/' . $suffix;
+$path = '/crud/codes-nom/' . $suffix;
 ?>
 
 <div class="codes-nom-form">
 
     <?php $form =
         ActiveForm::begin(['action' => [$path, 'id' => $model->Code]]); ?>
-
-    <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'Code')->textInput(['maxlength' => true]) ?>
 
