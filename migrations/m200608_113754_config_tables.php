@@ -289,7 +289,8 @@ class m200608_113754_config_tables extends Migration
         ('trav.publ.','travaux publics'),
         ('vie quot.','vie quotidienne (divers)'),
         ('voy.','voyages'),
-        ('zool.','zoologie')
+        ('zool.','zoologie'),
+        ('', 'Non rempli')
         ");
     $command->execute();
   }
