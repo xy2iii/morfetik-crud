@@ -7,10 +7,12 @@ use yii\helpers\Html;
 $this->title = Yii::t('app', 'About');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-about">
+<div class="site-about text-justify">
     <h1><?= Html::encode($this->title) ?></h1>
     <h2 class="mt-5">Qui sommes-nous ?</h2>
-    <p class="lead text-danger">à remplir</p>
+    <p>
+        Morfetik est le résultat du travail de plus d’une vingtaine d’années de collecte et de description. Michel Mathieu-Colas (Maître de conférences honoraire à l’Université Sorbonne Paris Nord) est à l'origine de la ressource lexicale et de la structuration. En 2008, ce travail a été informatisé par une équipe du laboratoire LDI (<em>Lexiques, Dictionnaires, Informatique</em>, UMR 7187 CNRS), anciennement LLI (<em>Laboratoire de Linguistique Informatique</em>). Depuis 2015, Aude Grezka (Ingénieur de Recherche CNRS) a repris la direction du projet. La ressource a été mise à jour au niveau des données linguistiques et a évolué informatiquement. De nombreux outils ont été ajoutés à la ressource. <em>Morfetik</em> constitue ainsi un ensemble évolutif destiné à s’enrichir progressivement afin d’améliorer la chaîne de traitement des données textuelles.
+    </p>
     <h2 class="mt-5">Contributeurs</h2>
     <h3 class="mt-4">Contributeurs linguistiques</h3>
     <table class="table">

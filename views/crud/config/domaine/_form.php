@@ -10,7 +10,7 @@ use yii\bootstrap4\ActiveForm;
 
 $isNew = $model->isNewRecord;
 $suffix = $isNew ? 'create' : 'update';
-$path = '/crud/config/verbe_souscatgram/' . $suffix;
+$path = '/crud/config/domaine/' . $suffix;
 ?>
 
 <div class="adjectif-form">
