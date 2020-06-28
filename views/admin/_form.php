@@ -6,11 +6,16 @@ use yii\bootstrap4\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
 /* @var $form yii\bootstrap4\ActiveForm */
+
+$isNew = $model->isNewRecord;
+$suffix = $isNew ? 'create' : 'update';
+$path = '/admin/' . $suffix;
 ?>
 
 <div class="user-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form =
+        ActiveForm::begin(['action' => [$path, 'id' => $model->ID]]); ?>
 
     <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
