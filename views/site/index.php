@@ -36,6 +36,22 @@ $this->registerCss("
 </div>
 
 <div class="row">
+    <p>
+    Un dictionnaire classique recense <strong>les lemmes</strong> d'une langue mais non <strong>les formes</strong> de ce lemme. Ainsi, quand cette langue est flexionnelle comme le français, l'entrée du dictionnaire se fait au moyen d'une forme dite « canonique » : par exemple pour les noms : au singulier (« chevaux » → « cheval »), pour les verbes : à l'infinitif (« finissons » → « finir »), etc. Une langue flexionnelle est une langue dans laquelle les mots (lemmes) changent de forme selon leur rapport grammatical aux autres mots, dans une phrase. De nombreux mots sont <em>variables</em> : ils changent de forme selon le contexte d'usage. On dit d'eux qu'ils subissent le jeu de la <em>flexion</em> et les formes sont dites <em>fléchies</em>.  
+    
+    Le moteur de flexion Morfetik peut ainsi produire l’ensemble des formes fléchies d’un mot (pluriel des noms, féminin et pluriel des adjectifs, formes conjuguées des verbes, etc.) mais peut également être exploité pour reconnaître des formes inconnues (la forme de base, le "lemme"). Par exemple, si l'on saisit la forme <em>joues</em>, on obtiendra les 3 réponses suivantes :
+    <ul>
+        <li>joue, nom féminin, pluriel</li>
+        <li>jouer, verbe à l’indicatif présent, 2e personne du singulier</li>
+        <li>jouer, verbe au subjonctif présent, 2e personne du singulier</li>
+    </ul>    
+    En cliquant sur le mot jouer, on obtiendra toute sa conjugaison. 
+    
+    Le système ainsi conçu permet de générer automatiquement l’ensemble des formes simples et complexes du français, d’apporter des informations sémantiques lorsque cela est nécessaire (domaines, par exemple), de contexte (analyse et suivi du mot dans la presse), etc.
+    </p>
+</div>
+
+<div class="row">
     <div class="col d-flex flex-wrap align-items-center  justify-content-center" style="">
         <a href="https://www.culture.gouv.fr/Sites-thematiques/Langue-francaise-et-langues-de-France/La-DGLFLF" class="fit-image">
             <img class="img-responsive" src="<?= Url::to('@web/img/ministere-culture.png') ?>" alt="Logo DGLFLF">
