@@ -112,8 +112,10 @@ class User extends ActiveRecord implements IdentityInterface
 
         Yii::debug('aftersave HAS FIRED');
         if ($this->isNewRecord) {
-            $newRole = Yii::$app->authManager->getRoles()['user'];
-            Yii::$app->authManager->assign($newRole, $this->getId());
+            $this->setRole('author');
+            /*
+            $newRole = Yii::$app->authManager->getRole('editor');
+            Yii::$app->authManager->assign($newRole, $this->getId());*/
         }
         return true;
     }

@@ -41,5 +41,8 @@ $this->title = 'Edition';
                 </ul>
             </div>
         </div>
+        <div class="col text-center pt-4">
+            <h3><i class="fa fa-exclamation-triangle"></i>&nbsp;Les changements ne sont pris en compte qu'à la fin de la journée.</h3>
+        </div>
     </div>
 </div>

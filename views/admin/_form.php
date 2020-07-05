@@ -22,6 +22,7 @@ $path = '/admin/' . $suffix;
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
+
     <p>
         <i class='glyphicon glyphicon-hdd'></i>
         <?= Yii::t('app', 'Enter the password directly and it will be encrypted.') ?>

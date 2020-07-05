@@ -46,6 +46,10 @@ $path = '/crud/nom/' . $suffix;
 
     <?= $form->field($model, 'Dom')->dropDownList($domaineArray) ?>
 
+    <?= $form->field($model, 'variante')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'infos')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'Notes')->textarea(['rows' => 6]) ?>
 
 
